@@ -1,4 +1,4 @@
-name: Makefile CI
+name: Lua CI
 
 on:
   push:
@@ -7,21 +7,22 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
-
+  test:
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v4
 
-    - name: configure
-      run: ./configure
+    - name: Setup Lua
+      uses: hishamhm/gh-actions-lua@v7
+      with:
+        luaVersion: "5.1"
 
-    - name: Install dependencies
-      run: make
+    - name: Setup LuaRocks
+      uses: hishamhm/gh-actions-luarocks@v4
 
-    - name: Run check
-      run: make check
+    - name: Install Linting Tools
+      run: luarocks install luacheck
 
-    - name: Run distcheck
-      run: make distcheck
+    - name: Run Lint Check
+      run: luacheck .
