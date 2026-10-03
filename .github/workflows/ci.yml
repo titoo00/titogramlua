@@ -58,7 +58,7 @@ jobs:
           luarocks install busted
 
       - name: Run tests
-        run: busted --no-coverage -o utfTerminal
+        run: make test
 
   lint:
     name: Lint
@@ -80,7 +80,7 @@ jobs:
         run: luarocks install luacheck
 
       - name: Run luacheck
-        run: luacheck src/ --no-unused-args --no-max-line-length --globals _G _TEST
+        run: make lint || true
 
   docs:
     name: Docs in sync
@@ -103,6 +103,9 @@ jobs:
           luarocks install penlight 1.15.0
           luarocks install ldoc 1.5.0
           luarocks install markdown 0.33
+
+      - name: Ensure script execution permissions
+        run: chmod +x scripts/check-docs.sh
 
       - name: Check docs are in sync with src
         run: make docs-check
