@@ -62,6 +62,7 @@ build = {
         ["titogramlua.methods.rich"] = "src/methods/rich.lua",
         ["titogramlua.methods.stickers"] = "src/methods/stickers.lua",
         ["titogramlua.methods.stories"] = "src/methods/stories.lua",
+        ["titogramlua.methods.suggested_posts"] = "src/methods/suggested_posts.lua",
         ["titogramlua.methods.updates"] = "src/methods/updates.lua",
         ["titogramlua.middleware"] = "src/middleware.lua",
         ["titogramlua.polyfill"] = "src/polyfill.lua",
