@@ -1,0 +1,382 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>titogramlua API Documentation</title>
+    <link rel="stylesheet" href="../ldoc_pale.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>titogramlua</h1>
+
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/b64url.html">b64url</a></li>
+  <li><a href="../modules/titogramlua.html">titogramlua</a></li>
+  <li><a href="../modules/titogramlua.adapters.html">titogramlua.adapters</a></li>
+  <li><a href="../modules/titogramlua.adapters.db.html">titogramlua.adapters.db</a></li>
+  <li><a href="../modules/titogramlua.adapters.email.html">titogramlua.adapters.email</a></li>
+  <li><a href="../modules/titogramlua.adapters.llm.html">titogramlua.adapters.llm</a></li>
+  <li><a href="../modules/titogramlua.adapters.redis.html">titogramlua.adapters.redis</a></li>
+  <li><a href="../modules/titogramlua.async.html">titogramlua.async</a></li>
+  <li><a href="../modules/titogramlua.builders.html">titogramlua.builders</a></li>
+  <li><a href="../modules/titogramlua.builders_rich.html">titogramlua.builders_rich</a></li>
+  <li><a href="../modules/titogramlua.compat.html">titogramlua.compat</a></li>
+  <li><a href="../modules/titogramlua.framework.html">titogramlua.framework</a></li>
+  <li><a href="../modules/titogramlua.handlers.html">titogramlua.handlers</a></li>
+  <li><a href="../modules/titogramlua.helpers.html">titogramlua.helpers</a></li>
+  <li><a href="../modules/titogramlua.log.html">titogramlua.log</a></li>
+  <li><a href="../modules/titogramlua.mcp.html">titogramlua.mcp</a></li>
+  <li><a href="../modules/titogramlua.methods.bot.html">titogramlua.methods.bot</a></li>
+  <li><a href="../modules/titogramlua.methods.business.html">titogramlua.methods.business</a></li>
+  <li><a href="../modules/titogramlua.methods.chat.html">titogramlua.methods.chat</a></li>
+  <li><a href="../modules/titogramlua.methods.checklists.html">titogramlua.methods.checklists</a></li>
+  <li><a href="../modules/titogramlua.methods.forum.html">titogramlua.methods.forum</a></li>
+  <li><a href="../modules/titogramlua.methods.games.html">titogramlua.methods.games</a></li>
+  <li><strong>titogramlua.methods.gifts</strong></li>
+  <li><a href="../modules/titogramlua.methods.inline.html">titogramlua.methods.inline</a></li>
+  <li><a href="../modules/titogramlua.methods.members.html">titogramlua.methods.members</a></li>
+  <li><a href="../modules/titogramlua.methods.messages.html">titogramlua.methods.messages</a></li>
+  <li><a href="../modules/titogramlua.methods.passport.html">titogramlua.methods.passport</a></li>
+  <li><a href="../modules/titogramlua.methods.payments.html">titogramlua.methods.payments</a></li>
+  <li><a href="../modules/titogramlua.methods.rich.html">titogramlua.methods.rich</a></li>
+  <li><a href="../modules/titogramlua.methods.stickers.html">titogramlua.methods.stickers</a></li>
+  <li><a href="../modules/titogramlua.methods.stories.html">titogramlua.methods.stories</a></li>
+  <li><a href="../modules/titogramlua.methods.suggested_posts.html">titogramlua.methods.suggested_posts</a></li>
+  <li><a href="../modules/titogramlua.methods.updates.html">titogramlua.methods.updates</a></li>
+  <li><a href="../modules/titogramlua.middleware.html">titogramlua.middleware</a></li>
+  <li><a href="../modules/titogramlua.polyfill.html">titogramlua.polyfill</a></li>
+  <li><a href="../modules/titogramlua.session.html">titogramlua.session</a></li>
+  <li><a href="../modules/titogramlua.utils.html">titogramlua.utils</a></li>
+  <li><a href="../modules/titogramlua.webhook.html">titogramlua.webhook</a></li>
+  <li><a href="../modules/tools.html">tools</a></li>
+</ul>
+<h2>Topics</h2>
+<ul class="">
+  <li><a href="../topics/readme.md.html">titogramlua</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>titogramlua.methods.gifts</code></h1>
+<p>gifts API methods.</p>
+<p>
+
+</p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#api.convert_gift_to_stars">api.convert_gift_to_stars(business_connection_id, owned_gift_id)</a></td>
+	<td class="summary">convert a given regular gift to telegram stars.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.get_available_gifts">api.get_available_gifts()</a></td>
+	<td class="summary">get the list of gifts that can be sent by the bot.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.get_user_gifts">api.get_user_gifts(user_id)</a></td>
+	<td class="summary">get the list of gifts received by a user.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.gift_premium_subscription">api.gift_premium_subscription(user_id, month_count, star_count, opts)</a></td>
+	<td class="summary">gift a telegram premium subscription to a given user.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.send_gift">api.send_gift(user_id, gift_id, opts)</a></td>
+	<td class="summary">send a gift to a user.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.transfer_gift">api.transfer_gift(business_connection_id, owned_gift_id, new_owner_chat_id, opts)</a></td>
+	<td class="summary">transfer an owned unique gift to another user.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.upgrade_gift">api.upgrade_gift(business_connection_id, owned_gift_id, opts)</a></td>
+	<td class="summary">upgrade a given regular gift to a unique gift.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "api.convert_gift_to_stars"></a>
+    <strong>api.convert_gift_to_stars(business_connection_id, owned_gift_id)</strong>
+    </dt>
+    <dd>
+    convert a given regular gift to telegram stars.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">business_connection_id</span>
+         string unique identifier of the business connection
+        </li>
+        <li><span class="parameter">owned_gift_id</span>
+         string unique identifier of the regular gift that should be converted
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        table|false true on success, or false on failure</li>
+        <li>
+        string|table the HTTP status or error details</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.get_available_gifts"></a>
+    <strong>api.get_available_gifts()</strong>
+    </dt>
+    <dd>
+    get the list of gifts that can be sent by the bot.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        table|false the available gifts object, or false on failure</li>
+        <li>
+        string|table the HTTP status or error details</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.get_user_gifts"></a>
+    <strong>api.get_user_gifts(user_id)</strong>
+    </dt>
+    <dd>
+    get the list of gifts received by a user.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">user_id</span>
+         number unique identifier of the target user
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        table|false the user gifts object, or false on failure</li>
+        <li>
+        string|table the HTTP status or error details</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.gift_premium_subscription"></a>
+    <strong>api.gift_premium_subscription(user_id, month_count, star_count, opts)</strong>
+    </dt>
+    <dd>
+    gift a telegram premium subscription to a given user.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">user_id</span>
+         number unique identifier of the target user who will receive the subscription
+        </li>
+        <li><span class="parameter">month_count</span>
+         number number of months the subscription will be active; one of 3, 6, or 12
+        </li>
+        <li><span class="parameter">star_count</span>
+         number number of telegram stars to pay for the subscription
+        </li>
+        <li><span class="parameter">opts</span> table optional parameters
+        <ul>
+        <li><span class="parameter">text</span>
+         string text shown along with the service message; 0-128 characters
+        </li>
+        <li><span class="parameter">text_parse_mode</span>
+         string mode for parsing entities in the text
+        </li>
+        <li><span class="parameter">text_entities</span>
+         table|string a JSON-serialized list of special entities in the gift text
+        </li>
+        </li></ul>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        table|false true on success, or false on failure</li>
+        <li>
+        string|table the HTTP status or error details</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.send_gift"></a>
+    <strong>api.send_gift(user_id, gift_id, opts)</strong>
+    </dt>
+    <dd>
+    send a gift to a user.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">user_id</span>
+         number unique identifier of the target user
+        </li>
+        <li><span class="parameter">gift_id</span>
+         string identifier of the gift to send
+        </li>
+        <li><span class="parameter">opts</span>
+         table optional parameters (text, text<em>parse</em>mode, pay<em>for</em>upgrade)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        table|false true on success, or false on failure</li>
+        <li>
+        string|table the HTTP status or error details</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.transfer_gift"></a>
+    <strong>api.transfer_gift(business_connection_id, owned_gift_id, new_owner_chat_id, opts)</strong>
+    </dt>
+    <dd>
+    transfer an owned unique gift to another user.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">business_connection_id</span>
+         string unique identifier of the business connection
+        </li>
+        <li><span class="parameter">owned_gift_id</span>
+         string unique identifier of the regular gift that should be transferred
+        </li>
+        <li><span class="parameter">new_owner_chat_id</span>
+         number unique identifier of the chat which will own the gift
+        </li>
+        <li><span class="parameter">opts</span> table optional parameters
+        <ul>
+        <li><span class="parameter">star_count</span>
+         number the amount of telegram stars that will be paid for the transfer
+        </li>
+        </li></ul>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        table|false true on success, or false on failure</li>
+        <li>
+        string|table the HTTP status or error details</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.upgrade_gift"></a>
+    <strong>api.upgrade_gift(business_connection_id, owned_gift_id, opts)</strong>
+    </dt>
+    <dd>
+    upgrade a given regular gift to a unique gift.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">business_connection_id</span>
+         string unique identifier of the business connection
+        </li>
+        <li><span class="parameter">owned_gift_id</span>
+         string unique identifier of the regular gift that should be upgraded
+        </li>
+        <li><span class="parameter">opts</span> table optional parameters
+        <ul>
+        <li><span class="parameter">keep_original_details</span>
+         boolean pass true to keep the original gift text, sender and receiver
+        </li>
+        <li><span class="parameter">star_count</span>
+         number the amount of telegram stars that will be paid for the upgrade
+        </li>
+        </li></ul>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        table|false true on success, or false on failure</li>
+        <li>
+        string|table the HTTP status or error details</li>
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/lunarmodules/LDoc">LDoc 1.5.0</a></i>
+<i style="float:right;">Last updated 2026-10-03 10:38:03 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

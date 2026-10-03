@@ -39,7 +39,7 @@
 
 <h2>Modules</h2>
 <ul class="nowrap">
-  <li><strong>b64url</strong></li>
+  <li><a href="../modules/b64url.html">b64url</a></li>
   <li><a href="../modules/titogramlua.html">titogramlua</a></li>
   <li><a href="../modules/titogramlua.adapters.html">titogramlua.adapters</a></li>
   <li><a href="../modules/titogramlua.adapters.db.html">titogramlua.adapters.db</a></li>
@@ -67,7 +67,7 @@
   <li><a href="../modules/titogramlua.methods.messages.html">titogramlua.methods.messages</a></li>
   <li><a href="../modules/titogramlua.methods.passport.html">titogramlua.methods.passport</a></li>
   <li><a href="../modules/titogramlua.methods.payments.html">titogramlua.methods.payments</a></li>
-  <li><a href="../modules/titogramlua.methods.rich.html">titogramlua.methods.rich</a></li>
+  <li><strong>titogramlua.methods.rich</strong></li>
   <li><a href="../modules/titogramlua.methods.stickers.html">titogramlua.methods.stickers</a></li>
   <li><a href="../modules/titogramlua.methods.stories.html">titogramlua.methods.stories</a></li>
   <li><a href="../modules/titogramlua.methods.suggested_posts.html">titogramlua.methods.suggested_posts</a></li>
@@ -88,8 +88,8 @@
 
 <div id="content">
 
-<h1>Module <code>b64url</code></h1>
-<p>Encodes a string into a Base64 string.</p>
+<h1>Module <code>titogramlua.methods.rich</code></h1>
+<p>rich message API methods (Bot API 10.1).</p>
 <p>
 
 </p>
@@ -98,8 +98,12 @@
 <h2><a href="#Functions">Functions</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#decode">decode(input)</a></td>
-	<td class="summary">Decodes a Base64 string into an output string of arbitrary bytes.</td>
+	<td class="name" nowrap><a href="#api.send_rich_message">api.send_rich_message(chat_id, rich_message, opts)</a></td>
+	<td class="summary">send a rich formatted message to a chat.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.send_rich_message_draft">api.send_rich_message_draft(chat_id, draft_id, rich_message, opts)</a></td>
+	<td class="summary">stream a partial rich message to a private chat as a draft.</td>
 	</tr>
 </table>
 
@@ -111,22 +115,102 @@
 
     <dl class="function">
     <dt>
-    <a name = "decode"></a>
-    <strong>decode(input)</strong>
+    <a name = "api.send_rich_message"></a>
+    <strong>api.send_rich_message(chat_id, rich_message, opts)</strong>
     </dt>
     <dd>
-    Decodes a Base64 string into an output string of arbitrary bytes.
+    send a rich formatted message to a chat.
+ a rich message is described with HTML or markdown via an InputRichMessage object;
+ see api.input<em>rich</em>message for a builder.
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">input</span>
-
-
-
+        <li><span class="parameter">chat_id</span>
+         number|string unique identifier for the target chat or username of the target bot/supergroup/channel
         </li>
+        <li><span class="parameter">rich_message</span>
+         table|string an InputRichMessage object describing the message to send
+        </li>
+        <li><span class="parameter">opts</span> table optional parameters
+        <ul>
+        <li><span class="parameter">business_connection_id</span>
+         string unique identifier of the business connection
+        </li>
+        <li><span class="parameter">message_thread_id</span>
+         number unique identifier for the target message thread (topic) of a forum
+        </li>
+        <li><span class="parameter">direct_messages_topic_id</span>
+         number identifier of the direct messages topic to send to
+        </li>
+        <li><span class="parameter">disable_notification</span>
+         boolean send the message silently
+        </li>
+        <li><span class="parameter">protect_content</span>
+         boolean protect the contents of the sent message from forwarding and saving
+        </li>
+        <li><span class="parameter">allow_paid_broadcast</span>
+         boolean allow up to 1000 messages per second for a fee
+        </li>
+        <li><span class="parameter">message_effect_id</span>
+         string unique identifier of the message effect to add; private chats only
+        </li>
+        <li><span class="parameter">suggested_post_parameters</span>
+         table parameters of the suggested post to send
+        </li>
+        <li><span class="parameter">reply_parameters</span>
+         table description of the message to reply to
+        </li>
+        <li><span class="parameter">reply_markup</span>
+         table additional interface options
+        </li>
+        </li></ul>
     </ul>
 
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.send_rich_message_draft"></a>
+    <strong>api.send_rich_message_draft(chat_id, draft_id, rich_message, opts)</strong>
+    </dt>
+    <dd>
+    stream a partial rich message to a private chat as a draft.
+ repeated calls with the same draft<em>id animate the changes; useful for streaming
+ AI-generated replies. a non-zero draft</em>id is required.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_id</span>
+         number unique identifier for the target private chat
+        </li>
+        <li><span class="parameter">draft_id</span>
+         number unique identifier of the message draft; must be non-zero
+        </li>
+        <li><span class="parameter">rich_message</span>
+         table|string an InputRichMessage object describing the partial message
+        </li>
+        <li><span class="parameter">opts</span> table optional parameters
+        <ul>
+        <li><span class="parameter">message_thread_id</span>
+         number unique identifier for the target message thread
+        </li>
+        </li></ul>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
 
 
 

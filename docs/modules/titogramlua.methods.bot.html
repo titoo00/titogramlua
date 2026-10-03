@@ -1,0 +1,1014 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>titogramlua API Documentation</title>
+    <link rel="stylesheet" href="../ldoc_pale.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>titogramlua</h1>
+
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/b64url.html">b64url</a></li>
+  <li><a href="../modules/titogramlua.html">titogramlua</a></li>
+  <li><a href="../modules/titogramlua.adapters.html">titogramlua.adapters</a></li>
+  <li><a href="../modules/titogramlua.adapters.db.html">titogramlua.adapters.db</a></li>
+  <li><a href="../modules/titogramlua.adapters.email.html">titogramlua.adapters.email</a></li>
+  <li><a href="../modules/titogramlua.adapters.llm.html">titogramlua.adapters.llm</a></li>
+  <li><a href="../modules/titogramlua.adapters.redis.html">titogramlua.adapters.redis</a></li>
+  <li><a href="../modules/titogramlua.async.html">titogramlua.async</a></li>
+  <li><a href="../modules/titogramlua.builders.html">titogramlua.builders</a></li>
+  <li><a href="../modules/titogramlua.builders_rich.html">titogramlua.builders_rich</a></li>
+  <li><a href="../modules/titogramlua.compat.html">titogramlua.compat</a></li>
+  <li><a href="../modules/titogramlua.framework.html">titogramlua.framework</a></li>
+  <li><a href="../modules/titogramlua.handlers.html">titogramlua.handlers</a></li>
+  <li><a href="../modules/titogramlua.helpers.html">titogramlua.helpers</a></li>
+  <li><a href="../modules/titogramlua.log.html">titogramlua.log</a></li>
+  <li><a href="../modules/titogramlua.mcp.html">titogramlua.mcp</a></li>
+  <li><strong>titogramlua.methods.bot</strong></li>
+  <li><a href="../modules/titogramlua.methods.business.html">titogramlua.methods.business</a></li>
+  <li><a href="../modules/titogramlua.methods.chat.html">titogramlua.methods.chat</a></li>
+  <li><a href="../modules/titogramlua.methods.checklists.html">titogramlua.methods.checklists</a></li>
+  <li><a href="../modules/titogramlua.methods.forum.html">titogramlua.methods.forum</a></li>
+  <li><a href="../modules/titogramlua.methods.games.html">titogramlua.methods.games</a></li>
+  <li><a href="../modules/titogramlua.methods.gifts.html">titogramlua.methods.gifts</a></li>
+  <li><a href="../modules/titogramlua.methods.inline.html">titogramlua.methods.inline</a></li>
+  <li><a href="../modules/titogramlua.methods.members.html">titogramlua.methods.members</a></li>
+  <li><a href="../modules/titogramlua.methods.messages.html">titogramlua.methods.messages</a></li>
+  <li><a href="../modules/titogramlua.methods.passport.html">titogramlua.methods.passport</a></li>
+  <li><a href="../modules/titogramlua.methods.payments.html">titogramlua.methods.payments</a></li>
+  <li><a href="../modules/titogramlua.methods.rich.html">titogramlua.methods.rich</a></li>
+  <li><a href="../modules/titogramlua.methods.stickers.html">titogramlua.methods.stickers</a></li>
+  <li><a href="../modules/titogramlua.methods.stories.html">titogramlua.methods.stories</a></li>
+  <li><a href="../modules/titogramlua.methods.suggested_posts.html">titogramlua.methods.suggested_posts</a></li>
+  <li><a href="../modules/titogramlua.methods.updates.html">titogramlua.methods.updates</a></li>
+  <li><a href="../modules/titogramlua.middleware.html">titogramlua.middleware</a></li>
+  <li><a href="../modules/titogramlua.polyfill.html">titogramlua.polyfill</a></li>
+  <li><a href="../modules/titogramlua.session.html">titogramlua.session</a></li>
+  <li><a href="../modules/titogramlua.utils.html">titogramlua.utils</a></li>
+  <li><a href="../modules/titogramlua.webhook.html">titogramlua.webhook</a></li>
+  <li><a href="../modules/tools.html">tools</a></li>
+</ul>
+<h2>Topics</h2>
+<ul class="">
+  <li><a href="../topics/readme.md.html">titogramlua</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>titogramlua.methods.bot</code></h1>
+<p>bot API methods.</p>
+<p>
+
+</p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#api.delete_my_commands">api.delete_my_commands(opts)</a></td>
+	<td class="summary">delete the list of the bot's commands for the given scope and language.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.get_chat_menu_button">api.get_chat_menu_button(opts)</a></td>
+	<td class="summary">get the current value of the bot's menu button in a private chat or the default menu button.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.get_file">api.get_file(file_id)</a></td>
+	<td class="summary">get basic info about a file and prepare it for downloading.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.get_managed_bot_access_settings">api.get_managed_bot_access_settings(user_id)</a></td>
+	<td class="summary">get the access settings of a managed bot (Bot API 10.0).</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.get_managed_bot_token">api.get_managed_bot_token(user_id)</a></td>
+	<td class="summary">get the token of a managed bot.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.get_my_commands">api.get_my_commands(opts)</a></td>
+	<td class="summary">get the current list of the bot's commands for the given scope and language.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.get_my_default_administrator_rights">api.get_my_default_administrator_rights(opts)</a></td>
+	<td class="summary">get the current default administrator rights of the bot.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.get_my_description">api.get_my_description(opts)</a></td>
+	<td class="summary">get the current bot description for the given language.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.get_my_name">api.get_my_name(opts)</a></td>
+	<td class="summary">get the current bot name for the given language.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.get_my_short_description">api.get_my_short_description(opts)</a></td>
+	<td class="summary">get the current bot short description for the given language.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.get_user_personal_chat_messages">api.get_user_personal_chat_messages(user_id, limit)</a></td>
+	<td class="summary">get recent messages from a user's personal chat (Bot API 10.0).</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.remove_chat_verification">api.remove_chat_verification(chat_id)</a></td>
+	<td class="summary">remove verification from a chat that is currently verified on behalf of the organisation.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.remove_my_profile_photo">api.remove_my_profile_photo(opts)</a></td>
+	<td class="summary">remove the bot's profile photo.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.remove_user_verification">api.remove_user_verification(user_id)</a></td>
+	<td class="summary">remove verification from a user who is currently verified on behalf of the organisation.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.replace_managed_bot_token">api.replace_managed_bot_token(user_id)</a></td>
+	<td class="summary">replace the token of a managed bot with a new one.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.save_prepared_keyboard_button">api.save_prepared_keyboard_button(user_id, button)</a></td>
+	<td class="summary">save a prepared keyboard button for later use.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.set_chat_menu_button">api.set_chat_menu_button(opts)</a></td>
+	<td class="summary">change the bot's menu button in a private chat or the default menu button.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.set_managed_bot_access_settings">api.set_managed_bot_access_settings(user_id, is_access_restricted, opts)</a></td>
+	<td class="summary">change the access settings of a managed bot (Bot API 10.0).</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.set_my_commands">api.set_my_commands(commands, opts)</a></td>
+	<td class="summary">change the list of the bot's commands.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.set_my_default_administrator_rights">api.set_my_default_administrator_rights(opts)</a></td>
+	<td class="summary">change the default administrator rights requested by the bot when it's added to groups or channels.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.set_my_description">api.set_my_description(description, opts)</a></td>
+	<td class="summary">change the bot's description.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.set_my_name">api.set_my_name(name, opts)</a></td>
+	<td class="summary">change the bot's name.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.set_my_profile_photo">api.set_my_profile_photo(opts)</a></td>
+	<td class="summary">set the bot's profile photo.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.set_my_short_description">api.set_my_short_description(short_description, opts)</a></td>
+	<td class="summary">change the bot's short description.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.set_user_emoji_status">api.set_user_emoji_status(user_id, opts)</a></td>
+	<td class="summary">change the emoji status for a given user that previously allowed the bot to manage their emoji status.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.verify_chat">api.verify_chat(chat_id, opts)</a></td>
+	<td class="summary">verify a chat on behalf of the organisation which is represented by the bot.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.verify_user">api.verify_user(user_id, opts)</a></td>
+	<td class="summary">verify a user on behalf of the organisation which is represented by the bot.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "api.delete_my_commands"></a>
+    <strong>api.delete_my_commands(opts)</strong>
+    </dt>
+    <dd>
+    delete the list of the bot's commands for the given scope and language.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">opts</span> table optional parameters
+        <ul>
+        <li><span class="parameter">scope</span>
+         table|string a JSON-serialized scope of users for which commands are relevant
+        </li>
+        <li><span class="parameter">language_code</span>
+         string a two-letter ISO 639-1 language code
+        </li>
+        </li></ul>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.get_chat_menu_button"></a>
+    <strong>api.get_chat_menu_button(opts)</strong>
+    </dt>
+    <dd>
+    get the current value of the bot's menu button in a private chat or the default menu button.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">opts</span> table optional parameters
+        <ul>
+        <li><span class="parameter">chat_id</span>
+         number|string unique identifier for the target private chat
+        </li>
+        </li></ul>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.get_file"></a>
+    <strong>api.get_file(file_id)</strong>
+    </dt>
+    <dd>
+    get basic info about a file and prepare it for downloading.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">file_id</span>
+         string file identifier to get info about
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.get_managed_bot_access_settings"></a>
+    <strong>api.get_managed_bot_access_settings(user_id)</strong>
+    </dt>
+    <dd>
+    get the access settings of a managed bot (Bot API 10.0).
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">user_id</span>
+         number user identifier of the managed bot
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.get_managed_bot_token"></a>
+    <strong>api.get_managed_bot_token(user_id)</strong>
+    </dt>
+    <dd>
+    get the token of a managed bot.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">user_id</span>
+         number unique identifier of the managed bot user
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.get_my_commands"></a>
+    <strong>api.get_my_commands(opts)</strong>
+    </dt>
+    <dd>
+    get the current list of the bot's commands for the given scope and language.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">opts</span> table optional parameters
+        <ul>
+        <li><span class="parameter">scope</span>
+         table|string a JSON-serialized scope of users for which commands are relevant
+        </li>
+        <li><span class="parameter">language_code</span>
+         string a two-letter ISO 639-1 language code
+        </li>
+        </li></ul>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.get_my_default_administrator_rights"></a>
+    <strong>api.get_my_default_administrator_rights(opts)</strong>
+    </dt>
+    <dd>
+    get the current default administrator rights of the bot.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">opts</span> table optional parameters
+        <ul>
+        <li><span class="parameter">for_channels</span>
+         boolean pass true to get the default rights for channels
+        </li>
+        </li></ul>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.get_my_description"></a>
+    <strong>api.get_my_description(opts)</strong>
+    </dt>
+    <dd>
+    get the current bot description for the given language.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">opts</span> table optional parameters
+        <ul>
+        <li><span class="parameter">language_code</span>
+         string a two-letter ISO 639-1 language code
+        </li>
+        </li></ul>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.get_my_name"></a>
+    <strong>api.get_my_name(opts)</strong>
+    </dt>
+    <dd>
+    get the current bot name for the given language.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">opts</span> table optional parameters
+        <ul>
+        <li><span class="parameter">language_code</span>
+         string a two-letter ISO 639-1 language code
+        </li>
+        </li></ul>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.get_my_short_description"></a>
+    <strong>api.get_my_short_description(opts)</strong>
+    </dt>
+    <dd>
+    get the current bot short description for the given language.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">opts</span> table optional parameters
+        <ul>
+        <li><span class="parameter">language_code</span>
+         string a two-letter ISO 639-1 language code
+        </li>
+        </li></ul>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.get_user_personal_chat_messages"></a>
+    <strong>api.get_user_personal_chat_messages(user_id, limit)</strong>
+    </dt>
+    <dd>
+    get recent messages from a user's personal chat (Bot API 10.0).
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">user_id</span>
+         number unique identifier for the target user
+        </li>
+        <li><span class="parameter">limit</span>
+         number maximum number of messages to return; 1-20
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.remove_chat_verification"></a>
+    <strong>api.remove_chat_verification(chat_id)</strong>
+    </dt>
+    <dd>
+    remove verification from a chat that is currently verified on behalf of the organisation.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_id</span>
+         number|string unique identifier for the target chat or username of the target channel
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.remove_my_profile_photo"></a>
+    <strong>api.remove_my_profile_photo(opts)</strong>
+    </dt>
+    <dd>
+    remove the bot's profile photo.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">opts</span> table optional parameters
+        <ul>
+        <li><span class="parameter">is_public</span>
+         boolean pass true to remove the public photo
+        </li>
+        </li></ul>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.remove_user_verification"></a>
+    <strong>api.remove_user_verification(user_id)</strong>
+    </dt>
+    <dd>
+    remove verification from a user who is currently verified on behalf of the organisation.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">user_id</span>
+         number unique identifier of the target user
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.replace_managed_bot_token"></a>
+    <strong>api.replace_managed_bot_token(user_id)</strong>
+    </dt>
+    <dd>
+    replace the token of a managed bot with a new one.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">user_id</span>
+         number unique identifier of the managed bot user
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.save_prepared_keyboard_button"></a>
+    <strong>api.save_prepared_keyboard_button(user_id, button)</strong>
+    </dt>
+    <dd>
+    save a prepared keyboard button for later use.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">user_id</span>
+         number unique identifier of the target user
+        </li>
+        <li><span class="parameter">button</span>
+         table|string a JSON-serialized keyboard button to save
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.set_chat_menu_button"></a>
+    <strong>api.set_chat_menu_button(opts)</strong>
+    </dt>
+    <dd>
+    change the bot's menu button in a private chat or the default menu button.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">opts</span> table optional parameters
+        <ul>
+        <li><span class="parameter">chat_id</span>
+         number|string unique identifier for the target private chat
+        </li>
+        <li><span class="parameter">menu_button</span>
+         table|string a JSON-serialized object for the bot's new menu button
+        </li>
+        </li></ul>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.set_managed_bot_access_settings"></a>
+    <strong>api.set_managed_bot_access_settings(user_id, is_access_restricted, opts)</strong>
+    </dt>
+    <dd>
+    change the access settings of a managed bot (Bot API 10.0).
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">user_id</span>
+         number user identifier of the managed bot
+        </li>
+        <li><span class="parameter">is_access_restricted</span>
+         boolean true if only selected users can access the bot
+        </li>
+        <li><span class="parameter">opts</span> table optional parameters
+        <ul>
+        <li><span class="parameter">added_user_ids</span>
+         table list of up to 10 user ids granted access in addition to the owner
+        </li>
+        </li></ul>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.set_my_commands"></a>
+    <strong>api.set_my_commands(commands, opts)</strong>
+    </dt>
+    <dd>
+    change the list of the bot's commands.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">commands</span>
+         table|string a JSON-serialized or encoded list of BotCommand
+        </li>
+        <li><span class="parameter">opts</span> table optional parameters
+        <ul>
+        <li><span class="parameter">scope</span>
+         table|string a JSON-serialized scope of users for which commands are relevant
+        </li>
+        <li><span class="parameter">language_code</span>
+         string a two-letter ISO 639-1 language code
+        </li>
+        </li></ul>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.set_my_default_administrator_rights"></a>
+    <strong>api.set_my_default_administrator_rights(opts)</strong>
+    </dt>
+    <dd>
+    change the default administrator rights requested by the bot when it's added to groups or channels.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">opts</span> table optional parameters
+        <ul>
+        <li><span class="parameter">rights</span>
+         table|string a JSON-serialized object describing new default administrator rights
+        </li>
+        <li><span class="parameter">for_channels</span>
+         boolean pass true to change the default rights for channels
+        </li>
+        </li></ul>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.set_my_description"></a>
+    <strong>api.set_my_description(description, opts)</strong>
+    </dt>
+    <dd>
+    change the bot's description.  truncated to 512 characters.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">description</span>
+         string new bot description (max 512 characters)
+        </li>
+        <li><span class="parameter">opts</span> table optional parameters
+        <ul>
+        <li><span class="parameter">language_code</span>
+         string a two-letter ISO 639-1 language code
+        </li>
+        </li></ul>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.set_my_name"></a>
+    <strong>api.set_my_name(name, opts)</strong>
+    </dt>
+    <dd>
+    change the bot's name.  truncated to 64 characters.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+         string new bot name (max 64 characters)
+        </li>
+        <li><span class="parameter">opts</span> table optional parameters
+        <ul>
+        <li><span class="parameter">language_code</span>
+         string a two-letter ISO 639-1 language code
+        </li>
+        </li></ul>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.set_my_profile_photo"></a>
+    <strong>api.set_my_profile_photo(opts)</strong>
+    </dt>
+    <dd>
+    set the bot's profile photo.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">opts</span> table optional parameters
+        <ul>
+        <li><span class="parameter">photo</span>
+         string the photo to set as the bot's profile photo (file upload)
+        </li>
+        <li><span class="parameter">is_public</span>
+         boolean pass true to set the public photo
+        </li>
+        </li></ul>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.set_my_short_description"></a>
+    <strong>api.set_my_short_description(short_description, opts)</strong>
+    </dt>
+    <dd>
+    change the bot's short description.  truncated to 120 characters.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">short_description</span>
+         string new short description (max 120 characters)
+        </li>
+        <li><span class="parameter">opts</span> table optional parameters
+        <ul>
+        <li><span class="parameter">language_code</span>
+         string a two-letter ISO 639-1 language code
+        </li>
+        </li></ul>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.set_user_emoji_status"></a>
+    <strong>api.set_user_emoji_status(user_id, opts)</strong>
+    </dt>
+    <dd>
+    change the emoji status for a given user that previously allowed the bot to manage their emoji status.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">user_id</span>
+         number unique identifier of the target user
+        </li>
+        <li><span class="parameter">opts</span> table optional parameters
+        <ul>
+        <li><span class="parameter">emoji_status_custom_emoji_id</span>
+         string custom emoji identifier of the emoji status to set
+        </li>
+        <li><span class="parameter">emoji_status_expiration_date</span>
+         number expiration date of the emoji status, if any
+        </li>
+        </li></ul>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.verify_chat"></a>
+    <strong>api.verify_chat(chat_id, opts)</strong>
+    </dt>
+    <dd>
+    verify a chat on behalf of the organisation which is represented by the bot.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_id</span>
+         number|string unique identifier for the target chat or username of the target channel
+        </li>
+        <li><span class="parameter">opts</span> table optional parameters
+        <ul>
+        <li><span class="parameter">custom_description</span>
+         string custom description for the verification; 0-70 characters
+        </li>
+        </li></ul>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.verify_user"></a>
+    <strong>api.verify_user(user_id, opts)</strong>
+    </dt>
+    <dd>
+    verify a user on behalf of the organisation which is represented by the bot.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">user_id</span>
+         number unique identifier of the target user
+        </li>
+        <li><span class="parameter">opts</span> table optional parameters
+        <ul>
+        <li><span class="parameter">custom_description</span>
+         string custom description for the verification; 0-70 characters
+        </li>
+        </li></ul>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/lunarmodules/LDoc">LDoc 1.5.0</a></i>
+<i style="float:right;">Last updated 2026-10-03 10:38:03 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

@@ -1,0 +1,1036 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>titogramlua API Documentation</title>
+    <link rel="stylesheet" href="../ldoc_pale.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>titogramlua</h1>
+
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#"> </a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/b64url.html">b64url</a></li>
+  <li><a href="../modules/titogramlua.html">titogramlua</a></li>
+  <li><a href="../modules/titogramlua.adapters.html">titogramlua.adapters</a></li>
+  <li><a href="../modules/titogramlua.adapters.db.html">titogramlua.adapters.db</a></li>
+  <li><a href="../modules/titogramlua.adapters.email.html">titogramlua.adapters.email</a></li>
+  <li><a href="../modules/titogramlua.adapters.llm.html">titogramlua.adapters.llm</a></li>
+  <li><a href="../modules/titogramlua.adapters.redis.html">titogramlua.adapters.redis</a></li>
+  <li><a href="../modules/titogramlua.async.html">titogramlua.async</a></li>
+  <li><a href="../modules/titogramlua.builders.html">titogramlua.builders</a></li>
+  <li><a href="../modules/titogramlua.builders_rich.html">titogramlua.builders_rich</a></li>
+  <li><a href="../modules/titogramlua.compat.html">titogramlua.compat</a></li>
+  <li><a href="../modules/titogramlua.framework.html">titogramlua.framework</a></li>
+  <li><strong>titogramlua.handlers</strong></li>
+  <li><a href="../modules/titogramlua.helpers.html">titogramlua.helpers</a></li>
+  <li><a href="../modules/titogramlua.log.html">titogramlua.log</a></li>
+  <li><a href="../modules/titogramlua.mcp.html">titogramlua.mcp</a></li>
+  <li><a href="../modules/titogramlua.methods.bot.html">titogramlua.methods.bot</a></li>
+  <li><a href="../modules/titogramlua.methods.business.html">titogramlua.methods.business</a></li>
+  <li><a href="../modules/titogramlua.methods.chat.html">titogramlua.methods.chat</a></li>
+  <li><a href="../modules/titogramlua.methods.checklists.html">titogramlua.methods.checklists</a></li>
+  <li><a href="../modules/titogramlua.methods.forum.html">titogramlua.methods.forum</a></li>
+  <li><a href="../modules/titogramlua.methods.games.html">titogramlua.methods.games</a></li>
+  <li><a href="../modules/titogramlua.methods.gifts.html">titogramlua.methods.gifts</a></li>
+  <li><a href="../modules/titogramlua.methods.inline.html">titogramlua.methods.inline</a></li>
+  <li><a href="../modules/titogramlua.methods.members.html">titogramlua.methods.members</a></li>
+  <li><a href="../modules/titogramlua.methods.messages.html">titogramlua.methods.messages</a></li>
+  <li><a href="../modules/titogramlua.methods.passport.html">titogramlua.methods.passport</a></li>
+  <li><a href="../modules/titogramlua.methods.payments.html">titogramlua.methods.payments</a></li>
+  <li><a href="../modules/titogramlua.methods.rich.html">titogramlua.methods.rich</a></li>
+  <li><a href="../modules/titogramlua.methods.stickers.html">titogramlua.methods.stickers</a></li>
+  <li><a href="../modules/titogramlua.methods.stories.html">titogramlua.methods.stories</a></li>
+  <li><a href="../modules/titogramlua.methods.suggested_posts.html">titogramlua.methods.suggested_posts</a></li>
+  <li><a href="../modules/titogramlua.methods.updates.html">titogramlua.methods.updates</a></li>
+  <li><a href="../modules/titogramlua.middleware.html">titogramlua.middleware</a></li>
+  <li><a href="../modules/titogramlua.polyfill.html">titogramlua.polyfill</a></li>
+  <li><a href="../modules/titogramlua.session.html">titogramlua.session</a></li>
+  <li><a href="../modules/titogramlua.utils.html">titogramlua.utils</a></li>
+  <li><a href="../modules/titogramlua.webhook.html">titogramlua.webhook</a></li>
+  <li><a href="../modules/tools.html">tools</a></li>
+</ul>
+<h2>Topics</h2>
+<ul class="">
+  <li><a href="../topics/readme.md.html">titogramlua</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>titogramlua.handlers</code></h1>
+<p>update handler stubs and dispatch logic.</p>
+<p>
+
+</p>
+
+
+<h2><a href="#"> </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#api._dispatch_update">api._dispatch_update(update)</a></td>
+	<td class="summary">raw dispatch: routes an update directly to the appropriate handler.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api._run_sync">api._run_sync(opts)</a></td>
+	<td class="summary">single-threaded synchronous polling loop (opt-in via sync = true).</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.on_business_connection">api.on_business_connection(business_connection)</a></td>
+	<td class="summary">called when a business connection is updated.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.on_business_message">api.on_business_message(business_message)</a></td>
+	<td class="summary">called for new messages from a connected business account.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.on_callback_query">api.on_callback_query(callback_query)</a></td>
+	<td class="summary">called when a callback query is received from an inline keyboard button.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.on_channel_post">api.on_channel_post(channel_post)</a></td>
+	<td class="summary">called for new posts in channels.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.on_chat_boost">api.on_chat_boost(chat_boost)</a></td>
+	<td class="summary">called when a chat boost is added.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.on_chat_join_request">api.on_chat_join_request(chat_join_request)</a></td>
+	<td class="summary">called when a user sends a join request to a chat.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.on_chat_member">api.on_chat_member(chat_member)</a></td>
+	<td class="summary">called when a chat member's status is updated.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.on_chosen_inline_result">api.on_chosen_inline_result(chosen_inline_result)</a></td>
+	<td class="summary">called when a chosen inline result is received.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.on_deleted_business_messages">api.on_deleted_business_messages(deleted_business_messages)</a></td>
+	<td class="summary">called when business messages are deleted.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.on_edited_business_message">api.on_edited_business_message(edited_business_message)</a></td>
+	<td class="summary">called when a business message is edited.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.on_edited_channel_post">api.on_edited_channel_post(edited_channel_post)</a></td>
+	<td class="summary">called when a channel post is edited.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.on_edited_group_message">api.on_edited_group_message(edited_message)</a></td>
+	<td class="summary">called when a message is edited in a group chat.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.on_edited_message">api.on_edited_message(edited_message)</a></td>
+	<td class="summary">called when a message is edited.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.on_edited_private_message">api.on_edited_private_message(edited_message)</a></td>
+	<td class="summary">called when a message is edited in a private chat.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.on_edited_supergroup_message">api.on_edited_supergroup_message(edited_message)</a></td>
+	<td class="summary">called when a message is edited in a supergroup chat.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.on_group_message">api.on_group_message(message)</a></td>
+	<td class="summary">called for new messages in group chats.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.on_guest_message">api.on_guest_message(guest_message)</a></td>
+	<td class="summary">called when the bot receives a guest message (Bot API 10.0).</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.on_inline_query">api.on_inline_query(inline_query)</a></td>
+	<td class="summary">called when an inline query is received.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.on_managed_bot">api.on_managed_bot(managed_bot)</a></td>
+	<td class="summary">called when a managed bot update is received.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.on_message">api.on_message(message)</a></td>
+	<td class="summary">called for any new message (after chat-type-specific handlers).</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.on_message_reaction">api.on_message_reaction(message_reaction)</a></td>
+	<td class="summary">called when a message reaction is changed by a user.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.on_message_reaction_count">api.on_message_reaction_count(message_reaction_count)</a></td>
+	<td class="summary">called when anonymous reactions on a message are changed.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.on_my_chat_member">api.on_my_chat_member(my_chat_member)</a></td>
+	<td class="summary">called when the bot's own chat member status is updated.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.on_poll">api.on_poll(poll)</a></td>
+	<td class="summary">called when a poll state changes.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.on_poll_answer">api.on_poll_answer(poll_answer)</a></td>
+	<td class="summary">called when a user changes their vote in a non-anonymous poll.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.on_pre_checkout_query">api.on_pre_checkout_query(pre_checkout_query)</a></td>
+	<td class="summary">called when a pre-checkout query is received (payments).</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.on_private_message">api.on_private_message(message)</a></td>
+	<td class="summary">called for new messages in private chats.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.on_purchased_paid_media">api.on_purchased_paid_media(purchased_paid_media)</a></td>
+	<td class="summary">called when paid media is purchased.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.on_removed_chat_boost">api.on_removed_chat_boost(removed_chat_boost)</a></td>
+	<td class="summary">called when a chat boost is removed.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.on_shipping_query">api.on_shipping_query(shipping_query)</a></td>
+	<td class="summary">called when a shipping query is received (payments).</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.on_supergroup_message">api.on_supergroup_message(message)</a></td>
+	<td class="summary">called for new messages in supergroup chats.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.on_update">api.on_update(update)</a></td>
+	<td class="summary">called for every update received, before type-specific routing.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.process_update">api.process_update(update)</a></td>
+	<td class="summary">process an update through the middleware chain (if any) then dispatch.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.run">api.run(opts)</a></td>
+	<td class="summary">start the bot's polling loop.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.stop_sync">api.stop_sync()</a></td>
+	<td class="summary">request that the synchronous polling loop exit at its next iteration.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header has-description"><a name=""></a> </h2>
+
+          <div class="section-description">
+           handler stubs
+ override these functions to handle specific update types.
+ each receives the relevant update object as its only argument.
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "api._dispatch_update"></a>
+    <strong>api._dispatch_update(update)</strong>
+    </dt>
+    <dd>
+    raw dispatch: routes an update directly to the appropriate handler.
+ called by the middleware chain as the final step, or directly when
+ no middleware is registered.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">update</span>
+         table the update object to dispatch
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        any the return value of the matched handler
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api._run_sync"></a>
+    <strong>api._run_sync(opts)</strong>
+    </dt>
+    <dd>
+    single-threaded synchronous polling loop (opt-in via sync = true).
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">opts</span>
+         table same options as api.run
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.on_business_connection"></a>
+    <strong>api.on_business_connection(business_connection)</strong>
+    </dt>
+    <dd>
+    called when a business connection is updated.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">business_connection</span>
+         table the business connection object
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.on_business_message"></a>
+    <strong>api.on_business_message(business_message)</strong>
+    </dt>
+    <dd>
+    called for new messages from a connected business account.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">business_message</span>
+         table the business message object
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.on_callback_query"></a>
+    <strong>api.on_callback_query(callback_query)</strong>
+    </dt>
+    <dd>
+    called when a callback query is received from an inline keyboard button.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">callback_query</span>
+         table the callback query object
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.on_channel_post"></a>
+    <strong>api.on_channel_post(channel_post)</strong>
+    </dt>
+    <dd>
+    called for new posts in channels.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">channel_post</span>
+         table the channel post message object
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.on_chat_boost"></a>
+    <strong>api.on_chat_boost(chat_boost)</strong>
+    </dt>
+    <dd>
+    called when a chat boost is added.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_boost</span>
+         table the chat boost updated object
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.on_chat_join_request"></a>
+    <strong>api.on_chat_join_request(chat_join_request)</strong>
+    </dt>
+    <dd>
+    called when a user sends a join request to a chat.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_join_request</span>
+         table the chat join request object
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.on_chat_member"></a>
+    <strong>api.on_chat_member(chat_member)</strong>
+    </dt>
+    <dd>
+    called when a chat member's status is updated.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_member</span>
+         table the chat member updated object
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.on_chosen_inline_result"></a>
+    <strong>api.on_chosen_inline_result(chosen_inline_result)</strong>
+    </dt>
+    <dd>
+    called when a chosen inline result is received.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chosen_inline_result</span>
+         table the chosen inline result object
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.on_deleted_business_messages"></a>
+    <strong>api.on_deleted_business_messages(deleted_business_messages)</strong>
+    </dt>
+    <dd>
+    called when business messages are deleted.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">deleted_business_messages</span>
+         table the deleted messages object
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.on_edited_business_message"></a>
+    <strong>api.on_edited_business_message(edited_business_message)</strong>
+    </dt>
+    <dd>
+    called when a business message is edited.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">edited_business_message</span>
+         table the edited business message object
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.on_edited_channel_post"></a>
+    <strong>api.on_edited_channel_post(edited_channel_post)</strong>
+    </dt>
+    <dd>
+    called when a channel post is edited.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">edited_channel_post</span>
+         table the edited channel post object
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.on_edited_group_message"></a>
+    <strong>api.on_edited_group_message(edited_message)</strong>
+    </dt>
+    <dd>
+    called when a message is edited in a group chat.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">edited_message</span>
+         table the edited message object
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.on_edited_message"></a>
+    <strong>api.on_edited_message(edited_message)</strong>
+    </dt>
+    <dd>
+    called when a message is edited.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">edited_message</span>
+         table the edited message object
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.on_edited_private_message"></a>
+    <strong>api.on_edited_private_message(edited_message)</strong>
+    </dt>
+    <dd>
+    called when a message is edited in a private chat.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">edited_message</span>
+         table the edited message object
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.on_edited_supergroup_message"></a>
+    <strong>api.on_edited_supergroup_message(edited_message)</strong>
+    </dt>
+    <dd>
+    called when a message is edited in a supergroup chat.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">edited_message</span>
+         table the edited message object
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.on_group_message"></a>
+    <strong>api.on_group_message(message)</strong>
+    </dt>
+    <dd>
+    called for new messages in group chats.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">message</span>
+         table the message object
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.on_guest_message"></a>
+    <strong>api.on_guest_message(guest_message)</strong>
+    </dt>
+    <dd>
+    called when the bot receives a guest message (Bot API 10.0).
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">guest_message</span>
+         table the guest message update object
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.on_inline_query"></a>
+    <strong>api.on_inline_query(inline_query)</strong>
+    </dt>
+    <dd>
+    called when an inline query is received.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">inline_query</span>
+         table the inline query object
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.on_managed_bot"></a>
+    <strong>api.on_managed_bot(managed_bot)</strong>
+    </dt>
+    <dd>
+    called when a managed bot update is received.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">managed_bot</span>
+         table the managed bot updated object
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.on_message"></a>
+    <strong>api.on_message(message)</strong>
+    </dt>
+    <dd>
+    called for any new message (after chat-type-specific handlers).
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">message</span>
+         table the message object
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.on_message_reaction"></a>
+    <strong>api.on_message_reaction(message_reaction)</strong>
+    </dt>
+    <dd>
+    called when a message reaction is changed by a user.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">message_reaction</span>
+         table the message reaction updated object
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.on_message_reaction_count"></a>
+    <strong>api.on_message_reaction_count(message_reaction_count)</strong>
+    </dt>
+    <dd>
+    called when anonymous reactions on a message are changed.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">message_reaction_count</span>
+         table the reaction count updated object
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.on_my_chat_member"></a>
+    <strong>api.on_my_chat_member(my_chat_member)</strong>
+    </dt>
+    <dd>
+    called when the bot's own chat member status is updated.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">my_chat_member</span>
+         table the chat member updated object
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.on_poll"></a>
+    <strong>api.on_poll(poll)</strong>
+    </dt>
+    <dd>
+    called when a poll state changes.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">poll</span>
+         table the poll object with current state
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.on_poll_answer"></a>
+    <strong>api.on_poll_answer(poll_answer)</strong>
+    </dt>
+    <dd>
+    called when a user changes their vote in a non-anonymous poll.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">poll_answer</span>
+         table the poll answer object
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.on_pre_checkout_query"></a>
+    <strong>api.on_pre_checkout_query(pre_checkout_query)</strong>
+    </dt>
+    <dd>
+    called when a pre-checkout query is received (payments).
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">pre_checkout_query</span>
+         table the pre-checkout query object
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.on_private_message"></a>
+    <strong>api.on_private_message(message)</strong>
+    </dt>
+    <dd>
+    called for new messages in private chats.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">message</span>
+         table the message object
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.on_purchased_paid_media"></a>
+    <strong>api.on_purchased_paid_media(purchased_paid_media)</strong>
+    </dt>
+    <dd>
+    called when paid media is purchased.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">purchased_paid_media</span>
+         table the purchased paid media object
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.on_removed_chat_boost"></a>
+    <strong>api.on_removed_chat_boost(removed_chat_boost)</strong>
+    </dt>
+    <dd>
+    called when a chat boost is removed.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">removed_chat_boost</span>
+         table the chat boost removed object
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.on_shipping_query"></a>
+    <strong>api.on_shipping_query(shipping_query)</strong>
+    </dt>
+    <dd>
+    called when a shipping query is received (payments).
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">shipping_query</span>
+         table the shipping query object
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.on_supergroup_message"></a>
+    <strong>api.on_supergroup_message(message)</strong>
+    </dt>
+    <dd>
+    called for new messages in supergroup chats.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">message</span>
+         table the message object
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.on_update"></a>
+    <strong>api.on_update(update)</strong>
+    </dt>
+    <dd>
+    called for every update received, before type-specific routing.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">update</span>
+         table the raw update object
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.process_update"></a>
+    <strong>api.process_update(update)</strong>
+    </dt>
+    <dd>
+    process an update through the middleware chain (if any) then dispatch.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">update</span>
+         table the update object to process
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        any the return value of the matched handler, or false
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.run"></a>
+    <strong>api.run(opts)</strong>
+    </dt>
+    <dd>
+    start the bot's polling loop.
+ by default uses copas for concurrent update processing.
+ pass { sync = true } for single-threaded sequential processing.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">opts</span> table optional parameters
+        <ul>
+        <li><span class="parameter">sync</span>
+         boolean use synchronous polling instead of async
+        </li>
+        <li><span class="parameter">limit</span>
+         number max number of updates per poll (default 1)
+        </li>
+        <li><span class="parameter">timeout</span>
+         number long-polling timeout in seconds (default 0)
+        </li>
+        <li><span class="parameter">offset</span>
+         number identifier of the first update to be returned
+        </li>
+        <li><span class="parameter">allowed_updates</span>
+         table list of update types to receive
+        </li>
+        </li></ul>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.stop_sync"></a>
+    <strong>api.stop_sync()</strong>
+    </dt>
+    <dd>
+    request that the synchronous polling loop exit at its next iteration.
+
+
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/lunarmodules/LDoc">LDoc 1.5.0</a></i>
+<i style="float:right;">Last updated 2026-10-03 10:38:03 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

@@ -39,7 +39,7 @@
 
 <h2>Modules</h2>
 <ul class="nowrap">
-  <li><strong>b64url</strong></li>
+  <li><a href="../modules/b64url.html">b64url</a></li>
   <li><a href="../modules/titogramlua.html">titogramlua</a></li>
   <li><a href="../modules/titogramlua.adapters.html">titogramlua.adapters</a></li>
   <li><a href="../modules/titogramlua.adapters.db.html">titogramlua.adapters.db</a></li>
@@ -76,7 +76,7 @@
   <li><a href="../modules/titogramlua.polyfill.html">titogramlua.polyfill</a></li>
   <li><a href="../modules/titogramlua.session.html">titogramlua.session</a></li>
   <li><a href="../modules/titogramlua.utils.html">titogramlua.utils</a></li>
-  <li><a href="../modules/titogramlua.webhook.html">titogramlua.webhook</a></li>
+  <li><strong>titogramlua.webhook</strong></li>
   <li><a href="../modules/tools.html">tools</a></li>
 </ul>
 <h2>Topics</h2>
@@ -88,18 +88,27 @@
 
 <div id="content">
 
-<h1>Module <code>b64url</code></h1>
-<p>Encodes a string into a Base64 string.</p>
-<p>
-
-</p>
+<h1>Module <code>titogramlua.webhook</code></h1>
+<p>webhook receiver for incoming updates.</p>
+<p> two entry points: api.webhook.process (verify + dispatch a body you already
+ received via your own http server) and api.webhook.serve (a turnkey copas
+ http server). both verify the x-telegram-bot-api-secret-token when a secret
+ is configured.</p>
 
 
 <h2><a href="#Functions">Functions</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#decode">decode(input)</a></td>
-	<td class="summary">Decodes a Base64 string into an output string of arbitrary bytes.</td>
+	<td class="name" nowrap><a href="#api.webhook.process">api.webhook.process(body, opts)</a></td>
+	<td class="summary">verify a secret then dispatch an update body received from telegram.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.webhook.serve">api.webhook.serve(opts)</a></td>
+	<td class="summary">run a minimal copas http server that receives telegram webhooks.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.webhook.verify_secret">api.webhook.verify_secret(received, expected)</a></td>
+	<td class="summary">check a received secret token against the expected one.</td>
 	</tr>
 </table>
 
@@ -111,22 +120,84 @@
 
     <dl class="function">
     <dt>
-    <a name = "decode"></a>
-    <strong>decode(input)</strong>
+    <a name = "api.webhook.process"></a>
+    <strong>api.webhook.process(body, opts)</strong>
     </dt>
     <dd>
-    Decodes a Base64 string into an output string of arbitrary bytes.
+    verify a secret then dispatch an update body received from telegram.
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">input</span>
-
-
-
+        <li><span class="parameter">body</span>
+         string|table raw JSON body, or an already-decoded update table
+        </li>
+        <li><span class="parameter">opts</span>
+         table optional { secret<em>token, received</em>secret }
         </li>
     </ul>
 
+    <h3>Returns:</h3>
+    <ol>
+
+        any|false the dispatch result, or false + reason on failure
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.webhook.serve"></a>
+    <strong>api.webhook.serve(opts)</strong>
+    </dt>
+    <dd>
+    run a minimal copas http server that receives telegram webhooks.
+ pass { no_loop = true } to register the server without entering copas.loop()
+ (useful when you already run your own loop).
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">opts</span>
+         table { host, port, path, secret<em>token, timeout, no</em>loop }
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table|false the bound server socket, or false + error
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.webhook.verify_secret"></a>
+    <strong>api.webhook.verify_secret(received, expected)</strong>
+    </dt>
+    <dd>
+    check a received secret token against the expected one.
+ when no secret is configured (expected nil or empty) verification passes.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">received</span>
+         string|nil the x-telegram-bot-api-secret-token header value
+        </li>
+        <li><span class="parameter">expected</span>
+         string|nil the secret configured with setWebhook
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean true if acceptable
+    </ol>
 
 
 

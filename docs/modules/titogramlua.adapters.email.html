@@ -39,11 +39,11 @@
 
 <h2>Modules</h2>
 <ul class="nowrap">
-  <li><strong>b64url</strong></li>
+  <li><a href="../modules/b64url.html">b64url</a></li>
   <li><a href="../modules/titogramlua.html">titogramlua</a></li>
   <li><a href="../modules/titogramlua.adapters.html">titogramlua.adapters</a></li>
   <li><a href="../modules/titogramlua.adapters.db.html">titogramlua.adapters.db</a></li>
-  <li><a href="../modules/titogramlua.adapters.email.html">titogramlua.adapters.email</a></li>
+  <li><strong>titogramlua.adapters.email</strong></li>
   <li><a href="../modules/titogramlua.adapters.llm.html">titogramlua.adapters.llm</a></li>
   <li><a href="../modules/titogramlua.adapters.redis.html">titogramlua.adapters.redis</a></li>
   <li><a href="../modules/titogramlua.async.html">titogramlua.async</a></li>
@@ -88,18 +88,16 @@
 
 <div id="content">
 
-<h1>Module <code>b64url</code></h1>
-<p>Encodes a string into a Base64 string.</p>
-<p>
-
-</p>
+<h1>Module <code>titogramlua.adapters.email</code></h1>
+<p>email (SMTP) adapter for sending mail via luasocket.</p>
+<p>[[</p>
 
 
 <h2><a href="#Functions">Functions</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#decode">decode(input)</a></td>
-	<td class="summary">Decodes a Base64 string into an output string of arbitrary bytes.</td>
+	<td class="name" nowrap><a href="#api.email.new">api.email.new(opts)</a></td>
+	<td class="summary">create a new email sender instance.</td>
 	</tr>
 </table>
 
@@ -111,22 +109,40 @@
 
     <dl class="function">
     <dt>
-    <a name = "decode"></a>
-    <strong>decode(input)</strong>
+    <a name = "api.email.new"></a>
+    <strong>api.email.new(opts)</strong>
     </dt>
     <dd>
-    Decodes a Base64 string into an output string of arbitrary bytes.
+    create a new email sender instance.
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">input</span>
-
-
-
+        <li><span class="parameter">opts</span> table SMTP configuration options
+        <ul>
+        <li><span class="parameter">host</span>
+         string SMTP server hostname
         </li>
+        <li><span class="parameter">port</span>
+         number SMTP port (default 587)
+        </li>
+        <li><span class="parameter">username</span>
+         string SMTP username
+        </li>
+        <li><span class="parameter">password</span>
+         string SMTP password
+        </li>
+        <li><span class="parameter">tls</span>
+         boolean enable STARTTLS (default true)
+        </li>
+        </li></ul>
     </ul>
 
+    <h3>Returns:</h3>
+    <ol>
+
+        table email instance with send, send<em>text, send</em>html methods
+    </ol>
 
 
 

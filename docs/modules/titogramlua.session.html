@@ -39,7 +39,7 @@
 
 <h2>Modules</h2>
 <ul class="nowrap">
-  <li><strong>b64url</strong></li>
+  <li><a href="../modules/b64url.html">b64url</a></li>
   <li><a href="../modules/titogramlua.html">titogramlua</a></li>
   <li><a href="../modules/titogramlua.adapters.html">titogramlua.adapters</a></li>
   <li><a href="../modules/titogramlua.adapters.db.html">titogramlua.adapters.db</a></li>
@@ -74,7 +74,7 @@
   <li><a href="../modules/titogramlua.methods.updates.html">titogramlua.methods.updates</a></li>
   <li><a href="../modules/titogramlua.middleware.html">titogramlua.middleware</a></li>
   <li><a href="../modules/titogramlua.polyfill.html">titogramlua.polyfill</a></li>
-  <li><a href="../modules/titogramlua.session.html">titogramlua.session</a></li>
+  <li><strong>titogramlua.session</strong></li>
   <li><a href="../modules/titogramlua.utils.html">titogramlua.utils</a></li>
   <li><a href="../modules/titogramlua.webhook.html">titogramlua.webhook</a></li>
   <li><a href="../modules/tools.html">tools</a></li>
@@ -88,18 +88,37 @@
 
 <div id="content">
 
-<h1>Module <code>b64url</code></h1>
-<p>Encodes a string into a Base64 string.</p>
-<p>
-
-</p>
+<h1>Module <code>titogramlua.session</code></h1>
+<p>per-chat/user session store with pluggable backends.</p>
+<p> the default backend is in-memory; api.session.use(backend) swaps it for a
+ redis- or db-backed one (a table with get/set/clear(self, key) methods).</p>
 
 
 <h2><a href="#Functions">Functions</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#decode">decode(input)</a></td>
-	<td class="summary">Decodes a Base64 string into an output string of arbitrary bytes.</td>
+	<td class="name" nowrap><a href="#api.session.clear">api.session.clear(obj)</a></td>
+	<td class="summary">clear the session for the chat/user.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.session.get">api.session.get(obj)</a></td>
+	<td class="summary">get the session table for the chat/user in an update.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.session.key">api.session.key(obj)</a></td>
+	<td class="summary">the stable session key (chat:user) for an update or payload.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.session.memory">api.session.memory()</a></td>
+	<td class="summary">create an in-memory session backend.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.session.set">api.session.set(obj, value)</a></td>
+	<td class="summary">replace the session value for the chat/user.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.session.use">api.session.use(backend)</a></td>
+	<td class="summary">replace the session backend.</td>
 	</tr>
 </table>
 
@@ -111,16 +130,123 @@
 
     <dl class="function">
     <dt>
-    <a name = "decode"></a>
-    <strong>decode(input)</strong>
+    <a name = "api.session.clear"></a>
+    <strong>api.session.clear(obj)</strong>
     </dt>
     <dd>
-    Decodes a Base64 string into an output string of arbitrary bytes.
+    clear the session for the chat/user.
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">input</span>
+        <li><span class="parameter">obj</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.session.get"></a>
+    <strong>api.session.get(obj)</strong>
+    </dt>
+    <dd>
+    get the session table for the chat/user in an update.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">obj</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.session.key"></a>
+    <strong>api.session.key(obj)</strong>
+    </dt>
+    <dd>
+    the stable session key (chat:user) for an update or payload.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">obj</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.session.memory"></a>
+    <strong>api.session.memory()</strong>
+    </dt>
+    <dd>
+    create an in-memory session backend.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.session.set"></a>
+    <strong>api.session.set(obj, value)</strong>
+    </dt>
+    <dd>
+    replace the session value for the chat/user.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">obj</span>
+
+
+
+        </li>
+        <li><span class="parameter">value</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.session.use"></a>
+    <strong>api.session.use(backend)</strong>
+    </dt>
+    <dd>
+    replace the session backend.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">backend</span>
 
 
 

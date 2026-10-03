@@ -1,0 +1,677 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>titogramlua API Documentation</title>
+    <link rel="stylesheet" href="../ldoc_pale.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>titogramlua</h1>
+
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/b64url.html">b64url</a></li>
+  <li><a href="../modules/titogramlua.html">titogramlua</a></li>
+  <li><a href="../modules/titogramlua.adapters.html">titogramlua.adapters</a></li>
+  <li><a href="../modules/titogramlua.adapters.db.html">titogramlua.adapters.db</a></li>
+  <li><a href="../modules/titogramlua.adapters.email.html">titogramlua.adapters.email</a></li>
+  <li><a href="../modules/titogramlua.adapters.llm.html">titogramlua.adapters.llm</a></li>
+  <li><a href="../modules/titogramlua.adapters.redis.html">titogramlua.adapters.redis</a></li>
+  <li><a href="../modules/titogramlua.async.html">titogramlua.async</a></li>
+  <li><a href="../modules/titogramlua.builders.html">titogramlua.builders</a></li>
+  <li><a href="../modules/titogramlua.builders_rich.html">titogramlua.builders_rich</a></li>
+  <li><a href="../modules/titogramlua.compat.html">titogramlua.compat</a></li>
+  <li><a href="../modules/titogramlua.framework.html">titogramlua.framework</a></li>
+  <li><a href="../modules/titogramlua.handlers.html">titogramlua.handlers</a></li>
+  <li><a href="../modules/titogramlua.helpers.html">titogramlua.helpers</a></li>
+  <li><a href="../modules/titogramlua.log.html">titogramlua.log</a></li>
+  <li><a href="../modules/titogramlua.mcp.html">titogramlua.mcp</a></li>
+  <li><a href="../modules/titogramlua.methods.bot.html">titogramlua.methods.bot</a></li>
+  <li><a href="../modules/titogramlua.methods.business.html">titogramlua.methods.business</a></li>
+  <li><a href="../modules/titogramlua.methods.chat.html">titogramlua.methods.chat</a></li>
+  <li><a href="../modules/titogramlua.methods.checklists.html">titogramlua.methods.checklists</a></li>
+  <li><a href="../modules/titogramlua.methods.forum.html">titogramlua.methods.forum</a></li>
+  <li><a href="../modules/titogramlua.methods.games.html">titogramlua.methods.games</a></li>
+  <li><a href="../modules/titogramlua.methods.gifts.html">titogramlua.methods.gifts</a></li>
+  <li><a href="../modules/titogramlua.methods.inline.html">titogramlua.methods.inline</a></li>
+  <li><a href="../modules/titogramlua.methods.members.html">titogramlua.methods.members</a></li>
+  <li><a href="../modules/titogramlua.methods.messages.html">titogramlua.methods.messages</a></li>
+  <li><a href="../modules/titogramlua.methods.passport.html">titogramlua.methods.passport</a></li>
+  <li><a href="../modules/titogramlua.methods.payments.html">titogramlua.methods.payments</a></li>
+  <li><a href="../modules/titogramlua.methods.rich.html">titogramlua.methods.rich</a></li>
+  <li><strong>titogramlua.methods.stickers</strong></li>
+  <li><a href="../modules/titogramlua.methods.stories.html">titogramlua.methods.stories</a></li>
+  <li><a href="../modules/titogramlua.methods.suggested_posts.html">titogramlua.methods.suggested_posts</a></li>
+  <li><a href="../modules/titogramlua.methods.updates.html">titogramlua.methods.updates</a></li>
+  <li><a href="../modules/titogramlua.middleware.html">titogramlua.middleware</a></li>
+  <li><a href="../modules/titogramlua.polyfill.html">titogramlua.polyfill</a></li>
+  <li><a href="../modules/titogramlua.session.html">titogramlua.session</a></li>
+  <li><a href="../modules/titogramlua.utils.html">titogramlua.utils</a></li>
+  <li><a href="../modules/titogramlua.webhook.html">titogramlua.webhook</a></li>
+  <li><a href="../modules/tools.html">tools</a></li>
+</ul>
+<h2>Topics</h2>
+<ul class="">
+  <li><a href="../topics/readme.md.html">titogramlua</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>titogramlua.methods.stickers</code></h1>
+<p>stickers API methods.</p>
+<p>
+
+</p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#api.add_sticker_to_set">api.add_sticker_to_set(user_id, name, sticker)</a></td>
+	<td class="summary">add a new sticker to a set created by the bot.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.create_new_sticker_set">api.create_new_sticker_set(user_id, name, title, stickers, opts)</a></td>
+	<td class="summary">create a new sticker set owned by a user.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.delete_sticker_from_set">api.delete_sticker_from_set(sticker)</a></td>
+	<td class="summary">delete a sticker from a set created by the bot.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.delete_sticker_set">api.delete_sticker_set(name)</a></td>
+	<td class="summary">delete a sticker set that was created by the bot.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.get_custom_emoji_stickers">api.get_custom_emoji_stickers(custom_emoji_ids)</a></td>
+	<td class="summary">get information about custom emoji stickers by their identifiers.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.get_sticker_set">api.get_sticker_set(name)</a></td>
+	<td class="summary">get a sticker set by name.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.replace_sticker_in_set">api.replace_sticker_in_set(user_id, name, old_sticker, sticker)</a></td>
+	<td class="summary">replace an existing sticker in a sticker set with a new one.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.send_sticker">api.send_sticker(chat_id, sticker, opts)</a></td>
+	<td class="summary">send a static, animated, or video sticker.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.set_custom_emoji_sticker_set_thumbnail">api.set_custom_emoji_sticker_set_thumbnail(name, opts)</a></td>
+	<td class="summary">set the thumbnail of a custom emoji sticker set.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.set_sticker_emoji_list">api.set_sticker_emoji_list(sticker, emoji_list)</a></td>
+	<td class="summary">change the list of emoji assigned to a regular or custom emoji sticker.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.set_sticker_keywords">api.set_sticker_keywords(sticker, keywords)</a></td>
+	<td class="summary">change search keywords assigned to a regular or custom emoji sticker.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.set_sticker_mask_position">api.set_sticker_mask_position(sticker, mask_position)</a></td>
+	<td class="summary">change the mask position of a mask sticker.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.set_sticker_position_in_set">api.set_sticker_position_in_set(sticker, position)</a></td>
+	<td class="summary">move a sticker in a set created by the bot to a specific position.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.set_sticker_set_thumbnail">api.set_sticker_set_thumbnail(name, user_id, opts)</a></td>
+	<td class="summary">set the thumbnail of a regular or mask sticker set.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.set_sticker_set_title">api.set_sticker_set_title(name, title)</a></td>
+	<td class="summary">set the title of a created sticker set.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.upload_sticker_file">api.upload_sticker_file(user_id, sticker, sticker_format)</a></td>
+	<td class="summary">upload a sticker file for later use in sticker sets.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "api.add_sticker_to_set"></a>
+    <strong>api.add_sticker_to_set(user_id, name, sticker)</strong>
+    </dt>
+    <dd>
+    add a new sticker to a set created by the bot.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">user_id</span>
+         number unique identifier of the sticker set owner
+        </li>
+        <li><span class="parameter">name</span>
+         string sticker set name
+        </li>
+        <li><span class="parameter">sticker</span>
+         table|string a JSON-serialized object with information about the sticker
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.create_new_sticker_set"></a>
+    <strong>api.create_new_sticker_set(user_id, name, title, stickers, opts)</strong>
+    </dt>
+    <dd>
+    create a new sticker set owned by a user.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">user_id</span>
+         number unique identifier of the created sticker set owner
+        </li>
+        <li><span class="parameter">name</span>
+         string short name of the sticker set
+        </li>
+        <li><span class="parameter">title</span>
+         string sticker set title (1-64 characters)
+        </li>
+        <li><span class="parameter">stickers</span>
+         table|string a JSON-serialized list of stickers to be added to the set
+        </li>
+        <li><span class="parameter">opts</span> table optional parameters
+        <ul>
+        <li><span class="parameter">sticker_type</span>
+         string type of stickers in the set
+        </li>
+        <li><span class="parameter">needs_repainting</span>
+         boolean pass true if stickers need repainting to match emoji colour
+        </li>
+        </li></ul>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.delete_sticker_from_set"></a>
+    <strong>api.delete_sticker_from_set(sticker)</strong>
+    </dt>
+    <dd>
+    delete a sticker from a set created by the bot.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">sticker</span>
+         string file identifier of the sticker
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.delete_sticker_set"></a>
+    <strong>api.delete_sticker_set(name)</strong>
+    </dt>
+    <dd>
+    delete a sticker set that was created by the bot.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+         string sticker set name
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.get_custom_emoji_stickers"></a>
+    <strong>api.get_custom_emoji_stickers(custom_emoji_ids)</strong>
+    </dt>
+    <dd>
+    get information about custom emoji stickers by their identifiers.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">custom_emoji_ids</span>
+         table|string a JSON-serialized list of custom emoji identifiers
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.get_sticker_set"></a>
+    <strong>api.get_sticker_set(name)</strong>
+    </dt>
+    <dd>
+    get a sticker set by name.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+         string name of the sticker set
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.replace_sticker_in_set"></a>
+    <strong>api.replace_sticker_in_set(user_id, name, old_sticker, sticker)</strong>
+    </dt>
+    <dd>
+    replace an existing sticker in a sticker set with a new one.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">user_id</span>
+         number unique identifier of the sticker set owner
+        </li>
+        <li><span class="parameter">name</span>
+         string sticker set name
+        </li>
+        <li><span class="parameter">old_sticker</span>
+         string file identifier of the sticker to be replaced
+        </li>
+        <li><span class="parameter">sticker</span>
+         table|string a JSON-serialized object with information about the new sticker
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.send_sticker"></a>
+    <strong>api.send_sticker(chat_id, sticker, opts)</strong>
+    </dt>
+    <dd>
+    send a static, animated, or video sticker.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_id</span>
+         number|string unique identifier for the target chat or username of the target channel
+        </li>
+        <li><span class="parameter">sticker</span>
+         string sticker to send (file_id, HTTP URL, or file upload)
+        </li>
+        <li><span class="parameter">opts</span> table optional parameters
+        <ul>
+        <li><span class="parameter">message_thread_id</span>
+         number unique identifier for the target message thread
+        </li>
+        <li><span class="parameter">emoji</span>
+         string emoji associated with the sticker
+        </li>
+        <li><span class="parameter">disable_notification</span>
+         boolean sends the message silently
+        </li>
+        <li><span class="parameter">reply_parameters</span>
+         table|string description of the message to reply to
+        </li>
+        <li><span class="parameter">reply_markup</span>
+         table|string additional interface options
+        </li>
+        </li></ul>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.set_custom_emoji_sticker_set_thumbnail"></a>
+    <strong>api.set_custom_emoji_sticker_set_thumbnail(name, opts)</strong>
+    </dt>
+    <dd>
+    set the thumbnail of a custom emoji sticker set.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+         string sticker set name
+        </li>
+        <li><span class="parameter">opts</span> table optional parameters
+        <ul>
+        <li><span class="parameter">custom_emoji_id</span>
+         string custom emoji identifier of a sticker from the set to use as the thumbnail
+        </li>
+        </li></ul>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.set_sticker_emoji_list"></a>
+    <strong>api.set_sticker_emoji_list(sticker, emoji_list)</strong>
+    </dt>
+    <dd>
+    change the list of emoji assigned to a regular or custom emoji sticker.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">sticker</span>
+         string file identifier of the sticker
+        </li>
+        <li><span class="parameter">emoji_list</span>
+         table|string a JSON-serialized list of 1-20 emoji associated with the sticker
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.set_sticker_keywords"></a>
+    <strong>api.set_sticker_keywords(sticker, keywords)</strong>
+    </dt>
+    <dd>
+    change search keywords assigned to a regular or custom emoji sticker.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">sticker</span>
+         string file identifier of the sticker
+        </li>
+        <li><span class="parameter">keywords</span>
+         table|string a JSON-serialized list of 0-20 search keywords
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.set_sticker_mask_position"></a>
+    <strong>api.set_sticker_mask_position(sticker, mask_position)</strong>
+    </dt>
+    <dd>
+    change the mask position of a mask sticker.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">sticker</span>
+         string file identifier of the sticker
+        </li>
+        <li><span class="parameter">mask_position</span>
+         table|string a JSON-serialized object with the position where the mask should be placed
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.set_sticker_position_in_set"></a>
+    <strong>api.set_sticker_position_in_set(sticker, position)</strong>
+    </dt>
+    <dd>
+    move a sticker in a set created by the bot to a specific position.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">sticker</span>
+         string file identifier of the sticker
+        </li>
+        <li><span class="parameter">position</span>
+         number new sticker position in the set (zero-based)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.set_sticker_set_thumbnail"></a>
+    <strong>api.set_sticker_set_thumbnail(name, user_id, opts)</strong>
+    </dt>
+    <dd>
+    set the thumbnail of a regular or mask sticker set.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+         string sticker set name
+        </li>
+        <li><span class="parameter">user_id</span>
+         number unique identifier of the sticker set owner
+        </li>
+        <li><span class="parameter">opts</span> table optional parameters
+        <ul>
+        <li><span class="parameter">thumbnail</span>
+         string thumbnail file (file upload)
+        </li>
+        <li><span class="parameter">format</span>
+         string format of the thumbnail
+        </li>
+        </li></ul>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.set_sticker_set_title"></a>
+    <strong>api.set_sticker_set_title(name, title)</strong>
+    </dt>
+    <dd>
+    set the title of a created sticker set.  truncated to 64 characters.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+         string sticker set name
+        </li>
+        <li><span class="parameter">title</span>
+         string sticker set title (max 64 characters)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.upload_sticker_file"></a>
+    <strong>api.upload_sticker_file(user_id, sticker, sticker_format)</strong>
+    </dt>
+    <dd>
+    upload a sticker file for later use in sticker sets.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">user_id</span>
+         number unique identifier of the sticker file owner
+        </li>
+        <li><span class="parameter">sticker</span>
+         string the sticker file to upload
+        </li>
+        <li><span class="parameter">sticker_format</span>
+         string format of the sticker (static, animated, video)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/lunarmodules/LDoc">LDoc 1.5.0</a></i>
+<i style="float:right;">Last updated 2026-10-03 10:38:03 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

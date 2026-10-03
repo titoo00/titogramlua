@@ -1,0 +1,997 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>titogramlua API Documentation</title>
+    <link rel="stylesheet" href="../ldoc_pale.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>titogramlua</h1>
+
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/b64url.html">b64url</a></li>
+  <li><a href="../modules/titogramlua.html">titogramlua</a></li>
+  <li><a href="../modules/titogramlua.adapters.html">titogramlua.adapters</a></li>
+  <li><a href="../modules/titogramlua.adapters.db.html">titogramlua.adapters.db</a></li>
+  <li><a href="../modules/titogramlua.adapters.email.html">titogramlua.adapters.email</a></li>
+  <li><a href="../modules/titogramlua.adapters.llm.html">titogramlua.adapters.llm</a></li>
+  <li><a href="../modules/titogramlua.adapters.redis.html">titogramlua.adapters.redis</a></li>
+  <li><a href="../modules/titogramlua.async.html">titogramlua.async</a></li>
+  <li><a href="../modules/titogramlua.builders.html">titogramlua.builders</a></li>
+  <li><a href="../modules/titogramlua.builders_rich.html">titogramlua.builders_rich</a></li>
+  <li><a href="../modules/titogramlua.compat.html">titogramlua.compat</a></li>
+  <li><a href="../modules/titogramlua.framework.html">titogramlua.framework</a></li>
+  <li><a href="../modules/titogramlua.handlers.html">titogramlua.handlers</a></li>
+  <li><a href="../modules/titogramlua.helpers.html">titogramlua.helpers</a></li>
+  <li><a href="../modules/titogramlua.log.html">titogramlua.log</a></li>
+  <li><a href="../modules/titogramlua.mcp.html">titogramlua.mcp</a></li>
+  <li><a href="../modules/titogramlua.methods.bot.html">titogramlua.methods.bot</a></li>
+  <li><a href="../modules/titogramlua.methods.business.html">titogramlua.methods.business</a></li>
+  <li><strong>titogramlua.methods.chat</strong></li>
+  <li><a href="../modules/titogramlua.methods.checklists.html">titogramlua.methods.checklists</a></li>
+  <li><a href="../modules/titogramlua.methods.forum.html">titogramlua.methods.forum</a></li>
+  <li><a href="../modules/titogramlua.methods.games.html">titogramlua.methods.games</a></li>
+  <li><a href="../modules/titogramlua.methods.gifts.html">titogramlua.methods.gifts</a></li>
+  <li><a href="../modules/titogramlua.methods.inline.html">titogramlua.methods.inline</a></li>
+  <li><a href="../modules/titogramlua.methods.members.html">titogramlua.methods.members</a></li>
+  <li><a href="../modules/titogramlua.methods.messages.html">titogramlua.methods.messages</a></li>
+  <li><a href="../modules/titogramlua.methods.passport.html">titogramlua.methods.passport</a></li>
+  <li><a href="../modules/titogramlua.methods.payments.html">titogramlua.methods.payments</a></li>
+  <li><a href="../modules/titogramlua.methods.rich.html">titogramlua.methods.rich</a></li>
+  <li><a href="../modules/titogramlua.methods.stickers.html">titogramlua.methods.stickers</a></li>
+  <li><a href="../modules/titogramlua.methods.stories.html">titogramlua.methods.stories</a></li>
+  <li><a href="../modules/titogramlua.methods.suggested_posts.html">titogramlua.methods.suggested_posts</a></li>
+  <li><a href="../modules/titogramlua.methods.updates.html">titogramlua.methods.updates</a></li>
+  <li><a href="../modules/titogramlua.middleware.html">titogramlua.middleware</a></li>
+  <li><a href="../modules/titogramlua.polyfill.html">titogramlua.polyfill</a></li>
+  <li><a href="../modules/titogramlua.session.html">titogramlua.session</a></li>
+  <li><a href="../modules/titogramlua.utils.html">titogramlua.utils</a></li>
+  <li><a href="../modules/titogramlua.webhook.html">titogramlua.webhook</a></li>
+  <li><a href="../modules/tools.html">tools</a></li>
+</ul>
+<h2>Topics</h2>
+<ul class="">
+  <li><a href="../topics/readme.md.html">titogramlua</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>titogramlua.methods.chat</code></h1>
+<p>chat API methods.</p>
+<p>
+
+</p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#api.answer_chat_join_request_query">api.answer_chat_join_request_query(chat_join_request_query_id, result)</a></td>
+	<td class="summary">answer a join request query received from a guard bot (Bot API 10.1).</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.approve_chat_join_request">api.approve_chat_join_request(chat_id, user_id)</a></td>
+	<td class="summary">approve a chat join request.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.create_chat_invite_link">api.create_chat_invite_link(chat_id, opts)</a></td>
+	<td class="summary">create an additional invite link for a chat.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.create_chat_subscription_invite_link">api.create_chat_subscription_invite_link(chat_id, subscription_period, subscription_price, opts)</a></td>
+	<td class="summary">create a subscription invite link for a channel chat.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.decline_chat_join_request">api.decline_chat_join_request(chat_id, user_id)</a></td>
+	<td class="summary">decline a chat join request.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.delete_chat_photo">api.delete_chat_photo(chat_id)</a></td>
+	<td class="summary">delete a chat photo.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.delete_chat_sticker_set">api.delete_chat_sticker_set(chat_id)</a></td>
+	<td class="summary">delete a group sticker set from a supergroup.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.edit_chat_invite_link">api.edit_chat_invite_link(chat_id, invite_link, opts)</a></td>
+	<td class="summary">edit a non-primary invite link created by the bot.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.edit_chat_subscription_invite_link">api.edit_chat_subscription_invite_link(chat_id, invite_link, opts)</a></td>
+	<td class="summary">edit a subscription invite link created by the bot.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.export_chat_invite_link">api.export_chat_invite_link(chat_id)</a></td>
+	<td class="summary">generate a new primary invite link for a chat; any previously generated primary link is revoked.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.get_chat">api.get_chat(chat_id)</a></td>
+	<td class="summary">get up-to-date information about the chat.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.get_chat_administrators">api.get_chat_administrators(chat_id, opts)</a></td>
+	<td class="summary">get a list of administrators in a chat.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.get_chat_member">api.get_chat_member(chat_id, user_id)</a></td>
+	<td class="summary">get information about a member of a chat.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.get_chat_member_count">api.get_chat_member_count(chat_id)</a></td>
+	<td class="summary">get the number of members in a chat.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.get_user_chat_boosts">api.get_user_chat_boosts(chat_id, user_id)</a></td>
+	<td class="summary">get the list of boosts added to a chat by a user.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.leave_chat">api.leave_chat(chat_id)</a></td>
+	<td class="summary">leave a group, supergroup or channel.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.pin_chat_message">api.pin_chat_message(chat_id, message_id, opts)</a></td>
+	<td class="summary">pin a message in a group, supergroup or channel.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.revoke_chat_invite_link">api.revoke_chat_invite_link(chat_id, invite_link)</a></td>
+	<td class="summary">revoke an invite link created by the bot.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.send_chat_join_request_web_app">api.send_chat_join_request_web_app(chat_join_request_query_id, web_app_url)</a></td>
+	<td class="summary">open a mini app in response to a join request query (Bot API 10.1).</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.set_chat_description">api.set_chat_description(chat_id, description)</a></td>
+	<td class="summary">change the description of a group, supergroup or channel.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.set_chat_permissions">api.set_chat_permissions(chat_id, permissions, opts)</a></td>
+	<td class="summary">set default chat permissions for all members.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.set_chat_photo">api.set_chat_photo(chat_id, photo)</a></td>
+	<td class="summary">set a new profile photo for the chat.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.set_chat_sticker_set">api.set_chat_sticker_set(chat_id, sticker_set_name)</a></td>
+	<td class="summary">set a new group sticker set for a supergroup.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.set_chat_title">api.set_chat_title(chat_id, title)</a></td>
+	<td class="summary">change the title of a chat.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.unpin_all_chat_messages">api.unpin_all_chat_messages(chat_id)</a></td>
+	<td class="summary">clear the list of pinned messages in a chat.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.unpin_chat_message">api.unpin_chat_message(chat_id, opts)</a></td>
+	<td class="summary">remove a message from the list of pinned messages in a chat.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "api.answer_chat_join_request_query"></a>
+    <strong>api.answer_chat_join_request_query(chat_join_request_query_id, result)</strong>
+    </dt>
+    <dd>
+    answer a join request query received from a guard bot (Bot API 10.1).
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_join_request_query_id</span>
+         string unique identifier of the join request query
+        </li>
+        <li><span class="parameter">result</span>
+         string one of "approve", "decline", or "queue"
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.approve_chat_join_request"></a>
+    <strong>api.approve_chat_join_request(chat_id, user_id)</strong>
+    </dt>
+    <dd>
+    approve a chat join request.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_id</span>
+         number|string unique identifier for the target chat or username of the target channel
+        </li>
+        <li><span class="parameter">user_id</span>
+         number unique identifier of the target user
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.create_chat_invite_link"></a>
+    <strong>api.create_chat_invite_link(chat_id, opts)</strong>
+    </dt>
+    <dd>
+    create an additional invite link for a chat.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_id</span>
+         number|string unique identifier for the target chat or username of the target channel
+        </li>
+        <li><span class="parameter">opts</span> table optional parameters
+        <ul>
+        <li><span class="parameter">name</span>
+         string invite link name (max 32 characters)
+        </li>
+        <li><span class="parameter">expire_date</span>
+         number point in time (unix timestamp) when the link will expire
+        </li>
+        <li><span class="parameter">member_limit</span>
+         number maximum number of users that can be members simultaneously
+        </li>
+        <li><span class="parameter">creates_join_request</span>
+         boolean true if users joining via the link need to be approved
+        </li>
+        </li></ul>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.create_chat_subscription_invite_link"></a>
+    <strong>api.create_chat_subscription_invite_link(chat_id, subscription_period, subscription_price, opts)</strong>
+    </dt>
+    <dd>
+    create a subscription invite link for a channel chat.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_id</span>
+         number|string unique identifier for the target channel chat or username of the target channel
+        </li>
+        <li><span class="parameter">subscription_period</span>
+         number the number of seconds the subscription will be active before the next payment
+        </li>
+        <li><span class="parameter">subscription_price</span>
+         number the amount of telegram stars a user must pay to be a member of the chat; 1-10000
+        </li>
+        <li><span class="parameter">opts</span> table optional parameters
+        <ul>
+        <li><span class="parameter">name</span>
+         string invite link name (max 32 characters)
+        </li>
+        </li></ul>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.decline_chat_join_request"></a>
+    <strong>api.decline_chat_join_request(chat_id, user_id)</strong>
+    </dt>
+    <dd>
+    decline a chat join request.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_id</span>
+         number|string unique identifier for the target chat or username of the target channel
+        </li>
+        <li><span class="parameter">user_id</span>
+         number unique identifier of the target user
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.delete_chat_photo"></a>
+    <strong>api.delete_chat_photo(chat_id)</strong>
+    </dt>
+    <dd>
+    delete a chat photo.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_id</span>
+         number|string unique identifier for the target chat or username of the target channel
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.delete_chat_sticker_set"></a>
+    <strong>api.delete_chat_sticker_set(chat_id)</strong>
+    </dt>
+    <dd>
+    delete a group sticker set from a supergroup.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_id</span>
+         number|string unique identifier for the target chat or username of the target supergroup
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.edit_chat_invite_link"></a>
+    <strong>api.edit_chat_invite_link(chat_id, invite_link, opts)</strong>
+    </dt>
+    <dd>
+    edit a non-primary invite link created by the bot.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_id</span>
+         number|string unique identifier for the target chat or username of the target channel
+        </li>
+        <li><span class="parameter">invite_link</span>
+         string the invite link to edit
+        </li>
+        <li><span class="parameter">opts</span> table optional parameters
+        <ul>
+        <li><span class="parameter">name</span>
+         string invite link name (max 32 characters)
+        </li>
+        <li><span class="parameter">expire_date</span>
+         number point in time (unix timestamp) when the link will expire
+        </li>
+        <li><span class="parameter">member_limit</span>
+         number maximum number of users that can be members simultaneously
+        </li>
+        <li><span class="parameter">creates_join_request</span>
+         boolean true if users joining via the link need to be approved
+        </li>
+        </li></ul>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.edit_chat_subscription_invite_link"></a>
+    <strong>api.edit_chat_subscription_invite_link(chat_id, invite_link, opts)</strong>
+    </dt>
+    <dd>
+    edit a subscription invite link created by the bot.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_id</span>
+         number|string unique identifier for the target chat or username of the target channel
+        </li>
+        <li><span class="parameter">invite_link</span>
+         string the invite link to edit
+        </li>
+        <li><span class="parameter">opts</span> table optional parameters
+        <ul>
+        <li><span class="parameter">name</span>
+         string invite link name (max 32 characters)
+        </li>
+        </li></ul>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.export_chat_invite_link"></a>
+    <strong>api.export_chat_invite_link(chat_id)</strong>
+    </dt>
+    <dd>
+    generate a new primary invite link for a chat; any previously generated primary link is revoked.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_id</span>
+         number|string unique identifier for the target chat or username of the target channel
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.get_chat"></a>
+    <strong>api.get_chat(chat_id)</strong>
+    </dt>
+    <dd>
+    get up-to-date information about the chat.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_id</span>
+         number|string unique identifier for the target chat or username of the target supergroup/channel
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.get_chat_administrators"></a>
+    <strong>api.get_chat_administrators(chat_id, opts)</strong>
+    </dt>
+    <dd>
+    get a list of administrators in a chat.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_id</span>
+         number|string unique identifier for the target chat or username of the target supergroup/channel
+        </li>
+        <li><span class="parameter">opts</span> table optional parameters
+        <ul>
+        <li><span class="parameter">return_bots</span>
+         boolean pass true to additionally receive bots that are administrators
+        </li>
+        </li></ul>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.get_chat_member"></a>
+    <strong>api.get_chat_member(chat_id, user_id)</strong>
+    </dt>
+    <dd>
+    get information about a member of a chat.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_id</span>
+         number|string unique identifier for the target chat or username of the target supergroup/channel
+        </li>
+        <li><span class="parameter">user_id</span>
+         number unique identifier of the target user
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.get_chat_member_count"></a>
+    <strong>api.get_chat_member_count(chat_id)</strong>
+    </dt>
+    <dd>
+    get the number of members in a chat.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_id</span>
+         number|string unique identifier for the target chat or username of the target supergroup/channel
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.get_user_chat_boosts"></a>
+    <strong>api.get_user_chat_boosts(chat_id, user_id)</strong>
+    </dt>
+    <dd>
+    get the list of boosts added to a chat by a user.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_id</span>
+         number|string unique identifier for the target chat or username of the target channel
+        </li>
+        <li><span class="parameter">user_id</span>
+         number unique identifier of the target user
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.leave_chat"></a>
+    <strong>api.leave_chat(chat_id)</strong>
+    </dt>
+    <dd>
+    leave a group, supergroup or channel.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_id</span>
+         number|string unique identifier for the target chat or username of the target supergroup/channel
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.pin_chat_message"></a>
+    <strong>api.pin_chat_message(chat_id, message_id, opts)</strong>
+    </dt>
+    <dd>
+    pin a message in a group, supergroup or channel.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_id</span>
+         number|string unique identifier for the target chat or username of the target channel
+        </li>
+        <li><span class="parameter">message_id</span>
+         number identifier of a message to pin
+        </li>
+        <li><span class="parameter">opts</span> table optional parameters
+        <ul>
+        <li><span class="parameter">disable_notification</span>
+         boolean pass true to pin silently
+        </li>
+        <li><span class="parameter">business_connection_id</span>
+         string unique identifier of the business connection
+        </li>
+        </li></ul>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.revoke_chat_invite_link"></a>
+    <strong>api.revoke_chat_invite_link(chat_id, invite_link)</strong>
+    </dt>
+    <dd>
+    revoke an invite link created by the bot.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_id</span>
+         number|string unique identifier for the target chat or username of the target channel
+        </li>
+        <li><span class="parameter">invite_link</span>
+         string the invite link to revoke
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.send_chat_join_request_web_app"></a>
+    <strong>api.send_chat_join_request_web_app(chat_join_request_query_id, web_app_url)</strong>
+    </dt>
+    <dd>
+    open a mini app in response to a join request query (Bot API 10.1).
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_join_request_query_id</span>
+         string unique identifier of the join request query
+        </li>
+        <li><span class="parameter">web_app_url</span>
+         string the url of the mini app to be opened
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.set_chat_description"></a>
+    <strong>api.set_chat_description(chat_id, description)</strong>
+    </dt>
+    <dd>
+    change the description of a group, supergroup or channel.  truncated to 255 characters.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_id</span>
+         number|string unique identifier for the target chat or username of the target channel
+        </li>
+        <li><span class="parameter">description</span>
+         string new chat description (max 255 characters)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.set_chat_permissions"></a>
+    <strong>api.set_chat_permissions(chat_id, permissions, opts)</strong>
+    </dt>
+    <dd>
+    set default chat permissions for all members.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_id</span>
+         number|string unique identifier for the target chat or username of the target supergroup
+        </li>
+        <li><span class="parameter">permissions</span>
+         table|string a JSON-serialized object for new default chat permissions
+        </li>
+        <li><span class="parameter">opts</span> table optional parameters
+        <ul>
+        <li><span class="parameter">use_independent_chat_permissions</span>
+         boolean pass true if chat permissions are set independently
+        </li>
+        </li></ul>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.set_chat_photo"></a>
+    <strong>api.set_chat_photo(chat_id, photo)</strong>
+    </dt>
+    <dd>
+    set a new profile photo for the chat.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_id</span>
+         number|string unique identifier for the target chat or username of the target channel
+        </li>
+        <li><span class="parameter">photo</span>
+         string new chat photo (file upload)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.set_chat_sticker_set"></a>
+    <strong>api.set_chat_sticker_set(chat_id, sticker_set_name)</strong>
+    </dt>
+    <dd>
+    set a new group sticker set for a supergroup.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_id</span>
+         number|string unique identifier for the target chat or username of the target supergroup
+        </li>
+        <li><span class="parameter">sticker_set_name</span>
+         string name of the sticker set
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.set_chat_title"></a>
+    <strong>api.set_chat_title(chat_id, title)</strong>
+    </dt>
+    <dd>
+    change the title of a chat.  truncated to 128 characters.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_id</span>
+         number|string unique identifier for the target chat or username of the target channel
+        </li>
+        <li><span class="parameter">title</span>
+         string new chat title (max 128 characters)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.unpin_all_chat_messages"></a>
+    <strong>api.unpin_all_chat_messages(chat_id)</strong>
+    </dt>
+    <dd>
+    clear the list of pinned messages in a chat.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_id</span>
+         number|string unique identifier for the target chat or username of the target channel
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.unpin_chat_message"></a>
+    <strong>api.unpin_chat_message(chat_id, opts)</strong>
+    </dt>
+    <dd>
+    remove a message from the list of pinned messages in a chat.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_id</span>
+         number|string unique identifier for the target chat or username of the target channel
+        </li>
+        <li><span class="parameter">opts</span> table optional parameters
+        <ul>
+        <li><span class="parameter">message_id</span>
+         number identifier of the message to unpin
+        </li>
+        <li><span class="parameter">business_connection_id</span>
+         string unique identifier of the business connection
+        </li>
+        </li></ul>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/lunarmodules/LDoc">LDoc 1.5.0</a></i>
+<i style="float:right;">Last updated 2026-10-03 10:38:03 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

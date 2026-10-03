@@ -39,7 +39,7 @@
 
 <h2>Modules</h2>
 <ul class="nowrap">
-  <li><strong>b64url</strong></li>
+  <li><a href="../modules/b64url.html">b64url</a></li>
   <li><a href="../modules/titogramlua.html">titogramlua</a></li>
   <li><a href="../modules/titogramlua.adapters.html">titogramlua.adapters</a></li>
   <li><a href="../modules/titogramlua.adapters.db.html">titogramlua.adapters.db</a></li>
@@ -54,7 +54,7 @@
   <li><a href="../modules/titogramlua.handlers.html">titogramlua.handlers</a></li>
   <li><a href="../modules/titogramlua.helpers.html">titogramlua.helpers</a></li>
   <li><a href="../modules/titogramlua.log.html">titogramlua.log</a></li>
-  <li><a href="../modules/titogramlua.mcp.html">titogramlua.mcp</a></li>
+  <li><strong>titogramlua.mcp</strong></li>
   <li><a href="../modules/titogramlua.methods.bot.html">titogramlua.methods.bot</a></li>
   <li><a href="../modules/titogramlua.methods.business.html">titogramlua.methods.business</a></li>
   <li><a href="../modules/titogramlua.methods.chat.html">titogramlua.methods.chat</a></li>
@@ -88,8 +88,8 @@
 
 <div id="content">
 
-<h1>Module <code>b64url</code></h1>
-<p>Encodes a string into a Base64 string.</p>
+<h1>Module <code>titogramlua.mcp</code></h1>
+<p>MCP (model context protocol) JSON-RPC server for telegram bot tools.</p>
 <p>
 
 </p>
@@ -98,8 +98,12 @@
 <h2><a href="#Functions">Functions</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#decode">decode(input)</a></td>
-	<td class="summary">Decodes a Base64 string into an output string of arbitrary bytes.</td>
+	<td class="name" nowrap><a href="#api.mcp.handle">api.mcp.handle(request)</a></td>
+	<td class="summary">handle a single MCP JSON-RPC request and return the response string.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.mcp.serve">api.mcp.serve(opts)</a></td>
+	<td class="summary">run the MCP server over stdio.</td>
 	</tr>
 </table>
 
@@ -111,20 +115,53 @@
 
     <dl class="function">
     <dt>
-    <a name = "decode"></a>
-    <strong>decode(input)</strong>
+    <a name = "api.mcp.handle"></a>
+    <strong>api.mcp.handle(request)</strong>
     </dt>
     <dd>
-    Decodes a Base64 string into an output string of arbitrary bytes.
+    handle a single MCP JSON-RPC request and return the response string.
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">input</span>
-
-
-
+        <li><span class="parameter">request</span>
+         string|table a JSON string or decoded request table
         </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        string JSON-RPC response, or nil for notifications
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.mcp.serve"></a>
+    <strong>api.mcp.serve(opts)</strong>
+    </dt>
+    <dd>
+    run the MCP server over stdio.
+ reads JSON-RPC messages line by line from stdin and writes responses to stdout.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">opts</span> table optional overrides for input/output streams
+        <ul>
+        <li><span class="parameter">input</span>
+         file input stream (default io.stdin)
+        </li>
+        <li><span class="parameter">write</span>
+         function write function (default io.write)
+        </li>
+        <li><span class="parameter">flush</span>
+         function flush function (default io.flush)
+        </li>
+        </li></ul>
     </ul>
 
 
