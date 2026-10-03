@@ -40,4 +40,3 @@ build = {
         ["titogramlua.tools"] = "src/tools.lua"
     }
 }
- 

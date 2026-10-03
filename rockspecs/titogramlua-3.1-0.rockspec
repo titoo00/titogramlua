@@ -63,4 +63,3 @@ build = {
         ["titogramlua.adapters.email"] = "src/adapters/email.lua"
     }
 }
- 
