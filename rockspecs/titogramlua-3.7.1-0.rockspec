@@ -1,8 +1,8 @@
 package = "titogramlua"
-version = "3.7-1"
+version = "3.7.1-0"
 source = {
     url = "git+https://github.com/titoo00/titogramlua.git",
-    tag = "v3.7-1"
+    tag = "v3.7.1"
 }
 description = {
     summary = "A feature-filled Telegram bot API library",
