@@ -11,7 +11,8 @@
                    Copyright (c) 2026 Yousef Hesham
                         See LICENSE for details
 
-]] local tools = {}
+]]
+local tools = {}
 local https = require('ssl.https')
 local http = require('socket.http')
 local socket = require('socket')
