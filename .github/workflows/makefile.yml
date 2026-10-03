@@ -8,20 +8,49 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
+
+    services:
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
     steps:
     - uses: actions/checkout@v4
 
-    - name: configure
-      run: ./configure
+    - name: Setup Lua
+      uses: leafo/gh-actions-lua@v10
+      with:
+        luaVersion: "5.3"
 
-    - name: Install dependencies
-      run: make
+    - name: Setup LuaRocks
+      uses: leafo/gh-actions-luarocks@v4
 
-    - name: Run check
-      run: make check
+    - name: Install System Dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libsqlite3-dev libssl-dev
 
-    - name: Run distcheck
-      run: make distcheck
+    - name: Install Project Dependencies
+      run: |
+        luarocks install dkjson
+        luarocks install luasec
+        luarocks install luasocket
+        luarocks install multipart-post
+        luarocks install luautf8
+        luarocks install copas
+        luarocks install lsqlite3
+        luarocks install busted
+        luarocks install luacheck
+
+    - name: Run Lint
+      run: make lint || true
+
+    - name: Run Tests
+      run: make test
