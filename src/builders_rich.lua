@@ -172,7 +172,7 @@ return function(api)
         return { ['type'] = 'heading', ['text'] = text, ['size'] = size }
     end
 
-    function api.rich_block_preformatted(text, language)
+    function api.rich_block_preforyosefed(text, language)
         return { ['type'] = 'pre', ['text'] = text, ['language'] = language }
     end
 

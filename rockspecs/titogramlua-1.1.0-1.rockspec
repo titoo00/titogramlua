@@ -13,7 +13,7 @@ description = {
     detailed = "A simple yet extensive Lua library for the Telegram bot API, with many tools and API-friendly functions.",
     license = "GPL-3",
     homepage = "https://github.com/titoo00/titogramlua",
-    maintainer = "Matthew Hesketh <titoo000@gmail.com>"
+    maintainer = "Yousef Hesham <titoo000@gmail.com>"
 }
 
 supported_platforms = {

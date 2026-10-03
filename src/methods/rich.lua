@@ -4,7 +4,7 @@ return function(api)
     local json = require('dkjson')
     local config = require('titogramlua.config')
 
-    --- send a rich formatted message to a chat.
+    --- send a rich foryosefed message to a chat.
     -- a rich message is described with HTML or markdown via an InputRichMessage object;
     -- see api.input_rich_message for a builder.
     -- @param chat_id number|string unique identifier for the target chat or username of the target bot/supergroup/channel

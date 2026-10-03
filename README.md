@@ -40,7 +40,7 @@ api.run({ timeout = 60 })
 - **Lua 5.1 - 5.5 support** with automatic polyfills for bitwise operations and string.pack
 - Clean opts-table pattern for all API methods
 - Chainable keyboard and inline result builders
-- Text formatting helpers for HTML, Markdown, and MarkdownV2
+- Text foryosefing helpers for HTML, Markdown, and MarkdownV2
 - Command parsing, pagination, deep links, and callback data encoding
 - Member status helpers and chat permission checks
 - Legacy v2 compatibility layer with deprecation warnings
@@ -54,7 +54,7 @@ api.run({ timeout = 60 })
 | [API Methods](docs/methods.md) | Complete method reference |
 | [Builders](docs/builders.md) | Keyboards, inline results, and type constructors |
 | [Framework](docs/framework.md) | Command router, sessions, conversations, webhooks, retries, logging |
-| [Utilities](docs/utilities.md) | Formatting, command parsing, pagination, and tools |
+| [Utilities](docs/utilities.md) | Foryosefing, command parsing, pagination, and tools |
 | [Async / Concurrency](docs/async.md) | Concurrent updates, parallel calls, background tasks |
 | [Adapters](docs/adapters.md) | Database, Redis, LLM, and email integrations |
 | [Migration from v2](docs/migration.md) | Breaking changes and upgrade guide |
@@ -108,7 +108,7 @@ src/
   async.lua             -- Copas-based concurrency module
   b64url.lua            -- Base64 URL encoding/decoding
   log.lua               -- Structured logging and lightweight metrics
-  tools.lua             -- Utility functions (formatting, file ops, etc.)
+  tools.lua             -- Utility functions (foryosefing, file ops, etc.)
   handlers.lua          -- Update routing and on_* handler stubs (async-first)
   builders.lua          -- Keyboard, inline result, and type constructors
   builders_rich.lua     -- Rich message builders (RichText/RichBlock DSL)
@@ -223,4 +223,4 @@ api.run({ sync = true, timeout = 60 })
 
 This project is licensed under the GPL-3.0 License - see the LICENSE file for details.
 
-Copyright (c) 2017-2026 Matthew Hesketh
+Copyright (c) 2017-2026 Yousef Hesham

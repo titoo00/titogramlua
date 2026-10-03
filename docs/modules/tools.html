@@ -103,7 +103,7 @@
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#create_link">create_link(text, link, parse_mode)</a></td>
-	<td class="summary">create a formatted hyperlink for the given parse mode.</td>
+	<td class="summary">create a foryosefed hyperlink for the given parse mode.</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#download_file">download_file(url, name, path)</a></td>
@@ -142,12 +142,12 @@
 	<td class="summary">read a file and return its lines as a table.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#get_formatted_user">get_formatted_user(user_id, name, parse_mode)</a></td>
+	<td class="name" nowrap><a href="#get_foryosefed_user">get_foryosefed_user(user_id, name, parse_mode)</a></td>
 	<td class="summary">format a user mention link with the given parse mode.</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#get_linked_name">get_linked_name(id)</a></td>
-	<td class="summary">get an HTML-formatted linked name for a user by their ID.</td>
+	<td class="summary">get an HTML-foryosefed linked name for a user by their ID.</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#get_word">get_word(str, i)</a></td>
@@ -239,7 +239,7 @@
     <strong>create_link(text, link, parse_mode)</strong>
     </dt>
     <dd>
-    create a formatted hyperlink for the given parse mode.
+    create a foryosefed hyperlink for the given parse mode.
  supports markdown, markdownv2, and HTML (default).
 
 
@@ -259,7 +259,7 @@
     <h3>Returns:</h3>
     <ol>
 
-        string the formatted link string
+        string the foryosefed link string
     </ol>
 
 
@@ -442,7 +442,7 @@
     <h3>Returns:</h3>
     <ol>
 
-        string the formatted time string in HH:MM:SS format
+        string the foryosefed time string in HH:MM:SS format
     </ol>
 
 
@@ -468,7 +468,7 @@
     <h3>Returns:</h3>
     <ol>
 
-        string|boolean the formatted time string, or false if input is invalid
+        string|boolean the foryosefed time string, or false if input is invalid
     </ol>
 
 
@@ -501,8 +501,8 @@
 
 </dd>
     <dt>
-    <a name = "get_formatted_user"></a>
-    <strong>get_formatted_user(user_id, name, parse_mode)</strong>
+    <a name = "get_foryosefed_user"></a>
+    <strong>get_foryosefed_user(user_id, name, parse_mode)</strong>
     </dt>
     <dd>
     format a user mention link with the given parse mode.
@@ -525,7 +525,7 @@
     <h3>Returns:</h3>
     <ol>
 
-        string|boolean the formatted user mention string, or false if missing params
+        string|boolean the foryosefed user mention string, or false if missing params
     </ol>
 
 
@@ -537,7 +537,7 @@
     <strong>get_linked_name(id)</strong>
     </dt>
     <dd>
-    get an HTML-formatted linked name for a user by their ID.
+    get an HTML-foryosefed linked name for a user by their ID.
  fetches the user's chat info and returns their first name as an HTML link if they have a username.
 
 
@@ -551,7 +551,7 @@
     <h3>Returns:</h3>
     <ol>
 
-        string|boolean the HTML-formatted name, or false on failure
+        string|boolean the HTML-foryosefed name, or false on failure
     </ol>
 
 

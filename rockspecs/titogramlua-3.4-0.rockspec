@@ -8,7 +8,7 @@ description = {
     summary = "A feature-filled Telegram bot API library",
     detailed = "A feature-filled Telegram bot API library written in Lua, with Bot API 9.4 support.",
     homepage = "https://github.com/titoo00/titogramlua",
-    maintainer = "Matthew Hesketh <matthew@matthewhesketh.com>",
+    maintainer = "Yousef Hesham <linkedin.com/in/yosef-hesham-485ab0440>",
     license = "GPL-3"
 }
 supported_platforms = {
