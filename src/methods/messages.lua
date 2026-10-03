@@ -563,9 +563,13 @@ return function(api)
     end
 
     --- send a group of photos, videos, documents or audios as an album.
+    -- items may use a file_id, an http(s) url, a local file path, or an open file handle as media.
+    -- only the first item's caption is kept (it becomes the album caption).
     -- @param chat_id number|string unique identifier for the target chat or username of the target channel
-    -- @param media table a JSON-serialized array of InputMediaAudio, InputMediaDocument, InputMediaPhoto and InputMediaVideo
+    -- @param media table array of 2-10 InputMedia tables ({type='photo', media=..., caption=...})
     -- @param opts table optional parameters
+    -- @param opts.parse_mode string default parse mode for the first item's caption
+    -- @param opts.show_caption_above_media boolean show the caption above the media
     -- @param opts.message_thread_id number unique identifier for the target message thread (topic) of the forum
     -- @param opts.disable_notification boolean send the messages silently
     -- @param opts.protect_content boolean protect the content from forwarding and saving
@@ -573,35 +577,71 @@ return function(api)
     -- @return table,number the response object and HTTP status
     function api.send_media_group(chat_id, media, opts)
         opts = opts or {}
-        if type(media) == 'table' then
-            for i, item in ipairs(media) do
-                if type(item) == 'table' then
-                    item.type = item.type or 'photo'
-                    if i == 1 then
-                        if item.show_caption_above_media == nil then
-                            item.show_caption_above_media = false
-                        end
-                    else
-                        item.caption = nil
-                    end
-                end
-            end
-            media = json.encode(media)
+        if type(media) ~= 'table' then
+            return false, 'media must be a table'
         end
+        if #media < 2 or #media > 10 then
+            return false, 'media must include 2-10 items'
+        end
+
+        local files = {}
+        local opened = {}
+        local items = {}
+
+        -- turn a local path or file handle into an attach:// upload
+        local function attach(item, field, name)
+            local value = item[field]
+            if type(value) == 'userdata' then
+                files[name] = value
+                item[field] = 'attach://' .. name
+            elseif type(value) == 'string' and not value:match('^https?://') then
+                local f = io.open(value, 'rb')
+                if f then
+                    opened[#opened + 1] = f
+                    files[name] = f
+                    item[field] = 'attach://' .. name
+                end
+                -- otherwise it is a file_id, leave it as is
+            end
+        end
+
+        for i, src in ipairs(media) do
+            local item = {}
+            for k, v in pairs(src) do item[k] = v end
+            item.type = item.type or 'photo'
+            attach(item, 'media', 'file' .. i)
+            attach(item, 'thumbnail', 'thumb' .. i)
+
+            if i == 1 then
+                item.parse_mode = item.parse_mode or opts.parse_mode
+                if item.show_caption_above_media == nil then
+                    item.show_caption_above_media = opts.show_caption_above_media or false
+                end
+            else
+                item.caption = nil
+                item.parse_mode = nil
+                item.caption_entities = nil
+                item.show_caption_above_media = nil
+            end
+            items[i] = item
+        end
+
         local reply_parameters = opts.reply_parameters
         reply_parameters = type(reply_parameters) == 'table' and json.encode(reply_parameters) or reply_parameters
         local success, res = api.request(config.endpoint .. api.token .. '/sendMediaGroup', {
             ['chat_id'] = chat_id,
             ['message_thread_id'] = opts.message_thread_id,
             ['direct_messages_topic_id'] = opts.direct_messages_topic_id,
-            ['media'] = media,
+            ['media'] = json.encode(items),
             ['disable_notification'] = opts.disable_notification,
             ['protect_content'] = opts.protect_content,
             ['reply_parameters'] = reply_parameters,
             ['business_connection_id'] = opts.business_connection_id,
             ['message_effect_id'] = opts.message_effect_id,
             ['allow_paid_broadcast'] = opts.allow_paid_broadcast
-        })
+        }, files)
+
+        for _, f in ipairs(opened) do f:close() end
         return success, res
     end
 
