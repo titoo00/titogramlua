@@ -21,6 +21,6 @@ docs:
 	ldoc .
 
 docs-check:
-	./scripts/check-docs.sh
+	bash scripts/check-docs.sh
 
 check: lint test docs-check
