@@ -2,9 +2,10 @@ name: Makefile CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "develop" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main", "develop" ]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -22,7 +23,8 @@ jobs:
           --health-retries 5
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout repository
+      uses: actions/checkout@v4
 
     - name: Setup Lua
       uses: leafo/gh-actions-lua@v10
