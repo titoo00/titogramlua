@@ -1,0 +1,359 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>titogramlua API Documentation</title>
+    <link rel="stylesheet" href="../ldoc_pale.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>titogramlua</h1>
+
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Installation">Installation </a></li>
+<li><a href="#Quick_Start">Quick Start </a></li>
+<li><a href="#Key_Features">Key Features </a></li>
+<li><a href="#Documentation">Documentation </a></li>
+<li><a href="#Example">Example </a></li>
+<li><a href="#Module_Structure">Module Structure </a></li>
+<li><a href="#Testing">Testing </a></li>
+<li><a href="#Migrating_from_v2">Migrating from v2 </a></li>
+<li><a href="#License">License </a></li>
+</ul>
+
+
+<h2>Topics</h2>
+<ul class="">
+  <li><strong>titogramlua</strong></li>
+</ul>
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/b64url.html">b64url</a></li>
+  <li><a href="../modules/titogramlua.html">titogramlua</a></li>
+  <li><a href="../modules/titogramlua.adapters.html">titogramlua.adapters</a></li>
+  <li><a href="../modules/titogramlua.adapters.db.html">titogramlua.adapters.db</a></li>
+  <li><a href="../modules/titogramlua.adapters.email.html">titogramlua.adapters.email</a></li>
+  <li><a href="../modules/titogramlua.adapters.llm.html">titogramlua.adapters.llm</a></li>
+  <li><a href="../modules/titogramlua.adapters.redis.html">titogramlua.adapters.redis</a></li>
+  <li><a href="../modules/titogramlua.async.html">titogramlua.async</a></li>
+  <li><a href="../modules/titogramlua.builders.html">titogramlua.builders</a></li>
+  <li><a href="../modules/titogramlua.builders_rich.html">titogramlua.builders_rich</a></li>
+  <li><a href="../modules/titogramlua.compat.html">titogramlua.compat</a></li>
+  <li><a href="../modules/titogramlua.framework.html">titogramlua.framework</a></li>
+  <li><a href="../modules/titogramlua.handlers.html">titogramlua.handlers</a></li>
+  <li><a href="../modules/titogramlua.helpers.html">titogramlua.helpers</a></li>
+  <li><a href="../modules/titogramlua.log.html">titogramlua.log</a></li>
+  <li><a href="../modules/titogramlua.mcp.html">titogramlua.mcp</a></li>
+  <li><a href="../modules/titogramlua.methods.bot.html">titogramlua.methods.bot</a></li>
+  <li><a href="../modules/titogramlua.methods.business.html">titogramlua.methods.business</a></li>
+  <li><a href="../modules/titogramlua.methods.chat.html">titogramlua.methods.chat</a></li>
+  <li><a href="../modules/titogramlua.methods.checklists.html">titogramlua.methods.checklists</a></li>
+  <li><a href="../modules/titogramlua.methods.forum.html">titogramlua.methods.forum</a></li>
+  <li><a href="../modules/titogramlua.methods.games.html">titogramlua.methods.games</a></li>
+  <li><a href="../modules/titogramlua.methods.gifts.html">titogramlua.methods.gifts</a></li>
+  <li><a href="../modules/titogramlua.methods.inline.html">titogramlua.methods.inline</a></li>
+  <li><a href="../modules/titogramlua.methods.members.html">titogramlua.methods.members</a></li>
+  <li><a href="../modules/titogramlua.methods.messages.html">titogramlua.methods.messages</a></li>
+  <li><a href="../modules/titogramlua.methods.passport.html">titogramlua.methods.passport</a></li>
+  <li><a href="../modules/titogramlua.methods.payments.html">titogramlua.methods.payments</a></li>
+  <li><a href="../modules/titogramlua.methods.rich.html">titogramlua.methods.rich</a></li>
+  <li><a href="../modules/titogramlua.methods.stickers.html">titogramlua.methods.stickers</a></li>
+  <li><a href="../modules/titogramlua.methods.stories.html">titogramlua.methods.stories</a></li>
+  <li><a href="../modules/titogramlua.methods.suggested_posts.html">titogramlua.methods.suggested_posts</a></li>
+  <li><a href="../modules/titogramlua.methods.updates.html">titogramlua.methods.updates</a></li>
+  <li><a href="../modules/titogramlua.middleware.html">titogramlua.middleware</a></li>
+  <li><a href="../modules/titogramlua.polyfill.html">titogramlua.polyfill</a></li>
+  <li><a href="../modules/titogramlua.session.html">titogramlua.session</a></li>
+  <li><a href="../modules/titogramlua.utils.html">titogramlua.utils</a></li>
+  <li><a href="../modules/titogramlua.webhook.html">titogramlua.webhook</a></li>
+  <li><a href="../modules/tools.html">tools</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+
+<h1>titogramlua</h1>
+
+<p><a href="https://auto-audit.hesketh.pro"><img src="https://img.shields.io/badge/audited_by-auto--audit-6366f1?logo=github&amp;logoColor=white" alt="audited by auto-audit"/></a></p>
+
+<p>A feature-filled Telegram bot API library written in Lua, created by <a href="https://t.me/titoo00">Matt</a>. Supports Bot API 10.1 with full coverage of all available methods.</p>
+
+<p><a name="Installation"></a></p>
+<h2>Installation</h2>
+
+<p>Requires Lua 5.1+ and LuaRocks:</p>
+
+<pre><code> luarocks install titogramlua
+</code></pre>
+
+
+<p><a name="Quick_Start"></a></p>
+<h2>Quick Start</h2>
+
+
+<pre>
+<span class="keyword">local</span> api = <span class="global">require</span>(<span class="string">'titogramlua'</span>).<span class="function-name">configure</span>(<span class="string">'YOUR_BOT_TOKEN'</span>)
+
+<span class="keyword">function</span> api.<span class="function-name">on_message</span>(message)
+    <span class="keyword">if</span> message.text <span class="keyword">then</span>
+        api.<span class="function-name">send_message</span>(message.chat.id, <span class="string">'You said: '</span> .. message.text)
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+api.<span class="function-name">run</span>({ timeout = <span class="number">60</span> })
+</pre>
+
+
+<p><code>api.run()</code> is async by default: each update gets its own coroutine and all API calls are non-blocking.</p>
+
+<p><a name="Key_Features"></a></p>
+<h2>Key Features</h2>
+
+<ul>
+    <li>Full Bot API 10.1 coverage (messages, media, payments, stickers, forums, games, gifts, stories, business accounts, rich messages, live photos, and more)</li>
+    <li><strong>Async-first architecture</strong> via copas: concurrent updates, parallel API calls, background tasks</li>
+    <li><strong>Framework layer</strong>: command router, conversations, and per-chat/user sessions</li>
+    <li><strong>Built-in webhook receiver</strong> with x-telegram-bot-api secret-token verification</li>
+    <li><strong>Automatic 429 / retry_after flood-control</strong> with bounded exponential backoff</li>
+    <li><strong>Structured logging and lightweight metrics</strong> with a configurable sink</li>
+    <li><strong>Built-in adapters</strong>: SQLite, PostgreSQL, Redis, OpenAI, Anthropic (Claude), and SMTP email</li>
+    <li><strong>Lua 5.1 - 5.5 support</strong> with automatic polyfills for bitwise operations and string.pack</li>
+    <li>Clean opts-table pattern for all API methods</li>
+    <li>Chainable keyboard and inline result builders</li>
+    <li>Text formatting helpers for HTML, Markdown, and MarkdownV2</li>
+    <li>Command parsing, pagination, deep links, and callback data encoding</li>
+    <li>Member status helpers and chat permission checks</li>
+    <li>Legacy v2 compatibility layer with deprecation warnings</li>
+</ul>
+
+<p><a name="Documentation"></a></p>
+<h2>Documentation</h2>
+
+<p>| Document | Description |
+|---|---|
+| <a href="docs/getting-started.md">Getting Started</a> | Installation, configuration, and first bot |
+| <a href="docs/handlers.md">Update Handlers</a> | All available update handler functions |
+| <a href="docs/methods.md">API Methods</a> | Complete method reference |
+| <a href="docs/builders.md">Builders</a> | Keyboards, inline results, and type constructors |
+| <a href="docs/framework.md">Framework</a> | Command router, sessions, conversations, webhooks, retries, logging |
+| <a href="docs/utilities.md">Utilities</a> | Formatting, command parsing, pagination, and tools |
+| <a href="docs/async.md">Async / Concurrency</a> | Concurrent updates, parallel calls, background tasks |
+| <a href="docs/adapters.md">Adapters</a> | Database, Redis, LLM, and email integrations |
+| <a href="docs/migration.md">Migration from v2</a> | Breaking changes and upgrade guide |</p>
+
+<p><a name="Example"></a></p>
+<h2>Example</h2>
+
+
+<pre>
+<span class="keyword">local</span> api = <span class="global">require</span>(<span class="string">'titogramlua'</span>).<span class="function-name">configure</span>(<span class="global">os</span>.<span class="function-name">getenv</span>(<span class="string">'BOT_TOKEN'</span>))
+
+<span class="comment">-- Connect adapters
+</span><span class="keyword">local</span> db = api.db.<span class="function-name">connect</span>({ driver = <span class="string">'sqlite'</span>, path = <span class="string">'bot.db'</span> })
+db:<span class="function-name">execute</span>(<span class="string">'CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, name TEXT)'</span>)
+
+<span class="keyword">local</span> llm = api.llm.<span class="function-name">new</span>({
+    provider = <span class="string">'anthropic'</span>,
+    api_key = <span class="global">os</span>.<span class="function-name">getenv</span>(<span class="string">'ANTHROPIC_API_KEY'</span>),
+    model = <span class="string">'claude-sonnet-4-6'</span>,
+})
+
+<span class="keyword">function</span> api.<span class="function-name">on_message</span>(message)
+    <span class="keyword">if</span> <span class="keyword">not</span> message.text <span class="keyword">then</span> <span class="keyword">return</span> <span class="keyword">end</span>
+    <span class="keyword">local</span> cmd = api.<span class="function-name">extract_command</span>(message)
+
+    <span class="keyword">if</span> cmd <span class="keyword">and</span> cmd.command == <span class="string">'start'</span> <span class="keyword">then</span>
+        <span class="keyword">local</span> name = api.fmt.<span class="function-name">bold</span>(api.<span class="function-name">get_name</span>(message.from))
+        db:<span class="function-name">execute</span>(<span class="string">'INSERT OR IGNORE INTO users VALUES (?, ?)'</span>, {message.from.id, message.from.first_name})
+        api.<span class="function-name">send_message</span>(message.chat.id, <span class="string">'Welcome, '</span> .. name .. <span class="string">'!'</span>, {
+            parse_mode = <span class="string">'HTML'</span>,
+            reply_markup = api.<span class="function-name">inline_keyboard</span>()
+                :<span class="function-name">row</span>(api.<span class="function-name">row</span>()
+                    :<span class="function-name">callback_data_button</span>(<span class="string">'Help'</span>, <span class="string">'help'</span>)
+                    :<span class="function-name">callback_data_button</span>(<span class="string">'Ask AI'</span>, <span class="string">'ai'</span>))
+        })
+    <span class="keyword">elseif</span> cmd <span class="keyword">and</span> cmd.command == <span class="string">'ask'</span> <span class="keyword">and</span> cmd.args_str <span class="keyword">then</span>
+        api.<span class="function-name">send_typing</span>(message.chat.id)
+        <span class="keyword">local</span> result = llm:<span class="function-name">chat</span>({{ role = <span class="string">'user'</span>, content = cmd.args_str }})
+        api.<span class="function-name">send_message</span>(message.chat.id, result <span class="keyword">and</span> result.content <span class="keyword">or</span> <span class="string">'Sorry, error occurred.'</span>)
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+api.<span class="function-name">run</span>({ timeout = <span class="number">60</span> })
+</pre>
+
+
+<p><a name="Module_Structure"></a></p>
+<h2>Module Structure</h2>
+
+<pre><code> src/
+   main.lua              -- Entry point, core HTTP, module loader
+   config.lua            -- API endpoint configuration
+   polyfill.lua          -- Lua 5.1+ compatibility (bit ops, string.pack)
+   async.lua             -- Copas-based concurrency module
+   b64url.lua            -- Base64 URL encoding/decoding
+   log.lua               -- Structured logging and lightweight metrics
+   tools.lua             -- Utility functions (formatting, file ops, etc.)
+   handlers.lua          -- Update routing and on_* handler stubs (async-first)
+   builders.lua          -- Keyboard, inline result, and type constructors
+   builders_rich.lua     -- Rich message builders (RichText/RichBlock DSL)
+   helpers.lua           -- Member status check helpers
+   session.lua           -- Per-chat/user session store (pluggable backends)
+   framework.lua         -- Command router, rich ctx, and conversations
+   webhook.lua           -- Webhook receiver (process + turnkey copas server)
+   utils.lua             -- Bot development utilities (fmt, commands, pagination)
+   compat.lua            -- v2 backward compatibility layer
+   adapters/
+     init.lua            -- Adapter registry and shared utilities
+     db.lua              -- Database adapter (SQLite, PostgreSQL)
+     redis.lua           -- Redis adapter (RESP protocol)
+     llm.lua             -- LLM adapter (OpenAI, Anthropic)
+     email.lua           -- Email adapter (SMTP)
+   methods/
+     messages.lua        -- send_*, forward_*, copy_*, edit_*, delete_*
+     updates.lua         -- get_updates, webhooks
+     chat.lua            -- Chat management
+     members.lua         -- Member management (ban, restrict, promote)
+     forum.lua           -- Forum topic management
+     stickers.lua        -- Sticker operations
+     inline.lua          -- Inline queries and callback queries
+     payments.lua        -- Invoices, payments, stars
+     games.lua           -- Game methods
+     passport.lua        -- Passport data errors
+     bot.lua             -- Bot profile and settings
+     gifts.lua           -- Gift methods
+     checklists.lua      -- Checklist methods
+     stories.lua         -- Story methods
+     business.lua        -- Business account methods
+     suggested_posts.lua -- Suggested post methods
+     rich.lua            -- Rich message methods (send_rich_message, drafts)
+</code></pre>
+
+
+<p><a name="Testing"></a></p>
+<h2>Testing</h2>
+
+<pre><code> luarocks install busted
+ busted
+</code></pre>
+
+
+<p><a name="Migrating_from_v2"></a></p>
+<h2>Migrating from v2</h2>
+
+<p>v3 includes a compatibility layer that lets most v2 code run with deprecation warnings. Here's what to do:</p>
+
+<h3>1. Update</h3>
+
+<pre><code> luarocks install titogramlua
+</code></pre>
+
+
+<p>LuaRocks handles dependency changes automatically (<a href="http://stevedonovan.github.io/lua-stdlibs/lpeg.html">lpeg</a> and <code>html-entities</code> removed, <code>copas</code> added).</p>
+
+<h3>2. Update your require (optional but recommended)</h3>
+
+
+<pre>
+<span class="comment">-- v2
+</span><span class="keyword">local</span> api = <span class="global">require</span>(<span class="string">'titogramlua.core'</span>).<span class="function-name">configure</span>(<span class="string">'TOKEN'</span>)
+
+<span class="comment">-- v3
+</span><span class="keyword">local</span> api = <span class="global">require</span>(<span class="string">'titogramlua'</span>).<span class="function-name">configure</span>(<span class="string">'TOKEN'</span>)
+</pre>
+
+
+<p>The old <code>require(&apos;titogramlua.core&apos;)</code> still works but prints a deprecation warning.</p>
+
+<h3>3. Update method calls (optional but recommended)</h3>
+
+<p>v3 uses options tables instead of positional args. The compat layer auto-detects v2-style calls and converts them, but you should update your code:</p>
+
+
+<pre>
+<span class="comment">-- v2
+</span>api.<span class="function-name">send_message</span>(chat_id, text, <span class="keyword">nil</span>, <span class="string">'HTML'</span>, <span class="keyword">nil</span>, <span class="keyword">nil</span>, <span class="keyword">false</span>, <span class="keyword">false</span>, reply_params, reply_markup)
+api.<span class="function-name">send_photo</span>(chat_id, photo, <span class="keyword">nil</span>, <span class="string">'Caption'</span>, <span class="string">'HTML'</span>)
+api.<span class="function-name">answer_callback_query</span>(id, <span class="string">'Alert text'</span>, <span class="keyword">true</span>)
+api.<span class="function-name">edit_message_text</span>(chat_id, msg_id, text, <span class="string">'HTML'</span>)
+api.<span class="function-name">run</span>(<span class="number">1</span>, <span class="number">60</span>)
+
+<span class="comment">-- v3
+</span>api.<span class="function-name">send_message</span>(chat_id, text, { parse_mode = <span class="string">'HTML'</span>, reply_parameters = reply_params, reply_markup = reply_markup })
+api.<span class="function-name">send_photo</span>(chat_id, photo, { caption = <span class="string">'Caption'</span>, parse_mode = <span class="string">'HTML'</span> })
+api.<span class="function-name">answer_callback_query</span>(id, { text = <span class="string">'Alert text'</span>, show_alert = <span class="keyword">true</span> })
+api.<span class="function-name">edit_message_text</span>(chat_id, msg_id, text, { parse_mode = <span class="string">'HTML'</span> })
+api.<span class="function-name">run</span>({ timeout = <span class="number">60</span> })
+</pre>
+
+
+<h3>4. Renamed methods</h3>
+
+<p>These v2 methods are aliased with deprecation warnings:</p>
+
+<p>| v2 | v3 |
+|----|-----|
+| <code>kick_chat_member(chat_id, user_id, until_date)</code> | <code>ban_chat_member(chat_id, user_id, opts)</code> |
+| <code>get_chat_members_count(chat_id)</code> | <code>get_chat_member_count(chat_id)</code> |</p>
+
+<h3>5. Async is now the default</h3>
+
+<p><code>api.run()</code> uses copas for concurrent update processing. Each handler runs in its own coroutine. For the old sequential behaviour:</p>
+
+
+<pre>
+api.<span class="function-name">run</span>({ sync = <span class="keyword">true</span>, timeout = <span class="number">60</span> })
+</pre>
+
+
+<h3>What doesn't need migration</h3>
+
+<ul>
+    <li>Handler functions (<code>api.on_message</code>, <code>api.on_callback_query</code>, etc.) — same pattern</li>
+    <li>Builder methods (<code>api.keyboard()</code>, <code>api.inline_keyboard()</code>, etc.) — same API</li>
+    <li>Tool functions (<a href="../modules/tools.html#escape_html">tools.escape_html</a>, <code>tools.comma_value</code>, etc.) — same API</li>
+    <li>No config files, secrets, or environment variables to migrate</li>
+</ul>
+
+<p><a name="License"></a></p>
+<h2>License</h2>
+
+<p>This project is licensed under the GPL-3.0 License - see the LICENSE file for details.</p>
+
+<p>Copyright (c) 2017-2026 Matthew Hesketh</p>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/lunarmodules/LDoc">LDoc 1.5.0</a></i>
+<i style="float:right;">Last updated 2026-10-03 12:01:50 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
