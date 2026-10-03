@@ -1,28 +1,58 @@
-name: Lua CI
+name: Makefile CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "develop" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main", "develop" ]
+  workflow_dispatch:
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
 
+    services:
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout repository
+      uses: actions/checkout@v4
 
     - name: Setup Lua
-      uses: hishamhm/gh-actions-lua@master
+      uses: leafo/gh-actions-lua@v10
       with:
-        luaVersion: "5.1"
+        luaVersion: "5.3"
 
     - name: Setup LuaRocks
-      uses: hishamhm/gh-actions-luarocks@master
+      uses: leafo/gh-actions-luarocks@v4
 
-    - name: Install Linting Tools
-      run: luarocks install luacheck
+    - name: Install System Dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libsqlite3-dev libssl-dev
 
-    - name: Run Lint Check
-      run: luacheck src/ --no-unused-args --no-max-line-length --globals _G _TEST || true
+    - name: Install Project Dependencies
+      run: |
+        luarocks install dkjson
+        luarocks install luasec
+        luarocks install luasocket
+        luarocks install multipart-post
+        luarocks install luautf8
+        luarocks install copas
+        luarocks install lsqlite3
+        luarocks install busted
+        luarocks install luacheck
+
+    - name: Run Lint
+      run: make lint || true
+
+    - name: Run Tests
+      run: make test
