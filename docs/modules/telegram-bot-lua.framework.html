@@ -1,0 +1,361 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>telegram-bot-lua API Documentation</title>
+    <link rel="stylesheet" href="../ldoc_pale.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>telegram-bot-lua</h1>
+
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/b64url.html">b64url</a></li>
+  <li><a href="../modules/telegram-bot-lua.html">telegram-bot-lua</a></li>
+  <li><a href="../modules/telegram-bot-lua.adapters.html">telegram-bot-lua.adapters</a></li>
+  <li><a href="../modules/telegram-bot-lua.adapters.db.html">telegram-bot-lua.adapters.db</a></li>
+  <li><a href="../modules/telegram-bot-lua.adapters.email.html">telegram-bot-lua.adapters.email</a></li>
+  <li><a href="../modules/telegram-bot-lua.adapters.llm.html">telegram-bot-lua.adapters.llm</a></li>
+  <li><a href="../modules/telegram-bot-lua.adapters.redis.html">telegram-bot-lua.adapters.redis</a></li>
+  <li><a href="../modules/telegram-bot-lua.async.html">telegram-bot-lua.async</a></li>
+  <li><a href="../modules/telegram-bot-lua.builders.html">telegram-bot-lua.builders</a></li>
+  <li><a href="../modules/telegram-bot-lua.builders_rich.html">telegram-bot-lua.builders_rich</a></li>
+  <li><a href="../modules/telegram-bot-lua.compat.html">telegram-bot-lua.compat</a></li>
+  <li><strong>telegram-bot-lua.framework</strong></li>
+  <li><a href="../modules/telegram-bot-lua.handlers.html">telegram-bot-lua.handlers</a></li>
+  <li><a href="../modules/telegram-bot-lua.helpers.html">telegram-bot-lua.helpers</a></li>
+  <li><a href="../modules/telegram-bot-lua.log.html">telegram-bot-lua.log</a></li>
+  <li><a href="../modules/telegram-bot-lua.mcp.html">telegram-bot-lua.mcp</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.bot.html">telegram-bot-lua.methods.bot</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.business.html">telegram-bot-lua.methods.business</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.chat.html">telegram-bot-lua.methods.chat</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.checklists.html">telegram-bot-lua.methods.checklists</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.forum.html">telegram-bot-lua.methods.forum</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.games.html">telegram-bot-lua.methods.games</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.gifts.html">telegram-bot-lua.methods.gifts</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.inline.html">telegram-bot-lua.methods.inline</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.members.html">telegram-bot-lua.methods.members</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.messages.html">telegram-bot-lua.methods.messages</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.passport.html">telegram-bot-lua.methods.passport</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.payments.html">telegram-bot-lua.methods.payments</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.rich.html">telegram-bot-lua.methods.rich</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.stickers.html">telegram-bot-lua.methods.stickers</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.stories.html">telegram-bot-lua.methods.stories</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.suggested_posts.html">telegram-bot-lua.methods.suggested_posts</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.updates.html">telegram-bot-lua.methods.updates</a></li>
+  <li><a href="../modules/telegram-bot-lua.middleware.html">telegram-bot-lua.middleware</a></li>
+  <li><a href="../modules/telegram-bot-lua.polyfill.html">telegram-bot-lua.polyfill</a></li>
+  <li><a href="../modules/telegram-bot-lua.session.html">telegram-bot-lua.session</a></li>
+  <li><a href="../modules/telegram-bot-lua.utils.html">telegram-bot-lua.utils</a></li>
+  <li><a href="../modules/telegram-bot-lua.webhook.html">telegram-bot-lua.webhook</a></li>
+  <li><a href="../modules/tools.html">tools</a></li>
+</ul>
+<h2>Topics</h2>
+<ul class="">
+  <li><a href="../topics/README.md.html">telegram-bot-lua</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>telegram-bot-lua.framework</code></h1>
+<p>framework layer: rich context, command router, and conversations.</p>
+<p> all additive and opt-in: if no command/hears/conversation is registered the
+ dispatch path is unchanged and existing on_* handlers run as before.</p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#api._conversation_resume">api._conversation_resume(ctx)</a></td>
+	<td class="summary">resume a pending conversation if this update is awaited by the user.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api._framework_handle">api._framework_handle(update)</a></td>
+	<td class="summary">framework dispatch: conversations, then commands, then hears.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.build_context">api.build_context(update)</a></td>
+	<td class="summary">build a rich context object from a raw update.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.command">api.command(name, opts_or_handler, handler)</a></td>
+	<td class="summary">register a command handler.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.conversation">api.conversation(name, fn)</a></td>
+	<td class="summary">register a named conversation (a function(ctx) that may call ctx.wait_for()).</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.enter">api.enter(fn, update)</a></td>
+	<td class="summary">start a conversation for the user in <code>update</code>.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.hears">api.hears(pattern, handler)</a></td>
+	<td class="summary">register a text matcher; pattern is a lua pattern or a function(text)->any.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.on_command_not_found">api.on_command_not_found(handler)</a></td>
+	<td class="summary">handler for a message that looks like a command but matches none.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "api._conversation_resume"></a>
+    <strong>api._conversation_resume(ctx)</strong>
+    </dt>
+    <dd>
+    resume a pending conversation if this update is awaited by the user.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">ctx</span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean true if the update was consumed by a conversation
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api._framework_handle"></a>
+    <strong>api._framework_handle(update)</strong>
+    </dt>
+    <dd>
+    framework dispatch: conversations, then commands, then hears.
+ returns true if the update was fully handled (skip the on_* handlers).
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">update</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.build_context"></a>
+    <strong>api.build_context(update)</strong>
+    </dt>
+    <dd>
+    build a rich context object from a raw update.
+   reply/reply<em>with</em>photo/answer convenience methods
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">update</span>
+         table the raw update
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table a ctx with update_type, payload, chat, from, session, and
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.command"></a>
+    <strong>api.command(name, opts_or_handler, handler)</strong>
+    </dt>
+    <dd>
+    register a command handler.
+ api.command('start', handler) or api.command('ban', { guard = fn }, handler)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+
+
+
+        </li>
+        <li><span class="parameter">opts_or_handler</span>
+
+
+
+        </li>
+        <li><span class="parameter">handler</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.conversation"></a>
+    <strong>api.conversation(name, fn)</strong>
+    </dt>
+    <dd>
+    register a named conversation (a function(ctx) that may call ctx.wait_for()).
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+
+
+
+        </li>
+        <li><span class="parameter">fn</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.enter"></a>
+    <strong>api.enter(fn, update)</strong>
+    </dt>
+    <dd>
+    start a conversation for the user in <code>update</code>.  ctx.wait_for() suspends the
+ conversation until the user's next message/callback arrives and returns its
+ ctx. works in both sync (plain coroutine) and async (copas thread) modes.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">fn</span>
+         function|string a conversation function or a registered name
+        </li>
+        <li><span class="parameter">update</span>
+         table the triggering update
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.hears"></a>
+    <strong>api.hears(pattern, handler)</strong>
+    </dt>
+    <dd>
+    register a text matcher; pattern is a lua pattern or a function(text)->any.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">pattern</span>
+
+
+
+        </li>
+        <li><span class="parameter">handler</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.on_command_not_found"></a>
+    <strong>api.on_command_not_found(handler)</strong>
+    </dt>
+    <dd>
+    handler for a message that looks like a command but matches none.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">handler</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/lunarmodules/LDoc">LDoc 1.5.0</a></i>
+<i style="float:right;">Last updated 2026-06-22 21:59:03 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

@@ -1,0 +1,34 @@
+{
+  "_meta": {
+    "version": 1,
+    "created": "2026-06-22T18:51:04.076648",
+    "updated": "2026-06-22T18:51:04.076660",
+    "auto_generated": true
+  },
+  "project": {
+    "name": "telegram-bot-lua",
+    "package_manager": "unknown",
+    "frameworks": [],
+    "has_typescript": false,
+    "node_version": null
+  },
+  "structure": {
+    "source_dirs": [
+      "src"
+    ],
+    "test_dirs": [
+      "spec"
+    ],
+    "config_files": [],
+    "has_monorepo": false
+  },
+  "commands": {},
+  "conventions": {
+    "import_alias": null,
+    "component_style": null,
+    "test_pattern": null
+  },
+  "notes": [],
+  "decisions": [],
+  "avoid": []
+}

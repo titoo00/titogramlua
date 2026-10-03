@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>telegram-bot-lua API Documentation</title>
+    <link rel="stylesheet" href="../ldoc_pale.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>telegram-bot-lua</h1>
+
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/b64url.html">b64url</a></li>
+  <li><a href="../modules/telegram-bot-lua.html">telegram-bot-lua</a></li>
+  <li><a href="../modules/telegram-bot-lua.adapters.html">telegram-bot-lua.adapters</a></li>
+  <li><a href="../modules/telegram-bot-lua.adapters.db.html">telegram-bot-lua.adapters.db</a></li>
+  <li><a href="../modules/telegram-bot-lua.adapters.email.html">telegram-bot-lua.adapters.email</a></li>
+  <li><a href="../modules/telegram-bot-lua.adapters.llm.html">telegram-bot-lua.adapters.llm</a></li>
+  <li><a href="../modules/telegram-bot-lua.adapters.redis.html">telegram-bot-lua.adapters.redis</a></li>
+  <li><a href="../modules/telegram-bot-lua.async.html">telegram-bot-lua.async</a></li>
+  <li><a href="../modules/telegram-bot-lua.builders.html">telegram-bot-lua.builders</a></li>
+  <li><a href="../modules/telegram-bot-lua.builders_rich.html">telegram-bot-lua.builders_rich</a></li>
+  <li><a href="../modules/telegram-bot-lua.compat.html">telegram-bot-lua.compat</a></li>
+  <li><a href="../modules/telegram-bot-lua.framework.html">telegram-bot-lua.framework</a></li>
+  <li><a href="../modules/telegram-bot-lua.handlers.html">telegram-bot-lua.handlers</a></li>
+  <li><a href="../modules/telegram-bot-lua.helpers.html">telegram-bot-lua.helpers</a></li>
+  <li><a href="../modules/telegram-bot-lua.log.html">telegram-bot-lua.log</a></li>
+  <li><a href="../modules/telegram-bot-lua.mcp.html">telegram-bot-lua.mcp</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.bot.html">telegram-bot-lua.methods.bot</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.business.html">telegram-bot-lua.methods.business</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.chat.html">telegram-bot-lua.methods.chat</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.checklists.html">telegram-bot-lua.methods.checklists</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.forum.html">telegram-bot-lua.methods.forum</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.games.html">telegram-bot-lua.methods.games</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.gifts.html">telegram-bot-lua.methods.gifts</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.inline.html">telegram-bot-lua.methods.inline</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.members.html">telegram-bot-lua.methods.members</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.messages.html">telegram-bot-lua.methods.messages</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.passport.html">telegram-bot-lua.methods.passport</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.payments.html">telegram-bot-lua.methods.payments</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.rich.html">telegram-bot-lua.methods.rich</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.stickers.html">telegram-bot-lua.methods.stickers</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.stories.html">telegram-bot-lua.methods.stories</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.suggested_posts.html">telegram-bot-lua.methods.suggested_posts</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.updates.html">telegram-bot-lua.methods.updates</a></li>
+  <li><a href="../modules/telegram-bot-lua.middleware.html">telegram-bot-lua.middleware</a></li>
+  <li><a href="../modules/telegram-bot-lua.polyfill.html">telegram-bot-lua.polyfill</a></li>
+  <li><a href="../modules/telegram-bot-lua.session.html">telegram-bot-lua.session</a></li>
+  <li><a href="../modules/telegram-bot-lua.utils.html">telegram-bot-lua.utils</a></li>
+  <li><strong>telegram-bot-lua.webhook</strong></li>
+  <li><a href="../modules/tools.html">tools</a></li>
+</ul>
+<h2>Topics</h2>
+<ul class="">
+  <li><a href="../topics/README.md.html">telegram-bot-lua</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>telegram-bot-lua.webhook</code></h1>
+<p>webhook receiver for incoming updates.</p>
+<p> two entry points: api.webhook.process (verify + dispatch a body you already
+ received via your own http server) and api.webhook.serve (a turnkey copas
+ http server). both verify the x-telegram-bot-api-secret-token when a secret
+ is configured.</p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#api.webhook.process">api.webhook.process(body, opts)</a></td>
+	<td class="summary">verify a secret then dispatch an update body received from telegram.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.webhook.serve">api.webhook.serve(opts)</a></td>
+	<td class="summary">run a minimal copas http server that receives telegram webhooks.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.webhook.verify_secret">api.webhook.verify_secret(received, expected)</a></td>
+	<td class="summary">check a received secret token against the expected one.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "api.webhook.process"></a>
+    <strong>api.webhook.process(body, opts)</strong>
+    </dt>
+    <dd>
+    verify a secret then dispatch an update body received from telegram.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">body</span>
+         string|table raw JSON body, or an already-decoded update table
+        </li>
+        <li><span class="parameter">opts</span>
+         table optional { secret<em>token, received</em>secret }
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        any|false the dispatch result, or false + reason on failure
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.webhook.serve"></a>
+    <strong>api.webhook.serve(opts)</strong>
+    </dt>
+    <dd>
+    run a minimal copas http server that receives telegram webhooks.
+ pass { no_loop = true } to register the server without entering copas.loop()
+ (useful when you already run your own loop).
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">opts</span>
+         table { host, port, path, secret<em>token, timeout, no</em>loop }
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table|false the bound server socket, or false + error
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.webhook.verify_secret"></a>
+    <strong>api.webhook.verify_secret(received, expected)</strong>
+    </dt>
+    <dd>
+    check a received secret token against the expected one.
+ when no secret is configured (expected nil or empty) verification passes.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">received</span>
+         string|nil the x-telegram-bot-api-secret-token header value
+        </li>
+        <li><span class="parameter">expected</span>
+         string|nil the secret configured with setWebhook
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean true if acceptable
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/lunarmodules/LDoc">LDoc 1.5.0</a></i>
+<i style="float:right;">Last updated 2026-06-22 21:59:03 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

@@ -1,0 +1,887 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>telegram-bot-lua API Documentation</title>
+    <link rel="stylesheet" href="../ldoc_pale.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>telegram-bot-lua</h1>
+
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/b64url.html">b64url</a></li>
+  <li><a href="../modules/telegram-bot-lua.html">telegram-bot-lua</a></li>
+  <li><a href="../modules/telegram-bot-lua.adapters.html">telegram-bot-lua.adapters</a></li>
+  <li><a href="../modules/telegram-bot-lua.adapters.db.html">telegram-bot-lua.adapters.db</a></li>
+  <li><a href="../modules/telegram-bot-lua.adapters.email.html">telegram-bot-lua.adapters.email</a></li>
+  <li><a href="../modules/telegram-bot-lua.adapters.llm.html">telegram-bot-lua.adapters.llm</a></li>
+  <li><a href="../modules/telegram-bot-lua.adapters.redis.html">telegram-bot-lua.adapters.redis</a></li>
+  <li><a href="../modules/telegram-bot-lua.async.html">telegram-bot-lua.async</a></li>
+  <li><a href="../modules/telegram-bot-lua.builders.html">telegram-bot-lua.builders</a></li>
+  <li><a href="../modules/telegram-bot-lua.builders_rich.html">telegram-bot-lua.builders_rich</a></li>
+  <li><a href="../modules/telegram-bot-lua.compat.html">telegram-bot-lua.compat</a></li>
+  <li><a href="../modules/telegram-bot-lua.framework.html">telegram-bot-lua.framework</a></li>
+  <li><a href="../modules/telegram-bot-lua.handlers.html">telegram-bot-lua.handlers</a></li>
+  <li><a href="../modules/telegram-bot-lua.helpers.html">telegram-bot-lua.helpers</a></li>
+  <li><a href="../modules/telegram-bot-lua.log.html">telegram-bot-lua.log</a></li>
+  <li><a href="../modules/telegram-bot-lua.mcp.html">telegram-bot-lua.mcp</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.bot.html">telegram-bot-lua.methods.bot</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.business.html">telegram-bot-lua.methods.business</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.chat.html">telegram-bot-lua.methods.chat</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.checklists.html">telegram-bot-lua.methods.checklists</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.forum.html">telegram-bot-lua.methods.forum</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.games.html">telegram-bot-lua.methods.games</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.gifts.html">telegram-bot-lua.methods.gifts</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.inline.html">telegram-bot-lua.methods.inline</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.members.html">telegram-bot-lua.methods.members</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.messages.html">telegram-bot-lua.methods.messages</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.passport.html">telegram-bot-lua.methods.passport</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.payments.html">telegram-bot-lua.methods.payments</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.rich.html">telegram-bot-lua.methods.rich</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.stickers.html">telegram-bot-lua.methods.stickers</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.stories.html">telegram-bot-lua.methods.stories</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.suggested_posts.html">telegram-bot-lua.methods.suggested_posts</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.updates.html">telegram-bot-lua.methods.updates</a></li>
+  <li><a href="../modules/telegram-bot-lua.middleware.html">telegram-bot-lua.middleware</a></li>
+  <li><a href="../modules/telegram-bot-lua.polyfill.html">telegram-bot-lua.polyfill</a></li>
+  <li><a href="../modules/telegram-bot-lua.session.html">telegram-bot-lua.session</a></li>
+  <li><a href="../modules/telegram-bot-lua.utils.html">telegram-bot-lua.utils</a></li>
+  <li><a href="../modules/telegram-bot-lua.webhook.html">telegram-bot-lua.webhook</a></li>
+  <li><strong>tools</strong></li>
+</ul>
+<h2>Topics</h2>
+<ul class="">
+  <li><a href="../topics/README.md.html">telegram-bot-lua</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>tools</code></h1>
+<p>format a number with comma-separated thousands.</p>
+<p>
+
+</p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#commands">commands(username, command_table)</a></td>
+	<td class="summary">create a new commands builder for matching bot commands.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#create_link">create_link(text, link, parse_mode)</a></td>
+	<td class="summary">create a formatted hyperlink for the given parse mode.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#download_file">download_file(url, name, path)</a></td>
+	<td class="summary">download a file from a URL and save it to disk.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#escape_bash">escape_bash(str)</a></td>
+	<td class="summary">escape a string for safe use in a bash single-quoted context.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#escape_html">escape_html(str)</a></td>
+	<td class="summary">escape special HTML characters (&amp;, &lt;, >) in a string.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#escape_markdown">escape_markdown(str)</a></td>
+	<td class="summary">escape special markdown characters in a string (v1 markdown).</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#escape_markdown_v2">escape_markdown_v2(str)</a></td>
+	<td class="summary">escape special MarkdownV2 characters in a string.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#file_exists">file_exists(path)</a></td>
+	<td class="summary">check whether a file exists at the given path.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#format_ms">format_ms(milliseconds)</a></td>
+	<td class="summary">format milliseconds into HH:MM:SS string.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#format_time">format_time(seconds)</a></td>
+	<td class="summary">format seconds into a human-readable time string (e.g.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_file_as_table">get_file_as_table(path)</a></td>
+	<td class="summary">read a file and return its lines as a table.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_formatted_user">get_formatted_user(user_id, name, parse_mode)</a></td>
+	<td class="summary">format a user mention link with the given parse mode.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_linked_name">get_linked_name(id)</a></td>
+	<td class="summary">get an HTML-formatted linked name for a user by their ID.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_word">get_word(str, i)</a></td>
+	<td class="summary">get the i-th whitespace-delimited word from a string.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#input">input(s)</a></td>
+	<td class="summary">extract the text after the first space in a string (i.e.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#json_to_table">json_to_table(path)</a></td>
+	<td class="summary">read a JSON file and decode it into a lua table.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#pretty_print">pretty_print(tbl)</a></td>
+	<td class="summary">encode a table as a pretty-printed JSON string.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#random_string">random_string(length, amount)</a></td>
+	<td class="summary">generate one or more random alphanumeric strings of a given length.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#read_file">read_file(path)</a></td>
+	<td class="summary">read the entire contents of a file as a string.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#round">round(num, idp)</a></td>
+	<td class="summary">round a number to the specified number of decimal places.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#save_to_file">save_to_file(data, filename, append)</a></td>
+	<td class="summary">save data to a file in /tmp/.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#table_size">table_size(t)</a></td>
+	<td class="summary">count the number of entries in a table (including non-sequential keys).</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#tools.commands_meta:command">tools.commands_meta:command(command)</a></td>
+	<td class="summary">add a command pattern to the commands table, including variants with and without bot username.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#trim">trim(str)</a></td>
+	<td class="summary">strip leading and trailing whitespace from a string.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#utf8_len">utf8_len(str)</a></td>
+	<td class="summary">count the number of UTF-8 characters in a string.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "commands"></a>
+    <strong>commands(username, command_table)</strong>
+    </dt>
+    <dd>
+    create a new commands builder for matching bot commands.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">username</span>
+         string the bot username used in command patterns
+        </li>
+        <li><span class="parameter">command_table</span>
+         table optional existing table to append patterns to
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table a commands builder with a :command() method for chaining
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "create_link"></a>
+    <strong>create_link(text, link, parse_mode)</strong>
+    </dt>
+    <dd>
+    create a formatted hyperlink for the given parse mode.
+ supports markdown, markdownv2, and HTML (default).
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">text</span>
+         string the display text
+        </li>
+        <li><span class="parameter">link</span>
+         string the URL to link to
+        </li>
+        <li><span class="parameter">parse_mode</span>
+         string|boolean the parse mode ('markdown', 'markdownv2', or HTML by default; true means 'markdown')
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        string the formatted link string
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "download_file"></a>
+    <strong>download_file(url, name, path)</strong>
+    </dt>
+    <dd>
+    download a file from a URL and save it to disk.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">url</span>
+         string the URL to download from
+        </li>
+        <li><span class="parameter">name</span>
+         string optional filename (defaults to timestamp with extension from URL)
+        </li>
+        <li><span class="parameter">path</span>
+         string optional directory path to save to (defaults to /tmp/)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        string|boolean the full file path on success, or false on failure</li>
+        <li>
+        number|string the HTTP status code or error message on failure</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "escape_bash"></a>
+    <strong>escape_bash(str)</strong>
+    </dt>
+    <dd>
+    escape a string for safe use in a bash single-quoted context.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">str</span>
+         string the string to escape
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        string the escaped string wrapped in single quotes
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "escape_html"></a>
+    <strong>escape_html(str)</strong>
+    </dt>
+    <dd>
+    escape special HTML characters (&amp;, &lt;, >) in a string.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">str</span>
+         string the string to escape
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        string the escaped string
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "escape_markdown"></a>
+    <strong>escape_markdown(str)</strong>
+    </dt>
+    <dd>
+    escape special markdown characters in a string (v1 markdown).
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">str</span>
+         string the string to escape
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        string the escaped string
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "escape_markdown_v2"></a>
+    <strong>escape_markdown_v2(str)</strong>
+    </dt>
+    <dd>
+    escape special MarkdownV2 characters in a string.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">str</span>
+         string the string to escape
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        string the escaped string
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "file_exists"></a>
+    <strong>file_exists(path)</strong>
+    </dt>
+    <dd>
+    check whether a file exists at the given path.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">path</span>
+         string the file path to check
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean true if the file exists, false otherwise
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "format_ms"></a>
+    <strong>format_ms(milliseconds)</strong>
+    </dt>
+    <dd>
+    format milliseconds into HH:MM:SS string.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">milliseconds</span>
+         number the duration in milliseconds
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        string the formatted time string in HH:MM:SS format
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "format_time"></a>
+    <strong>format_time(seconds)</strong>
+    </dt>
+    <dd>
+    format seconds into a human-readable time string (e.g.  "5 minutes", "2 hours").
+ returns the largest appropriate time unit.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">seconds</span>
+         number the duration in seconds
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        string|boolean the formatted time string, or false if input is invalid
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get_file_as_table"></a>
+    <strong>get_file_as_table(path)</strong>
+    </dt>
+    <dd>
+    read a file and return its lines as a table.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">path</span>
+         string the file path to read
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table a sequential table of lines (empty table if file not found)
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get_formatted_user"></a>
+    <strong>get_formatted_user(user_id, name, parse_mode)</strong>
+    </dt>
+    <dd>
+    format a user mention link with the given parse mode.
+ generates a tg://user?id= deep link for mentioning users by ID.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">user_id</span>
+         number the user's ID
+        </li>
+        <li><span class="parameter">name</span>
+         string the display name
+        </li>
+        <li><span class="parameter">parse_mode</span>
+         string the parse mode ('html', 'markdownv2', or markdown; defaults to 'MarkdownV2')
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        string|boolean the formatted user mention string, or false if missing params
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get_linked_name"></a>
+    <strong>get_linked_name(id)</strong>
+    </dt>
+    <dd>
+    get an HTML-formatted linked name for a user by their ID.
+ fetches the user's chat info and returns their first name as an HTML link if they have a username.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         number the user or chat ID
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        string|boolean the HTML-formatted name, or false on failure
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get_word"></a>
+    <strong>get_word(str, i)</strong>
+    </dt>
+    <dd>
+    get the i-th whitespace-delimited word from a string.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">str</span>
+         string the input string
+        </li>
+        <li><span class="parameter">i</span>
+         number optional word index (defaults to 1)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        string|boolean the matched word, or false if not found
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "input"></a>
+    <strong>input(s)</strong>
+    </dt>
+    <dd>
+    extract the text after the first space in a string (i.e.  command input).
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">s</span>
+         string the input string
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        string|boolean the text after the first space, or false if none
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "json_to_table"></a>
+    <strong>json_to_table(path)</strong>
+    </dt>
+    <dd>
+    read a JSON file and decode it into a lua table.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">path</span>
+         string the file path to the JSON file
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table the decoded table (empty table if file not found or invalid)
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "pretty_print"></a>
+    <strong>pretty_print(tbl)</strong>
+    </dt>
+    <dd>
+    encode a table as a pretty-printed JSON string.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">tbl</span>
+         table the table to encode
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        string the indented JSON string
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "random_string"></a>
+    <strong>random_string(length, amount)</strong>
+    </dt>
+    <dd>
+    generate one or more random alphanumeric strings of a given length.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">length</span>
+         number the length of each random string
+        </li>
+        <li><span class="parameter">amount</span>
+         number optional number of strings to generate
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        string|table a single string if amount is nil, or a table of strings
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "read_file"></a>
+    <strong>read_file(path)</strong>
+    </dt>
+    <dd>
+    read the entire contents of a file as a string.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">path</span>
+         string the file path to read
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        string|boolean the file contents, or false on failure
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "round"></a>
+    <strong>round(num, idp)</strong>
+    </dt>
+    <dd>
+    round a number to the specified number of decimal places.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">num</span>
+         number the number to round
+        </li>
+        <li><span class="parameter">idp</span>
+         number optional number of decimal places (defaults to 0)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        number the rounded number
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "save_to_file"></a>
+    <strong>save_to_file(data, filename, append)</strong>
+    </dt>
+    <dd>
+    save data to a file in /tmp/.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">data</span>
+         string the data to write
+        </li>
+        <li><span class="parameter">filename</span>
+         string the filename to write to (saved under /tmp/)
+        </li>
+        <li><span class="parameter">append</span>
+         boolean optional flag to append instead of overwrite
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        string|boolean the full file path on success, or false on failure
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "table_size"></a>
+    <strong>table_size(t)</strong>
+    </dt>
+    <dd>
+    count the number of entries in a table (including non-sequential keys).
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">t</span>
+         table the table to count
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        number the number of key-value pairs
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "tools.commands_meta:command"></a>
+    <strong>tools.commands_meta:command(command)</strong>
+    </dt>
+    <dd>
+    add a command pattern to the commands table, including variants with and without bot username.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">command</span>
+         string the command name (without prefix)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table self for method chaining
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "trim"></a>
+    <strong>trim(str)</strong>
+    </dt>
+    <dd>
+    strip leading and trailing whitespace from a string.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">str</span>
+         string the string to trim
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        string the trimmed string
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "utf8_len"></a>
+    <strong>utf8_len(str)</strong>
+    </dt>
+    <dd>
+    count the number of UTF-8 characters in a string.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">str</span>
+         string the string to measure
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        number the number of UTF-8 characters
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/lunarmodules/LDoc">LDoc 1.5.0</a></i>
+<i style="float:right;">Last updated 2026-06-22 21:59:03 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

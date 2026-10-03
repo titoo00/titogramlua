@@ -1,0 +1,530 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>telegram-bot-lua API Documentation</title>
+    <link rel="stylesheet" href="../ldoc_pale.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>telegram-bot-lua</h1>
+
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/b64url.html">b64url</a></li>
+  <li><a href="../modules/telegram-bot-lua.html">telegram-bot-lua</a></li>
+  <li><a href="../modules/telegram-bot-lua.adapters.html">telegram-bot-lua.adapters</a></li>
+  <li><a href="../modules/telegram-bot-lua.adapters.db.html">telegram-bot-lua.adapters.db</a></li>
+  <li><a href="../modules/telegram-bot-lua.adapters.email.html">telegram-bot-lua.adapters.email</a></li>
+  <li><a href="../modules/telegram-bot-lua.adapters.llm.html">telegram-bot-lua.adapters.llm</a></li>
+  <li><a href="../modules/telegram-bot-lua.adapters.redis.html">telegram-bot-lua.adapters.redis</a></li>
+  <li><a href="../modules/telegram-bot-lua.async.html">telegram-bot-lua.async</a></li>
+  <li><a href="../modules/telegram-bot-lua.builders.html">telegram-bot-lua.builders</a></li>
+  <li><a href="../modules/telegram-bot-lua.builders_rich.html">telegram-bot-lua.builders_rich</a></li>
+  <li><a href="../modules/telegram-bot-lua.compat.html">telegram-bot-lua.compat</a></li>
+  <li><a href="../modules/telegram-bot-lua.framework.html">telegram-bot-lua.framework</a></li>
+  <li><a href="../modules/telegram-bot-lua.handlers.html">telegram-bot-lua.handlers</a></li>
+  <li><a href="../modules/telegram-bot-lua.helpers.html">telegram-bot-lua.helpers</a></li>
+  <li><a href="../modules/telegram-bot-lua.log.html">telegram-bot-lua.log</a></li>
+  <li><a href="../modules/telegram-bot-lua.mcp.html">telegram-bot-lua.mcp</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.bot.html">telegram-bot-lua.methods.bot</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.business.html">telegram-bot-lua.methods.business</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.chat.html">telegram-bot-lua.methods.chat</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.checklists.html">telegram-bot-lua.methods.checklists</a></li>
+  <li><strong>telegram-bot-lua.methods.forum</strong></li>
+  <li><a href="../modules/telegram-bot-lua.methods.games.html">telegram-bot-lua.methods.games</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.gifts.html">telegram-bot-lua.methods.gifts</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.inline.html">telegram-bot-lua.methods.inline</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.members.html">telegram-bot-lua.methods.members</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.messages.html">telegram-bot-lua.methods.messages</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.passport.html">telegram-bot-lua.methods.passport</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.payments.html">telegram-bot-lua.methods.payments</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.rich.html">telegram-bot-lua.methods.rich</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.stickers.html">telegram-bot-lua.methods.stickers</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.stories.html">telegram-bot-lua.methods.stories</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.suggested_posts.html">telegram-bot-lua.methods.suggested_posts</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.updates.html">telegram-bot-lua.methods.updates</a></li>
+  <li><a href="../modules/telegram-bot-lua.middleware.html">telegram-bot-lua.middleware</a></li>
+  <li><a href="../modules/telegram-bot-lua.polyfill.html">telegram-bot-lua.polyfill</a></li>
+  <li><a href="../modules/telegram-bot-lua.session.html">telegram-bot-lua.session</a></li>
+  <li><a href="../modules/telegram-bot-lua.utils.html">telegram-bot-lua.utils</a></li>
+  <li><a href="../modules/telegram-bot-lua.webhook.html">telegram-bot-lua.webhook</a></li>
+  <li><a href="../modules/tools.html">tools</a></li>
+</ul>
+<h2>Topics</h2>
+<ul class="">
+  <li><a href="../topics/README.md.html">telegram-bot-lua</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>telegram-bot-lua.methods.forum</code></h1>
+<p>forum API methods.</p>
+<p>
+
+</p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#api.close_forum_topic">api.close_forum_topic(chat_id, message_thread_id)</a></td>
+	<td class="summary">close an open topic in a forum supergroup chat.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.close_general_forum_topic">api.close_general_forum_topic(chat_id)</a></td>
+	<td class="summary">close an open 'General' topic in a forum supergroup chat.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.create_forum_topic">api.create_forum_topic(chat_id, name, opts)</a></td>
+	<td class="summary">create a topic in a forum supergroup chat.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.delete_forum_topic">api.delete_forum_topic(chat_id, message_thread_id)</a></td>
+	<td class="summary">delete a forum topic along with all its messages in a forum supergroup chat.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.edit_forum_topic">api.edit_forum_topic(chat_id, message_thread_id, opts)</a></td>
+	<td class="summary">edit name and icon of a topic in a forum supergroup chat.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.edit_general_forum_topic">api.edit_general_forum_topic(chat_id, name)</a></td>
+	<td class="summary">edit the name of the 'General' topic in a forum supergroup chat.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.get_forum_topic_icon_stickers">api.get_forum_topic_icon_stickers()</a></td>
+	<td class="summary">get custom emoji stickers which can be used as a forum topic icon.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.hide_general_forum_topic">api.hide_general_forum_topic(chat_id)</a></td>
+	<td class="summary">hide the 'General' topic in a forum supergroup chat.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.reopen_forum_topic">api.reopen_forum_topic(chat_id, message_thread_id)</a></td>
+	<td class="summary">reopen a closed topic in a forum supergroup chat.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.reopen_general_forum_topic">api.reopen_general_forum_topic(chat_id)</a></td>
+	<td class="summary">reopen a closed 'General' topic in a forum supergroup chat.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.unhide_general_forum_topic">api.unhide_general_forum_topic(chat_id)</a></td>
+	<td class="summary">unhide the 'General' topic in a forum supergroup chat.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.unpin_all_forum_topic_messages">api.unpin_all_forum_topic_messages(chat_id, message_thread_id)</a></td>
+	<td class="summary">clear the list of pinned messages in a forum topic.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.unpin_all_general_forum_topic_messages">api.unpin_all_general_forum_topic_messages(chat_id)</a></td>
+	<td class="summary">clear the list of pinned messages in the general forum topic.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "api.close_forum_topic"></a>
+    <strong>api.close_forum_topic(chat_id, message_thread_id)</strong>
+    </dt>
+    <dd>
+    close an open topic in a forum supergroup chat.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_id</span>
+         number|string unique identifier for the target chat or username of the target supergroup
+        </li>
+        <li><span class="parameter">message_thread_id</span>
+         number unique identifier for the target message thread of the forum topic
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.close_general_forum_topic"></a>
+    <strong>api.close_general_forum_topic(chat_id)</strong>
+    </dt>
+    <dd>
+    close an open 'General' topic in a forum supergroup chat.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_id</span>
+         number|string unique identifier for the target chat or username of the target supergroup
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.create_forum_topic"></a>
+    <strong>api.create_forum_topic(chat_id, name, opts)</strong>
+    </dt>
+    <dd>
+    create a topic in a forum supergroup chat.  name is truncated to 128 characters.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_id</span>
+         number|string unique identifier for the target chat or username of the target supergroup
+        </li>
+        <li><span class="parameter">name</span>
+         string topic name (max 128 characters)
+        </li>
+        <li><span class="parameter">opts</span> table optional parameters
+        <ul>
+        <li><span class="parameter">icon_color</span>
+         number colour of the topic icon in RGB format
+        </li>
+        <li><span class="parameter">icon_custom_emoji_id</span>
+         string unique identifier of the custom emoji shown as the topic icon
+        </li>
+        </li></ul>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.delete_forum_topic"></a>
+    <strong>api.delete_forum_topic(chat_id, message_thread_id)</strong>
+    </dt>
+    <dd>
+    delete a forum topic along with all its messages in a forum supergroup chat.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_id</span>
+         number|string unique identifier for the target chat or username of the target supergroup
+        </li>
+        <li><span class="parameter">message_thread_id</span>
+         number unique identifier for the target message thread of the forum topic
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.edit_forum_topic"></a>
+    <strong>api.edit_forum_topic(chat_id, message_thread_id, opts)</strong>
+    </dt>
+    <dd>
+    edit name and icon of a topic in a forum supergroup chat.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_id</span>
+         number|string unique identifier for the target chat or username of the target supergroup
+        </li>
+        <li><span class="parameter">message_thread_id</span>
+         number unique identifier for the target message thread of the forum topic
+        </li>
+        <li><span class="parameter">opts</span> table optional parameters
+        <ul>
+        <li><span class="parameter">name</span>
+         string new topic name (max 128 characters)
+        </li>
+        <li><span class="parameter">icon_custom_emoji_id</span>
+         string new unique identifier of the custom emoji shown as the topic icon
+        </li>
+        </li></ul>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.edit_general_forum_topic"></a>
+    <strong>api.edit_general_forum_topic(chat_id, name)</strong>
+    </dt>
+    <dd>
+    edit the name of the 'General' topic in a forum supergroup chat.  name is truncated to 128 characters.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_id</span>
+         number|string unique identifier for the target chat or username of the target supergroup
+        </li>
+        <li><span class="parameter">name</span>
+         string new topic name (max 128 characters)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.get_forum_topic_icon_stickers"></a>
+    <strong>api.get_forum_topic_icon_stickers()</strong>
+    </dt>
+    <dd>
+    get custom emoji stickers which can be used as a forum topic icon.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.hide_general_forum_topic"></a>
+    <strong>api.hide_general_forum_topic(chat_id)</strong>
+    </dt>
+    <dd>
+    hide the 'General' topic in a forum supergroup chat.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_id</span>
+         number|string unique identifier for the target chat or username of the target supergroup
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.reopen_forum_topic"></a>
+    <strong>api.reopen_forum_topic(chat_id, message_thread_id)</strong>
+    </dt>
+    <dd>
+    reopen a closed topic in a forum supergroup chat.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_id</span>
+         number|string unique identifier for the target chat or username of the target supergroup
+        </li>
+        <li><span class="parameter">message_thread_id</span>
+         number unique identifier for the target message thread of the forum topic
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.reopen_general_forum_topic"></a>
+    <strong>api.reopen_general_forum_topic(chat_id)</strong>
+    </dt>
+    <dd>
+    reopen a closed 'General' topic in a forum supergroup chat.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_id</span>
+         number|string unique identifier for the target chat or username of the target supergroup
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.unhide_general_forum_topic"></a>
+    <strong>api.unhide_general_forum_topic(chat_id)</strong>
+    </dt>
+    <dd>
+    unhide the 'General' topic in a forum supergroup chat.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_id</span>
+         number|string unique identifier for the target chat or username of the target supergroup
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.unpin_all_forum_topic_messages"></a>
+    <strong>api.unpin_all_forum_topic_messages(chat_id, message_thread_id)</strong>
+    </dt>
+    <dd>
+    clear the list of pinned messages in a forum topic.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_id</span>
+         number|string unique identifier for the target chat or username of the target supergroup
+        </li>
+        <li><span class="parameter">message_thread_id</span>
+         number unique identifier for the target message thread of the forum topic
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.unpin_all_general_forum_topic_messages"></a>
+    <strong>api.unpin_all_general_forum_topic_messages(chat_id)</strong>
+    </dt>
+    <dd>
+    clear the list of pinned messages in the general forum topic.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_id</span>
+         number|string unique identifier for the target chat or username of the target supergroup
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/lunarmodules/LDoc">LDoc 1.5.0</a></i>
+<i style="float:right;">Last updated 2026-06-22 21:59:03 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

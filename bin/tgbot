@@ -1,0 +1,181 @@
+#!/usr/bin/env lua
+
+-- telegram-bot-lua CLI tool
+-- Usage: tgbot <command> [args...]
+-- Requires BOT_TOKEN environment variable.
+
+local json = require('dkjson')
+
+local function print_usage()
+    io.stderr:write([[
+Usage: tgbot <command> [args...]
+
+Commands:
+  info                         Show bot info
+  send <chat_id> <text>        Send a text message
+    --parse-mode <mode>        Parse mode (MarkdownV2, HTML)
+    --silent                   Send without notification
+  send <chat_id> --photo <path> [--caption <text>]
+                               Send a photo
+  send <chat_id> --document <path> [--caption <text>]
+                               Send a document
+  updates [--limit N]          Get recent updates
+  chat <chat_id>               Get chat info
+  ban <chat_id> <user_id>      Ban a user
+  unban <chat_id> <user_id>    Unban a user
+  mcp                          Start MCP server (JSON-RPC over stdio)
+  run [--timeout N] [--limit N]
+                               Start polling for updates
+
+Environment:
+  BOT_TOKEN                    Telegram Bot API token (required)
+
+]])
+end
+
+-- Parse command-line arguments into a table of flags and positional args.
+local function parse_args(args)
+    local result = { positional = {}, flags = {} }
+    local i = 1
+    while i <= #args do
+        local arg = args[i]
+        if arg:match('^%-%-') then
+            local key = arg:sub(3)
+            -- Check if next arg is a value or another flag
+            if i + 1 <= #args and not args[i + 1]:match('^%-%-') then
+                result.flags[key] = args[i + 1]
+                i = i + 2
+            else
+                result.flags[key] = true
+                i = i + 1
+            end
+        else
+            table.insert(result.positional, arg)
+            i = i + 1
+        end
+    end
+    return result
+end
+
+-- Require BOT_TOKEN and return a configured api instance.
+local function init_api()
+    local token = os.getenv('BOT_TOKEN')
+    if not token or token == '' then
+        io.stderr:write('Error: BOT_TOKEN environment variable is required\n')
+        os.exit(1)
+    end
+    local api = require('telegram-bot-lua')
+    api.configure(token)
+    return api
+end
+
+-- Format and print a JSON result.
+local function print_result(result, err)
+    if result then
+        print(json.encode(result, { indent = true }))
+    else
+        io.stderr:write('Error: ' .. json.encode(err or 'unknown error') .. '\n')
+        os.exit(1)
+    end
+end
+
+-- Main entry point
+local args = parse_args(arg)
+local command = args.positional[1]
+
+if not command then
+    print_usage()
+    os.exit(1)
+end
+
+if command == 'info' then
+    local api = init_api()
+    print_result(api.info)
+
+elseif command == 'send' then
+    local chat_id = args.positional[2]
+    if not chat_id then
+        io.stderr:write('Error: chat_id is required\n')
+        os.exit(1)
+    end
+
+    local api = init_api()
+
+    if args.flags['photo'] then
+        local result, err = api.send_photo(chat_id, args.flags['photo'], {
+            caption = args.flags['caption'],
+            parse_mode = args.flags['parse-mode']
+        })
+        print_result(result, err)
+    elseif args.flags['document'] then
+        local result, err = api.send_document(chat_id, args.flags['document'], {
+            caption = args.flags['caption'],
+            parse_mode = args.flags['parse-mode']
+        })
+        print_result(result, err)
+    else
+        local text = args.positional[3]
+        if not text then
+            io.stderr:write('Error: text is required for send command\n')
+            os.exit(1)
+        end
+        local result, err = api.send_message(chat_id, text, {
+            parse_mode = args.flags['parse-mode'],
+            disable_notification = args.flags['silent'] and true or nil
+        })
+        print_result(result, err)
+    end
+
+elseif command == 'updates' then
+    local api = init_api()
+    local limit = tonumber(args.flags['limit']) or 10
+    local result, err = api.get_updates({ limit = limit, timeout = 0 })
+    print_result(result, err)
+
+elseif command == 'chat' then
+    local chat_id = args.positional[2]
+    if not chat_id then
+        io.stderr:write('Error: chat_id is required\n')
+        os.exit(1)
+    end
+    local api = init_api()
+    local result, err = api.get_chat(chat_id)
+    print_result(result, err)
+
+elseif command == 'ban' then
+    local chat_id = args.positional[2]
+    local user_id = args.positional[3]
+    if not chat_id or not user_id then
+        io.stderr:write('Error: chat_id and user_id are required\n')
+        os.exit(1)
+    end
+    local api = init_api()
+    local result, err = api.ban_chat_member(chat_id, user_id)
+    print_result(result, err)
+
+elseif command == 'unban' then
+    local chat_id = args.positional[2]
+    local user_id = args.positional[3]
+    if not chat_id or not user_id then
+        io.stderr:write('Error: chat_id and user_id are required\n')
+        os.exit(1)
+    end
+    local api = init_api()
+    local result, err = api.unban_chat_member(chat_id, user_id, { only_if_banned = true })
+    print_result(result, err)
+
+elseif command == 'mcp' then
+    local api = init_api()
+    api.mcp.serve()
+
+elseif command == 'run' then
+    local api = init_api()
+    local timeout = tonumber(args.flags['timeout']) or 60
+    local limit = tonumber(args.flags['limit']) or 100
+    api.run({ timeout = timeout, limit = limit, sync = true })
+
+else
+    io.stderr:write('Unknown command: ' .. command .. '\n')
+    print_usage()
+    os.exit(1)
+end

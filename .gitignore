@@ -1,0 +1,6 @@
+.env
+*.env
+*.rock
+*.src.rock
+luacov.stats.out
+luacov.report.out

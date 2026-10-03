@@ -1,0 +1,341 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>telegram-bot-lua API Documentation</title>
+    <link rel="stylesheet" href="../ldoc_pale.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>telegram-bot-lua</h1>
+
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/b64url.html">b64url</a></li>
+  <li><a href="../modules/telegram-bot-lua.html">telegram-bot-lua</a></li>
+  <li><a href="../modules/telegram-bot-lua.adapters.html">telegram-bot-lua.adapters</a></li>
+  <li><a href="../modules/telegram-bot-lua.adapters.db.html">telegram-bot-lua.adapters.db</a></li>
+  <li><a href="../modules/telegram-bot-lua.adapters.email.html">telegram-bot-lua.adapters.email</a></li>
+  <li><a href="../modules/telegram-bot-lua.adapters.llm.html">telegram-bot-lua.adapters.llm</a></li>
+  <li><a href="../modules/telegram-bot-lua.adapters.redis.html">telegram-bot-lua.adapters.redis</a></li>
+  <li><strong>telegram-bot-lua.async</strong></li>
+  <li><a href="../modules/telegram-bot-lua.builders.html">telegram-bot-lua.builders</a></li>
+  <li><a href="../modules/telegram-bot-lua.builders_rich.html">telegram-bot-lua.builders_rich</a></li>
+  <li><a href="../modules/telegram-bot-lua.compat.html">telegram-bot-lua.compat</a></li>
+  <li><a href="../modules/telegram-bot-lua.framework.html">telegram-bot-lua.framework</a></li>
+  <li><a href="../modules/telegram-bot-lua.handlers.html">telegram-bot-lua.handlers</a></li>
+  <li><a href="../modules/telegram-bot-lua.helpers.html">telegram-bot-lua.helpers</a></li>
+  <li><a href="../modules/telegram-bot-lua.log.html">telegram-bot-lua.log</a></li>
+  <li><a href="../modules/telegram-bot-lua.mcp.html">telegram-bot-lua.mcp</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.bot.html">telegram-bot-lua.methods.bot</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.business.html">telegram-bot-lua.methods.business</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.chat.html">telegram-bot-lua.methods.chat</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.checklists.html">telegram-bot-lua.methods.checklists</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.forum.html">telegram-bot-lua.methods.forum</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.games.html">telegram-bot-lua.methods.games</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.gifts.html">telegram-bot-lua.methods.gifts</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.inline.html">telegram-bot-lua.methods.inline</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.members.html">telegram-bot-lua.methods.members</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.messages.html">telegram-bot-lua.methods.messages</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.passport.html">telegram-bot-lua.methods.passport</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.payments.html">telegram-bot-lua.methods.payments</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.rich.html">telegram-bot-lua.methods.rich</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.stickers.html">telegram-bot-lua.methods.stickers</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.stories.html">telegram-bot-lua.methods.stories</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.suggested_posts.html">telegram-bot-lua.methods.suggested_posts</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.updates.html">telegram-bot-lua.methods.updates</a></li>
+  <li><a href="../modules/telegram-bot-lua.middleware.html">telegram-bot-lua.middleware</a></li>
+  <li><a href="../modules/telegram-bot-lua.polyfill.html">telegram-bot-lua.polyfill</a></li>
+  <li><a href="../modules/telegram-bot-lua.session.html">telegram-bot-lua.session</a></li>
+  <li><a href="../modules/telegram-bot-lua.utils.html">telegram-bot-lua.utils</a></li>
+  <li><a href="../modules/telegram-bot-lua.webhook.html">telegram-bot-lua.webhook</a></li>
+  <li><a href="../modules/tools.html">tools</a></li>
+</ul>
+<h2>Topics</h2>
+<ul class="">
+  <li><a href="../topics/README.md.html">telegram-bot-lua</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>telegram-bot-lua.async</code></h1>
+<p>async polling and concurrency via copas.</p>
+<p>[[</p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#api.async._http_request">api.async._http_request(endpoint, parameters, file)</a></td>
+	<td class="summary">non-blocking HTTP request using copas.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.async.all">api.async.all(fns)</a></td>
+	<td class="summary">run multiple functions concurrently and collect results.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.async.is_running">api.async.is_running()</a></td>
+	<td class="summary">check if we're currently inside the async event loop.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.async.request">api.async.request(endpoint, parameters, file)</a></td>
+	<td class="summary">send an async request under the shared retry policy (api.retry).</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.async.run">api.async.run(opts)</a></td>
+	<td class="summary">run the bot with concurrent update processing.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.async.sleep">api.async.sleep(seconds)</a></td>
+	<td class="summary">non-blocking sleep (only works within a copas coroutine).</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.async.spawn">api.async.spawn(fn)</a></td>
+	<td class="summary">spawn a background coroutine within the copas event loop.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.async.stop">api.async.stop()</a></td>
+	<td class="summary">stop the async run loop.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "api.async._http_request"></a>
+    <strong>api.async._http_request(endpoint, parameters, file)</strong>
+    </dt>
+    <dd>
+    non-blocking HTTP request using copas.
+ has the same signature as api.request but uses copas.http.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">endpoint</span>
+         string the full API endpoint URL
+        </li>
+        <li><span class="parameter">parameters</span>
+         table optional request parameters
+        </li>
+        <li><span class="parameter">file</span>
+         table optional file upload map
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table decoded JSON response, or false on error
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.async.all"></a>
+    <strong>api.async.all(fns)</strong>
+    </dt>
+    <dd>
+    run multiple functions concurrently and collect results.
+ each function runs in its own coroutine. returns when all complete.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">fns</span>
+         table array of functions to execute in parallel
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table results in order: { {value, ...}, {false, error}, ... }
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.async.is_running"></a>
+    <strong>api.async.is_running()</strong>
+    </dt>
+    <dd>
+    check if we're currently inside the async event loop.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean true if the async loop is active
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.async.request"></a>
+    <strong>api.async.request(endpoint, parameters, file)</strong>
+    </dt>
+    <dd>
+    send an async request under the shared retry policy (api.retry).
+ uses copas.sleep so honouring 429 / backing off never blocks the loop.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">endpoint</span>
+
+
+
+        </li>
+        <li><span class="parameter">parameters</span>
+
+
+
+        </li>
+        <li><span class="parameter">file</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.async.run"></a>
+    <strong>api.async.run(opts)</strong>
+    </dt>
+    <dd>
+    run the bot with concurrent update processing.
+ each update is dispatched to its own coroutine so a slow handler
+ won't block processing of other updates.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">opts</span>
+         table polling options (limit, timeout, offset, allowed_updates)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.async.sleep"></a>
+    <strong>api.async.sleep(seconds)</strong>
+    </dt>
+    <dd>
+    non-blocking sleep (only works within a copas coroutine).
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">seconds</span>
+         number duration to sleep
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.async.spawn"></a>
+    <strong>api.async.spawn(fn)</strong>
+    </dt>
+    <dd>
+    spawn a background coroutine within the copas event loop.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">fn</span>
+         function the function to run in a new coroutine
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        thread the copas thread
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.async.stop"></a>
+    <strong>api.async.stop()</strong>
+    </dt>
+    <dd>
+    stop the async run loop.
+
+
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/lunarmodules/LDoc">LDoc 1.5.0</a></i>
+<i style="float:right;">Last updated 2026-06-22 21:59:03 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

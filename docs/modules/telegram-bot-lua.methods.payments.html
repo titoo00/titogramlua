@@ -1,0 +1,416 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>telegram-bot-lua API Documentation</title>
+    <link rel="stylesheet" href="../ldoc_pale.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>telegram-bot-lua</h1>
+
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/b64url.html">b64url</a></li>
+  <li><a href="../modules/telegram-bot-lua.html">telegram-bot-lua</a></li>
+  <li><a href="../modules/telegram-bot-lua.adapters.html">telegram-bot-lua.adapters</a></li>
+  <li><a href="../modules/telegram-bot-lua.adapters.db.html">telegram-bot-lua.adapters.db</a></li>
+  <li><a href="../modules/telegram-bot-lua.adapters.email.html">telegram-bot-lua.adapters.email</a></li>
+  <li><a href="../modules/telegram-bot-lua.adapters.llm.html">telegram-bot-lua.adapters.llm</a></li>
+  <li><a href="../modules/telegram-bot-lua.adapters.redis.html">telegram-bot-lua.adapters.redis</a></li>
+  <li><a href="../modules/telegram-bot-lua.async.html">telegram-bot-lua.async</a></li>
+  <li><a href="../modules/telegram-bot-lua.builders.html">telegram-bot-lua.builders</a></li>
+  <li><a href="../modules/telegram-bot-lua.builders_rich.html">telegram-bot-lua.builders_rich</a></li>
+  <li><a href="../modules/telegram-bot-lua.compat.html">telegram-bot-lua.compat</a></li>
+  <li><a href="../modules/telegram-bot-lua.framework.html">telegram-bot-lua.framework</a></li>
+  <li><a href="../modules/telegram-bot-lua.handlers.html">telegram-bot-lua.handlers</a></li>
+  <li><a href="../modules/telegram-bot-lua.helpers.html">telegram-bot-lua.helpers</a></li>
+  <li><a href="../modules/telegram-bot-lua.log.html">telegram-bot-lua.log</a></li>
+  <li><a href="../modules/telegram-bot-lua.mcp.html">telegram-bot-lua.mcp</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.bot.html">telegram-bot-lua.methods.bot</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.business.html">telegram-bot-lua.methods.business</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.chat.html">telegram-bot-lua.methods.chat</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.checklists.html">telegram-bot-lua.methods.checklists</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.forum.html">telegram-bot-lua.methods.forum</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.games.html">telegram-bot-lua.methods.games</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.gifts.html">telegram-bot-lua.methods.gifts</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.inline.html">telegram-bot-lua.methods.inline</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.members.html">telegram-bot-lua.methods.members</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.messages.html">telegram-bot-lua.methods.messages</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.passport.html">telegram-bot-lua.methods.passport</a></li>
+  <li><strong>telegram-bot-lua.methods.payments</strong></li>
+  <li><a href="../modules/telegram-bot-lua.methods.rich.html">telegram-bot-lua.methods.rich</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.stickers.html">telegram-bot-lua.methods.stickers</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.stories.html">telegram-bot-lua.methods.stories</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.suggested_posts.html">telegram-bot-lua.methods.suggested_posts</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.updates.html">telegram-bot-lua.methods.updates</a></li>
+  <li><a href="../modules/telegram-bot-lua.middleware.html">telegram-bot-lua.middleware</a></li>
+  <li><a href="../modules/telegram-bot-lua.polyfill.html">telegram-bot-lua.polyfill</a></li>
+  <li><a href="../modules/telegram-bot-lua.session.html">telegram-bot-lua.session</a></li>
+  <li><a href="../modules/telegram-bot-lua.utils.html">telegram-bot-lua.utils</a></li>
+  <li><a href="../modules/telegram-bot-lua.webhook.html">telegram-bot-lua.webhook</a></li>
+  <li><a href="../modules/tools.html">tools</a></li>
+</ul>
+<h2>Topics</h2>
+<ul class="">
+  <li><a href="../topics/README.md.html">telegram-bot-lua</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>telegram-bot-lua.methods.payments</code></h1>
+<p>payments API methods.</p>
+<p>
+
+</p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#api.answer_pre_checkout_query">api.answer_pre_checkout_query(pre_checkout_query_id, ok, opts)</a></td>
+	<td class="summary">respond to a pre-checkout query confirming or rejecting the order.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.answer_shipping_query">api.answer_shipping_query(shipping_query_id, ok, opts)</a></td>
+	<td class="summary">reply to shipping queries with available shipping options or an error.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.create_invoice_link">api.create_invoice_link(title, description, payload, currency, prices, opts)</a></td>
+	<td class="summary">create a link for an invoice.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.edit_user_star_subscription">api.edit_user_star_subscription(user_id, telegram_payment_charge_id, is_canceled)</a></td>
+	<td class="summary">edit a user's star subscription status (cancel or re-enable).</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.get_my_star_balance">api.get_my_star_balance()</a></td>
+	<td class="summary">get the current telegram stars balance of the bot.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.get_star_transactions">api.get_star_transactions(opts)</a></td>
+	<td class="summary">get the bot's telegram star transactions.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.refund_star_payment">api.refund_star_payment(user_id, telegram_payment_charge_id)</a></td>
+	<td class="summary">refund a successful payment in telegram stars.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.send_invoice">api.send_invoice(chat_id, title, description, payload, currency, prices, opts)</a></td>
+	<td class="summary">send an invoice to a chat.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "api.answer_pre_checkout_query"></a>
+    <strong>api.answer_pre_checkout_query(pre_checkout_query_id, ok, opts)</strong>
+    </dt>
+    <dd>
+    respond to a pre-checkout query confirming or rejecting the order.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">pre_checkout_query_id</span>
+         string unique identifier for the query to be answered
+        </li>
+        <li><span class="parameter">ok</span>
+         boolean whether the bot is ready to proceed with the order
+        </li>
+        <li><span class="parameter">opts</span>
+         table optional parameters (error_message)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        table|false true on success, or false on failure</li>
+        <li>
+        string|table the HTTP status or error details</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.answer_shipping_query"></a>
+    <strong>api.answer_shipping_query(shipping_query_id, ok, opts)</strong>
+    </dt>
+    <dd>
+    reply to shipping queries with available shipping options or an error.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">shipping_query_id</span>
+         string unique identifier for the query to be answered
+        </li>
+        <li><span class="parameter">ok</span>
+         boolean whether delivery to the specified address is possible
+        </li>
+        <li><span class="parameter">opts</span>
+         table optional parameters (shipping<em>options, error</em>message)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        table|false true on success, or false on failure</li>
+        <li>
+        string|table the HTTP status or error details</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.create_invoice_link"></a>
+    <strong>api.create_invoice_link(title, description, payload, currency, prices, opts)</strong>
+    </dt>
+    <dd>
+    create a link for an invoice.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">title</span>
+         string product name
+        </li>
+        <li><span class="parameter">description</span>
+         string product description
+        </li>
+        <li><span class="parameter">payload</span>
+         string bot-defined invoice payload
+        </li>
+        <li><span class="parameter">currency</span>
+         string three-letter ISO 4217 currency code
+        </li>
+        <li><span class="parameter">prices</span>
+         string|table JSON-serialised array of LabeledPrice or a table thereof
+        </li>
+        <li><span class="parameter">opts</span>
+         table optional parameters (provider<em>token, max</em>tip<em>amount, suggested</em>tip_amounts, etc.)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        table|false the created invoice link as a string, or false on failure</li>
+        <li>
+        string|table the HTTP status or error details</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.edit_user_star_subscription"></a>
+    <strong>api.edit_user_star_subscription(user_id, telegram_payment_charge_id, is_canceled)</strong>
+    </dt>
+    <dd>
+    edit a user's star subscription status (cancel or re-enable).
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">user_id</span>
+         number identifier of the user whose subscription will be edited
+        </li>
+        <li><span class="parameter">telegram_payment_charge_id</span>
+         string telegram payment identifier for the subscription
+        </li>
+        <li><span class="parameter">is_canceled</span>
+         boolean whether the subscription should be cancelled
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        table|false true on success, or false on failure</li>
+        <li>
+        string|table the HTTP status or error details</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.get_my_star_balance"></a>
+    <strong>api.get_my_star_balance()</strong>
+    </dt>
+    <dd>
+    get the current telegram stars balance of the bot.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        table|false the star amount object, or false on failure</li>
+        <li>
+        string|table the HTTP status or error details</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.get_star_transactions"></a>
+    <strong>api.get_star_transactions(opts)</strong>
+    </dt>
+    <dd>
+    get the bot's telegram star transactions.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">opts</span>
+         table optional parameters (offset, limit)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        table|false the star transactions object, or false on failure</li>
+        <li>
+        string|table the HTTP status or error details</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.refund_star_payment"></a>
+    <strong>api.refund_star_payment(user_id, telegram_payment_charge_id)</strong>
+    </dt>
+    <dd>
+    refund a successful payment in telegram stars.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">user_id</span>
+         number identifier of the user whose payment will be refunded
+        </li>
+        <li><span class="parameter">telegram_payment_charge_id</span>
+         string telegram payment identifier
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        table|false true on success, or false on failure</li>
+        <li>
+        string|table the HTTP status or error details</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.send_invoice"></a>
+    <strong>api.send_invoice(chat_id, title, description, payload, currency, prices, opts)</strong>
+    </dt>
+    <dd>
+    send an invoice to a chat.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_id</span>
+         string|number unique identifier for the target chat
+        </li>
+        <li><span class="parameter">title</span>
+         string product name
+        </li>
+        <li><span class="parameter">description</span>
+         string product description
+        </li>
+        <li><span class="parameter">payload</span>
+         string bot-defined invoice payload
+        </li>
+        <li><span class="parameter">currency</span>
+         string three-letter ISO 4217 currency code
+        </li>
+        <li><span class="parameter">prices</span>
+         string|table JSON-serialised array of LabeledPrice or a table thereof
+        </li>
+        <li><span class="parameter">opts</span>
+         table optional parameters (provider<em>token, max</em>tip<em>amount, suggested</em>tip<em>amounts, reply</em>markup, etc.)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        table|false the sent message, or false on failure</li>
+        <li>
+        string|table the HTTP status or error details</li>
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/lunarmodules/LDoc">LDoc 1.5.0</a></i>
+<i style="float:right;">Last updated 2026-06-22 21:59:03 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

@@ -1,0 +1,15 @@
+return {
+    default = {
+        ROOT = {"spec"},
+        pattern = "_spec",
+        helper = "spec/test_helper.lua",
+        lpath = "./src/?.lua;./src/?/init.lua",
+        verbose = true
+    },
+    e2e = {
+        ROOT = {"spec"},
+        pattern = "e2e_test",
+        lpath = "./src/?.lua;./src/?/init.lua",
+        verbose = true
+    }
+}

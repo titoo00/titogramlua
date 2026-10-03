@@ -1,0 +1,394 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>telegram-bot-lua API Documentation</title>
+    <link rel="stylesheet" href="../ldoc_pale.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>telegram-bot-lua</h1>
+
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+<li><a href="#Tables">Tables</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/b64url.html">b64url</a></li>
+  <li><strong>telegram-bot-lua</strong></li>
+  <li><a href="../modules/telegram-bot-lua.adapters.html">telegram-bot-lua.adapters</a></li>
+  <li><a href="../modules/telegram-bot-lua.adapters.db.html">telegram-bot-lua.adapters.db</a></li>
+  <li><a href="../modules/telegram-bot-lua.adapters.email.html">telegram-bot-lua.adapters.email</a></li>
+  <li><a href="../modules/telegram-bot-lua.adapters.llm.html">telegram-bot-lua.adapters.llm</a></li>
+  <li><a href="../modules/telegram-bot-lua.adapters.redis.html">telegram-bot-lua.adapters.redis</a></li>
+  <li><a href="../modules/telegram-bot-lua.async.html">telegram-bot-lua.async</a></li>
+  <li><a href="../modules/telegram-bot-lua.builders.html">telegram-bot-lua.builders</a></li>
+  <li><a href="../modules/telegram-bot-lua.builders_rich.html">telegram-bot-lua.builders_rich</a></li>
+  <li><a href="../modules/telegram-bot-lua.compat.html">telegram-bot-lua.compat</a></li>
+  <li><a href="../modules/telegram-bot-lua.framework.html">telegram-bot-lua.framework</a></li>
+  <li><a href="../modules/telegram-bot-lua.handlers.html">telegram-bot-lua.handlers</a></li>
+  <li><a href="../modules/telegram-bot-lua.helpers.html">telegram-bot-lua.helpers</a></li>
+  <li><a href="../modules/telegram-bot-lua.log.html">telegram-bot-lua.log</a></li>
+  <li><a href="../modules/telegram-bot-lua.mcp.html">telegram-bot-lua.mcp</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.bot.html">telegram-bot-lua.methods.bot</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.business.html">telegram-bot-lua.methods.business</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.chat.html">telegram-bot-lua.methods.chat</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.checklists.html">telegram-bot-lua.methods.checklists</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.forum.html">telegram-bot-lua.methods.forum</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.games.html">telegram-bot-lua.methods.games</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.gifts.html">telegram-bot-lua.methods.gifts</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.inline.html">telegram-bot-lua.methods.inline</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.members.html">telegram-bot-lua.methods.members</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.messages.html">telegram-bot-lua.methods.messages</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.passport.html">telegram-bot-lua.methods.passport</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.payments.html">telegram-bot-lua.methods.payments</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.rich.html">telegram-bot-lua.methods.rich</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.stickers.html">telegram-bot-lua.methods.stickers</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.stories.html">telegram-bot-lua.methods.stories</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.suggested_posts.html">telegram-bot-lua.methods.suggested_posts</a></li>
+  <li><a href="../modules/telegram-bot-lua.methods.updates.html">telegram-bot-lua.methods.updates</a></li>
+  <li><a href="../modules/telegram-bot-lua.middleware.html">telegram-bot-lua.middleware</a></li>
+  <li><a href="../modules/telegram-bot-lua.polyfill.html">telegram-bot-lua.polyfill</a></li>
+  <li><a href="../modules/telegram-bot-lua.session.html">telegram-bot-lua.session</a></li>
+  <li><a href="../modules/telegram-bot-lua.utils.html">telegram-bot-lua.utils</a></li>
+  <li><a href="../modules/telegram-bot-lua.webhook.html">telegram-bot-lua.webhook</a></li>
+  <li><a href="../modules/tools.html">tools</a></li>
+</ul>
+<h2>Topics</h2>
+<ul class="">
+  <li><a href="../topics/README.md.html">telegram-bot-lua</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>telegram-bot-lua</code></h1>
+<p>telegram-bot-lua - a feature-filled telegram bot API library.</p>
+<p> supports bot API 10.1 with full method coverage, a command router, sessions
+ and conversations, a webhook receiver, flood-control retries, middleware,
+ async polling, structured logging, an MCP server, adapters, and
+ backward-compatible v2 shims.</p>
+    <h3>Info:</h3>
+    <ul>
+        <li><strong>Copyright</strong>: 2017-2026</li>
+        <li><strong>License</strong>: GPL-3</li>
+        <li><strong>Author</strong>: Matthew Hesketh</li>
+    </ul>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#api._http_request">api._http_request(endpoint, parameters, file)</a></td>
+	<td class="summary">send a request to the telegram bot API.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api._with_retry">api._with_retry(thunk, sleeper)</a></td>
+	<td class="summary">run a request thunk under the retry policy in api.retry.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.close">api.close()</a></td>
+	<td class="summary">close the bot instance before moving it to a local server.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.configure">api.configure(token, debug)</a></td>
+	<td class="summary">configure the bot with a token and optional debug mode.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.get_me">api.get_me()</a></td>
+	<td class="summary">get basic information about the bot via getMe.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.log_out">api.log_out()</a></td>
+	<td class="summary">log the bot out from the cloud bot API server.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.request">api.request(endpoint, parameters, file)</a></td>
+	<td class="summary">send a request to the telegram bot API with the retry policy applied.</td>
+	</tr>
+</table>
+<h2><a href="#Tables">Tables</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#api.retry">api.retry</a></td>
+	<td class="summary">retry policy for api.request.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "api._http_request"></a>
+    <strong>api._http_request(endpoint, parameters, file)</strong>
+    </dt>
+    <dd>
+    send a request to the telegram bot API.
+ encodes parameters as multipart form data and handles file uploads.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">endpoint</span>
+         string the full API endpoint URL
+        </li>
+        <li><span class="parameter">parameters</span>
+         table optional request parameters
+        </li>
+        <li><span class="parameter">file</span>
+         table optional file attachments keyed by type
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        table|false the decoded JSON response, or false on failure</li>
+        <li>
+        string|table the HTTP status or error details</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api._with_retry"></a>
+    <strong>api._with_retry(thunk, sleeper)</strong>
+    </dt>
+    <dd>
+    run a request thunk under the retry policy in api.retry.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">thunk</span>
+         function a no-arg function returning (result, err) like api.request
+        </li>
+        <li><span class="parameter">sleeper</span>
+         function optional sleep(seconds); defaults to a blocking sleep
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table|false result and error, identical to the thunk's contract
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.close"></a>
+    <strong>api.close()</strong>
+    </dt>
+    <dd>
+    close the bot instance before moving it to a local server.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        table|false true on success, or false on failure</li>
+        <li>
+        string|table the HTTP status or error details</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.configure"></a>
+    <strong>api.configure(token, debug)</strong>
+    </dt>
+    <dd>
+    configure the bot with a token and optional debug mode.
+ connects to the telegram API and retrieves bot info via getMe.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">token</span>
+         string the bot API token from @BotFather
+        </li>
+        <li><span class="parameter">debug</span>
+         boolean enable debug logging of requests
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table the api object, configured and ready to use
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.get_me"></a>
+    <strong>api.get_me()</strong>
+    </dt>
+    <dd>
+    get basic information about the bot via getMe.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        table|false the bot user object, or false on failure</li>
+        <li>
+        string|table the HTTP status or error details</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.log_out"></a>
+    <strong>api.log_out()</strong>
+    </dt>
+    <dd>
+    log the bot out from the cloud bot API server.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        table|false true on success, or false on failure</li>
+        <li>
+        string|table the HTTP status or error details</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.request"></a>
+    <strong>api.request(endpoint, parameters, file)</strong>
+    </dt>
+    <dd>
+    send a request to the telegram bot API with the retry policy applied.
+ wraps api.<em>http</em>request; see api.retry to configure or disable retries.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">endpoint</span>
+         string the full API endpoint URL
+        </li>
+        <li><span class="parameter">parameters</span>
+         table optional request parameters
+        </li>
+        <li><span class="parameter">file</span>
+         table optional file attachments keyed by type
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        table|false the decoded JSON response, or false on failure</li>
+        <li>
+        string|table the HTTP status or error details</li>
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="Tables"></a>Tables</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "api.retry"></a>
+    <strong>api.retry</strong>
+    </dt>
+    <dd>
+    retry policy for api.request.  honours telegram's 429 retry_after (required
+ by the api) and retries transient connection failures with bounded
+ exponential backoff; a normal 4xx api error is returned immediately.
+
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">[enabled]</span>
+
+
+
+        </li>
+        <li><span class="parameter">[max_attempts]</span>
+
+
+
+        </li>
+        <li><span class="parameter">[base_delay]</span>
+
+
+
+        </li>
+        <li><span class="parameter">[max_delay]</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/lunarmodules/LDoc">LDoc 1.5.0</a></i>
+<i style="float:right;">Last updated 2026-06-22 21:59:03 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
