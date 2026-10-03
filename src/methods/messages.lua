@@ -573,7 +573,21 @@ return function(api)
     -- @return table,number the response object and HTTP status
     function api.send_media_group(chat_id, media, opts)
         opts = opts or {}
-        media = type(media) == 'table' and json.encode(media) or media
+        if type(media) == 'table' then
+            for i, item in ipairs(media) do
+                if type(item) == 'table' then
+                    item.type = item.type or 'photo'
+                    if i == 1 then
+                        if item.show_caption_above_media == nil then
+                            item.show_caption_above_media = false
+                        end
+                    else
+                        item.caption = nil
+                    end
+                end
+            end
+            media = json.encode(media)
+        end
         local reply_parameters = opts.reply_parameters
         reply_parameters = type(reply_parameters) == 'table' and json.encode(reply_parameters) or reply_parameters
         local success, res = api.request(config.endpoint .. api.token .. '/sendMediaGroup', {
