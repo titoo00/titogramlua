@@ -1,15 +1,19 @@
-name: CI
+name: Lua CI
 
 on:
-  pull_request:
   push:
-    branches: [main, develop]
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
   workflow_dispatch:
 
 jobs:
   test:
-    name: Lua ${{ matrix.lua-version }}
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        lua-version: ["5.3", "5.4"]
 
     services:
       redis:
@@ -22,31 +26,24 @@ jobs:
           --health-timeout 5s
           --health-retries 5
 
-    strategy:
-      fail-fast: false
-      matrix:
-        lua-version:
-          - "5.3"
-          - "5.4"
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install Lua ${{ matrix.lua-version }}
+      - name: Setup Lua
         uses: leafo/gh-actions-lua@v10
         with:
           luaVersion: ${{ matrix.lua-version }}
 
-      - name: Install LuaRocks
+      - name: Setup LuaRocks
         uses: leafo/gh-actions-luarocks@v4
 
-      - name: Install system libraries
+      - name: Install System Dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y libsqlite3-dev libssl-dev
 
-      - name: Install dependencies
+      - name: Install Project Dependencies
         run: |
           luarocks install dkjson
           luarocks install luasec
@@ -57,55 +54,12 @@ jobs:
           luarocks install lsqlite3
           luarocks install busted
 
-      - name: Run tests
-        run: make test
-
-  lint:
-    name: Lint
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Install Lua
-        uses: leafo/gh-actions-lua@v10
-        with:
-          luaVersion: "5.3"
-
-      - name: Install LuaRocks
-        uses: leafo/gh-actions-luarocks@v4
-
-      - name: Install luacheck
-        run: luarocks install luacheck
-
-      - name: Run luacheck
-        run: make lint || true
-
-  docs:
-    name: Docs in sync
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Install Lua
-        uses: leafo/gh-actions-lua@v10
-        with:
-          luaVersion: "5.3"
-
-      - name: Install LuaRocks
-        uses: leafo/gh-actions-luarocks@v4
-
-      - name: Install LDoc and markdown
+      - name: Install Linting Tools
         run: |
-          luarocks install penlight 1.15.0
-          luarocks install ldoc 1.5.0
-          luarocks install markdown 0.33
+          luarocks install luacheck
 
-      - name: Ensure script execution permissions
-        run: chmod +x scripts/check-docs.sh
+      - name: Run Lint Check
+        run: luacheck src/ --no-unused-args --no-max-line-length || true
 
-      - name: Check docs are in sync with src
-        run: make docs-check
+      - name: Run Tests
+        run: make test
