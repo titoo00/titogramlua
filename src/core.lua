@@ -1,3 +1,3 @@
--- Compatibility shim: require('telegram-bot-lua.core') now forwards to require('telegram-bot-lua')
-io.stderr:write('[telegram-bot-lua] DEPRECATED: require("telegram-bot-lua.core") is deprecated, use require("telegram-bot-lua") instead\n')
-return require('telegram-bot-lua')
+-- Compatibility shim: require('titogramlua.core') now forwards to require('titogramlua')
+io.stderr:write('[titogramlua] DEPRECATED: require("titogramlua.core") is deprecated, use require("titogramlua") instead\n')
+return require('titogramlua')

@@ -1,7 +1,7 @@
 --- database adapter supporting SQLite and PostgreSQL.
--- @module telegram-bot-lua.adapters.db
+-- @module titogramlua.adapters.db
 --[[
-    Database adapter for telegram-bot-lua.
+    Database adapter for titogramlua.
     Supports SQLite (via lsqlite3) and PostgreSQL (via pgmoon).
     Note: the SQLite driver (lsqlite3) is synchronous and blocking; it does not
     yield inside copas. PostgreSQL (via pgmoon) uses a copas-wrapped socket and

@@ -1,5 +1,5 @@
 --- helper methods for common telegram bot operations.
--- @module telegram-bot-lua.helpers
+-- @module titogramlua.helpers
 return function(api)
 
     --- get the permissions of a chat member as a normalised table.

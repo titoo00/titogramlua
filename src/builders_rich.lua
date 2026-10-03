@@ -1,7 +1,7 @@
 --- rich message builders (Bot API 10.1).
 -- helpers for InputRichMessage payloads (sent) and the RichText / RichBlock
 -- structures received in message.rich_message. each returns a plain table.
--- @module telegram-bot-lua.builders_rich
+-- @module titogramlua.builders_rich
 return function(api)
 
     -- input types (sent) ---------------------------------------------------

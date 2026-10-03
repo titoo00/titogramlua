@@ -20,8 +20,8 @@ local socket = require('socket')
 local ltn12 = require('ltn12')
 local json = require('dkjson')
 local utf8 = utf8 or require('lua-utf8')
-local b64url = require('telegram-bot-lua.b64url')
-local poly = require('telegram-bot-lua.polyfill')
+local b64url = require('titogramlua.b64url')
+local poly = require('titogramlua.polyfill')
 local band, lshift, rshift = poly.band, poly.lshift, poly.rshift
 local sunpack = poly.string_unpack
 
@@ -190,7 +190,7 @@ end
 -- @param id number the user or chat ID
 -- @return string|boolean the HTML-formatted name, or false on failure
 function tools.get_linked_name(id)
-    local api = require('telegram-bot-lua')
+    local api = require('titogramlua')
     local success = api.get_chat(id)
     if not success or not success.result then
         return false

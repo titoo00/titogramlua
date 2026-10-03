@@ -1,6 +1,6 @@
 # Adapters
 
-telegram-bot-lua v3.0 includes built-in adapters for databases, Redis, LLMs, and email. All adapters are async-first: they automatically use non-blocking I/O when running inside the copas event loop (the default for `api.run()`), and fall back to synchronous I/O when called outside it.
+titogramlua v3.0 includes built-in adapters for databases, Redis, LLMs, and email. All adapters are async-first: they automatically use non-blocking I/O when running inside the copas event loop (the default for `api.run()`), and fall back to synchronous I/O when called outside it.
 
 ## Database (`api.db`)
 
@@ -281,7 +281,7 @@ end
 ### Example: AI-powered Bot
 
 ```lua
-local api = require('telegram-bot-lua').configure(os.getenv('BOT_TOKEN'))
+local api = require('titogramlua').configure(os.getenv('BOT_TOKEN'))
 
 local llm = api.llm.new({
     provider = 'anthropic',

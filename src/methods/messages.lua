@@ -1,9 +1,9 @@
 --- messages API methods.
--- @module telegram-bot-lua.methods.messages
+-- @module titogramlua.methods.messages
 return function(api)
     local json = require('dkjson')
     local function json_enc(v) return type(v) == 'table' and json.encode(v) or v end
-    local config = require('telegram-bot-lua.config')
+    local config = require('titogramlua.config')
 
     --- send a text message to a chat.
     -- @param chat_id number|string unique identifier for the target chat or username of the target channel

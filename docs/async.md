@@ -1,13 +1,13 @@
 # Async / Concurrency
 
-telegram-bot-lua v3.0 is async-first. The framework uses coroutine-based concurrency powered by [copas](https://github.com/lunarmodules/copas), enabling non-blocking update processing, parallel API calls, and background tasks out of the box.
+titogramlua v3.0 is async-first. The framework uses coroutine-based concurrency powered by [copas](https://github.com/lunarmodules/copas), enabling non-blocking update processing, parallel API calls, and background tasks out of the box.
 
 ## Async by Default
 
 `api.run()` uses async concurrency by default. Each update is dispatched in its own coroutine, so a slow handler won't block others. All API calls automatically use non-blocking HTTP.
 
 ```lua
-local api = require('telegram-bot-lua').configure('YOUR_BOT_TOKEN')
+local api = require('titogramlua').configure('YOUR_BOT_TOKEN')
 
 function api.on_message(message)
     -- This runs in its own coroutine per update.

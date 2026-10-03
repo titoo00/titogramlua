@@ -1,5 +1,5 @@
 local api = require('spec.test_helper')
-local tools = require('telegram-bot-lua.tools')
+local tools = require('titogramlua.tools')
 
 describe('tools', function()
     describe('comma_value', function()

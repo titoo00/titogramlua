@@ -1,8 +1,8 @@
 --- stories API methods.
--- @module telegram-bot-lua.methods.stories
+-- @module titogramlua.methods.stories
 return function(api)
     local json = require('dkjson')
-    local config = require('telegram-bot-lua.config')
+    local config = require('titogramlua.config')
 
     --- repost a story to a chat.
     -- @param chat_id string|number unique identifier for the target chat

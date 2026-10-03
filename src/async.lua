@@ -1,7 +1,7 @@
 --- async polling and concurrency via copas.
--- @module telegram-bot-lua.async
+-- @module titogramlua.async
 --[[
-    Async module for telegram-bot-lua.
+    Async module for titogramlua.
     Provides coroutine-based concurrency via copas for non-blocking
     API requests, concurrent update processing, and parallel operations.
 

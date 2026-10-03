@@ -1,9 +1,9 @@
 --- payments API methods.
--- @module telegram-bot-lua.methods.payments
+-- @module titogramlua.methods.payments
 return function(api)
     local json = require('dkjson')
     local function json_enc(v) return type(v) == 'table' and json.encode(v) or v end
-    local config = require('telegram-bot-lua.config')
+    local config = require('titogramlua.config')
 
     --- send an invoice to a chat.
     -- @param chat_id string|number unique identifier for the target chat

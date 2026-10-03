@@ -10,13 +10,13 @@ v3 includes a compatibility layer that handles the most common v2 patterns autom
 
 ```lua
 -- v2
-local api = require('telegram-bot-lua.core').configure('TOKEN')
+local api = require('titogramlua.core').configure('TOKEN')
 
 -- v3
-local api = require('telegram-bot-lua').configure('TOKEN')
+local api = require('titogramlua').configure('TOKEN')
 ```
 
-`require('telegram-bot-lua.core')` still works but prints a deprecation warning.
+`require('titogramlua.core')` still works but prints a deprecation warning.
 
 ### 2. Options table pattern
 

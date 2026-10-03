@@ -1,21 +1,21 @@
-# telegram-bot-lua
+# titogramlua
 
 [![audited by auto-audit](https://img.shields.io/badge/audited_by-auto--audit-6366f1?logo=github&logoColor=white)](https://auto-audit.hesketh.pro)
 
-A feature-filled Telegram bot API library written in Lua, created by [Matt](https://t.me/wrxck). Supports Bot API 10.1 with full coverage of all available methods.
+A feature-filled Telegram bot API library written in Lua, created by [Matt](https://t.me/titoo00). Supports Bot API 10.1 with full coverage of all available methods.
 
 ## Installation
 
 Requires Lua 5.1+ and LuaRocks:
 
 ```
-luarocks install telegram-bot-lua
+luarocks install titogramlua
 ```
 
 ## Quick Start
 
 ```lua
-local api = require('telegram-bot-lua').configure('YOUR_BOT_TOKEN')
+local api = require('titogramlua').configure('YOUR_BOT_TOKEN')
 
 function api.on_message(message)
     if message.text then
@@ -62,7 +62,7 @@ api.run({ timeout = 60 })
 ## Example
 
 ```lua
-local api = require('telegram-bot-lua').configure(os.getenv('BOT_TOKEN'))
+local api = require('titogramlua').configure(os.getenv('BOT_TOKEN'))
 
 -- Connect adapters
 local db = api.db.connect({ driver = 'sqlite', path = 'bot.db' })
@@ -158,7 +158,7 @@ v3 includes a compatibility layer that lets most v2 code run with deprecation wa
 ### 1. Update
 
 ```
-luarocks install telegram-bot-lua
+luarocks install titogramlua
 ```
 
 LuaRocks handles dependency changes automatically (`lpeg` and `html-entities` removed, `copas` added).
@@ -167,13 +167,13 @@ LuaRocks handles dependency changes automatically (`lpeg` and `html-entities` re
 
 ```lua
 -- v2
-local api = require('telegram-bot-lua.core').configure('TOKEN')
+local api = require('titogramlua.core').configure('TOKEN')
 
 -- v3
-local api = require('telegram-bot-lua').configure('TOKEN')
+local api = require('titogramlua').configure('TOKEN')
 ```
 
-The old `require('telegram-bot-lua.core')` still works but prints a deprecation warning.
+The old `require('titogramlua.core')` still works but prints a deprecation warning.
 
 ### 3. Update method calls (optional but recommended)
 

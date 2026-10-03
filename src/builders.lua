@@ -1,5 +1,5 @@
 --- keyboard and inline markup builders.
--- @module telegram-bot-lua.builders
+-- @module titogramlua.builders
 return function(api)
     local json = require('dkjson')
 

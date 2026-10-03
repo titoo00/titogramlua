@@ -17,7 +17,7 @@
       Compatible with Lua 5.1+ via polyfill.
 ]] local b64url = {}
 
-local poly = require('telegram-bot-lua.polyfill')
+local poly = require('titogramlua.polyfill')
 local band, bor, lshift, rshift = poly.band, poly.bor, poly.lshift, poly.rshift
 local tunpack = poly.table_unpack
 

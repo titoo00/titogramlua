@@ -1,7 +1,7 @@
 --- Redis client adapter using raw RESP protocol.
--- @module telegram-bot-lua.adapters.redis
+-- @module titogramlua.adapters.redis
 --[[
-    Redis adapter for telegram-bot-lua.
+    Redis adapter for titogramlua.
     Implements a lightweight Redis client using raw socket commands.
     Async-first: uses copas-wrapped sockets inside copas, plain luasocket otherwise.
 

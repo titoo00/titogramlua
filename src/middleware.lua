@@ -1,5 +1,5 @@
 --- middleware system for intercepting and processing updates.
--- @module telegram-bot-lua.middleware
+-- @module titogramlua.middleware
 return function(api)
 
     api._middleware = {}

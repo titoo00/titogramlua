@@ -1,8 +1,8 @@
 --- bot API methods.
--- @module telegram-bot-lua.methods.bot
+-- @module titogramlua.methods.bot
 return function(api)
     local json = require('dkjson')
-    local config = require('telegram-bot-lua.config')
+    local config = require('titogramlua.config')
 
     --- get basic info about a file and prepare it for downloading.
     -- @param file_id string file identifier to get info about

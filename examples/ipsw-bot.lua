@@ -1,7 +1,7 @@
 local ipsw = {} -- todo: update api to v4
 
-local api = require('telegram-bot-lua').configure('') -- Insert your token here.
-local tools = require('telegram-bot-lua.tools')
+local api = require('titogramlua').configure('') -- Insert your token here.
+local tools = require('titogramlua.tools')
 local https = require('ssl.https')
 local url = require('socket.url')
 local json = require('dkjson')
@@ -137,7 +137,7 @@ function api.on_callback_query(callback_query)
     local message = callback_query.message
     if callback_query.data == 'back' then
         return api.edit_message_text(message.chat.id, message.message_id,
-            'This tool was created by @wrxck, and makes use of the IPSW.me API.\nBefore we begin, please select your device type:', {
+            'This tool was created by @titoo00, and makes use of the IPSW.me API.\nBefore we begin, please select your device type:', {
             reply_markup = api.inline_keyboard():row(
                 api.row():callback_data_button('iPod Touch', 'device:iPod'):callback_data_button('iPhone',
                     'device:iPhone'):callback_data_button('iPad', 'device:iPad')):row(api.row():callback_data_button(
@@ -177,7 +177,7 @@ end
 function api.on_message(message)
     ipsw.init()
     return api.send_message(message.chat.id,
-        'This tool was created by @wrxck, and makes use of the IPSW.me API.\nBefore we begin, please select your device type:', {
+        'This tool was created by @titoo00, and makes use of the IPSW.me API.\nBefore we begin, please select your device type:', {
         parse_mode = 'html',
         reply_markup = api.inline_keyboard():row(
             api.row():callback_data_button('iPod Touch', 'device:iPod'):callback_data_button('iPhone', 'device:iPhone')

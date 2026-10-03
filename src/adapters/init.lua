@@ -1,7 +1,7 @@
 --- adapter registry for database, Redis, LLM, and email adapters.
--- @module telegram-bot-lua.adapters
+-- @module titogramlua.adapters
 --[[
-    Adapter registry for telegram-bot-lua.
+    Adapter registry for titogramlua.
     Provides a unified interface for database, Redis, LLM, and email adapters.
     All adapters are async-first: they use non-blocking I/O when running
     inside a copas context and fall back to synchronous I/O otherwise.
@@ -86,8 +86,8 @@ return function(api)
     end
 
     -- Load adapter modules
-    require('telegram-bot-lua.adapters.db')(api)
-    require('telegram-bot-lua.adapters.redis')(api)
-    require('telegram-bot-lua.adapters.llm')(api)
-    require('telegram-bot-lua.adapters.email')(api)
+    require('titogramlua.adapters.db')(api)
+    require('titogramlua.adapters.redis')(api)
+    require('titogramlua.adapters.llm')(api)
+    require('titogramlua.adapters.email')(api)
 end

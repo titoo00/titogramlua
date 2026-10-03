@@ -1,8 +1,8 @@
 --- gifts API methods.
--- @module telegram-bot-lua.methods.gifts
+-- @module titogramlua.methods.gifts
 return function(api)
     local json = require('dkjson')
-    local config = require('telegram-bot-lua.config')
+    local config = require('titogramlua.config')
 
     --- get the list of gifts received by a user.
     -- @param user_id number unique identifier of the target user

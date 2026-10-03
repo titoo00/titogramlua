@@ -1,8 +1,8 @@
 --- games API methods.
--- @module telegram-bot-lua.methods.games
+-- @module titogramlua.methods.games
 return function(api)
     local json = require('dkjson')
-    local config = require('telegram-bot-lua.config')
+    local config = require('titogramlua.config')
 
     --- send a game to a chat.
     -- @param chat_id number unique identifier for the target chat

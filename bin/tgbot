@@ -1,6 +1,6 @@
 #!/usr/bin/env lua
 
--- telegram-bot-lua CLI tool
+-- titogramlua CLI tool
 -- Usage: tgbot <command> [args...]
 -- Requires BOT_TOKEN environment variable.
 
@@ -64,7 +64,7 @@ local function init_api()
         io.stderr:write('Error: BOT_TOKEN environment variable is required\n')
         os.exit(1)
     end
-    local api = require('telegram-bot-lua')
+    local api = require('titogramlua')
     api.configure(token)
     return api
 end

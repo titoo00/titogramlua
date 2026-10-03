@@ -1,7 +1,7 @@
 --- email (SMTP) adapter for sending mail via luasocket.
--- @module telegram-bot-lua.adapters.email
+-- @module titogramlua.adapters.email
 --[[
-    Email (SMTP) adapter for telegram-bot-lua.
+    Email (SMTP) adapter for titogramlua.
     Sends email via SMTP using luasocket's smtp module.
     Async-first: uses copas when available for non-blocking sends.
 

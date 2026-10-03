@@ -66,7 +66,7 @@ describe('mcp', function()
 
             assert.equals(1, response.id)
             assert.equals('2024-11-05', response.result.protocolVersion)
-            assert.equals('telegram-bot-lua', response.result.serverInfo.name)
+            assert.equals('titogramlua', response.result.serverInfo.name)
             assert.is_table(response.result.capabilities.tools)
             assert.is_table(response.result.capabilities.resources)
         end)

@@ -1,8 +1,8 @@
 --- updates API methods.
--- @module telegram-bot-lua.methods.updates
+-- @module titogramlua.methods.updates
 return function(api)
     local json = require('dkjson')
-    local config = require('telegram-bot-lua.config')
+    local config = require('titogramlua.config')
 
     --- receive incoming updates using long polling.
     -- @param opts table optional parameters (timeout, offset, limit, allowed_updates, use_beta_endpoint)

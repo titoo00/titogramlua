@@ -1,9 +1,9 @@
 --- stickers API methods.
--- @module telegram-bot-lua.methods.stickers
+-- @module titogramlua.methods.stickers
 return function(api)
     local json = require('dkjson')
     local function json_enc(v) return type(v) == 'table' and json.encode(v) or v end
-    local config = require('telegram-bot-lua.config')
+    local config = require('titogramlua.config')
 
     --- send a static, animated, or video sticker.
     -- @param chat_id number|string unique identifier for the target chat or username of the target channel

@@ -1,7 +1,7 @@
 local api = require('spec.test_helper')
 
 describe('module structure', function()
-    describe('require("telegram-bot-lua")', function()
+    describe('require("titogramlua")', function()
         it('returns a table', function()
             assert.is_table(api)
         end)
@@ -24,58 +24,58 @@ describe('module structure', function()
         end)
     end)
 
-    describe('require("telegram-bot-lua.core") deprecated shim', function()
+    describe('require("titogramlua.core") deprecated shim', function()
         it('returns the same api table as the main module', function()
-            local core = require('telegram-bot-lua.core')
+            local core = require('titogramlua.core')
             assert.are.equal(api, core)
         end)
 
         it('is cached in package.loaded', function()
-            assert.is_not_nil(package.loaded['telegram-bot-lua.core'])
+            assert.is_not_nil(package.loaded['titogramlua.core'])
         end)
     end)
 
     describe('rockspec module map', function()
         local rockspec_modules = {
-            ['telegram-bot-lua'] = 'src/main.lua',
-            ['telegram-bot-lua.config'] = 'src/config.lua',
-            ['telegram-bot-lua.log'] = 'src/log.lua',
-            ['telegram-bot-lua.handlers'] = 'src/handlers.lua',
-            ['telegram-bot-lua.builders'] = 'src/builders.lua',
-            ['telegram-bot-lua.builders_rich'] = 'src/builders_rich.lua',
-            ['telegram-bot-lua.helpers'] = 'src/helpers.lua',
-            ['telegram-bot-lua.session'] = 'src/session.lua',
-            ['telegram-bot-lua.framework'] = 'src/framework.lua',
-            ['telegram-bot-lua.tools'] = 'src/tools.lua',
-            ['telegram-bot-lua.utils'] = 'src/utils.lua',
-            ['telegram-bot-lua.compat'] = 'src/compat.lua',
-            ['telegram-bot-lua.core'] = 'src/core.lua',
-            ['telegram-bot-lua.polyfill'] = 'src/polyfill.lua',
-            ['telegram-bot-lua.async'] = 'src/async.lua',
-            ['telegram-bot-lua.webhook'] = 'src/webhook.lua',
-            ['telegram-bot-lua.b64url'] = 'src/b64url.lua',
-            ['telegram-bot-lua.methods.updates'] = 'src/methods/updates.lua',
-            ['telegram-bot-lua.methods.messages'] = 'src/methods/messages.lua',
-            ['telegram-bot-lua.methods.chat'] = 'src/methods/chat.lua',
-            ['telegram-bot-lua.methods.members'] = 'src/methods/members.lua',
-            ['telegram-bot-lua.methods.forum'] = 'src/methods/forum.lua',
-            ['telegram-bot-lua.methods.stickers'] = 'src/methods/stickers.lua',
-            ['telegram-bot-lua.methods.inline'] = 'src/methods/inline.lua',
-            ['telegram-bot-lua.methods.payments'] = 'src/methods/payments.lua',
-            ['telegram-bot-lua.methods.games'] = 'src/methods/games.lua',
-            ['telegram-bot-lua.methods.passport'] = 'src/methods/passport.lua',
-            ['telegram-bot-lua.methods.bot'] = 'src/methods/bot.lua',
-            ['telegram-bot-lua.methods.gifts'] = 'src/methods/gifts.lua',
-            ['telegram-bot-lua.methods.checklists'] = 'src/methods/checklists.lua',
-            ['telegram-bot-lua.methods.stories'] = 'src/methods/stories.lua',
-            ['telegram-bot-lua.methods.business'] = 'src/methods/business.lua',
-            ['telegram-bot-lua.methods.suggested_posts'] = 'src/methods/suggested_posts.lua',
-            ['telegram-bot-lua.methods.rich'] = 'src/methods/rich.lua',
-            ['telegram-bot-lua.adapters'] = 'src/adapters/init.lua',
-            ['telegram-bot-lua.adapters.db'] = 'src/adapters/db.lua',
-            ['telegram-bot-lua.adapters.redis'] = 'src/adapters/redis.lua',
-            ['telegram-bot-lua.adapters.llm'] = 'src/adapters/llm.lua',
-            ['telegram-bot-lua.adapters.email'] = 'src/adapters/email.lua',
+            ['titogramlua'] = 'src/main.lua',
+            ['titogramlua.config'] = 'src/config.lua',
+            ['titogramlua.log'] = 'src/log.lua',
+            ['titogramlua.handlers'] = 'src/handlers.lua',
+            ['titogramlua.builders'] = 'src/builders.lua',
+            ['titogramlua.builders_rich'] = 'src/builders_rich.lua',
+            ['titogramlua.helpers'] = 'src/helpers.lua',
+            ['titogramlua.session'] = 'src/session.lua',
+            ['titogramlua.framework'] = 'src/framework.lua',
+            ['titogramlua.tools'] = 'src/tools.lua',
+            ['titogramlua.utils'] = 'src/utils.lua',
+            ['titogramlua.compat'] = 'src/compat.lua',
+            ['titogramlua.core'] = 'src/core.lua',
+            ['titogramlua.polyfill'] = 'src/polyfill.lua',
+            ['titogramlua.async'] = 'src/async.lua',
+            ['titogramlua.webhook'] = 'src/webhook.lua',
+            ['titogramlua.b64url'] = 'src/b64url.lua',
+            ['titogramlua.methods.updates'] = 'src/methods/updates.lua',
+            ['titogramlua.methods.messages'] = 'src/methods/messages.lua',
+            ['titogramlua.methods.chat'] = 'src/methods/chat.lua',
+            ['titogramlua.methods.members'] = 'src/methods/members.lua',
+            ['titogramlua.methods.forum'] = 'src/methods/forum.lua',
+            ['titogramlua.methods.stickers'] = 'src/methods/stickers.lua',
+            ['titogramlua.methods.inline'] = 'src/methods/inline.lua',
+            ['titogramlua.methods.payments'] = 'src/methods/payments.lua',
+            ['titogramlua.methods.games'] = 'src/methods/games.lua',
+            ['titogramlua.methods.passport'] = 'src/methods/passport.lua',
+            ['titogramlua.methods.bot'] = 'src/methods/bot.lua',
+            ['titogramlua.methods.gifts'] = 'src/methods/gifts.lua',
+            ['titogramlua.methods.checklists'] = 'src/methods/checklists.lua',
+            ['titogramlua.methods.stories'] = 'src/methods/stories.lua',
+            ['titogramlua.methods.business'] = 'src/methods/business.lua',
+            ['titogramlua.methods.suggested_posts'] = 'src/methods/suggested_posts.lua',
+            ['titogramlua.methods.rich'] = 'src/methods/rich.lua',
+            ['titogramlua.adapters'] = 'src/adapters/init.lua',
+            ['titogramlua.adapters.db'] = 'src/adapters/db.lua',
+            ['titogramlua.adapters.redis'] = 'src/adapters/redis.lua',
+            ['titogramlua.adapters.llm'] = 'src/adapters/llm.lua',
+            ['titogramlua.adapters.email'] = 'src/adapters/email.lua',
         }
 
         for mod_name, file_path in pairs(rockspec_modules) do

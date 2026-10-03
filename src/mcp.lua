@@ -1,5 +1,5 @@
 --- MCP (model context protocol) JSON-RPC server for telegram bot tools.
--- @module telegram-bot-lua.mcp
+-- @module titogramlua.mcp
 return function(api)
     local json = require('dkjson')
 
@@ -487,7 +487,7 @@ return function(api)
                     resources = {}
                 },
                 serverInfo = {
-                    name = 'telegram-bot-lua',
+                    name = 'titogramlua',
                     version = api.version or 'unknown'
                 }
             })

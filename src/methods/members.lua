@@ -1,8 +1,8 @@
 --- members API methods.
--- @module telegram-bot-lua.methods.members
+-- @module titogramlua.methods.members
 return function(api)
     local json = require('dkjson')
-    local config = require('telegram-bot-lua.config')
+    local config = require('titogramlua.config')
 
     --- ban a user from a chat.
     -- @param chat_id number|string unique identifier for the target chat or username of the target supergroup/channel

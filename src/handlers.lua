@@ -1,5 +1,5 @@
 --- update handler stubs and dispatch logic.
--- @module telegram-bot-lua.handlers
+-- @module titogramlua.handlers
 return function(api)
 
     --- @section update handler stubs

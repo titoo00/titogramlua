@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # regenerate the ldoc api docs into a scratch dir and fail if they differ from
-# the committed docs/ tree. the public site (telegram-bot-lua.hesketh.pro) is an
+# the committed docs/ tree. the public site (titogramlua.hesketh.pro) is an
 # nginx vhost whose root is this repo's docs/ directory, so committed docs ARE
 # the live site -- this guard stops src/ and the published docs drifting apart.
 #

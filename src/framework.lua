@@ -1,7 +1,7 @@
 --- framework layer: rich context, command router, and conversations.
 -- all additive and opt-in: if no command/hears/conversation is registered the
 -- dispatch path is unchanged and existing on_* handlers run as before.
--- @module telegram-bot-lua.framework
+-- @module titogramlua.framework
 return function(api)
 
     -- update field carrying the payload, in priority order.

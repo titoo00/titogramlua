@@ -5,7 +5,7 @@
 Requires Lua 5.1+ and LuaRocks:
 
 ```
-luarocks install telegram-bot-lua
+luarocks install titogramlua
 ```
 
 Optional adapter dependencies:
@@ -18,7 +18,7 @@ luarocks install pgmoon      # PostgreSQL database adapter
 ## Quick Start
 
 ```lua
-local api = require('telegram-bot-lua').configure('YOUR_BOT_TOKEN')
+local api = require('titogramlua').configure('YOUR_BOT_TOKEN')
 
 function api.on_message(message)
     if message.text then
@@ -35,10 +35,10 @@ api.run({ timeout = 60 })
 
 ```lua
 -- Basic configuration
-local api = require('telegram-bot-lua').configure('YOUR_BOT_TOKEN')
+local api = require('titogramlua').configure('YOUR_BOT_TOKEN')
 
 -- With debug logging
-local api = require('telegram-bot-lua').configure('YOUR_BOT_TOKEN', true)
+local api = require('titogramlua').configure('YOUR_BOT_TOKEN', true)
 
 -- Run with options (async by default)
 api.run({

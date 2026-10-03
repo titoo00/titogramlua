@@ -1,7 +1,7 @@
 --- forum API methods.
--- @module telegram-bot-lua.methods.forum
+-- @module titogramlua.methods.forum
 return function(api)
-    local config = require('telegram-bot-lua.config')
+    local config = require('titogramlua.config')
 
     --- get custom emoji stickers which can be used as a forum topic icon.
     -- @return table,number the response object and HTTP status

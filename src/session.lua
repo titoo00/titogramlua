@@ -1,7 +1,7 @@
 --- per-chat/user session store with pluggable backends.
 -- the default backend is in-memory; api.session.use(backend) swaps it for a
 -- redis- or db-backed one (a table with get/set/clear(self, key) methods).
--- @module telegram-bot-lua.session
+-- @module titogramlua.session
 return function(api)
     api.session = {}
 

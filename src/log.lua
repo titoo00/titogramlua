@@ -2,7 +2,7 @@
 -- api.log.{debug,info,warn,error} emit through a configurable sink with level
 -- filtering; api.metrics holds simple named counters. both are opt-in to
 -- configure and have sensible defaults (level 'info', sink = print).
--- @module telegram-bot-lua.log
+-- @module titogramlua.log
 return function(api)
     api.log = {}
 

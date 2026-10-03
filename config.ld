@@ -1,5 +1,5 @@
-project = 'telegram-bot-lua'
-title = 'telegram-bot-lua API Documentation'
+project = 'titogramlua'
+title = 'titogramlua API Documentation'
 description = 'A feature-filled Telegram Bot API library for Lua'
 format = 'markdown'
 dir = 'docs'

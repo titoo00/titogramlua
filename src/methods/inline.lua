@@ -1,8 +1,8 @@
 --- inline API methods.
--- @module telegram-bot-lua.methods.inline
+-- @module titogramlua.methods.inline
 return function(api)
     local json = require('dkjson')
-    local config = require('telegram-bot-lua.config')
+    local config = require('titogramlua.config')
 
     --- send answers to an inline query.
     -- @param inline_query_id string unique identifier for the answered query

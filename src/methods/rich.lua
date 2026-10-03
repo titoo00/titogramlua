@@ -1,8 +1,8 @@
 --- rich message API methods (Bot API 10.1).
--- @module telegram-bot-lua.methods.rich
+-- @module titogramlua.methods.rich
 return function(api)
     local json = require('dkjson')
-    local config = require('telegram-bot-lua.config')
+    local config = require('titogramlua.config')
 
     --- send a rich formatted message to a chat.
     -- a rich message is described with HTML or markdown via an InputRichMessage object;

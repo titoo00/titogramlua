@@ -1,7 +1,7 @@
 --- LLM adapter for OpenAI and Anthropic APIs.
--- @module telegram-bot-lua.adapters.llm
+-- @module titogramlua.adapters.llm
 --[[
-    LLM adapter for telegram-bot-lua.
+    LLM adapter for titogramlua.
     Provides a unified interface for OpenAI and Anthropic APIs.
     Async-first: uses non-blocking HTTP inside copas, sync fallback otherwise.
 

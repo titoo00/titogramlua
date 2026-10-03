@@ -15,12 +15,12 @@
 
 ]]
 
---- telegram-bot-lua - a feature-filled telegram bot API library.
+--- titogramlua - a feature-filled telegram bot API library.
 -- supports bot API 10.1 with full method coverage, a command router, sessions
 -- and conversations, a webhook receiver, flood-control retries, middleware,
 -- async polling, structured logging, an MCP server, adapters, and
 -- backward-compatible v2 shims.
--- @module telegram-bot-lua
+-- @module titogramlua
 -- @author Matthew Hesketh
 -- @license GPL-3
 -- @copyright 2017-2026
@@ -30,7 +30,7 @@ local https = require('ssl.https')
 local multipart = require('multipart-post')
 local ltn12 = require('ltn12')
 local json = require('dkjson')
-local config = require('telegram-bot-lua.config')
+local config = require('titogramlua.config')
 
 api.version = '3.7-0'
 
@@ -248,36 +248,36 @@ function api.close()
 end
 
 -- load all modules
-require('telegram-bot-lua.log')(api)
-require('telegram-bot-lua.middleware')(api)
-require('telegram-bot-lua.handlers')(api)
-require('telegram-bot-lua.builders')(api)
-require('telegram-bot-lua.builders_rich')(api)
-require('telegram-bot-lua.helpers')(api)
-require('telegram-bot-lua.session')(api)
-require('telegram-bot-lua.framework')(api)
-require('telegram-bot-lua.methods.updates')(api)
-require('telegram-bot-lua.methods.messages')(api)
-require('telegram-bot-lua.methods.chat')(api)
-require('telegram-bot-lua.methods.members')(api)
-require('telegram-bot-lua.methods.forum')(api)
-require('telegram-bot-lua.methods.stickers')(api)
-require('telegram-bot-lua.methods.inline')(api)
-require('telegram-bot-lua.methods.payments')(api)
-require('telegram-bot-lua.methods.games')(api)
-require('telegram-bot-lua.methods.passport')(api)
-require('telegram-bot-lua.methods.bot')(api)
-require('telegram-bot-lua.methods.gifts')(api)
-require('telegram-bot-lua.methods.checklists')(api)
-require('telegram-bot-lua.methods.stories')(api)
-require('telegram-bot-lua.methods.business')(api)
-require('telegram-bot-lua.methods.suggested_posts')(api)
-require('telegram-bot-lua.methods.rich')(api)
-require('telegram-bot-lua.utils')(api)
-require('telegram-bot-lua.mcp')(api)
-require('telegram-bot-lua.async')(api)
-require('telegram-bot-lua.webhook')(api)
-require('telegram-bot-lua.adapters')(api)
-require('telegram-bot-lua.compat')(api)
+require('titogramlua.log')(api)
+require('titogramlua.middleware')(api)
+require('titogramlua.handlers')(api)
+require('titogramlua.builders')(api)
+require('titogramlua.builders_rich')(api)
+require('titogramlua.helpers')(api)
+require('titogramlua.session')(api)
+require('titogramlua.framework')(api)
+require('titogramlua.methods.updates')(api)
+require('titogramlua.methods.messages')(api)
+require('titogramlua.methods.chat')(api)
+require('titogramlua.methods.members')(api)
+require('titogramlua.methods.forum')(api)
+require('titogramlua.methods.stickers')(api)
+require('titogramlua.methods.inline')(api)
+require('titogramlua.methods.payments')(api)
+require('titogramlua.methods.games')(api)
+require('titogramlua.methods.passport')(api)
+require('titogramlua.methods.bot')(api)
+require('titogramlua.methods.gifts')(api)
+require('titogramlua.methods.checklists')(api)
+require('titogramlua.methods.stories')(api)
+require('titogramlua.methods.business')(api)
+require('titogramlua.methods.suggested_posts')(api)
+require('titogramlua.methods.rich')(api)
+require('titogramlua.utils')(api)
+require('titogramlua.mcp')(api)
+require('titogramlua.async')(api)
+require('titogramlua.webhook')(api)
+require('titogramlua.adapters')(api)
+require('titogramlua.compat')(api)
 
 return api

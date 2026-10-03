@@ -83,7 +83,7 @@ For message updates, type-specific handlers are called first, then the general h
 ## Example
 
 ```lua
-local api = require('telegram-bot-lua').configure('TOKEN')
+local api = require('titogramlua').configure('TOKEN')
 
 -- Log all updates
 function api.on_update(update)

@@ -1,4 +1,4 @@
-local poly = require('telegram-bot-lua.polyfill')
+local poly = require('titogramlua.polyfill')
 
 describe('polyfill', function()
     describe('bit operations', function()
@@ -125,7 +125,7 @@ describe('polyfill', function()
 
     describe('b64url integration', function()
         it('encode/decode roundtrips with polyfill', function()
-            local b64url = require('telegram-bot-lua.b64url')
+            local b64url = require('titogramlua.b64url')
             local input = 'Hello, World!'
             local encoded = b64url.encode(input)
             assert.is_string(encoded)
@@ -134,30 +134,30 @@ describe('polyfill', function()
         end)
 
         it('handles empty string', function()
-            local b64url = require('telegram-bot-lua.b64url')
+            local b64url = require('titogramlua.b64url')
             assert.equals('', b64url.encode(''))
         end)
 
         it('handles single byte', function()
-            local b64url = require('telegram-bot-lua.b64url')
+            local b64url = require('titogramlua.b64url')
             local input = 'A'
             assert.equals(input, b64url.decode(b64url.encode(input)))
         end)
 
         it('handles two bytes', function()
-            local b64url = require('telegram-bot-lua.b64url')
+            local b64url = require('titogramlua.b64url')
             local input = 'AB'
             assert.equals(input, b64url.decode(b64url.encode(input)))
         end)
 
         it('handles binary data', function()
-            local b64url = require('telegram-bot-lua.b64url')
+            local b64url = require('titogramlua.b64url')
             local input = string.char(0, 1, 2, 127, 128, 255)
             assert.equals(input, b64url.decode(b64url.encode(input)))
         end)
 
         it('handles long string', function()
-            local b64url = require('telegram-bot-lua.b64url')
+            local b64url = require('titogramlua.b64url')
             local input = string.rep('ABCDEFGHIJ', 100)
             assert.equals(input, b64url.decode(b64url.encode(input)))
         end)

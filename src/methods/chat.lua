@@ -1,8 +1,8 @@
 --- chat API methods.
--- @module telegram-bot-lua.methods.chat
+-- @module titogramlua.methods.chat
 return function(api)
     local json = require('dkjson')
-    local config = require('telegram-bot-lua.config')
+    local config = require('titogramlua.config')
 
     --- get up-to-date information about the chat.
     -- @param chat_id number|string unique identifier for the target chat or username of the target supergroup/channel

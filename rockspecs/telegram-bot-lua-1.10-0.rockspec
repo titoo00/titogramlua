@@ -1,9 +1,9 @@
-package = "telegram-bot-lua"
+package = "titogramlua"
 version = "1.10-0"
 
 source = {
-    url = "git://github.com/wrxck/telegram-bot-lua.git",
-    dir = "telegram-bot-lua",
+    url = "git://github.com/titoo00/titogramlua.git",
+    dir = "titogramlua",
     branch = "main"
 }
 
@@ -11,7 +11,7 @@ description = {
     summary = "A simple yet extensive Lua library for the Telegram bot API.",
     detailed = "A simple yet extensive Lua library for the Telegram bot API, with many tools and API-friendly functions.",
     license = "GPL-3",
-    homepage = "https://github.com/wrxck/telegram-bot-lua",
+    homepage = "https://github.com/titoo00/titogramlua",
     maintainer = "Matthew Hesketh <matthew@matthewhesketh.com>"
 }
 
@@ -35,9 +35,9 @@ dependencies = {
 build = {
     type = "builtin",
     modules = {
-        ["telegram-bot-lua.config"] = "src/config.lua",
-        ["telegram-bot-lua.core"] = "src/core.lua",
-        ["telegram-bot-lua.tools"] = "src/tools.lua",
-        ["telegram-bot-lua.b64url"] = "src/b64url.lua"
+        ["titogramlua.config"] = "src/config.lua",
+        ["titogramlua.core"] = "src/core.lua",
+        ["titogramlua.tools"] = "src/tools.lua",
+        ["titogramlua.b64url"] = "src/b64url.lua"
     }
 }

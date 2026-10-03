@@ -1,7 +1,7 @@
 --- utility functions for formatting, command parsing, and convenience helpers.
--- @module telegram-bot-lua.utils
+-- @module titogramlua.utils
 return function(api)
-    local tools = require('telegram-bot-lua.tools')
+    local tools = require('titogramlua.tools')
 
     -- text formatting helpers for different parse modes
 

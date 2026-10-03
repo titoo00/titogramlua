@@ -1,7 +1,7 @@
 --- suggested_posts API methods.
--- @module telegram-bot-lua.methods.suggested_posts
+-- @module titogramlua.methods.suggested_posts
 return function(api)
-    local config = require('telegram-bot-lua.config')
+    local config = require('titogramlua.config')
 
     --- approve a suggested post in a channel.
     -- @param suggested_post_id string unique identifier of the suggested post

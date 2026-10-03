@@ -1,8 +1,8 @@
 --- business account API methods.
--- @module telegram-bot-lua.methods.business
+-- @module titogramlua.methods.business
 return function(api)
     local json = require('dkjson')
-    local config = require('telegram-bot-lua.config')
+    local config = require('titogramlua.config')
 
     --- get information about the connection of the bot with a business account.
     -- @param business_connection_id string unique identifier of the business connection

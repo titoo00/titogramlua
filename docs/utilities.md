@@ -148,7 +148,7 @@ api.send_typing(chat_id)  -- Shorthand for api.send_chat_action(chat_id, 'typing
 The `tools` module provides low-level utility functions:
 
 ```lua
-local tools = require('telegram-bot-lua.tools')
+local tools = require('titogramlua.tools')
 ```
 
 ### Text Processing

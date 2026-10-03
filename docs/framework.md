@@ -11,7 +11,7 @@ Register handlers by command name. Handlers receive a [context](#context), not a
 raw message.
 
 ```lua
-local api = require('telegram-bot-lua').configure(os.getenv('BOT_TOKEN'))
+local api = require('titogramlua').configure(os.getenv('BOT_TOKEN'))
 
 api.command('start', function(ctx)
     ctx.reply('Welcome!')

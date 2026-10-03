@@ -3,7 +3,7 @@
 -- received via your own http server) and api.webhook.serve (a turnkey copas
 -- http server). both verify the x-telegram-bot-api-secret-token when a secret
 -- is configured.
--- @module telegram-bot-lua.webhook
+-- @module titogramlua.webhook
 return function(api)
     local json = require('dkjson')
     api.webhook = {}

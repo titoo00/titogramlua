@@ -1,14 +1,14 @@
 --- legacy compatibility layer for v2 to v3 migration.
--- @module telegram-bot-lua.compat
+-- @module titogramlua.compat
 -- Legacy compatibility layer for v2 -> v3 migration
 -- Provides deprecated method names, positional-arg wrappers, and
--- require('telegram-bot-lua.core') support so v2 code runs on v3.
+-- require('titogramlua.core') support so v2 code runs on v3.
 return function(api)
     local warned = {}
     local function deprecation_warning(old_name, new_name)
         if not warned[old_name] then
             io.stderr:write(string.format(
-                '[telegram-bot-lua] DEPRECATED: %s is deprecated, use %s instead\n',
+                '[titogramlua] DEPRECATED: %s is deprecated, use %s instead\n',
                 old_name, new_name
             ))
             warned[old_name] = true

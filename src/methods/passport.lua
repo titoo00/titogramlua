@@ -1,8 +1,8 @@
 --- passport API methods.
--- @module telegram-bot-lua.methods.passport
+-- @module titogramlua.methods.passport
 return function(api)
     local json = require('dkjson')
-    local config = require('telegram-bot-lua.config')
+    local config = require('titogramlua.config')
 
     --- inform a user that some of the telegram passport elements they provided contain errors.
     -- @param user_id number identifier of the user

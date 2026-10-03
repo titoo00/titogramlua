@@ -7,7 +7,7 @@
 --- polyfill module for lua 5.1+ compatibility.
 -- provides bit operations, table.unpack, and string.pack/unpack
 -- across lua 5.1, 5.2, 5.3, 5.4, and 5.5.
--- @module telegram-bot-lua.polyfill
+-- @module titogramlua.polyfill
 local polyfill = {}
 
 local lua_version = tonumber(_VERSION:match('(%d+%.%d+)'))
