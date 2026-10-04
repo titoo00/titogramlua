@@ -50,6 +50,7 @@
   <li><strong>titogramlua.builders</strong></li>
   <li><a href="../modules/titogramlua.builders_rich.html">titogramlua.builders_rich</a></li>
   <li><a href="../modules/titogramlua.compat.html">titogramlua.compat</a></li>
+  <li><a href="../modules/titogramlua.config.html">titogramlua.config</a></li>
   <li><a href="../modules/titogramlua.framework.html">titogramlua.framework</a></li>
   <li><a href="../modules/titogramlua.handlers.html">titogramlua.handlers</a></li>
   <li><a href="../modules/titogramlua.helpers.html">titogramlua.helpers</a></li>
@@ -110,7 +111,19 @@
 	<td class="summary">create a copy text button for an inline keyboard.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#api.inline_keyboard">api.inline_keyboard()</a></td>
+	<td class="name" nowrap><a href="#api.disable_inline_button">api.disable_inline_button(button)</a></td>
+	<td class="summary">return a copy of an inline keyboard button with its disabled field set.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.disabled_button">api.disabled_button()</a></td>
+	<td class="summary">represent the no-payload DisabledButton object for InlineKeyboardButton.disabled.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.ephemeral_message_parameters">api.ephemeral_message_parameters(receiver_user_id, opts)</a></td>
+	<td class="summary">parameters for sending an ephemeral message visible to one user in a group.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.inline_keyboard">api.inline_keyboard(force_reply)</a></td>
 	<td class="summary">create an inline keyboard markup with a chainable builder pattern.</td>
 	</tr>
 	<tr>
@@ -154,6 +167,10 @@
 	<td class="summary">create an input media video object for use with sendMediaGroup and editMessageMedia.</td>
 	</tr>
 	<tr>
+	<td class="name" nowrap><a href="#api.input_media_voice_note">api.input_media_voice_note(media, opts)</a></td>
+	<td class="summary">create an input voice note object for a rich message block.</td>
+	</tr>
+	<tr>
 	<td class="name" nowrap><a href="#api.input_paid_media_live_photo">api.input_paid_media_live_photo(media, photo)</a></td>
 	<td class="summary">create an input paid media live photo object (Bot API 10.0).</td>
 	</tr>
@@ -186,7 +203,7 @@
 	<td class="summary">create an input story content video object.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#api.keyboard">api.keyboard(resize_keyboard, one_time_keyboard, selective)</a></td>
+	<td class="name" nowrap><a href="#api.keyboard">api.keyboard(resize_keyboard, one_time_keyboard, selective, force_reply)</a></td>
 	<td class="summary">create a reply keyboard markup with a chainable builder pattern.</td>
 	</tr>
 	<tr>
@@ -397,13 +414,84 @@
 
 </dd>
     <dt>
+    <a name = "api.disable_inline_button"></a>
+    <strong>api.disable_inline_button(button)</strong>
+    </dt>
+    <dd>
+    return a copy of an inline keyboard button with its disabled field set.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">button</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.disabled_button"></a>
+    <strong>api.disabled_button()</strong>
+    </dt>
+    <dd>
+    represent the no-payload DisabledButton object for InlineKeyboardButton.disabled.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.ephemeral_message_parameters"></a>
+    <strong>api.ephemeral_message_parameters(receiver_user_id, opts)</strong>
+    </dt>
+    <dd>
+    parameters for sending an ephemeral message visible to one user in a group.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">receiver_user_id</span>
+
+
+
+        </li>
+        <li><span class="parameter">opts</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
     <a name = "api.inline_keyboard"></a>
-    <strong>api.inline_keyboard()</strong>
+    <strong>api.inline_keyboard(force_reply)</strong>
     </dt>
     <dd>
     create an inline keyboard markup with a chainable builder pattern.
 
 
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">force_reply</span>
+
+
+
+        </li>
+    </ul>
 
     <h3>Returns:</h3>
     <ol>
@@ -732,6 +820,29 @@
 
 </dd>
     <dt>
+    <a name = "api.input_media_voice_note"></a>
+    <strong>api.input_media_voice_note(media, opts)</strong>
+    </dt>
+    <dd>
+    create an input voice note object for a rich message block.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">media</span>
+         string file_id, URL, or attach reference
+        </li>
+        <li><span class="parameter">opts</span>
+         table optional caption, parse<em>mode, caption</em>entities, duration
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
     <a name = "api.input_paid_media_live_photo"></a>
     <strong>api.input_paid_media_live_photo(media, photo)</strong>
     </dt>
@@ -948,7 +1059,7 @@
 </dd>
     <dt>
     <a name = "api.keyboard"></a>
-    <strong>api.keyboard(resize_keyboard, one_time_keyboard, selective)</strong>
+    <strong>api.keyboard(resize_keyboard, one_time_keyboard, selective, force_reply)</strong>
     </dt>
     <dd>
     create a reply keyboard markup with a chainable builder pattern.
@@ -964,6 +1075,9 @@
         </li>
         <li><span class="parameter">selective</span>
          boolean optional show keyboard to specific users only
+        </li>
+        <li><span class="parameter">force_reply</span>
+         boolean optional request a reply interface (Bot API 10.3)
         </li>
     </ul>
 
@@ -1724,7 +1838,7 @@
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/lunarmodules/LDoc">LDoc 1.5.0</a></i>
-<i style="float:right;">Last updated 2026-10-03 12:01:50 </i>
+<i style="float:right;">Last updated 2026-10-04 09:45:22 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>

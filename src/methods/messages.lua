@@ -5,6 +5,32 @@ return function(api)
     local function json_enc(v) return type(v) == 'table' and json.encode(v) or v end
     local config = require('titogramlua.config')
 
+    local function input_media_payload(media)
+        if type(media) ~= 'table' then
+            return media, {}, {}
+        end
+        local encoded = {}
+        for k, v in pairs(media) do encoded[k] = v end
+        local files, opened = {}, {}
+        for _, field in ipairs({ 'media', 'thumbnail', 'cover' }) do
+            local value = encoded[field]
+            if type(value) == 'userdata' then
+                local name = 'edit_' .. field
+                files[name] = value
+                encoded[field] = 'attach://' .. name
+            elseif type(value) == 'string' and not value:match('^https?://') then
+                local handle = io.open(value, 'rb')
+                if handle then
+                    local name = 'edit_' .. field
+                    opened[#opened + 1] = handle
+                    files[name] = handle
+                    encoded[field] = 'attach://' .. name
+                end
+            end
+        end
+        return json.encode(encoded), files, opened
+    end
+
     --- send a text message to a chat.
     -- @param chat_id number|string unique identifier for the target chat or username of the target channel
     -- @param text string text of the message to be sent
@@ -32,6 +58,7 @@ return function(api)
         parse_mode = (type(parse_mode) == 'boolean' and parse_mode == true) and 'MarkdownV2' or parse_mode
         local success, res = api.request(config.endpoint .. api.token .. '/sendMessage', {
             ['chat_id'] = chat_id,
+            ['ephemeral_message_parameters'] = json_enc(opts.ephemeral_message_parameters),
             ['message_thread_id'] = opts.message_thread_id,
             ['direct_messages_topic_id'] = opts.direct_messages_topic_id,
             ['text'] = text,
@@ -227,6 +254,7 @@ return function(api)
         reply_markup = type(reply_markup) == 'table' and json.encode(reply_markup) or reply_markup
         local success, res = api.request(config.endpoint .. api.token .. '/sendPhoto', {
             ['chat_id'] = chat_id,
+            ['ephemeral_message_parameters'] = json_enc(opts.ephemeral_message_parameters),
             ['message_thread_id'] = opts.message_thread_id,
             ['direct_messages_topic_id'] = opts.direct_messages_topic_id,
             ['caption'] = opts.caption,
@@ -274,6 +302,7 @@ return function(api)
         local success, res = api.request(config.endpoint .. api.token .. '/sendLivePhoto', {
             ['business_connection_id'] = opts.business_connection_id,
             ['chat_id'] = chat_id,
+            ['ephemeral_message_parameters'] = json_enc(opts.ephemeral_message_parameters),
             ['message_thread_id'] = opts.message_thread_id,
             ['direct_messages_topic_id'] = opts.direct_messages_topic_id,
             ['caption'] = opts.caption,
@@ -319,6 +348,7 @@ return function(api)
         reply_markup = type(reply_markup) == 'table' and json.encode(reply_markup) or reply_markup
         local success, res = api.request(config.endpoint .. api.token .. '/sendAudio', {
             ['chat_id'] = chat_id,
+            ['ephemeral_message_parameters'] = json_enc(opts.ephemeral_message_parameters),
             ['message_thread_id'] = opts.message_thread_id,
             ['direct_messages_topic_id'] = opts.direct_messages_topic_id,
             ['caption'] = opts.caption,
@@ -364,6 +394,7 @@ return function(api)
         reply_markup = type(reply_markup) == 'table' and json.encode(reply_markup) or reply_markup
         local success, res = api.request(config.endpoint .. api.token .. '/sendDocument', {
             ['chat_id'] = chat_id,
+            ['ephemeral_message_parameters'] = json_enc(opts.ephemeral_message_parameters),
             ['message_thread_id'] = opts.message_thread_id,
             ['direct_messages_topic_id'] = opts.direct_messages_topic_id,
             ['caption'] = opts.caption,
@@ -410,6 +441,7 @@ return function(api)
         reply_markup = type(reply_markup) == 'table' and json.encode(reply_markup) or reply_markup
         local success, res = api.request(config.endpoint .. api.token .. '/sendVideo', {
             ['chat_id'] = chat_id,
+            ['ephemeral_message_parameters'] = json_enc(opts.ephemeral_message_parameters),
             ['message_thread_id'] = opts.message_thread_id,
             ['direct_messages_topic_id'] = opts.direct_messages_topic_id,
             ['duration'] = opts.duration,
@@ -459,6 +491,7 @@ return function(api)
         reply_markup = type(reply_markup) == 'table' and json.encode(reply_markup) or reply_markup
         local success, res = api.request(config.endpoint .. api.token .. '/sendAnimation', {
             ['chat_id'] = chat_id,
+            ['ephemeral_message_parameters'] = json_enc(opts.ephemeral_message_parameters),
             ['message_thread_id'] = opts.message_thread_id,
             ['direct_messages_topic_id'] = opts.direct_messages_topic_id,
             ['duration'] = opts.duration,
@@ -505,6 +538,7 @@ return function(api)
         reply_markup = type(reply_markup) == 'table' and json.encode(reply_markup) or reply_markup
         local success, res = api.request(config.endpoint .. api.token .. '/sendVoice', {
             ['chat_id'] = chat_id,
+            ['ephemeral_message_parameters'] = json_enc(opts.ephemeral_message_parameters),
             ['message_thread_id'] = opts.message_thread_id,
             ['direct_messages_topic_id'] = opts.direct_messages_topic_id,
             ['caption'] = opts.caption,
@@ -543,6 +577,7 @@ return function(api)
         reply_markup = type(reply_markup) == 'table' and json.encode(reply_markup) or reply_markup
         local success, res = api.request(config.endpoint .. api.token .. '/sendVideoNote', {
             ['chat_id'] = chat_id,
+            ['ephemeral_message_parameters'] = json_enc(opts.ephemeral_message_parameters),
             ['message_thread_id'] = opts.message_thread_id,
             ['direct_messages_topic_id'] = opts.direct_messages_topic_id,
             ['duration'] = opts.duration,
@@ -664,6 +699,7 @@ return function(api)
         reply_markup = type(reply_markup) == 'table' and json.encode(reply_markup) or reply_markup
         local success, res = api.request(config.endpoint .. api.token .. '/sendLocation', {
             ['chat_id'] = chat_id,
+            ['ephemeral_message_parameters'] = json_enc(opts.ephemeral_message_parameters),
             ['message_thread_id'] = opts.message_thread_id,
             ['direct_messages_topic_id'] = opts.direct_messages_topic_id,
             ['latitude'] = latitude,
@@ -705,6 +741,7 @@ return function(api)
         reply_markup = type(reply_markup) == 'table' and json.encode(reply_markup) or reply_markup
         local success, res = api.request(config.endpoint .. api.token .. '/sendVenue', {
             ['chat_id'] = chat_id,
+            ['ephemeral_message_parameters'] = json_enc(opts.ephemeral_message_parameters),
             ['message_thread_id'] = opts.message_thread_id,
             ['direct_messages_topic_id'] = opts.direct_messages_topic_id,
             ['latitude'] = latitude,
@@ -745,6 +782,7 @@ return function(api)
         reply_markup = type(reply_markup) == 'table' and json.encode(reply_markup) or reply_markup
         local success, res = api.request(config.endpoint .. api.token .. '/sendContact', {
             ['chat_id'] = chat_id,
+            ['ephemeral_message_parameters'] = json_enc(opts.ephemeral_message_parameters),
             ['message_thread_id'] = opts.message_thread_id,
             ['direct_messages_topic_id'] = opts.direct_messages_topic_id,
             ['phone_number'] = phone_number,
@@ -1038,7 +1076,9 @@ return function(api)
         opts = opts or {}
         local reply_markup = opts.reply_markup
         reply_markup = type(reply_markup) == 'table' and json.encode(reply_markup) or reply_markup
-        media = type(media) == 'table' and json.encode(media) or media
+        local files
+        local opened
+        media, files, opened = input_media_payload(media)
         local success, res = api.request(config.endpoint .. api.token .. '/editMessageMedia', {
             ['chat_id'] = chat_id,
             ['message_id'] = message_id,
@@ -1046,6 +1086,84 @@ return function(api)
             ['media'] = media,
             ['reply_markup'] = reply_markup,
             ['business_connection_id'] = opts.business_connection_id
+        }, next(files) and files or nil)
+        for _, f in ipairs(opened) do f:close() end
+        return success, res
+    end
+
+    --- edit the text or rich content of an ephemeral message.
+    function api.edit_ephemeral_message_text(chat_id, receiver_user_id, ephemeral_message_id, text, opts)
+        opts = opts or {}
+        local entities = json_enc(opts.entities)
+        local rich_message = json_enc(opts.rich_message)
+        local link_preview_options = json_enc(opts.link_preview_options)
+        local reply_markup = json_enc(opts.reply_markup)
+        local parse_mode = opts.parse_mode
+        parse_mode = (type(parse_mode) == 'boolean' and parse_mode == true) and 'MarkdownV2' or parse_mode
+        local success, res = api.request(config.endpoint .. api.token .. '/editEphemeralMessageText', {
+            ['chat_id'] = chat_id,
+            ['receiver_user_id'] = receiver_user_id,
+            ['ephemeral_message_id'] = ephemeral_message_id,
+            ['text'] = text,
+            ['parse_mode'] = parse_mode,
+            ['entities'] = entities,
+            ['rich_message'] = rich_message,
+            ['link_preview_options'] = link_preview_options,
+            ['reply_markup'] = reply_markup
+        })
+        return success, res
+    end
+
+    --- edit media in an ephemeral message; supports new file uploads.
+    function api.edit_ephemeral_message_media(chat_id, receiver_user_id, ephemeral_message_id, media, opts)
+        opts = opts or {}
+        local reply_markup = json_enc(opts.reply_markup)
+        local files, opened
+        media, files, opened = input_media_payload(media)
+        local success, res = api.request(config.endpoint .. api.token .. '/editEphemeralMessageMedia', {
+            ['chat_id'] = chat_id,
+            ['receiver_user_id'] = receiver_user_id,
+            ['ephemeral_message_id'] = ephemeral_message_id,
+            ['media'] = media,
+            ['reply_markup'] = reply_markup
+        }, next(files) and files or nil)
+        for _, f in ipairs(opened) do f:close() end
+        return success, res
+    end
+
+    --- edit the caption of an ephemeral message.
+    function api.edit_ephemeral_message_caption(chat_id, receiver_user_id, ephemeral_message_id, opts)
+        opts = opts or {}
+        local success, res = api.request(config.endpoint .. api.token .. '/editEphemeralMessageCaption', {
+            ['chat_id'] = chat_id,
+            ['receiver_user_id'] = receiver_user_id,
+            ['ephemeral_message_id'] = ephemeral_message_id,
+            ['caption'] = opts.caption,
+            ['parse_mode'] = opts.parse_mode,
+            ['caption_entities'] = json_enc(opts.caption_entities),
+            ['show_caption_above_media'] = opts.show_caption_above_media,
+            ['reply_markup'] = json_enc(opts.reply_markup)
+        })
+        return success, res
+    end
+
+    --- edit the reply markup of an ephemeral message.
+    function api.edit_ephemeral_message_reply_markup(chat_id, receiver_user_id, ephemeral_message_id, reply_markup)
+        local success, res = api.request(config.endpoint .. api.token .. '/editEphemeralMessageReplyMarkup', {
+            ['chat_id'] = chat_id,
+            ['receiver_user_id'] = receiver_user_id,
+            ['ephemeral_message_id'] = ephemeral_message_id,
+            ['reply_markup'] = json_enc(reply_markup)
+        })
+        return success, res
+    end
+
+    --- delete an ephemeral message.
+    function api.delete_ephemeral_message(chat_id, receiver_user_id, ephemeral_message_id)
+        local success, res = api.request(config.endpoint .. api.token .. '/deleteEphemeralMessage', {
+            ['chat_id'] = chat_id,
+            ['receiver_user_id'] = receiver_user_id,
+            ['ephemeral_message_id'] = ephemeral_message_id
         })
         return success, res
     end

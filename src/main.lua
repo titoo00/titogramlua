@@ -14,7 +14,7 @@
 ]]
 
 --- titogramlua - a feature-filled telegram bot API library.
--- supports bot API 10.1 with full method coverage, a command router, sessions
+-- supports bot API 10.3 with full method coverage, a command router, sessions
 -- and conversations, a webhook receiver, flood-control retries, middleware,
 -- async polling, structured logging, an MCP server, adapters, and
 -- backward-compatible v2 shims.

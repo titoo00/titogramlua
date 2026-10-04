@@ -1,4 +1,4 @@
---- rich message API methods (Bot API 10.1).
+--- rich message API methods (Bot API 10.3).
 -- @module titogramlua.methods.rich
 return function(api)
     local json = require('dkjson')
@@ -35,6 +35,7 @@ return function(api)
             ['chat_id'] = chat_id,
             ['message_thread_id'] = opts.message_thread_id,
             ['direct_messages_topic_id'] = opts.direct_messages_topic_id,
+            ['ephemeral_message_parameters'] = type(opts.ephemeral_message_parameters) == 'table' and json.encode(opts.ephemeral_message_parameters) or opts.ephemeral_message_parameters,
             ['rich_message'] = rich_message,
             ['disable_notification'] = opts.disable_notification,
             ['protect_content'] = opts.protect_content,
@@ -56,7 +57,7 @@ return function(api)
     function api.send_buttons(chat_id, text, buttons, opts)
         local rich_message = {
             blocks = {
-                { type = 'text', text = text },
+                { type = 'paragraph', text = text },
                 { type = 'buttons', align = 'center', buttons = buttons }
             }
         }
@@ -106,8 +107,33 @@ return function(api)
             ['chat_id'] = chat_id,
             ['message_thread_id'] = opts.message_thread_id,
             ['draft_id'] = draft_id,
-            ['rich_message'] = rich_message
+            ['rich_message'] = rich_message,
+            ['can_stop'] = opts.can_stop,
+            ['keep_on_stop'] = opts.keep_on_stop
         })
         return success, res
     end
+
+    --- stream a partial text message to a private chat as a draft.
+    -- @param chat_id number unique identifier for the target private chat
+    -- @param draft_id number unique, non-zero identifier of the draft
+    -- @param text string partial text; empty string displays a thinking placeholder
+    -- @param opts table optional parameters: message_thread_id, parse_mode, entities, can_stop, keep_on_stop
+    function api.send_message_draft(chat_id, draft_id, text, opts)
+        opts = opts or {}
+        local parse_mode = opts.parse_mode
+        parse_mode = (type(parse_mode) == 'boolean' and parse_mode == true) and 'MarkdownV2' or parse_mode
+        local success, res = api.request(config.endpoint .. api.token .. '/sendMessageDraft', {
+            ['chat_id'] = chat_id,
+            ['message_thread_id'] = opts.message_thread_id,
+            ['draft_id'] = draft_id,
+            ['text'] = text,
+            ['parse_mode'] = parse_mode,
+            ['entities'] = type(opts.entities) == 'table' and json.encode(opts.entities) or opts.entities,
+            ['can_stop'] = opts.can_stop,
+            ['keep_on_stop'] = opts.keep_on_stop
+        })
+        return success, res
+    end
+
 end

@@ -11,7 +11,8 @@ return function(api)
         'shipping_query', 'pre_checkout_query', 'poll', 'poll_answer',
         'message_reaction', 'message_reaction_count', 'my_chat_member',
         'chat_member', 'chat_join_request', 'business_message',
-        'edited_business_message', 'guest_message'
+        'edited_business_message', 'guest_message', 'subscription',
+        'stopped_message_generation'
     }
     local message_like = {
         message = true, edited_message = true, channel_post = true,

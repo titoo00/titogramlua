@@ -129,7 +129,10 @@ describe('send/forward/copy parameter extensions', function()
         end)
 
         it('send_media_group carries direct_messages_topic_id only', function()
-            api.send_media_group(123, { { type = 'photo', media = 'm' } }, dm_only)
+            api.send_media_group(123, {
+                { type = 'photo', media = 'm1' },
+                { type = 'photo', media = 'm2' }
+            }, dm_only)
             local req = api._last_request()
             assert.truthy(req.endpoint:find('/sendMediaGroup'))
             assert_topic(req)

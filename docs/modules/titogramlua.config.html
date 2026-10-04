@@ -31,10 +31,6 @@
   <li><a href="../index.html">Index</a></li>
 </ul>
 
-<h2>Contents</h2>
-<ul>
-<li><a href="#Functions">Functions</a></li>
-</ul>
 
 
 <h2>Modules</h2>
@@ -45,12 +41,12 @@
   <li><a href="../modules/titogramlua.adapters.db.html">titogramlua.adapters.db</a></li>
   <li><a href="../modules/titogramlua.adapters.email.html">titogramlua.adapters.email</a></li>
   <li><a href="../modules/titogramlua.adapters.llm.html">titogramlua.adapters.llm</a></li>
-  <li><strong>titogramlua.adapters.redis</strong></li>
+  <li><a href="../modules/titogramlua.adapters.redis.html">titogramlua.adapters.redis</a></li>
   <li><a href="../modules/titogramlua.async.html">titogramlua.async</a></li>
   <li><a href="../modules/titogramlua.builders.html">titogramlua.builders</a></li>
   <li><a href="../modules/titogramlua.builders_rich.html">titogramlua.builders_rich</a></li>
   <li><a href="../modules/titogramlua.compat.html">titogramlua.compat</a></li>
-  <li><a href="../modules/titogramlua.config.html">titogramlua.config</a></li>
+  <li><strong>titogramlua.config</strong></li>
   <li><a href="../modules/titogramlua.framework.html">titogramlua.framework</a></li>
   <li><a href="../modules/titogramlua.handlers.html">titogramlua.handlers</a></li>
   <li><a href="../modules/titogramlua.helpers.html">titogramlua.helpers</a></li>
@@ -89,67 +85,18 @@
 
 <div id="content">
 
-<h1>Module <code>titogramlua.adapters.redis</code></h1>
-<p>Redis client adapter using raw RESP protocol.</p>
-<p>[[</p>
+<h1>Module <code>titogramlua.config</code></h1>
+<p>default configuration values for the Telegram Bot API client.</p>
+<p>
+
+</p>
 
 
-<h2><a href="#Functions">Functions</a></h2>
-<table class="function_list">
-	<tr>
-	<td class="name" nowrap><a href="#api.redis.connect">api.redis.connect(opts)</a></td>
-	<td class="summary">connect to a Redis server.</td>
-	</tr>
-</table>
 
 <br/>
 <br/>
 
 
-    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
-
-    <dl class="function">
-    <dt>
-    <a name = "api.redis.connect"></a>
-    <strong>api.redis.connect(opts)</strong>
-    </dt>
-    <dd>
-    connect to a Redis server.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">opts</span> table connection options
-        <ul>
-        <li><span class="parameter">host</span>
-         string Redis host (default '127.0.0.1')
-        </li>
-        <li><span class="parameter">port</span>
-         number Redis port (default 6379)
-        </li>
-        <li><span class="parameter">password</span>
-         string authentication password
-        </li>
-        <li><span class="parameter">db</span>
-         number database number to select
-        </li>
-        <li><span class="parameter">timeout</span>
-         number connection timeout in seconds (default 5)
-        </li>
-        </li></ul>
-    </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-
-        table Redis connection object with command methods
-    </ol>
-
-
-
-
-</dd>
-</dl>
 
 
 </div> <!-- id="content" -->

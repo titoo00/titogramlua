@@ -19,20 +19,17 @@ return function(api)
     -- Renamed methods
     ---------------------------------------------------------------------------
 
-    -- v2: get_chat_members_count -> v3: get_chat_member_count
     function api.get_chat_members_count(chat_id)
         deprecation_warning('get_chat_members_count', 'get_chat_member_count')
         return api.get_chat_member_count(chat_id)
     end
 
-    -- v2: kick_chat_member -> v3: ban_chat_member
     function api.kick_chat_member(chat_id, user_id, until_date)
         deprecation_warning('kick_chat_member', 'ban_chat_member')
         return api.ban_chat_member(chat_id, user_id, { until_date = until_date })
     end
 
     ---------------------------------------------------------------------------
-    -- api.run() — v2: run(limit, timeout, offset, allowed_updates, use_beta_endpoint)
     ---------------------------------------------------------------------------
     local v3_run = api.run
     function api.run(opts_or_limit, ...)
@@ -51,7 +48,6 @@ return function(api)
     end
 
     ---------------------------------------------------------------------------
-    -- api.get_updates() — v2: get_updates(timeout, offset, limit, allowed_updates, use_beta_endpoint)
     ---------------------------------------------------------------------------
     local v3_get_updates = api.get_updates
     function api.get_updates(opts_or_timeout, ...)
@@ -70,7 +66,6 @@ return function(api)
     end
 
     ---------------------------------------------------------------------------
-    -- api.set_webhook() — v2: set_webhook(url, certificate, max_connections, allowed_updates)
     ---------------------------------------------------------------------------
     local v3_set_webhook = api.set_webhook
     function api.set_webhook(url, opts_or_cert, ...)
@@ -87,11 +82,6 @@ return function(api)
     end
 
     ---------------------------------------------------------------------------
-    -- api.send_message()
-    -- v2: send_message(chat_id, text, message_thread_id, parse_mode, entities,
-    --     link_preview_options, disable_notification, protect_content,
-    --     reply_parameters, reply_markup)
-    -- v3: send_message(chat_id, text, opts)
     ---------------------------------------------------------------------------
     local v3_send_message = api.send_message
     function api.send_message(chat_id, text, third, ...)
@@ -143,9 +133,6 @@ return function(api)
     end
 
     ---------------------------------------------------------------------------
-    -- api.answer_callback_query()
-    -- v2: answer_callback_query(id, text, show_alert, url, cache_time)
-    -- v3: answer_callback_query(id, opts)
     ---------------------------------------------------------------------------
     local v3_answer_callback_query = api.answer_callback_query
     function api.answer_callback_query(callback_query_id, opts_or_text, ...)
@@ -163,10 +150,6 @@ return function(api)
     end
 
     ---------------------------------------------------------------------------
-    -- api.edit_message_text()
-    -- v2: edit_message_text(chat_id, message_id, text, parse_mode,
-    --     disable_web_page_preview, reply_markup, inline_message_id)
-    -- v3: edit_message_text(chat_id, message_id, text, opts)
     ---------------------------------------------------------------------------
     local v3_edit_message_text = api.edit_message_text
     function api.edit_message_text(chat_id, message_id, text, opts_or_parse_mode, ...)
@@ -193,10 +176,6 @@ return function(api)
     -- Detection: if 3rd arg is not a table, it's v2 positional style.
     ---------------------------------------------------------------------------
 
-    -- api.send_photo()
-    -- v2: send_photo(chat_id, photo, message_thread_id, caption, parse_mode,
-    --     caption_entities, has_spoiler, disable_notification, protect_content,
-    --     reply_parameters, reply_markup)
     local v3_send_photo = api.send_photo
     function api.send_photo(chat_id, photo, third, ...)
         if type(third) ~= 'table' and (type(third) ~= 'nil' or select('#', ...) > 0) then
@@ -217,10 +196,6 @@ return function(api)
         return v3_send_photo(chat_id, photo, third)
     end
 
-    -- api.send_audio()
-    -- v2: send_audio(chat_id, audio, message_thread_id, caption, parse_mode,
-    --     caption_entities, duration, performer, title, thumbnail,
-    --     disable_notification, protect_content, reply_parameters, reply_markup)
     local v3_send_audio = api.send_audio
     function api.send_audio(chat_id, audio, third, ...)
         if type(third) ~= 'table' and (type(third) ~= 'nil' or select('#', ...) > 0) then
@@ -244,10 +219,6 @@ return function(api)
         return v3_send_audio(chat_id, audio, third)
     end
 
-    -- api.send_document()
-    -- v2: send_document(chat_id, document, message_thread_id, thumbnail, caption,
-    --     parse_mode, caption_entities, disable_content_type_detection,
-    --     disable_notification, protect_content, reply_parameters, reply_markup)
     local v3_send_document = api.send_document
     function api.send_document(chat_id, document, third, ...)
         if type(third) ~= 'table' and (type(third) ~= 'nil' or select('#', ...) > 0) then
@@ -269,10 +240,6 @@ return function(api)
         return v3_send_document(chat_id, document, third)
     end
 
-    -- api.send_video()
-    -- v2: send_video(chat_id, video, message_thread_id, duration, width, height,
-    --     caption, parse_mode, has_spoiler, supports_streaming,
-    --     disable_notification, protect_content, reply_parameters, reply_markup)
     local v3_send_video = api.send_video
     function api.send_video(chat_id, video, third, ...)
         if type(third) ~= 'table' and (type(third) ~= 'nil' or select('#', ...) > 0) then
@@ -296,10 +263,6 @@ return function(api)
         return v3_send_video(chat_id, video, third)
     end
 
-    -- api.send_voice()
-    -- v2: send_voice(chat_id, voice, message_thread_id, caption, parse_mode,
-    --     caption_entities, duration, disable_notification, protect_content,
-    --     reply_parameters, reply_markup)
     local v3_send_voice = api.send_voice
     function api.send_voice(chat_id, voice, third, ...)
         if type(third) ~= 'table' and (type(third) ~= 'nil' or select('#', ...) > 0) then
@@ -320,10 +283,6 @@ return function(api)
         return v3_send_voice(chat_id, voice, third)
     end
 
-    -- api.send_animation()
-    -- v2: send_animation(chat_id, animation, message_thread_id, duration, width,
-    --     height, thumbnail, caption, parse_mode, caption_entities, has_spoiler,
-    --     disable_notification, protect_content, reply_parameters, reply_markup)
     local v3_send_animation = api.send_animation
     function api.send_animation(chat_id, animation, third, ...)
         if type(third) ~= 'table' and (type(third) ~= 'nil' or select('#', ...) > 0) then
@@ -348,9 +307,6 @@ return function(api)
         return v3_send_animation(chat_id, animation, third)
     end
 
-    -- api.send_sticker()
-    -- v2: send_sticker(chat_id, sticker, message_thread_id, emoji,
-    --     disable_notification, protect_content, reply_parameters, reply_markup)
     local v3_send_sticker = api.send_sticker
     function api.send_sticker(chat_id, sticker, third, ...)
         if type(third) ~= 'table' and (type(third) ~= 'nil' or select('#', ...) > 0) then
