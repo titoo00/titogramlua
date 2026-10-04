@@ -4,7 +4,7 @@ return function(api)
     local json = require('dkjson')
     local config = require('titogramlua.config')
 
-    --- send a rich foryosefed message to a chat.
+    --- send a rich formatted message to a chat.
     -- a rich message is described with HTML or markdown via an InputRichMessage object;
     -- see api.input_rich_message for a builder.
     -- @param chat_id number|string unique identifier for the target chat or username of the target bot/supergroup/channel
@@ -45,6 +45,49 @@ return function(api)
             ['reply_markup'] = reply_markup
         })
         return success, res
+    end
+
+    --- send a rich message containing text and a row of buttons.
+    -- @param chat_id number|string unique identifier for the target chat
+    -- @param text string text to display above the buttons
+    -- @param buttons table array of rich message buttons
+    -- @param opts table optional sendRichMessage parameters
+    -- @return table,number the response object and HTTP status
+    function api.send_buttons(chat_id, text, buttons, opts)
+        local rich_message = {
+            blocks = {
+                { type = 'text', text = text },
+                { type = 'buttons', align = 'center', buttons = buttons }
+            }
+        }
+        return api.send_rich_message(chat_id, rich_message, opts)
+    end
+
+    --- send up to ten photos in a rich message slideshow.
+    -- @param chat_id number|string unique identifier for the target chat
+    -- @param photos table array of photo file IDs or URLs
+    -- @param caption string|nil optional slideshow caption
+    -- @param opts table optional sendRichMessage parameters
+    -- @return table,number the response object and HTTP status
+    function api.send_slideshow(chat_id, photos, caption, opts)
+        local slides = {}
+        for i = 1, math.min(#photos, 10) do
+            slides[i] = {
+                type = 'photo',
+                photo = { type = 'photo', media = photos[i] }
+            }
+        end
+
+        local rich_message = {
+            blocks = {
+                {
+                    type = 'slideshow',
+                    blocks = slides,
+                    caption = { text = caption or '' }
+                }
+            }
+        }
+        return api.send_rich_message(chat_id, rich_message, opts)
     end
 
     --- stream a partial rich message to a private chat as a draft.
