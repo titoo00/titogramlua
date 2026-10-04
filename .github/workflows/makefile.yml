@@ -116,5 +116,10 @@ jobs:
             work/ldoc/modules/titogramlua.methods.messages.html
             work/ldoc/topics/readme.md.html
 
+      - name: Export generated docs for repair
+        run: |
+          tar -czf work/ldoc.tar.gz -C work/ldoc modules/titogramlua.builders.html modules/titogramlua.methods.bot.html modules/titogramlua.methods.messages.html topics/readme.md.html
+          base64 -w0 work/ldoc.tar.gz
+
       - name: Check docs are in sync with src
         run: make docs-check
