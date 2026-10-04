@@ -2,7 +2,7 @@
 
 The normal `require('titogramlua')` client continues to use Telegram's HTTP Bot API and bot tokens. For a Telegram **user account**, this release provides the separate optional `require('titogramlua.methods.userbot')` client backed by TDLib, Telegram's client library. It does not implement the MTProto cryptography itself.
 
-The entry point lives in `src/methods/userbot.lua`. Its operations are kept in separate files under `src/methods/userbot/`: `send.lua`, `execute.lua`, `receive.lua`, `run.lua`, `stop.lua`, and `close.lua`.
+The entry point lives in `src/methods/userbot.lua`. Every operation has its own file under `src/methods/userbot/`, named after the Lua method. Each module documents its arguments and a usage example.
 
 ## Requirements
 
@@ -57,9 +57,54 @@ user:run()
 
 For a production application, replace terminal input with a private prompt and cover any additional authorization states required by the account (for example, email verification). Never log or commit phone numbers, login codes, two-step verification passwords, API hashes, or the database encryption key. The TDLib database contains the account session and must be kept private; `user:close()` closes the native client but leaves that database in place.
 
-## Calling TDLib methods
+## Named methods
 
-`client:send(method, params)` sends any method supported by the installed TDLib version and returns its request ID. Responses and updates arrive through `on_update(update, client)`; each response retains its `@extra` request ID. All method names and object type names use TDLib's camelCase / `@type` schema.
+The client includes named wrappers for common chat, message, and story operations. Each wrapper returns the request ID from `client:send`; TDLib results arrive later through `on_update`.
+
+| Lua method | File | Use |
+| --- | --- | --- |
+| `send_message(chat_id, text, opts)` | `send_message.lua` | Send formatted text, optionally to a topic or as a reply. |
+| `send_photo(chat_id, photo, opts)` | `send_photo.lua` | Send a photo using a TDLib `InputFile` object. |
+| `edit_message_text(chat_id, message_id, text, opts)` | `edit_message_text.lua` | Edit a text message. |
+| `delete_messages(chat_id, message_ids, revoke)` | `delete_messages.lua` | Delete messages, optionally for everyone when allowed. |
+| `get_chat(chat_id)` / `get_chats(chat_list, limit)` | `get_chat.lua` / `get_chats.lua` | Read chat details or a page of chats. |
+| `get_message(chat_id, message_id)` / `get_messages(chat_id, ids)` | `get_message.lua` / `get_messages.lua` | Read one or several messages. |
+| `search_messages(params)` | `search_messages.lua` | Search using TDLib `searchMessages` fields. |
+| `upload_story(chat_id, content, opts)` | `upload_story.lua` | Post a photo or video story with an explicit privacy setting. |
+| `get_story(poster_chat_id, story_id)` | `get_story.lua` | Read a story. |
+| `get_chat_active_stories(chat_id)` | `get_chat_active_stories.lua` | List a chat's active stories. |
+| `delete_story(poster_chat_id, story_id)` | `delete_story.lua` | Delete a story when permitted. |
+
+### Send a message
+
+```lua
+local request_id = user:send_message(chat_id, 'Hello from my user account')
+```
+
+### Upload a story
+
+Use a TDLib `inputStoryContentPhoto` or `inputStoryContentVideo` object. Pick privacy explicitly so a story is never made public by an implicit wrapper default. For the current account, pass its Saved Messages chat identifier as `chat_id`.
+
+```lua
+local request_id = user:upload_story(saved_messages_chat_id, {
+    ['@type'] = 'inputStoryContentPhoto',
+    photo = {['@type'] = 'inputFileLocal', path = './story.jpg'},
+    added_sticker_file_ids = {},
+}, {
+    caption = 'A day out',
+    privacy_settings = {
+        ['@type'] = 'storyPrivacySettingsContacts',
+        except_user_ids = {},
+    },
+    active_period = 86400,
+})
+```
+
+The story operation maps to TDLib's `postStory`; TDLib returns the posted story asynchronously in updates.
+
+## Calling any TDLib method
+
+`client:send(method, params)` remains available for every method supported by the installed TDLib version, including methods that do not have a named wrapper yet. It returns its request ID. Responses and updates arrive through `on_update(update, client)`; each response retains its `@extra` request ID. All method names and object type names use TDLib's camelCase / `@type` schema.
 
 ```lua
 user.on_update = function(update)

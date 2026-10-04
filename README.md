@@ -144,6 +144,27 @@ src/
     business.lua        -- Business account methods
     suggested_posts.lua -- Suggested post methods
     rich.lua            -- Rich message methods (send_rich_message, drafts)
+    userbot.lua         -- Optional TDLib user-account client constructor
+    userbot/
+      send_message.lua  -- Send a text message
+      send_photo.lua    -- Send a photo
+      edit_message_text.lua
+      delete_messages.lua
+      get_chat.lua
+      get_chats.lua
+      get_message.lua
+      get_messages.lua
+      search_messages.lua
+      upload_story.lua  -- Post a photo or video story
+      get_story.lua
+      get_chat_active_stories.lua
+      delete_story.lua
+      send.lua          -- Low-level TDLib request
+      execute.lua       -- Synchronous TDLib method
+      receive.lua       -- Receive and dispatch one TDLib update
+      run.lua           -- Run the receive loop
+      stop.lua          -- Stop the receive loop
+      close.lua         -- Close the TDLib client
     userbot.lua         -- Optional TDLib-backed user-account client entry point
     userbot/
       send.lua          -- Send TDLib methods

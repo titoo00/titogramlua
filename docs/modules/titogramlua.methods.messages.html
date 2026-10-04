@@ -75,11 +75,24 @@
   <li><a href="../modules/titogramlua.methods.updates.html">titogramlua.methods.updates</a></li>
   <li><a href="../modules/titogramlua.methods.userbot.html">titogramlua.methods.userbot</a></li>
   <li><a href="../modules/titogramlua.methods.userbot.close.html">titogramlua.methods.userbot.close</a></li>
+  <li><a href="../modules/titogramlua.methods.userbot.delete_messages.html">titogramlua.methods.userbot.delete_messages</a></li>
+  <li><a href="../modules/titogramlua.methods.userbot.delete_story.html">titogramlua.methods.userbot.delete_story</a></li>
+  <li><a href="../modules/titogramlua.methods.userbot.edit_message_text.html">titogramlua.methods.userbot.edit_message_text</a></li>
   <li><a href="../modules/titogramlua.methods.userbot.execute.html">titogramlua.methods.userbot.execute</a></li>
+  <li><a href="../modules/titogramlua.methods.userbot.get_chat.html">titogramlua.methods.userbot.get_chat</a></li>
+  <li><a href="../modules/titogramlua.methods.userbot.get_chat_active_stories.html">titogramlua.methods.userbot.get_chat_active_stories</a></li>
+  <li><a href="../modules/titogramlua.methods.userbot.get_chats.html">titogramlua.methods.userbot.get_chats</a></li>
+  <li><a href="../modules/titogramlua.methods.userbot.get_message.html">titogramlua.methods.userbot.get_message</a></li>
+  <li><a href="../modules/titogramlua.methods.userbot.get_messages.html">titogramlua.methods.userbot.get_messages</a></li>
+  <li><a href="../modules/titogramlua.methods.userbot.get_story.html">titogramlua.methods.userbot.get_story</a></li>
   <li><a href="../modules/titogramlua.methods.userbot.receive.html">titogramlua.methods.userbot.receive</a></li>
   <li><a href="../modules/titogramlua.methods.userbot.run.html">titogramlua.methods.userbot.run</a></li>
+  <li><a href="../modules/titogramlua.methods.userbot.search_messages.html">titogramlua.methods.userbot.search_messages</a></li>
   <li><a href="../modules/titogramlua.methods.userbot.send.html">titogramlua.methods.userbot.send</a></li>
+  <li><a href="../modules/titogramlua.methods.userbot.send_message.html">titogramlua.methods.userbot.send_message</a></li>
+  <li><a href="../modules/titogramlua.methods.userbot.send_photo.html">titogramlua.methods.userbot.send_photo</a></li>
   <li><a href="../modules/titogramlua.methods.userbot.stop.html">titogramlua.methods.userbot.stop</a></li>
+  <li><a href="../modules/titogramlua.methods.userbot.upload_story.html">titogramlua.methods.userbot.upload_story</a></li>
   <li><a href="../modules/titogramlua.middleware.html">titogramlua.middleware</a></li>
   <li><a href="../modules/titogramlua.polyfill.html">titogramlua.polyfill</a></li>
   <li><a href="../modules/titogramlua.session.html">titogramlua.session</a></li>
@@ -89,7 +102,7 @@
 </ul>
 <h2>Topics</h2>
 <ul class="">
-  <li><a href="../topics/README.md.html">titogramlua</a></li>
+  <li><a href="../topics/readme.md.html">titogramlua</a></li>
 </ul>
 
 </div>
@@ -194,52 +207,8 @@
 	<td class="summary">send paid media to a channel chat.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#api.send_photo">api.send_photo(chat_id, photo, opts)</a></td>
-	<td class="summary">send a photo to a chat.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#api.send_poll">api.send_poll(chat_id, question, options, opts)</a></td>
-	<td class="summary">send a native poll to a chat.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#api.send_reply">api.send_reply(message, text, opts)</a></td>
-	<td class="summary">send a text message as a reply to a received message.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#api.send_venue">api.send_venue(chat_id, latitude, longitude, title, address, opts)</a></td>
-	<td class="summary">send information about a venue to a chat.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#api.send_video">api.send_video(chat_id, video, opts)</a></td>
-	<td class="summary">send a video file to a chat.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#api.send_video_note">api.send_video_note(chat_id, video_note, opts)</a></td>
-	<td class="summary">send a video note (rounded square mp4 video message of up to 1 minute) to a chat.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#api.send_voice">api.send_voice(chat_id, voice, opts)</a></td>
-	<td class="summary">send a voice message to a chat.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#api.set_message_reaction">api.set_message_reaction(chat_id, message_id, opts)</a></td>
-	<td class="summary">change the chosen reactions on a message.</td>
-	</tr>
-</table>
-
-<br/>
-<br/>
-
-
-    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
-
-    <dl class="function">
-    <dt>
-    <a name = "api.copy_message"></a>
-    <strong>api.copy_message(chat_id, from_chat_id, message_id, opts)</strong>
-    </dt>
-    <dd>
-    copy a message to another chat, without a link to the original message.
+	<td class…5190 tokens truncated…nt) to a chat.
+ the bots api sends files of up to 50 MB.
 
 
     <h3>Parameters:</h3>
@@ -247,19 +216,74 @@
         <li><span class="parameter">chat_id</span>
          number|string unique identifier for the target chat or username of the target channel
         </li>
-        <li><span class="parameter">from_chat_id</span>
-         number|string unique identifier for the chat where the original message was sent
-        </li>
-        <li><span class="parameter">message_id</span>
-         number message identifier in the chat specified in from<em>chat</em>id
+        <li><span class="parameter">document</span>
+         string|file file to send; pass a file_id string to send an existing file, or a file object for upload
         </li>
         <li><span class="parameter">opts</span> table optional parameters
         <ul>
         <li><span class="parameter">caption</span>
-         string new caption for the message
+         string document caption
         </li>
         <li><span class="parameter">parse_mode</span>
-         string mode for parsing entities in the new caption
+         string mode for parsing entities in the caption
+        </li>
+        <li><span class="parameter">thumbnail</span>
+         string|file thumbnail of the file
+        </li>
+        <li><span class="parameter">disable_content_type_detection</span>
+         boolean disables automatic server-side content type detection
+        </li>
+        <li><span class="parameter">reply_markup</span>
+         table additional interface options
+        </li>
+        <li><span class="parameter">reply_parameters</span>
+         table description of the message to reply to
+        </li>
+        </li></ul>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.send_live_photo"></a>
+    <strong>api.send_live_photo(chat_id, live_photo, photo, opts)</strong>
+    </dt>
+    <dd>
+    send a live photo (a static photo paired with a short video) to a chat.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_id</span>
+         number|string unique identifier for the target chat or username of the target channel
+        </li>
+        <li><span class="parameter">live_photo</span>
+         string|file the live photo video (file_id or upload); urls are unsupported
+        </li>
+        <li><span class="parameter">photo</span>
+         string|file the static photo (file_id or upload); urls are unsupported
+        </li>
+        <li><span class="parameter">opts</span> table optional parameters
+        <ul>
+        <li><span class="parameter">caption</span>
+         string caption for the live photo
+        </li>
+        <li><span class="parameter">parse_mode</span>
+         string mode for parsing entities in the caption
+        </li>
+        <li><span class="parameter">has_spoiler</span>
+         boolean cover the live photo with a spoiler animation
+        </li>
+        <li><span class="parameter">show_caption_above_media</span>
+         boolean show the caption above the media
         </li>
         <li><span class="parameter">reply_markup</span>
          table additional interface options
@@ -284,11 +308,11 @@
 
 </dd>
     <dt>
-    <a name = "api.copy_messages"></a>
-    <strong>api.copy_messages(chat_id, from_chat_id, message_ids, opts)</strong>
+    <a name = "api.send_location"></a>
+    <strong>api.send_location(chat_id, latitude, longitude, opts)</strong>
     </dt>
     <dd>
-    copy multiple messages from one chat to another, without a link to the original messages.
+    send a point on the map to a chat.
 
 
     <h3>Parameters:</h3>
@@ -296,329 +320,28 @@
         <li><span class="parameter">chat_id</span>
          number|string unique identifier for the target chat or username of the target channel
         </li>
-        <li><span class="parameter">from_chat_id</span>
-         number|string unique identifier for the chat where the original messages were sent
+        <li><span class="parameter">latitude</span>
+         number latitude of the location
         </li>
-        <li><span class="parameter">message_ids</span>
-         table JSON-serialized list of message identifiers in the chat specified in from<em>chat</em>id
-        </li>
-        <li><span class="parameter">opts</span> table optional parameters
-        <ul>
-        <li><span class="parameter">message_thread_id</span>
-         number unique identifier for the target message thread (topic) of the forum
-        </li>
-        <li><span class="parameter">disable_notification</span>
-         boolean send the messages silently
-        </li>
-        <li><span class="parameter">protect_content</span>
-         boolean protect the content of the copied messages from forwarding and saving
-        </li>
-        <li><span class="parameter">remove_caption</span>
-         boolean pass true to remove captions from the copied messages
-        </li>
-        </li></ul>
-    </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-
-        table,number the response object and HTTP status
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "api.delete_all_message_reactions"></a>
-    <strong>api.delete_all_message_reactions(chat_id, opts)</strong>
-    </dt>
-    <dd>
-    remove all reactions in a chat that were added by a given user or chat.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">chat_id</span>
-         number|string unique identifier for the target chat or username of the target supergroup
+        <li><span class="parameter">longitude</span>
+         number longitude of the location
         </li>
         <li><span class="parameter">opts</span> table optional parameters
         <ul>
-        <li><span class="parameter">user_id</span>
-         number identifier of the user whose reactions will be removed
+        <li><span class="parameter">horizontal_accuracy</span>
+         number the radius of uncertainty for the location, in metres (0-1500)
         </li>
-        <li><span class="parameter">actor_chat_id</span>
-         number identifier of the chat whose reactions will be removed
+        <li><span class="parameter">live_period</span>
+         number period in seconds during which the location will be updated (60-86400)
         </li>
-        </li></ul>
-    </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-
-        table,number the response object and HTTP status
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "api.delete_ephemeral_message"></a>
-    <strong>api.delete_ephemeral_message(chat_id, receiver_user_id, ephemeral_message_id)</strong>
-    </dt>
-    <dd>
-    delete an ephemeral message.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">chat_id</span>
-
-
-
+        <li><span class="parameter">heading</span>
+         number direction in which the user is moving, in degrees (1-360)
         </li>
-        <li><span class="parameter">receiver_user_id</span>
-
-
-
-        </li>
-        <li><span class="parameter">ephemeral_message_id</span>
-
-
-
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "api.delete_message_reaction"></a>
-    <strong>api.delete_message_reaction(chat_id, message_id, opts)</strong>
-    </dt>
-    <dd>
-    remove a specific reaction from a message.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">chat_id</span>
-         number|string unique identifier for the target chat or username of the target supergroup
-        </li>
-        <li><span class="parameter">message_id</span>
-         number identifier of the target message
-        </li>
-        <li><span class="parameter">opts</span> table optional parameters
-        <ul>
-        <li><span class="parameter">user_id</span>
-         number identifier of the user whose reaction will be removed
-        </li>
-        <li><span class="parameter">actor_chat_id</span>
-         number identifier of the chat whose reaction will be removed
-        </li>
-        </li></ul>
-    </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-
-        table,number the response object and HTTP status
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "api.edit_ephemeral_message_caption"></a>
-    <strong>api.edit_ephemeral_message_caption(chat_id, receiver_user_id, ephemeral_message_id, opts)</strong>
-    </dt>
-    <dd>
-    edit the caption of an ephemeral message.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">chat_id</span>
-
-
-
-        </li>
-        <li><span class="parameter">receiver_user_id</span>
-
-
-
-        </li>
-        <li><span class="parameter">ephemeral_message_id</span>
-
-
-
-        </li>
-        <li><span class="parameter">opts</span>
-
-
-
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "api.edit_ephemeral_message_media"></a>
-    <strong>api.edit_ephemeral_message_media(chat_id, receiver_user_id, ephemeral_message_id, media, opts)</strong>
-    </dt>
-    <dd>
-    edit media in an ephemeral message; supports new file uploads.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">chat_id</span>
-
-
-
-        </li>
-        <li><span class="parameter">receiver_user_id</span>
-
-
-
-        </li>
-        <li><span class="parameter">ephemeral_message_id</span>
-
-
-
-        </li>
-        <li><span class="parameter">media</span>
-
-
-
-        </li>
-        <li><span class="parameter">opts</span>
-
-
-
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "api.edit_ephemeral_message_reply_markup"></a>
-    <strong>api.edit_ephemeral_message_reply_markup(chat_id, receiver_user_id, ephemeral_message_id, reply_markup)</strong>
-    </dt>
-    <dd>
-    edit the reply markup of an ephemeral message.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">chat_id</span>
-
-
-
-        </li>
-        <li><span class="parameter">receiver_user_id</span>
-
-
-
-        </li>
-        <li><span class="parameter">ephemeral_message_id</span>
-
-
-
+        <li><span class="parameter">proximity_alert_radius</span>
+         number maximum distance in metres for proximity alerts about approaching another chat member
         </li>
         <li><span class="parameter">reply_markup</span>
-
-
-
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "api.edit_ephemeral_message_text"></a>
-    <strong>api.edit_ephemeral_message_text(chat_id, receiver_user_id, ephemeral_message_id, text, opts)</strong>
-    </dt>
-    <dd>
-    edit the text or rich content of an ephemeral message.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">chat_id</span>
-
-
-
-        </li>
-        <li><span class="parameter">receiver_user_id</span>
-
-
-
-        </li>
-        <li><span class="parameter">ephemeral_message_id</span>
-
-
-
-        </li>
-        <li><span class="parameter">text</span>
-
-
-
-        </li>
-        <li><span class="parameter">opts</span>
-
-
-
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "api.forward_message"></a>
-    <strong>api.forward_message(chat_id, from_chat_id, message_id, opts)</strong>
-    </dt>
-    <dd>
-    forward a message from one chat to another.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">chat_id</span>
-         number|string unique identifier for the target chat or username of the target channel
-        </li>
-        <li><span class="parameter">from_chat_id</span>
-         number|string unique identifier for the chat where the original message was sent
-        </li>
-        <li><span class="parameter">message_id</span>
-         number message identifier in the chat specified in from<em>chat</em>id
-        </li>
-        <li><span class="parameter">opts</span> table optional parameters
-        <ul>
-        <li><span class="parameter">message_thread_id</span>
-         number unique identifier for the target message thread (topic) of the forum
-        </li>
-        <li><span class="parameter">disable_notification</span>
-         boolean send the message silently
-        </li>
-        <li><span class="parameter">protect_content</span>
-         boolean protect the content of the forwarded message from forwarding and saving
+         table additional interface options
         </li>
         </li></ul>
     </ul>
@@ -634,11 +357,13 @@
 
 </dd>
     <dt>
-    <a name = "api.forward_messages"></a>
-    <strong>api.forward_messages(chat_id, from_chat_id, message_ids, opts)</strong>
+    <a name = "api.send_media_group"></a>
+    <strong>api.send_media_group(chat_id, media, opts)</strong>
     </dt>
     <dd>
-    forward multiple messages from one chat to another.
+    send a group of photos, videos, documents or audios as an album.
+ items may use a file_id, an http(s) url, a local file path, or an open file handle as media.
+ only the first item's caption is kept (it becomes the album caption).
 
 
     <h3>Parameters:</h3>
@@ -646,38 +371,23 @@
         <li><span class="parameter">chat_id</span>
          number|string unique identifier for the target chat or username of the target channel
         </li>
-        <li><span class="parameter">from_chat_id</span>
-         number|string unique identifier for the chat where the original messages were sent
-        </li>
-        <li><span class="parameter">message_ids</span>
-         table JSON-serialized list of message identifiers in the chat specified in from<em>chat</em>id
+        <li><span class="parameter">media</span>
+         table array of 2-10 InputMedia tables ({type='photo', media=..., caption=...})
         </li>
         <li><span class="parameter">opts</span> table optional parameters
         <ul>
+        <li><span class="parameter">parse_mode</span>
+         string default parse mode for the first item's caption
+        </li>
+        <li><span class="parameter">show_caption_above_media</span>
+         boolean show the caption above the media
+        </li>
         <li><span class="parameter">message_thread_id</span>
          number unique identifier for the target message thread (topic) of the forum
         </li>
         <li><span class="parameter">disable_notification</span>
          boolean send the messages silently
         </li>
-        <li><span class="parameter">protect_content</span>
-         boolean protect the content of the forwarded messages from forwarding and saving
-        </li>
-        </li></ul>
-    </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-
-        table,number the response object and HTTP status
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "ap…3461 tokens truncated…n        </li>
         <li><span class="parameter">protect_content</span>
          boolean protect the content from forwarding and saving
         </li>
@@ -1204,7 +914,7 @@
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/lunarmodules/LDoc">LDoc 1.5.0</a></i>
-<i style="float:right;">Last updated 2026-10-04 10:25:30 </i>
+<i style="float:right;">Last updated 2026-10-04 13:41:46 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
