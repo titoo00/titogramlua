@@ -85,6 +85,28 @@
   <li><a href="../modules/titogramlua.methods.stories.html">titogramlua.methods.stories</a></li>
   <li><a href="../modules/titogramlua.methods.suggested_posts.html">titogramlua.methods.suggested_posts</a></li>
   <li><a href="../modules/titogramlua.methods.updates.html">titogramlua.methods.updates</a></li>
+  <li><a href="../modules/titogramlua.methods.userbot.html">titogramlua.methods.userbot</a></li>
+  <li><a href="../modules/titogramlua.methods.userbot.close.html">titogramlua.methods.userbot.close</a></li>
+  <li><a href="../modules/titogramlua.methods.userbot.delete_messages.html">titogramlua.methods.userbot.delete_messages</a></li>
+  <li><a href="../modules/titogramlua.methods.userbot.delete_story.html">titogramlua.methods.userbot.delete_story</a></li>
+  <li><a href="../modules/titogramlua.methods.userbot.edit_message_text.html">titogramlua.methods.userbot.edit_message_text</a></li>
+  <li><a href="../modules/titogramlua.methods.userbot.edit_story.html">titogramlua.methods.userbot.edit_story</a></li>
+  <li><a href="../modules/titogramlua.methods.userbot.execute.html">titogramlua.methods.userbot.execute</a></li>
+  <li><a href="../modules/titogramlua.methods.userbot.get_chat.html">titogramlua.methods.userbot.get_chat</a></li>
+  <li><a href="../modules/titogramlua.methods.userbot.get_chat_active_stories.html">titogramlua.methods.userbot.get_chat_active_stories</a></li>
+  <li><a href="../modules/titogramlua.methods.userbot.get_chats.html">titogramlua.methods.userbot.get_chats</a></li>
+  <li><a href="../modules/titogramlua.methods.userbot.get_message.html">titogramlua.methods.userbot.get_message</a></li>
+  <li><a href="../modules/titogramlua.methods.userbot.get_messages.html">titogramlua.methods.userbot.get_messages</a></li>
+  <li><a href="../modules/titogramlua.methods.userbot.get_story.html">titogramlua.methods.userbot.get_story</a></li>
+  <li><a href="../modules/titogramlua.methods.userbot.receive.html">titogramlua.methods.userbot.receive</a></li>
+  <li><a href="../modules/titogramlua.methods.userbot.run.html">titogramlua.methods.userbot.run</a></li>
+  <li><a href="../modules/titogramlua.methods.userbot.search_messages.html">titogramlua.methods.userbot.search_messages</a></li>
+  <li><a href="../modules/titogramlua.methods.userbot.send.html">titogramlua.methods.userbot.send</a></li>
+  <li><a href="../modules/titogramlua.methods.userbot.send_message.html">titogramlua.methods.userbot.send_message</a></li>
+  <li><a href="../modules/titogramlua.methods.userbot.send_photo.html">titogramlua.methods.userbot.send_photo</a></li>
+  <li><a href="../modules/titogramlua.methods.userbot.set_story_privacy_settings.html">titogramlua.methods.userbot.set_story_privacy_settings</a></li>
+  <li><a href="../modules/titogramlua.methods.userbot.stop.html">titogramlua.methods.userbot.stop</a></li>
+  <li><a href="../modules/titogramlua.methods.userbot.upload_story.html">titogramlua.methods.userbot.upload_story</a></li>
   <li><a href="../modules/titogramlua.middleware.html">titogramlua.middleware</a></li>
   <li><a href="../modules/titogramlua.polyfill.html">titogramlua.polyfill</a></li>
   <li><a href="../modules/titogramlua.session.html">titogramlua.session</a></li>
@@ -102,7 +124,7 @@
 
 <p><a href="https://auto-audit.hesketh.pro"><img src="https://img.shields.io/badge/audited_by-auto--audit-6366f1?logo=github&amp;logoColor=white" alt="audited by auto-audit"/></a></p>
 
-<p>A feature-filled Telegram bot API library written in Lua, created by <a href="https://t.me/PTPUP">Yosef</a>. Supports Bot API 10.3 with full coverage of all available methods.</p>
+<p>A feature-filled Telegram API library written in Lua, created by <a href="https://t.me/PTPUP">Yosef</a>. The default client supports Bot API 10.3 with full coverage of all available methods. An optional TDLib-backed user-account (MTProto) client is provided separately by <code>require(&apos;titogramlua.methods.userbot&apos;)</code>.</p>
 
 <p><a name="Installation"></a></p>
 <h2>Installation</h2>
@@ -150,6 +172,7 @@ api.<span class="function-name">run</span>({ timeout = <span class="number">60</
     <li>Command parsing, pagination, deep links, and callback data encoding</li>
     <li>Member status helpers and chat permission checks</li>
     <li>Legacy v2 compatibility layer with deprecation warnings</li>
+    <li>Optional Telegram user-account client powered by TDLib (LuaJIT + native TDLib required)</li>
 </ul>
 
 <p><a name="Documentation"></a></p>
@@ -165,7 +188,8 @@ api.<span class="function-name">run</span>({ timeout = <span class="number">60</
 | <a href="docs/utilities.md">Utilities</a> | Foryosefing, command parsing, pagination, and tools |
 | <a href="docs/async.md">Async / Concurrency</a> | Concurrent updates, parallel calls, background tasks |
 | <a href="docs/adapters.md">Adapters</a> | Database, Redis, LLM, and email integrations |
-| <a href="docs/migration.md">Migration from v2</a> | Breaking changes and upgrade guide |</p>
+| <a href="docs/migration.md">Migration from v2</a> | Breaking changes and upgrade guide |
+| <a href="docs/userbot.md">User accounts / MTProto</a> | Optional LuaJIT + TDLib user-account client |</p>
 
 <p><a name="Example"></a></p>
 <h2>Example</h2>
@@ -253,6 +277,37 @@ api.<span class="function-name">run</span>({ timeout = <span class="number">60</
      business.lua        -- Business account methods
      suggested_posts.lua -- Suggested post methods
      rich.lua            -- Rich message methods (send_rich_message, drafts)
+     userbot.lua         -- Optional TDLib user-account client constructor
+     userbot/
+       send_message.lua  -- Send a text message
+       send_photo.lua    -- Send a photo
+       edit_message_text.lua
+       delete_messages.lua
+       get_chat.lua
+       get_chats.lua
+       get_message.lua
+       get_messages.lua
+       search_messages.lua
+       upload_story.lua  -- Post a photo or video story
+       get_story.lua
+       get_chat_active_stories.lua
+       delete_story.lua
+       edit_story.lua
+       set_story_privacy_settings.lua
+       send.lua          -- Low-level TDLib request
+       execute.lua       -- Synchronous TDLib method
+       receive.lua       -- Receive and dispatch one TDLib update
+       run.lua           -- Run the receive loop
+       stop.lua          -- Stop the receive loop
+       close.lua         -- Close the TDLib client
+     userbot.lua         -- Optional TDLib-backed user-account client entry point
+     userbot/
+       send.lua          -- Send TDLib methods
+       execute.lua       -- Execute synchronous TDLib methods
+       receive.lua       -- Receive and dispatch updates
+       run.lua           -- Run the receive loop
+       stop.lua          -- Stop the receive loop
+       close.lua         -- Close the TDLib client
 </code></pre>
 
 
@@ -353,7 +408,7 @@ api.<span class="function-name">run</span>({ sync = <span class="keyword">true</
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/lunarmodules/LDoc">LDoc 1.5.0</a></i>
-<i style="float:right;">Last updated 2026-10-04 09:45:22 </i>
+<i style="float:right;">Last updated 2026-10-04 11:13:12 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
