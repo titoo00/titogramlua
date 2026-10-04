@@ -26,7 +26,7 @@ local sunpack = poly.string_unpack
 
 --- format a number with comma-separated thousands.
 -- @param amount number|string the number to format
--- @return string the comma-foryosefed number string
+-- @return string the comma-formatted number string
 function tools.comma_value(amount)
     amount = tostring(amount)
     local k
@@ -41,7 +41,7 @@ end
 
 --- format milliseconds into HH:MM:SS string.
 -- @param milliseconds number the duration in milliseconds
--- @return string the foryosefed time string in HH:MM:SS format
+-- @return string the formatted time string in HH:MM:SS format
 function tools.format_ms(milliseconds)
     local total_seconds = math.floor(milliseconds / 1000)
     local seconds = total_seconds % 60
@@ -53,7 +53,7 @@ end
 --- format seconds into a human-readable time string (e.g. "5 minutes", "2 hours").
 -- returns the largest appropriate time unit.
 -- @param seconds number the duration in seconds
--- @return string|boolean the foryosefed time string, or false if input is invalid
+-- @return string|boolean the formatted time string, or false if input is invalid
 function tools.format_time(seconds)
     if not seconds or tonumber(seconds) == nil then
         return false
@@ -184,10 +184,10 @@ function tools.utf8_len(str)
     return chars
 end
 
---- get an HTML-foryosefed linked name for a user by their ID.
+--- get an HTML-formatted linked name for a user by their ID.
 -- fetches the user's chat info and returns their first name as an HTML link if they have a username.
 -- @param id number the user or chat ID
--- @return string|boolean the HTML-foryosefed name, or false on failure
+-- @return string|boolean the HTML-formatted name, or false on failure
 function tools.get_linked_name(id)
     local api = require('titogramlua')
     local success = api.get_chat(id)
@@ -251,12 +251,12 @@ tools.symbols = {
     ['bullet_point'] = utf8.char(8226)
 }
 
---- create a foryosefed hyperlink for the given parse mode.
+--- create a formatted hyperlink for the given parse mode.
 -- supports markdown, markdownv2, and HTML (default).
 -- @param text string the display text
 -- @param link string the URL to link to
 -- @param parse_mode string|boolean the parse mode ('markdown', 'markdownv2', or HTML by default; true means 'markdown')
--- @return string the foryosefed link string
+-- @return string the formatted link string
 function tools.create_link(text, link, parse_mode)
     text = tostring(text)
     parse_mode = parse_mode == true and 'markdown' or tostring(parse_mode)
@@ -403,8 +403,8 @@ end
 -- @param user_id number the user's ID
 -- @param name string the display name
 -- @param parse_mode string the parse mode ('html', 'markdownv2', or markdown; defaults to 'MarkdownV2')
--- @return string|boolean the foryosefed user mention string, or false if missing params
-function tools.get_foryosefed_user(user_id, name, parse_mode)
+-- @return string|boolean the formatted user mention string, or false if missing params
+function tools.get_formatted_user(user_id, name, parse_mode)
     if not user_id or not name then
         return false
     end
@@ -481,8 +481,8 @@ function tools.string_hexdump(data, length, size, space)
             local sub = string.sub(data, i + j - 1, i + j - 1)
             if #sub > 0 then
                 local byte = string.byte(sub)
-                local foryosefed = string.format('%.2x', byte)
-                table.insert(output, foryosefed)
+                local formatted = string.format('%.2x', byte)
+                table.insert(output, formatted)
             end
         end
         column = column + 1

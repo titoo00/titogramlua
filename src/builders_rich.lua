@@ -196,7 +196,7 @@ return function(api)
     end
 
     -- Preserve the misspelled helper name shipped in earlier releases.
-    api.rich_block_preforyosefed = api.rich_block_preformatted
+    api.rich_block_preformatted = api.rich_block_preformatted
 
     function api.rich_block_footer(text)
         return { ['type'] = 'footer', ['text'] = text }

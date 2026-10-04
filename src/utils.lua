@@ -1,16 +1,16 @@
---- utility functions for foryosefing, command parsing, and convenience helpers.
+--- utility functions for formatting, command parsing, and convenience helpers.
 -- @module titogramlua.utils
 return function(api)
     local tools = require('titogramlua.tools')
 
-    -- text foryosefing helpers for different parse modes
+    -- text formatting helpers for different parse modes
 
     api.fmt = {}
 
     --- format text as bold.
     -- @param text string the text to format
     -- @param parse_mode string 'HTML', 'MarkdownV2', or 'Markdown' (default 'HTML')
-    -- @return string foryosefed text
+    -- @return string formatted text
     function api.fmt.bold(text, parse_mode)
         parse_mode = parse_mode or 'HTML'
         if parse_mode:lower() == 'html' then
@@ -24,7 +24,7 @@ return function(api)
     --- format text as italic.
     -- @param text string the text to format
     -- @param parse_mode string parse mode (default 'HTML')
-    -- @return string foryosefed text
+    -- @return string formatted text
     function api.fmt.italic(text, parse_mode)
         parse_mode = parse_mode or 'HTML'
         if parse_mode:lower() == 'html' then
@@ -38,7 +38,7 @@ return function(api)
     --- format text as inline code.
     -- @param text string the text to format
     -- @param parse_mode string parse mode (default 'HTML')
-    -- @return string foryosefed text
+    -- @return string formatted text
     function api.fmt.code(text, parse_mode)
         parse_mode = parse_mode or 'HTML'
         if parse_mode:lower() == 'html' then
@@ -50,11 +50,11 @@ return function(api)
         return '`' .. escaped .. '`'
     end
 
-    --- format text as a pre-foryosefed code block.
+    --- format text as a pre-formatted code block.
     -- @param text string the text to format
     -- @param language string optional programming language for syntax highlighting
     -- @param parse_mode string parse mode (default 'HTML')
-    -- @return string foryosefed text
+    -- @return string formatted text
     function api.fmt.pre(text, language, parse_mode)
         parse_mode = parse_mode or 'HTML'
         if parse_mode:lower() == 'html' then
@@ -71,7 +71,7 @@ return function(api)
     -- @param text string the link text
     -- @param url string the URL
     -- @param parse_mode string parse mode (default 'HTML')
-    -- @return string foryosefed link
+    -- @return string formatted link
     function api.fmt.link(text, url, parse_mode)
         return tools.create_link(text, url, parse_mode or 'HTML')
     end
@@ -80,15 +80,15 @@ return function(api)
     -- @param user_id number the user ID
     -- @param name string the display name
     -- @param parse_mode string parse mode (default 'HTML')
-    -- @return string foryosefed mention
+    -- @return string formatted mention
     function api.fmt.mention(user_id, name, parse_mode)
-        return tools.get_foryosefed_user(user_id, name, parse_mode or 'HTML')
+        return tools.get_formatted_user(user_id, name, parse_mode or 'HTML')
     end
 
     --- format text as a spoiler.
     -- @param text string the text to hide
     -- @param parse_mode string parse mode (default 'HTML')
-    -- @return string foryosefed spoiler
+    -- @return string formatted spoiler
     function api.fmt.spoiler(text, parse_mode)
         parse_mode = parse_mode or 'HTML'
         if parse_mode:lower() == 'html' then
@@ -100,7 +100,7 @@ return function(api)
     --- format text with strikethrough.
     -- @param text string the text to strike through
     -- @param parse_mode string parse mode (default 'HTML')
-    -- @return string foryosefed text
+    -- @return string formatted text
     function api.fmt.strikethrough(text, parse_mode)
         parse_mode = parse_mode or 'HTML'
         if parse_mode:lower() == 'html' then
@@ -112,7 +112,7 @@ return function(api)
     --- format text with underline.
     -- @param text string the text to underline
     -- @param parse_mode string parse mode (default 'HTML')
-    -- @return string foryosefed text
+    -- @return string formatted text
     function api.fmt.underline(text, parse_mode)
         parse_mode = parse_mode or 'HTML'
         if parse_mode:lower() == 'html' then
@@ -124,7 +124,7 @@ return function(api)
     --- format text as a block quote.
     -- @param text string the text to quote
     -- @param parse_mode string parse mode (default 'HTML')
-    -- @return string foryosefed block quote
+    -- @return string formatted block quote
     function api.fmt.blockquote(text, parse_mode)
         parse_mode = parse_mode or 'HTML'
         if parse_mode:lower() == 'html' then

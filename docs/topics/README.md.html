@@ -141,18 +141,164 @@
 
 <h1>titogramlua</h1>
 
-<p><a href="https://auto-audit.hesketh.pro"><img src="https://img.shields.io/badge/audited_by-auto--audit-6366f1?logo=github&amp;logoColor=white" alt="audited by auto-audit"/></a></p>
-
 <p>A feature-filled Telegram API library written in Lua, created by <a href="https://t.me/PTPUP">Yosef</a>. The default client supports Bot API 10.3 with full coverage of all available methods. An optional TDLib-backed user-account (MTProto) client is provided separately by <code>require(&apos;titogramlua.methods.userbot&apos;)</code>.</p>
 
 <p><a name="Installation"></a></p>
 <h2>Installation</h2>
 
-<p>Requires Lua 5.1+ and LuaRocks:</p>
+<p>Requires Lua 5.1+ and LuaRocks. LuaRocks installs the library's Lua dependencies (<code>dkjson</code>, <code>luasec</code>, <code>luasocket</code>, <code>multipart-post</code>, <code>luautf8</code>, and <code>copas</code>) automatically:</p>
 
 <pre><code> luarocks install titogramlua
 </code></pre>
 
+
+<h3>Complete installation on Ubuntu 22.04</h3>
+
+<p>The regular Bot API client needs Lua and LuaRocks. The optional user-account client additionally needs LuaJIT and the native TDLib JSON library; TDLib is built separately and is not installed by LuaRocks.</p>
+
+<p>Install the library and its Lua dependencies:</p>
+
+
+<pre>
+sudo apt update
+sudo apt install -y lua5.<span class="number">4</span> liblua5.<span class="number">4</span>-dev luarocks build-essential libssl-dev zlib1g-dev
+sudo luarocks <span class="comment">--lua-version=5.4 install titogramlua</span>
+</pre>
+
+
+<p>To use the optional TDLib-backed user-account client, install its build tools and LuaJIT. <code>gperf</code> is required during TDLib configuration (without it CMake stops before creating the build files):</p>
+
+
+<pre>
+sudo apt install -y git cmake gperf pkg-config libssl-dev zlib1g-dev build-essential lua5.<span class="number">1</span> liblua5.<span class="number">1</span>-<span class="number">0</span>-dev luajit libluajit-<span class="number">5.1</span>-dev
+</pre>
+
+
+<p>Build and install TDLib's JSON shared library. Build all targets first (TDLib's install step also expects its static libraries to exist, so building only the <code>tdjson</code> target makes <code>cmake --install</code> fail with <code>file INSTALL cannot find &quot;.../libtdjson_static.a&quot;</code>), then install as root:</p>
+
+
+<pre>
+<span class="keyword">if</span> [ ! -d ~/td/.git ]; <span class="keyword">then</span> git clone https://github.com/tdlib/td.git ~/td; fi
+cmake -S ~/td -B ~/td/build -DCMAKE_BUILD_TYPE=Release
+cmake <span class="comment">--build ~/td/build -j2
+</span>sudo cmake <span class="comment">--install ~/td/build
+</span>sudo ldconfig
+ldconfig -p | grep tdjson
+</pre>
+
+
+<p>Install titogramlua's Lua modules for LuaJIT's Lua 5.1 module ABI, then run user-account code with <code>luajit</code>:</p>
+
+
+<pre>
+sudo luarocks <span class="comment">--lua-version=5.1 install titogramlua
+</span>luajit -<span class="function-name">e</span> <span class="string">"require('titogramlua.methods.userbot'); print('userbot module loaded')"</span>
+</pre>
+
+
+<p>The TDLib build follows <a href="https://github.com/tdlib/td#building">TDLib's official build instructions</a>. Building TDLib needs a lot of RAM: on lower-memory servers use <code>-j1</code> or <code>-j2</code> to limit parallel compilation, and add swap space if the build is killed. See <a href="docs/userbot.md">User accounts / MTProto</a> for the complete user-account guide. Optional database adapters are not installed by default: SQLite uses <code>lsqlite3</code> (<code>sudo apt install libsqlite3-dev</code>, then <code>sudo luarocks --lua-version=5.4 install lsqlite3</code>); PostgreSQL uses <code>pgmoon</code> (<code>sudo luarocks --lua-version=5.4 install pgmoon</code>). Redis, LLM, and SMTP use the library's built-in Lua clients and need their service/API credentials.</p>
+
+<p>For development and diagnosing library changes, install the optional project tools:</p>
+
+
+<pre>
+sudo luarocks <span class="comment">--lua-version=5.4 install busted
+</span>sudo luarocks <span class="comment">--lua-version=5.4 install luacheck
+</span>sudo luarocks <span class="comment">--lua-version=5.4 install ldoc</span>
+</pre>
+
+
+<p>Then run <code>busted --no-coverage -o utfTerminal</code> for tests, <code>luacheck src/ --no-unused-args --no-max-line-length --globals _G _TEST</code> for lint, or <code>make docs</code> to regenerate API documentation.</p>
+
+<h3>User account (UserBot): login and first run</h3>
+
+<p>The UserBot is a separate TDLib client that signs into a Telegram <strong>user account</strong>. It does not use a BotFather token and does not replace the normal Bot API client. Get <code>api_id</code> and <code>api_hash</code> from <a href="https://my.telegram.org">my.telegram.org</a>, then set them and a persistent encryption key in the server environment. Keep the same key between runs so TDLib can reopen its encrypted session database:</p>
+
+
+<pre>
+export TELEGRAM_API_ID=<span class="string">'YOUR_API_ID'</span>
+export TELEGRAM_API_HASH=<span class="string">'YOUR_API_HASH'</span>
+export TELEGRAM_DB_KEY=<span class="string">'A_LONG_RANDOM_SECRET_SAVED_PRIVATELY'</span>
+mkdir -<span class="function-name">p</span> <span class="string">"$HOME/.local/share/titogramlua-userbot/db"</span> <span class="string">"$HOME/.local/share/titogramlua-userbot/files"</span>
+chmod <span class="number">700</span> <span class="string">"$HOME/.local/share/titogramlua-userbot"</span> <span class="string">"$HOME/.local/share/titogramlua-userbot/db"</span> <span class="string">"$HOME/.local/share/titogramlua-userbot/files"</span>
+</pre>
+
+
+<p>Save these environment variables securely for future launches; do not commit them to GitHub or paste them into source code. Create <code>userbot.lua</code> with this minimal interactive login example:</p>
+
+
+<pre>
+<span class="keyword">local</span> user = <span class="global">require</span>(<span class="string">'titogramlua.methods.userbot'</span>).<span class="function-name">new</span>({
+    api_id = <span class="global">assert</span>(<span class="global">tonumber</span>(<span class="global">os</span>.<span class="function-name">getenv</span>(<span class="string">'TELEGRAM_API_ID'</span>)), <span class="string">'set TELEGRAM_API_ID'</span>),
+    api_hash = <span class="global">assert</span>(<span class="global">os</span>.<span class="function-name">getenv</span>(<span class="string">'TELEGRAM_API_HASH'</span>), <span class="string">'set TELEGRAM_API_HASH'</span>),
+    database_directory = <span class="global">os</span>.<span class="function-name">getenv</span>(<span class="string">'HOME'</span>) .. <span class="string">'/.local/share/titogramlua-userbot/db'</span>,
+    files_directory = <span class="global">os</span>.<span class="function-name">getenv</span>(<span class="string">'HOME'</span>) .. <span class="string">'/.local/share/titogramlua-userbot/files'</span>,
+    encryption_key = <span class="global">assert</span>(<span class="global">os</span>.<span class="function-name">getenv</span>(<span class="string">'TELEGRAM_DB_KEY'</span>), <span class="string">'set TELEGRAM_DB_KEY'</span>),
+})
+
+<span class="keyword">local</span> <span class="keyword">function</span> <span class="function-name">prompt</span>(label)
+    <span class="global">io</span>.<span class="function-name">write</span>(label)
+    <span class="global">io</span>.<span class="function-name">flush</span>()
+    <span class="keyword">return</span> <span class="global">assert</span>(<span class="global">io</span>.<span class="function-name">read</span>(<span class="string">'*l'</span>), <span class="string">'could not read terminal input'</span>)
+<span class="keyword">end</span>
+
+user.on_auth_state = <span class="keyword">function</span>(state, client)
+    <span class="keyword">local</span> kind = state[<span class="string">'@type'</span>]
+    <span class="keyword">if</span> kind == <span class="string">'authorizationStateWaitPhoneNumber'</span> <span class="keyword">then</span>
+        client:<span class="function-name">send</span>(<span class="string">'setAuthenticationPhoneNumber'</span>, {
+            phone_number = <span class="function-name">prompt</span>(<span class="string">'Telegram phone number (international format): '</span>),
+        })
+    <span class="keyword">elseif</span> kind == <span class="string">'authorizationStateWaitCode'</span> <span class="keyword">then</span>
+        client:<span class="function-name">send</span>(<span class="string">'checkAuthenticationCode'</span>, {
+            code = <span class="function-name">prompt</span>(<span class="string">'Login code from Telegram: '</span>),
+        })
+    <span class="keyword">elseif</span> kind == <span class="string">'authorizationStateWaitPassword'</span> <span class="keyword">then</span>
+        client:<span class="function-name">send</span>(<span class="string">'checkAuthenticationPassword'</span>, {
+            password = <span class="function-name">prompt</span>(<span class="string">'Telegram two-step verification password: '</span>),
+        })
+    <span class="keyword">elseif</span> kind == <span class="string">'authorizationStateWaitEmailAddress'</span> <span class="keyword">then</span>
+        client:<span class="function-name">send</span>(<span class="string">'setAuthenticationEmailAddress'</span>, {
+            email_address = <span class="function-name">prompt</span>(<span class="string">'Telegram login email: '</span>),
+        })
+    <span class="keyword">elseif</span> kind == <span class="string">'authorizationStateWaitEmailCode'</span> <span class="keyword">then</span>
+        client:<span class="function-name">send</span>(<span class="string">'checkAuthenticationEmailCode'</span>, {
+            code = {
+                [<span class="string">'@type'</span>] = <span class="string">'emailAddressAuthenticationCode'</span>,
+                code = <span class="function-name">prompt</span>(<span class="string">'Telegram email code: '</span>),
+            },
+        })
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+user.on_authorized = <span class="keyword">function</span>()
+    <span class="global">print</span>(<span class="string">'User account is signed in; session is stored in the private TDLib database.'</span>)
+<span class="keyword">end</span>
+
+user.on_update = <span class="keyword">function</span>(update)
+    <span class="keyword">if</span> update[<span class="string">'@type'</span>] == <span class="string">'error'</span> <span class="keyword">then</span>
+        <span class="global">io</span>.stderr:<span class="function-name">write</span>(<span class="string">'TDLib error '</span>, <span class="global">tostring</span>(update.code), <span class="string">': '</span>, <span class="global">tostring</span>(update.message), <span class="string">'\n'</span>)
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+user:<span class="function-name">run</span>() <span class="comment">-- keep this process running to receive updates</span>
+</pre>
+
+
+<p>Start it with:</p>
+
+
+<pre>
+luajit ./userbot.lua
+</pre>
+
+
+<p>On first run, type your own phone number, then the login code Telegram sends (it may arrive in an existing Telegram session). If two-step verification or email verification is enabled, type the requested password, email address, or email code when prompted. Once authorized, TDLib saves the encrypted login session in the database directory; later runs use that session. Keep the database directory and encryption key private and backed up together. The <code>export</code> commands above apply to the current shell; for a service or later session, configure the same variables in a protected environment file. Stop the running client with <code>Ctrl+C</code>.</p>
+
+<p>After sign-in, use named methods such as <code>user:send_message(chat_id, &apos;Hello&apos;)</code> or <code>user:upload_story(...)</code>; their requests are asynchronous and responses arrive through <code>user.on_update</code>. TDLib calls that do not yet have a named wrapper are available through <code>user:send(&apos;methodName&apos;, params)</code>. See <a href="docs/userbot.md">the full UserBot guide</a> for all wrappers and examples. Never share login codes, passwords, API hashes, or the session database.</p>
+
+<blockquote>
+    <p><strong>Note:</strong> Automated activity on a personal Telegram account can lead to limits or bans if it looks like spam. Test with a secondary account first.</p>
+</blockquote>
 
 <p><a name="Quick_Start"></a></p>
 <h2>Quick Start</h2>
@@ -187,7 +333,7 @@ api.<span class="function-name">run</span>({ timeout = <span class="number">60</
     <li><strong>Lua 5.1 - 5.5 support</strong> with automatic polyfills for bitwise operations and string.pack</li>
     <li>Clean opts-table pattern for all API methods</li>
     <li>Chainable keyboard and inline result builders</li>
-    <li>Text foryosefing helpers for HTML, Markdown, and MarkdownV2</li>
+    <li>Text formatting helpers for HTML, Markdown, and MarkdownV2</li>
     <li>Command parsing, pagination, deep links, and callback data encoding</li>
     <li>Member status helpers and chat permission checks</li>
     <li>Legacy v2 compatibility layer with deprecation warnings</li>
@@ -204,7 +350,7 @@ api.<span class="function-name">run</span>({ timeout = <span class="number">60</
 | <a href="docs/methods.md">API Methods</a> | Complete method reference |
 | <a href="docs/builders.md">Builders</a> | Keyboards, inline results, and type constructors |
 | <a href="docs/framework.md">Framework</a> | Command router, sessions, conversations, webhooks, retries, logging |
-| <a href="docs/utilities.md">Utilities</a> | Foryosefing, command parsing, pagination, and tools |
+| <a href="docs/utilities.md">Utilities</a> | Formatting, command parsing, pagination, and tools |
 | <a href="docs/async.md">Async / Concurrency</a> | Concurrent updates, parallel calls, background tasks |
 | <a href="docs/adapters.md">Adapters</a> | Database, Redis, LLM, and email integrations |
 | <a href="docs/migration.md">Migration from v2</a> | Breaking changes and upgrade guide |
@@ -262,7 +408,7 @@ api.<span class="function-name">run</span>({ timeout = <span class="number">60</
    async.lua             -- Copas-based concurrency module
    b64url.lua            -- Base64 URL encoding/decoding
    log.lua               -- Structured logging and lightweight metrics
-   tools.lua             -- Utility functions (foryosefing, file ops, etc.)
+   tools.lua             -- Utility functions (formatting, file ops, etc.)
    handlers.lua          -- Update routing and on_* handler stubs (async-first)
    builders.lua          -- Keyboard, inline result, and type constructors
    builders_rich.lua     -- Rich message builders (RichText/RichBlock DSL)
@@ -296,7 +442,7 @@ api.<span class="function-name">run</span>({ timeout = <span class="number">60</
      business.lua        -- Business account methods
      suggested_posts.lua -- Suggested post methods
      rich.lua            -- Rich message methods (send_rich_message, drafts)
-     userbot.lua         -- Optional TDLib user-account client constructor
+     userbot.lua         -- Optional TDLib-backed user-account client entry point
      userbot/
        send_message.lua  -- Send a text message
        send_photo.lua    -- Send a photo
@@ -316,14 +462,6 @@ api.<span class="function-name">run</span>({ timeout = <span class="number">60</
        send.lua          -- Low-level TDLib request
        execute.lua       -- Synchronous TDLib method
        receive.lua       -- Receive and dispatch one TDLib update
-       run.lua           -- Run the receive loop
-       stop.lua          -- Stop the receive loop
-       close.lua         -- Close the TDLib client
-     userbot.lua         -- Optional TDLib-backed user-account client entry point
-     userbot/
-       send.lua          -- Send TDLib methods
-       execute.lua       -- Execute synchronous TDLib methods
-       receive.lua       -- Receive and dispatch updates
        run.lua           -- Run the receive loop
        stop.lua          -- Stop the receive loop
        close.lua         -- Close the TDLib client
@@ -422,12 +560,14 @@ api.<span class="function-name">run</span>({ sync = <span class="keyword">true</
 
 <p>Copyright (c) 2017-2026 Yousef Hesham</p>
 
+<p>Portions Copyright (c) Matthew Hesketh, from the original <a href="https://github.com/wrxck/telegram-bot-lua">telegram-bot-lua</a> project. Keep the original copyright notices in the <code>LICENSE</code> file, as the GPL requires.</p>
+
 
 </div> <!-- id="content" -->
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/lunarmodules/LDoc">LDoc 1.5.0</a></i>
-<i style="float:right;">Last updated 2026-10-04 14:38:40 </i>
+<i style="float:right;">Last updated 2026-10-04 18:50:11 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
