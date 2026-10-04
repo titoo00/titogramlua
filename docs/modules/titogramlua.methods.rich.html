@@ -50,6 +50,7 @@
   <li><a href="../modules/titogramlua.builders.html">titogramlua.builders</a></li>
   <li><a href="../modules/titogramlua.builders_rich.html">titogramlua.builders_rich</a></li>
   <li><a href="../modules/titogramlua.compat.html">titogramlua.compat</a></li>
+  <li><a href="../modules/titogramlua.config.html">titogramlua.config</a></li>
   <li><a href="../modules/titogramlua.framework.html">titogramlua.framework</a></li>
   <li><a href="../modules/titogramlua.handlers.html">titogramlua.handlers</a></li>
   <li><a href="../modules/titogramlua.helpers.html">titogramlua.helpers</a></li>
@@ -81,7 +82,7 @@
 </ul>
 <h2>Topics</h2>
 <ul class="">
-  <li><a href="../topics/README.md.html">titogramlua</a></li>
+  <li><a href="../topics/readme.md.html">titogramlua</a></li>
 </ul>
 
 </div>
@@ -89,7 +90,7 @@
 <div id="content">
 
 <h1>Module <code>titogramlua.methods.rich</code></h1>
-<p>rich message API methods (Bot API 10.1).</p>
+<p>rich message API methods (Bot API 10.3).</p>
 <p>
 
 </p>
@@ -98,12 +99,24 @@
 <h2><a href="#Functions">Functions</a></h2>
 <table class="function_list">
 	<tr>
+	<td class="name" nowrap><a href="#api.send_buttons">api.send_buttons(chat_id, text, buttons, opts)</a></td>
+	<td class="summary">send a rich message containing text and a row of buttons.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.send_message_draft">api.send_message_draft(chat_id, draft_id, text, opts)</a></td>
+	<td class="summary">stream a partial text message to a private chat as a draft.</td>
+	</tr>
+	<tr>
 	<td class="name" nowrap><a href="#api.send_rich_message">api.send_rich_message(chat_id, rich_message, opts)</a></td>
-	<td class="summary">send a rich foryosefed message to a chat.</td>
+	<td class="summary">send a rich formatted message to a chat.</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#api.send_rich_message_draft">api.send_rich_message_draft(chat_id, draft_id, rich_message, opts)</a></td>
 	<td class="summary">stream a partial rich message to a private chat as a draft.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.send_slideshow">api.send_slideshow(chat_id, photos, caption, opts)</a></td>
+	<td class="summary">send up to ten photos in a rich message slideshow.</td>
 	</tr>
 </table>
 
@@ -115,11 +128,74 @@
 
     <dl class="function">
     <dt>
+    <a name = "api.send_buttons"></a>
+    <strong>api.send_buttons(chat_id, text, buttons, opts)</strong>
+    </dt>
+    <dd>
+    send a rich message containing text and a row of buttons.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_id</span>
+         number|string unique identifier for the target chat
+        </li>
+        <li><span class="parameter">text</span>
+         string text to display above the buttons
+        </li>
+        <li><span class="parameter">buttons</span>
+         table array of rich message buttons
+        </li>
+        <li><span class="parameter">opts</span>
+         table optional sendRichMessage parameters
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.send_message_draft"></a>
+    <strong>api.send_message_draft(chat_id, draft_id, text, opts)</strong>
+    </dt>
+    <dd>
+    stream a partial text message to a private chat as a draft.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_id</span>
+         number unique identifier for the target private chat
+        </li>
+        <li><span class="parameter">draft_id</span>
+         number unique, non-zero identifier of the draft
+        </li>
+        <li><span class="parameter">text</span>
+         string partial text; empty string displays a thinking placeholder
+        </li>
+        <li><span class="parameter">opts</span>
+         table optional parameters: message<em>thread</em>id, parse<em>mode, entities, can</em>stop, keep<em>on</em>stop
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
     <a name = "api.send_rich_message"></a>
     <strong>api.send_rich_message(chat_id, rich_message, opts)</strong>
     </dt>
     <dd>
-    send a rich foryosefed message to a chat.
+    send a rich formatted message to a chat.
  a rich message is described with HTML or markdown via an InputRichMessage object;
  see api.input<em>rich</em>message for a builder.
 
@@ -216,6 +292,40 @@
 
 
 </dd>
+    <dt>
+    <a name = "api.send_slideshow"></a>
+    <strong>api.send_slideshow(chat_id, photos, caption, opts)</strong>
+    </dt>
+    <dd>
+    send up to ten photos in a rich message slideshow.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_id</span>
+         number|string unique identifier for the target chat
+        </li>
+        <li><span class="parameter">photos</span>
+         table array of photo file IDs or URLs
+        </li>
+        <li><span class="parameter">caption</span>
+         string|nil optional slideshow caption
+        </li>
+        <li><span class="parameter">opts</span>
+         table optional sendRichMessage parameters
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table,number the response object and HTTP status
+    </ol>
+
+
+
+
+</dd>
 </dl>
 
 
@@ -223,7 +333,7 @@
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/lunarmodules/LDoc">LDoc 1.5.0</a></i>
-<i style="float:right;">Last updated 2026-10-03 12:01:50 </i>
+<i style="float:right;">Last updated 2026-10-04 09:45:22 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>

@@ -50,6 +50,7 @@
   <li><a href="../modules/titogramlua.builders.html">titogramlua.builders</a></li>
   <li><a href="../modules/titogramlua.builders_rich.html">titogramlua.builders_rich</a></li>
   <li><a href="../modules/titogramlua.compat.html">titogramlua.compat</a></li>
+  <li><a href="../modules/titogramlua.config.html">titogramlua.config</a></li>
   <li><a href="../modules/titogramlua.framework.html">titogramlua.framework</a></li>
   <li><a href="../modules/titogramlua.handlers.html">titogramlua.handlers</a></li>
   <li><a href="../modules/titogramlua.helpers.html">titogramlua.helpers</a></li>
@@ -81,7 +82,7 @@
 </ul>
 <h2>Topics</h2>
 <ul class="">
-  <li><a href="../topics/README.md.html">titogramlua</a></li>
+  <li><a href="../topics/readme.md.html">titogramlua</a></li>
 </ul>
 
 </div>
@@ -110,8 +111,28 @@
 	<td class="summary">remove all reactions in a chat that were added by a given user or chat.</td>
 	</tr>
 	<tr>
+	<td class="name" nowrap><a href="#api.delete_ephemeral_message">api.delete_ephemeral_message(chat_id, receiver_user_id, ephemeral_message_id)</a></td>
+	<td class="summary">delete an ephemeral message.</td>
+	</tr>
+	<tr>
 	<td class="name" nowrap><a href="#api.delete_message_reaction">api.delete_message_reaction(chat_id, message_id, opts)</a></td>
 	<td class="summary">remove a specific reaction from a message.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.edit_ephemeral_message_caption">api.edit_ephemeral_message_caption(chat_id, receiver_user_id, ephemeral_message_id, opts)</a></td>
+	<td class="summary">edit the caption of an ephemeral message.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.edit_ephemeral_message_media">api.edit_ephemeral_message_media(chat_id, receiver_user_id, ephemeral_message_id, media, opts)</a></td>
+	<td class="summary">edit media in an ephemeral message; supports new file uploads.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.edit_ephemeral_message_reply_markup">api.edit_ephemeral_message_reply_markup(chat_id, receiver_user_id, ephemeral_message_id, reply_markup)</a></td>
+	<td class="summary">edit the reply markup of an ephemeral message.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.edit_ephemeral_message_text">api.edit_ephemeral_message_text(chat_id, receiver_user_id, ephemeral_message_id, text, opts)</a></td>
+	<td class="summary">edit the text or rich content of an ephemeral message.</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#api.forward_message">api.forward_message(chat_id, from_chat_id, message_id, opts)</a></td>
@@ -336,6 +357,38 @@
 
 </dd>
     <dt>
+    <a name = "api.delete_ephemeral_message"></a>
+    <strong>api.delete_ephemeral_message(chat_id, receiver_user_id, ephemeral_message_id)</strong>
+    </dt>
+    <dd>
+    delete an ephemeral message.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_id</span>
+
+
+
+        </li>
+        <li><span class="parameter">receiver_user_id</span>
+
+
+
+        </li>
+        <li><span class="parameter">ephemeral_message_id</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
     <a name = "api.delete_message_reaction"></a>
     <strong>api.delete_message_reaction(chat_id, message_id, opts)</strong>
     </dt>
@@ -367,6 +420,164 @@
 
         table,number the response object and HTTP status
     </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.edit_ephemeral_message_caption"></a>
+    <strong>api.edit_ephemeral_message_caption(chat_id, receiver_user_id, ephemeral_message_id, opts)</strong>
+    </dt>
+    <dd>
+    edit the caption of an ephemeral message.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_id</span>
+
+
+
+        </li>
+        <li><span class="parameter">receiver_user_id</span>
+
+
+
+        </li>
+        <li><span class="parameter">ephemeral_message_id</span>
+
+
+
+        </li>
+        <li><span class="parameter">opts</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.edit_ephemeral_message_media"></a>
+    <strong>api.edit_ephemeral_message_media(chat_id, receiver_user_id, ephemeral_message_id, media, opts)</strong>
+    </dt>
+    <dd>
+    edit media in an ephemeral message; supports new file uploads.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_id</span>
+
+
+
+        </li>
+        <li><span class="parameter">receiver_user_id</span>
+
+
+
+        </li>
+        <li><span class="parameter">ephemeral_message_id</span>
+
+
+
+        </li>
+        <li><span class="parameter">media</span>
+
+
+
+        </li>
+        <li><span class="parameter">opts</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.edit_ephemeral_message_reply_markup"></a>
+    <strong>api.edit_ephemeral_message_reply_markup(chat_id, receiver_user_id, ephemeral_message_id, reply_markup)</strong>
+    </dt>
+    <dd>
+    edit the reply markup of an ephemeral message.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_id</span>
+
+
+
+        </li>
+        <li><span class="parameter">receiver_user_id</span>
+
+
+
+        </li>
+        <li><span class="parameter">ephemeral_message_id</span>
+
+
+
+        </li>
+        <li><span class="parameter">reply_markup</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.edit_ephemeral_message_text"></a>
+    <strong>api.edit_ephemeral_message_text(chat_id, receiver_user_id, ephemeral_message_id, text, opts)</strong>
+    </dt>
+    <dd>
+    edit the text or rich content of an ephemeral message.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chat_id</span>
+
+
+
+        </li>
+        <li><span class="parameter">receiver_user_id</span>
+
+
+
+        </li>
+        <li><span class="parameter">ephemeral_message_id</span>
+
+
+
+        </li>
+        <li><span class="parameter">text</span>
+
+
+
+        </li>
+        <li><span class="parameter">opts</span>
+
+
+
+        </li>
+    </ul>
+
 
 
 
@@ -853,6 +1064,8 @@
     </dt>
     <dd>
     send a group of photos, videos, documents or audios as an album.
+ items may use a file_id, an http(s) url, a local file path, or an open file handle as media.
+ only the first item's caption is kept (it becomes the album caption).
 
 
     <h3>Parameters:</h3>
@@ -861,10 +1074,16 @@
          number|string unique identifier for the target chat or username of the target channel
         </li>
         <li><span class="parameter">media</span>
-         table a JSON-serialized array of InputMediaAudio, InputMediaDocument, InputMediaPhoto and InputMediaVideo
+         table array of 2-10 InputMedia tables ({type='photo', media=..., caption=...})
         </li>
         <li><span class="parameter">opts</span> table optional parameters
         <ul>
+        <li><span class="parameter">parse_mode</span>
+         string default parse mode for the first item's caption
+        </li>
+        <li><span class="parameter">show_caption_above_media</span>
+         boolean show the caption above the media
+        </li>
         <li><span class="parameter">message_thread_id</span>
          number unique identifier for the target message thread (topic) of the forum
         </li>
@@ -1397,7 +1616,7 @@
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/lunarmodules/LDoc">LDoc 1.5.0</a></i>
-<i style="float:right;">Last updated 2026-10-03 12:01:50 </i>
+<i style="float:right;">Last updated 2026-10-04 09:45:22 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>

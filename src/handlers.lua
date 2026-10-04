@@ -8,106 +8,106 @@ return function(api)
 
     --- called for every update received, before type-specific routing.
     -- @param update table the raw update object
-    function api.on_update(_) end
+    function api.on_update(update) end
     --- called for any new message (after chat-type-specific handlers).
     -- @param message table the message object
-    function api.on_message(_) end
+    function api.on_message(message) end
     --- called for new messages in private chats.
     -- @param message table the message object
-    function api.on_private_message(_) end
+    function api.on_private_message(message) end
     --- called for new messages in group chats.
     -- @param message table the message object
-    function api.on_group_message(_) end
+    function api.on_group_message(message) end
     --- called for new messages in supergroup chats.
     -- @param message table the message object
-    function api.on_supergroup_message(_) end
+    function api.on_supergroup_message(message) end
     --- called when a callback query is received from an inline keyboard button.
     -- @param callback_query table the callback query object
-    function api.on_callback_query(_) end
+    function api.on_callback_query(callback_query) end
     --- called when an inline query is received.
     -- @param inline_query table the inline query object
-    function api.on_inline_query(_) end
+    function api.on_inline_query(inline_query) end
     --- called for new posts in channels.
     -- @param channel_post table the channel post message object
-    function api.on_channel_post(_) end
+    function api.on_channel_post(channel_post) end
     --- called when a message is edited.
     -- @param edited_message table the edited message object
-    function api.on_edited_message(_) end
+    function api.on_edited_message(edited_message) end
     --- called when a message is edited in a private chat.
     -- @param edited_message table the edited message object
-    function api.on_edited_private_message(_) end
+    function api.on_edited_private_message(edited_message) end
     --- called when a message is edited in a group chat.
     -- @param edited_message table the edited message object
-    function api.on_edited_group_message(_) end
+    function api.on_edited_group_message(edited_message) end
     --- called when a message is edited in a supergroup chat.
     -- @param edited_message table the edited message object
-    function api.on_edited_supergroup_message(_) end
+    function api.on_edited_supergroup_message(edited_message) end
     --- called when a channel post is edited.
     -- @param edited_channel_post table the edited channel post object
-    function api.on_edited_channel_post(_) end
+    function api.on_edited_channel_post(edited_channel_post) end
     --- called when a chosen inline result is received.
     -- @param chosen_inline_result table the chosen inline result object
-    function api.on_chosen_inline_result(_) end
+    function api.on_chosen_inline_result(chosen_inline_result) end
     --- called when a shipping query is received (payments).
     -- @param shipping_query table the shipping query object
-    function api.on_shipping_query(_) end
+    function api.on_shipping_query(shipping_query) end
     --- called when a pre-checkout query is received (payments).
     -- @param pre_checkout_query table the pre-checkout query object
-    function api.on_pre_checkout_query(_) end
+    function api.on_pre_checkout_query(pre_checkout_query) end
     --- called when a poll state changes.
     -- @param poll table the poll object with current state
-    function api.on_poll(_) end
+    function api.on_poll(poll) end
     --- called when a user changes their vote in a non-anonymous poll.
     -- @param poll_answer table the poll answer object
-    function api.on_poll_answer(_) end
+    function api.on_poll_answer(poll_answer) end
     --- called when a message reaction is changed by a user.
     -- @param message_reaction table the message reaction updated object
-    function api.on_message_reaction(_) end
+    function api.on_message_reaction(message_reaction) end
     --- called when anonymous reactions on a message are changed.
     -- @param message_reaction_count table the reaction count updated object
-    function api.on_message_reaction_count(_) end
+    function api.on_message_reaction_count(message_reaction_count) end
     --- called when the bot's own chat member status is updated.
     -- @param my_chat_member table the chat member updated object
-    function api.on_my_chat_member(_) end
+    function api.on_my_chat_member(my_chat_member) end
     --- called when a chat member's status is updated.
     -- @param chat_member table the chat member updated object
-    function api.on_chat_member(_) end
+    function api.on_chat_member(chat_member) end
     --- called when a user sends a join request to a chat.
     -- @param chat_join_request table the chat join request object
-    function api.on_chat_join_request(_) end
+    function api.on_chat_join_request(chat_join_request) end
     --- called when a chat boost is added.
     -- @param chat_boost table the chat boost updated object
-    function api.on_chat_boost(_) end
+    function api.on_chat_boost(chat_boost) end
     --- called when a chat boost is removed.
     -- @param removed_chat_boost table the chat boost removed object
-    function api.on_removed_chat_boost(_) end
+    function api.on_removed_chat_boost(removed_chat_boost) end
     --- called when a business connection is updated.
     -- @param business_connection table the business connection object
-    function api.on_business_connection(_) end
+    function api.on_business_connection(business_connection) end
     --- called for new messages from a connected business account.
     -- @param business_message table the business message object
-    function api.on_business_message(_) end
+    function api.on_business_message(business_message) end
     --- called when a business message is edited.
     -- @param edited_business_message table the edited business message object
-    function api.on_edited_business_message(_) end
+    function api.on_edited_business_message(edited_business_message) end
     --- called when business messages are deleted.
     -- @param deleted_business_messages table the deleted messages object
-    function api.on_deleted_business_messages(_) end
+    function api.on_deleted_business_messages(deleted_business_messages) end
     --- called when paid media is purchased.
     -- @param purchased_paid_media table the purchased paid media object
-    function api.on_purchased_paid_media(_) end
+    function api.on_purchased_paid_media(purchased_paid_media) end
     --- called when a managed bot update is received.
     -- @param managed_bot table the managed bot updated object
-    function api.on_managed_bot(_) end
+    function api.on_managed_bot(managed_bot) end
     --- called when the bot receives a guest message (Bot API 10.0).
     -- @param guest_message table the guest message update object
-    function api.on_guest_message(_) end
+    function api.on_guest_message(guest_message) end
     --- called when a user's payment subscription changes (Bot API 10.2).
     -- @param subscription table subscription update
-    function api.on_subscription(_) end
+    function api.on_subscription(subscription) end
     --- called when a user stops message generation (Bot API 10.3).
     -- @param stopped_message_generation table stop generation update
-    function api.on_stopped_message_generation(_) end
+    function api.on_stopped_message_generation(stopped_message_generation) end
 
     --- raw dispatch: routes an update directly to the appropriate handler.
     -- called by the middleware chain as the final step, or directly when

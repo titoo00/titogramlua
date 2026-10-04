@@ -20,6 +20,7 @@ return function(api)
     -- @param resize_keyboard boolean optional request to resize the keyboard vertically
     -- @param one_time_keyboard boolean optional request to hide the keyboard after use
     -- @param selective boolean optional show keyboard to specific users only
+    -- @param force_reply boolean optional request a reply interface (Bot API 10.3)
     -- @return table a reply keyboard markup object with metatable for chaining
     function api.keyboard(resize_keyboard, one_time_keyboard, selective, force_reply)
         return setmetatable({

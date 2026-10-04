@@ -50,6 +50,7 @@
   <li><a href="../modules/titogramlua.builders.html">titogramlua.builders</a></li>
   <li><strong>titogramlua.builders_rich</strong></li>
   <li><a href="../modules/titogramlua.compat.html">titogramlua.compat</a></li>
+  <li><a href="../modules/titogramlua.config.html">titogramlua.config</a></li>
   <li><a href="../modules/titogramlua.framework.html">titogramlua.framework</a></li>
   <li><a href="../modules/titogramlua.handlers.html">titogramlua.handlers</a></li>
   <li><a href="../modules/titogramlua.helpers.html">titogramlua.helpers</a></li>
@@ -81,7 +82,7 @@
 </ul>
 <h2>Topics</h2>
 <ul class="">
-  <li><a href="../topics/README.md.html">titogramlua</a></li>
+  <li><a href="../topics/readme.md.html">titogramlua</a></li>
 </ul>
 
 </div>
@@ -89,7 +90,7 @@
 <div id="content">
 
 <h1>Module <code>titogramlua.builders_rich</code></h1>
-<p>rich message builders (Bot API 10.1).</p>
+<p>rich message builders (Bot API 10.3).</p>
 <p> helpers for InputRichMessage payloads (sent) and the RichText / RichBlock
  structures received in message.rich_message. each returns a plain table.</p>
 
@@ -97,12 +98,20 @@
 <h2><a href="#Functions">Functions</a></h2>
 <table class="function_list">
 	<tr>
+	<td class="name" nowrap><a href="#api.input_rich_block_list_item">api.input_rich_block_list_item(blocks, opts)</a></td>
+	<td class="summary">an input list item for outgoing rich messages.</td>
+	</tr>
+	<tr>
 	<td class="name" nowrap><a href="#api.input_rich_message">api.input_rich_message(opts)</a></td>
-	<td class="summary">InputRichMessage; supply exactly one of opts.html or opts.markdown.</td>
+	<td class="summary">InputRichMessage; supply one of opts.html, opts.markdown, or opts.blocks.</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#api.input_rich_message_content">api.input_rich_message_content(rich_message)</a></td>
 	<td class="summary">wrap an InputRichMessage for inline/guest/web app query results.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.input_rich_message_media">api.input_rich_message_media(id, media)</a></td>
+	<td class="summary">describe media embedded in html or markdown using a tg:// media link.</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#api.link">api.link(url)</a></td>
@@ -130,7 +139,7 @@
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#api.rich_block_table">api.rich_block_table(cells, opts)</a></td>
-	<td class="summary">a table; cells is an array of arrays of cells; opts: is<em>bordered, is</em>striped, caption.</td>
+	<td class="summary">a table; cells is an array of arrays of cells; opts: is<em>bordered, is</em>striped, is_compact, caption.</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#api.rich_block_table_cell">api.rich_block_table_cell(text, opts)</a></td>
@@ -148,6 +157,10 @@
 	<td class="name" nowrap><a href="#api.rich_message">api.rich_message(blocks, is_rtl)</a></td>
 	<td class="summary">a received rich message from an array of blocks.</td>
 	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#api.rich_message_button">api.rich_message_button(text, opts)</a></td>
+	<td class="summary">a rich message button; opts may contain style and one action field.</td>
+	</tr>
 </table>
 
 <br/>
@@ -158,11 +171,38 @@
 
     <dl class="function">
     <dt>
+    <a name = "api.input_rich_block_list_item"></a>
+    <strong>api.input_rich_block_list_item(blocks, opts)</strong>
+    </dt>
+    <dd>
+    an input list item for outgoing rich messages.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">blocks</span>
+
+
+
+        </li>
+        <li><span class="parameter">opts</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
     <a name = "api.input_rich_message"></a>
     <strong>api.input_rich_message(opts)</strong>
     </dt>
     <dd>
-    InputRichMessage; supply exactly one of opts.html or opts.markdown.
+    InputRichMessage; supply one of opts.html, opts.markdown, or opts.blocks.
 
 
     <h3>Parameters:</h3>
@@ -190,6 +230,33 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">rich_message</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.input_rich_message_media"></a>
+    <strong>api.input_rich_message_media(id, media)</strong>
+    </dt>
+    <dd>
+    describe media embedded in html or markdown using a tg:// media link.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+
+
+
+        </li>
+        <li><span class="parameter">media</span>
 
 
 
@@ -368,7 +435,7 @@
     <strong>api.rich_block_table(cells, opts)</strong>
     </dt>
     <dd>
-    a table; cells is an array of arrays of cells; opts: is<em>bordered, is</em>striped, caption.
+    a table; cells is an array of arrays of cells; opts: is<em>bordered, is</em>striped, is_compact, caption.
 
 
     <h3>Parameters:</h3>
@@ -493,6 +560,33 @@
 
 
 </dd>
+    <dt>
+    <a name = "api.rich_message_button"></a>
+    <strong>api.rich_message_button(text, opts)</strong>
+    </dt>
+    <dd>
+    a rich message button; opts may contain style and one action field.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">text</span>
+
+
+
+        </li>
+        <li><span class="parameter">opts</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
 </dl>
 
 
@@ -500,7 +594,7 @@
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/lunarmodules/LDoc">LDoc 1.5.0</a></i>
-<i style="float:right;">Last updated 2026-10-03 12:01:50 </i>
+<i style="float:right;">Last updated 2026-10-04 09:45:22 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
