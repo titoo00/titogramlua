@@ -41,7 +41,7 @@
 <ul class="nowrap">
   <li><a href="../modules/b64url.html">b64url</a></li>
   <li><a href="../modules/titogramlua.html">titogramlua</a></li>
-  <li><strong>titogramlua.adapters</strong></li>
+  <li><a href="../modules/titogramlua.adapters.html">titogramlua.adapters</a></li>
   <li><a href="../modules/titogramlua.adapters.db.html">titogramlua.adapters.db</a></li>
   <li><a href="../modules/titogramlua.adapters.email.html">titogramlua.adapters.email</a></li>
   <li><a href="../modules/titogramlua.adapters.llm.html">titogramlua.adapters.llm</a></li>
@@ -73,7 +73,7 @@
   <li><a href="../modules/titogramlua.methods.stories.html">titogramlua.methods.stories</a></li>
   <li><a href="../modules/titogramlua.methods.suggested_posts.html">titogramlua.methods.suggested_posts</a></li>
   <li><a href="../modules/titogramlua.methods.updates.html">titogramlua.methods.updates</a></li>
-  <li><a href="../modules/titogramlua.methods.userbot.html">titogramlua.methods.userbot</a></li>
+  <li><strong>titogramlua.methods.userbot</strong></li>
   <li><a href="../modules/titogramlua.methods.userbot.close.html">titogramlua.methods.userbot.close</a></li>
   <li><a href="../modules/titogramlua.methods.userbot.execute.html">titogramlua.methods.userbot.execute</a></li>
   <li><a href="../modules/titogramlua.methods.userbot.receive.html">titogramlua.methods.userbot.receive</a></li>
@@ -96,24 +96,18 @@
 
 <div id="content">
 
-<h1>Module <code>titogramlua.adapters</code></h1>
-<p>adapter registry for database, Redis, LLM, and email adapters.</p>
-<p>[[</p>
+<h1>Module <code>titogramlua.methods.userbot</code></h1>
+<p>optional Telegram user-account client backed by TDLib.</p>
+<p> This module is deliberately separate from the Bot API client in
+ <a href="../modules/titogramlua.html#">titogramlua</a>. It loads a locally installed TDLib JSON shared library using
+ LuaJIT FFI and forwards TDLib requests and updates as Lua tables.</p>
 
 
 <h2><a href="#Functions">Functions</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#api.adapters.create_socket">api.adapters.create_socket()</a></td>
-	<td class="summary">create a TCP socket that auto-selects sync or async mode.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#api.adapters.http_request">api.adapters.http_request(url, opts)</a></td>
-	<td class="summary">perform an HTTP request that auto-selects sync or async transport.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#api.adapters.is_async">api.adapters.is_async()</a></td>
-	<td class="summary">check if we're inside a copas async context.</td>
+	<td class="name" nowrap><a href="#user.new">user.new(opts)</a></td>
+	<td class="summary">create a TDLib-backed user client.</td>
 	</tr>
 </table>
 
@@ -125,67 +119,27 @@
 
     <dl class="function">
     <dt>
-    <a name = "api.adapters.create_socket"></a>
-    <strong>api.adapters.create_socket()</strong>
+    <a name = "user.new"></a>
+    <strong>user.new(opts)</strong>
     </dt>
     <dd>
-    create a TCP socket that auto-selects sync or async mode.
-
-
-
-    <h3>Returns:</h3>
-    <ol>
-
-        userdata a TCP socket, wrapped with copas if in async context
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "api.adapters.http_request"></a>
-    <strong>api.adapters.http_request(url, opts)</strong>
-    </dt>
-    <dd>
-    perform an HTTP request that auto-selects sync or async transport.
+    create a TDLib-backed user client.
+ Requires LuaJIT, the TDLib JSON shared library, and api<em>id/api</em>hash from
+ https://my.telegram.org. The TDLib database is encrypted with encryption_key.
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">url</span>
-         string the request URL
-        </li>
         <li><span class="parameter">opts</span>
-         table optional request options (method, headers, body)
+         table configuration; api<em>id, api</em>hash, database<em>directory,
+   encryption</em>key are required; files_directory and library are optional.
         </li>
     </ul>
 
     <h3>Returns:</h3>
     <ol>
-        <li>
-        string response body, or nil on error</li>
-        <li>
-        number HTTP status code or error message</li>
-    </ol>
 
-
-
-
-</dd>
-    <dt>
-    <a name = "api.adapters.is_async"></a>
-    <strong>api.adapters.is_async()</strong>
-    </dt>
-    <dd>
-    check if we're inside a copas async context.
-
-
-
-    <h3>Returns:</h3>
-    <ol>
-
-        boolean true if running inside copas
+        table user client
     </ol>
 
 

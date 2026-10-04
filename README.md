@@ -2,7 +2,7 @@
 
 [![audited by auto-audit](https://img.shields.io/badge/audited_by-auto--audit-6366f1?logo=github&logoColor=white)](https://auto-audit.hesketh.pro)
 
-A feature-filled Telegram bot API library written in Lua, created by [Yosef](https://t.me/PTPUP). Supports Bot API 10.3 with full coverage of all available methods.
+A feature-filled Telegram API library written in Lua, created by [Yosef](https://t.me/PTPUP). The default client supports Bot API 10.3 with full coverage of all available methods. An optional TDLib-backed user-account (MTProto) client is provided separately by `require('titogramlua.methods.userbot')`.
 
 ## Installation
 
@@ -44,6 +44,7 @@ api.run({ timeout = 60 })
 - Command parsing, pagination, deep links, and callback data encoding
 - Member status helpers and chat permission checks
 - Legacy v2 compatibility layer with deprecation warnings
+- Optional Telegram user-account client powered by TDLib (LuaJIT + native TDLib required)
 
 ## Documentation
 
@@ -58,6 +59,7 @@ api.run({ timeout = 60 })
 | [Async / Concurrency](docs/async.md) | Concurrent updates, parallel calls, background tasks |
 | [Adapters](docs/adapters.md) | Database, Redis, LLM, and email integrations |
 | [Migration from v2](docs/migration.md) | Breaking changes and upgrade guide |
+| [User accounts / MTProto](docs/userbot.md) | Optional LuaJIT + TDLib user-account client |
 
 ## Example
 
@@ -142,6 +144,14 @@ src/
     business.lua        -- Business account methods
     suggested_posts.lua -- Suggested post methods
     rich.lua            -- Rich message methods (send_rich_message, drafts)
+    userbot.lua         -- Optional TDLib-backed user-account client entry point
+    userbot/
+      send.lua          -- Send TDLib methods
+      execute.lua       -- Execute synchronous TDLib methods
+      receive.lua       -- Receive and dispatch updates
+      run.lua           -- Run the receive loop
+      stop.lua          -- Stop the receive loop
+      close.lua         -- Close the TDLib client
 ```
 
 ## Testing
