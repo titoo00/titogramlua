@@ -103,5 +103,18 @@ jobs:
           luarocks install penlight 1.15.0
           luarocks install ldoc 1.5.0 --deps-mode=none
 
+      - name: Generate docs for artifact
+        run: ldoc -d work/ldoc .
+
+      - name: Upload generated docs
+        uses: actions/upload-artifact@v4
+        with:
+          name: linux-ldoc-output
+          path: |
+            work/ldoc/modules/titogramlua.builders.html
+            work/ldoc/modules/titogramlua.methods.bot.html
+            work/ldoc/modules/titogramlua.methods.messages.html
+            work/ldoc/topics/readme.md.html
+
       - name: Check docs are in sync with src
         run: make docs-check
