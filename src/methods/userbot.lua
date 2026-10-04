@@ -116,6 +116,8 @@ function user.new(opts)
     client.get_story = require('titogramlua.methods.userbot.get_story')
     client.get_chat_active_stories = require('titogramlua.methods.userbot.get_chat_active_stories')
     client.delete_story = require('titogramlua.methods.userbot.delete_story')
+    client.edit_story = require('titogramlua.methods.userbot.edit_story')
+    client.set_story_privacy_settings = require('titogramlua.methods.userbot.set_story_privacy_settings')
 
     return client
 end

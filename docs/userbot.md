@@ -74,6 +74,8 @@ The client includes named wrappers for common chat, message, and story operation
 | `get_story(poster_chat_id, story_id)` | `get_story.lua` | Read a story. |
 | `get_chat_active_stories(chat_id)` | `get_chat_active_stories.lua` | List a chat's active stories. |
 | `delete_story(poster_chat_id, story_id)` | `delete_story.lua` | Delete a story when permitted. |
+| `edit_story(poster_chat_id, story_id, content, opts)` | `edit_story.lua` | Edit a story when permitted. |
+| `set_story_privacy_settings(story_id, privacy_settings)` | `set_story_privacy_settings.lua` | Change story privacy when permitted. |
 
 ### Send a message
 

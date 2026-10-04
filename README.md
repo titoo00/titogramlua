@@ -159,6 +159,8 @@ src/
       get_story.lua
       get_chat_active_stories.lua
       delete_story.lua
+      edit_story.lua
+      set_story_privacy_settings.lua
       send.lua          -- Low-level TDLib request
       execute.lua       -- Synchronous TDLib method
       receive.lua       -- Receive and dispatch one TDLib update
