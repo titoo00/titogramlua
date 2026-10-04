@@ -98,11 +98,10 @@ jobs:
       - name: Install LuaRocks
         uses: leafo/gh-actions-luarocks@v4
 
-      - name: Install LDoc and markdown
+      - name: Install LDoc
         run: |
           luarocks install penlight 1.15.0
-          luarocks install ldoc 1.5.0
-          luarocks install markdown 0.33
+          luarocks install ldoc 1.5.0 --deps-mode=none
 
       - name: Check docs are in sync with src
         run: make docs-check
