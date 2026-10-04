@@ -1,4 +1,4 @@
---- rich message builders (Bot API 10.1).
+--- rich message builders (Bot API 10.3).
 -- helpers for InputRichMessage payloads (sent) and the RichText / RichBlock
 -- structures received in message.rich_message. each returns a plain table.
 -- @module titogramlua.builders_rich
@@ -6,15 +6,22 @@ return function(api)
 
     -- input types (sent) ---------------------------------------------------
 
-    --- InputRichMessage; supply exactly one of opts.html or opts.markdown.
+    --- InputRichMessage; supply one of opts.html, opts.markdown, or opts.blocks.
     function api.input_rich_message(opts)
         opts = opts or {}
         return {
             ['html'] = opts.html,
             ['markdown'] = opts.markdown,
+            ['blocks'] = opts.blocks,
+            ['media'] = opts.media,
             ['is_rtl'] = opts.is_rtl,
             ['skip_entity_detection'] = opts.skip_entity_detection
         }
+    end
+
+    --- describe media embedded in html or markdown using a tg:// media link.
+    function api.input_rich_message_media(id, media)
+        return { ['id'] = id, ['media'] = media }
     end
 
     --- wrap an InputRichMessage for inline/guest/web app query results.
@@ -161,6 +168,18 @@ return function(api)
         }
     end
 
+    --- an input list item for outgoing rich messages.
+    function api.input_rich_block_list_item(blocks, opts)
+        opts = opts or {}
+        return {
+            ['blocks'] = blocks,
+            ['has_checkbox'] = opts.has_checkbox,
+            ['is_checked'] = opts.is_checked,
+            ['value'] = opts.value,
+            ['type'] = opts.type
+        }
+    end
+
     -- rich blocks (received) -----------------------------------------------
 
     function api.rich_block_paragraph(text)
@@ -172,9 +191,12 @@ return function(api)
         return { ['type'] = 'heading', ['text'] = text, ['size'] = size }
     end
 
-    function api.rich_block_preforyosefed(text, language)
+    function api.rich_block_preformatted(text, language)
         return { ['type'] = 'pre', ['text'] = text, ['language'] = language }
     end
+
+    -- Preserve the misspelled helper name shipped in earlier releases.
+    api.rich_block_preforyosefed = api.rich_block_preformatted
 
     function api.rich_block_footer(text)
         return { ['type'] = 'footer', ['text'] = text }
@@ -212,7 +234,7 @@ return function(api)
         return { ['type'] = 'slideshow', ['blocks'] = blocks, ['caption'] = caption }
     end
 
-    --- a table; cells is an array of arrays of cells; opts: is_bordered, is_striped, caption.
+    --- a table; cells is an array of arrays of cells; opts: is_bordered, is_striped, is_compact, caption.
     function api.rich_block_table(cells, opts)
         opts = opts or {}
         return {
@@ -220,8 +242,42 @@ return function(api)
             ['cells'] = cells,
             ['is_bordered'] = opts.is_bordered,
             ['is_striped'] = opts.is_striped,
+            ['is_compact'] = opts.is_compact,
             ['caption'] = opts.caption
         }
+    end
+
+    --- a rich message button; opts may contain style and one action field.
+    function api.rich_message_button(text, opts)
+        opts = opts or {}
+        return {
+            ['text'] = text,
+            ['style'] = opts.style,
+            ['url'] = opts.url,
+            ['callback_data'] = opts.callback_data,
+            ['web_app'] = opts.web_app,
+            ['login_url'] = opts.login_url,
+            ['switch_inline_query'] = opts.switch_inline_query,
+            ['switch_inline_query_current_chat'] = opts.switch_inline_query_current_chat,
+            ['switch_inline_query_chosen_chat'] = opts.switch_inline_query_chosen_chat,
+            ['copy_text'] = opts.copy_text
+        }
+    end
+
+    function api.rich_text_button(button)
+        return { ['type'] = 'button', ['button'] = button }
+    end
+
+    function api.rich_block_buttons(buttons, align)
+        return { ['type'] = 'buttons', ['buttons'] = buttons, ['align'] = align }
+    end
+
+    function api.rich_block_expandable_blockquote(text, credit)
+        return { ['type'] = 'expandable_blockquote', ['text'] = text, ['credit'] = credit }
+    end
+
+    function api.rich_block_document(document, caption)
+        return { ['type'] = 'document', ['document'] = document, ['caption'] = caption }
     end
 
     function api.rich_block_details(summary, blocks, is_open)

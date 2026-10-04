@@ -21,12 +21,13 @@ return function(api)
     -- @param one_time_keyboard boolean optional request to hide the keyboard after use
     -- @param selective boolean optional show keyboard to specific users only
     -- @return table a reply keyboard markup object with metatable for chaining
-    function api.keyboard(resize_keyboard, one_time_keyboard, selective)
+    function api.keyboard(resize_keyboard, one_time_keyboard, selective, force_reply)
         return setmetatable({
             ['keyboard'] = {},
             ['resize_keyboard'] = resize_keyboard or false,
             ['one_time_keyboard'] = one_time_keyboard or false,
-            ['selective'] = selective or false
+            ['selective'] = selective or false,
+            ['force_reply'] = force_reply
         }, api.keyboard_meta)
     end
 
@@ -43,10 +44,25 @@ return function(api)
 
     --- create an inline keyboard markup with a chainable builder pattern.
     -- @return table an inline keyboard markup object with metatable for chaining
-    function api.inline_keyboard()
+    function api.inline_keyboard(force_reply)
         return setmetatable({
-            ['inline_keyboard'] = {}
+            ['inline_keyboard'] = {},
+            ['force_reply'] = force_reply
         }, api.inline_keyboard_meta)
+    end
+
+    --- represent the no-payload DisabledButton object for InlineKeyboardButton.disabled.
+    function api.disabled_button()
+        return {}
+    end
+
+    --- return a copy of an inline keyboard button with its disabled field set.
+    function api.disable_inline_button(button)
+        if type(button) ~= 'table' then return false end
+        local disabled = {}
+        for key, value in pairs(button) do disabled[key] = value end
+        disabled.disabled = {}
+        return disabled
     end
 
     -- Row builder
@@ -612,6 +628,21 @@ return function(api)
         }
     end
 
+    --- create an input voice note object for a rich message block.
+    -- @param media string file_id, URL, or attach reference
+    -- @param opts table optional caption, parse_mode, caption_entities, duration
+    function api.input_media_voice_note(media, opts)
+        opts = opts or {}
+        return {
+            ['type'] = 'voice_note',
+            ['media'] = media,
+            ['caption'] = opts.caption,
+            ['parse_mode'] = opts.parse_mode,
+            ['caption_entities'] = opts.caption_entities,
+            ['duration'] = tonumber(opts.duration)
+        }
+    end
+
     --- create an input media link object (Bot API 10.1).
     -- @param url string HTTP url of the link
     -- @return table the input media object
@@ -1090,7 +1121,8 @@ return function(api)
             ['can_delete_stories'] = opts.can_delete_stories,
             ['can_manage_topics'] = opts.can_manage_topics,
             ['can_manage_direct_messages'] = opts.can_manage_direct_messages,
-            ['can_manage_tags'] = opts.can_manage_tags
+            ['can_manage_tags'] = opts.can_manage_tags,
+            ['can_send_welcome_messages'] = opts.can_send_welcome_messages
         }
     end
 
@@ -1193,7 +1225,18 @@ return function(api)
             ['quote_entities'] = quote_entities,
             ['quote_position'] = tonumber(quote_position),
             ['poll_option_id'] = opts.poll_option_id,
-            ['checklist_task_id'] = opts.checklist_task_id
+            ['checklist_task_id'] = opts.checklist_task_id,
+            ['ephemeral_message_id'] = opts.ephemeral_message_id
+        }
+    end
+
+    --- parameters for sending an ephemeral message visible to one user in a group.
+    function api.ephemeral_message_parameters(receiver_user_id, opts)
+        opts = opts or {}
+        return {
+            ['receiver_user_id'] = receiver_user_id,
+            ['callback_query_id'] = opts.callback_query_id,
+            ['replace_callback_query_message'] = opts.replace_callback_query_message
         }
     end
 

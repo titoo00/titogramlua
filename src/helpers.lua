@@ -33,6 +33,7 @@ return function(api)
             ['can_delete_stories'] = p.can_delete_stories or false,
             ['can_manage_topics'] = p.can_manage_topics or false,
             ['can_manage_direct_messages'] = p.can_manage_direct_messages or false,
+            ['can_send_welcome_messages'] = p.can_send_welcome_messages or false,
             ['can_send_messages'] = p.can_send_messages or false,
             ['can_send_audios'] = p.can_send_audios or false,
             ['can_send_documents'] = p.can_send_documents or false,

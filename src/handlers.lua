@@ -102,6 +102,12 @@ return function(api)
     --- called when the bot receives a guest message (Bot API 10.0).
     -- @param guest_message table the guest message update object
     function api.on_guest_message(_) end
+    --- called when a user's payment subscription changes (Bot API 10.2).
+    -- @param subscription table subscription update
+    function api.on_subscription(_) end
+    --- called when a user stops message generation (Bot API 10.3).
+    -- @param stopped_message_generation table stop generation update
+    function api.on_stopped_message_generation(_) end
 
     --- raw dispatch: routes an update directly to the appropriate handler.
     -- called by the middleware chain as the final step, or directly when
@@ -179,6 +185,10 @@ return function(api)
             return api.on_managed_bot(update.managed_bot)
         elseif update.guest_message then
             return api.on_guest_message(update.guest_message)
+        elseif update.subscription then
+            return api.on_subscription(update.subscription)
+        elseif update.stopped_message_generation then
+            return api.on_stopped_message_generation(update.stopped_message_generation)
         end
         return false
     end

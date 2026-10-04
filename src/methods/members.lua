@@ -90,7 +90,8 @@ return function(api)
             ['can_delete_stories'] = opts.can_delete_stories,
             ['can_manage_topics'] = opts.can_manage_topics,
             ['can_manage_direct_messages'] = opts.can_manage_direct_messages,
-            ['can_manage_tags'] = opts.can_manage_tags
+            ['can_manage_tags'] = opts.can_manage_tags,
+            ['can_send_welcome_messages'] = opts.can_send_welcome_messages
         })
         return success, res
     end

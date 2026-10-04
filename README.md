@@ -2,7 +2,7 @@
 
 [![audited by auto-audit](https://img.shields.io/badge/audited_by-auto--audit-6366f1?logo=github&logoColor=white)](https://auto-audit.hesketh.pro)
 
-A feature-filled Telegram bot API library written in Lua, created by [Yosef](https://t.me/PTPUP). Supports Bot API 10.1 with full coverage of all available methods.
+A feature-filled Telegram bot API library written in Lua, created by [Yosef](https://t.me/PTPUP). Supports Bot API 10.3 with full coverage of all available methods.
 
 ## Installation
 
@@ -30,7 +30,7 @@ api.run({ timeout = 60 })
 
 ## Key Features
 
-- Full Bot API 10.1 coverage (messages, media, payments, stickers, forums, games, gifts, stories, business accounts, rich messages, live photos, and more)
+- Full Bot API 10.3 coverage (messages, media, payments, stickers, forums, games, gifts, stories, business accounts, rich messages, live photos, and more)
 - **Async-first architecture** via copas: concurrent updates, parallel API calls, background tasks
 - **Framework layer**: command router, conversations, and per-chat/user sessions
 - **Built-in webhook receiver** with x-telegram-bot-api secret-token verification

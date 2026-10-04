@@ -23,6 +23,7 @@ return function(api)
         reply_markup = type(reply_markup) == 'table' and json.encode(reply_markup) or reply_markup
         local success, res = api.request(config.endpoint .. api.token .. '/sendSticker', {
             ['chat_id'] = chat_id,
+            ['ephemeral_message_parameters'] = json_enc(opts.ephemeral_message_parameters),
             ['message_thread_id'] = opts.message_thread_id,
             ['direct_messages_topic_id'] = opts.direct_messages_topic_id,
             ['emoji'] = opts.emoji,
