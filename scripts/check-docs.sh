@@ -56,8 +56,11 @@ done < <(find "$tmp" -type f | sort)
 # committed html that ldoc no longer emits (e.g. a removed module) is stale
 while IFS= read -r committed; do
     rel="${committed#docs/}"
-    if [ "$rel" = "topics/README.md.html" ]; then
-        rel="topics/readme.md.html"
+    if [ ! -f "$tmp/$rel" ]; then
+        case "$rel" in
+            topics/README.md.html) rel="topics/readme.md.html" ;;
+            topics/readme.md.html) rel="topics/README.md.html" ;;
+        esac
     fi
     if [ ! -f "$tmp/$rel" ]; then
         echo "drift: $committed is stale -- ldoc no longer generates it" >&2
