@@ -1,7 +1,5 @@
 # titogramlua
 
-[![audited by auto-audit](https://img.shields.io/badge/audited_by-auto--audit-6366f1?logo=github&logoColor=white)](https://auto-audit.hesketh.pro)
-
 A feature-filled Telegram API library written in Lua, created by [Yosef](https://t.me/PTPUP). The default client supports Bot API 10.3 with full coverage of all available methods. An optional TDLib-backed user-account (MTProto) client is provided separately by `require('titogramlua.methods.userbot')`.
 
 ## Installation
@@ -30,12 +28,12 @@ To use the optional TDLib-backed user-account client, install its build tools an
 sudo apt install -y git cmake gperf pkg-config libssl-dev zlib1g-dev build-essential lua5.1 liblua5.1-0-dev luajit libluajit-5.1-dev
 ```
 
-Build and install TDLib's JSON shared library:
+Build and install TDLib's JSON shared library. Build all targets first (TDLib's install step also expects its static libraries to exist, so building only the `tdjson` target makes `cmake --install` fail with `file INSTALL cannot find ".../libtdjson_static.a"`), then install as root:
 
 ```bash
 if [ ! -d ~/td/.git ]; then git clone https://github.com/tdlib/td.git ~/td; fi
 cmake -S ~/td -B ~/td/build -DCMAKE_BUILD_TYPE=Release
-cmake --build ~/td/build --target tdjson -j2
+cmake --build ~/td/build -j2
 sudo cmake --install ~/td/build
 sudo ldconfig
 ldconfig -p | grep tdjson
@@ -48,7 +46,7 @@ sudo luarocks --lua-version=5.1 install titogramlua
 luajit -e "require('titogramlua.methods.userbot'); print('userbot module loaded')"
 ```
 
-The TDLib build follows [TDLib's official build instructions](https://github.com/tdlib/td#building). For lower-memory servers, `-j2` limits parallel compilation. See [User accounts / MTProto](docs/userbot.md) for the complete user-account guide. Optional database adapters are not installed by default: SQLite uses `lsqlite3` (`sudo apt install libsqlite3-dev`, then `sudo luarocks --lua-version=5.4 install lsqlite3`); PostgreSQL uses `pgmoon` (`sudo luarocks --lua-version=5.4 install pgmoon`). Redis, LLM, and SMTP use the library's built-in Lua clients and need their service/API credentials.
+The TDLib build follows [TDLib's official build instructions](https://github.com/tdlib/td#building). Building TDLib needs a lot of RAM: on lower-memory servers use `-j1` or `-j2` to limit parallel compilation, and add swap space if the build is killed. See [User accounts / MTProto](docs/userbot.md) for the complete user-account guide. Optional database adapters are not installed by default: SQLite uses `lsqlite3` (`sudo apt install libsqlite3-dev`, then `sudo luarocks --lua-version=5.4 install lsqlite3`); PostgreSQL uses `pgmoon` (`sudo luarocks --lua-version=5.4 install pgmoon`). Redis, LLM, and SMTP use the library's built-in Lua clients and need their service/API credentials.
 
 For development and diagnosing library changes, install the optional project tools:
 
@@ -140,6 +138,8 @@ On first run, type your own phone number, then the login code Telegram sends (it
 
 After sign-in, use named methods such as `user:send_message(chat_id, 'Hello')` or `user:upload_story(...)`; their requests are asynchronous and responses arrive through `user.on_update`. TDLib calls that do not yet have a named wrapper are available through `user:send('methodName', params)`. See [the full UserBot guide](docs/userbot.md) for all wrappers and examples. Never share login codes, passwords, API hashes, or the session database.
 
+> **Note:** Automated activity on a personal Telegram account can lead to limits or bans if it looks like spam. Test with a secondary account first.
+
 ## Quick Start
 
 ```lua
@@ -168,7 +168,7 @@ api.run({ timeout = 60 })
 - **Lua 5.1 - 5.5 support** with automatic polyfills for bitwise operations and string.pack
 - Clean opts-table pattern for all API methods
 - Chainable keyboard and inline result builders
-- Text foryosefing helpers for HTML, Markdown, and MarkdownV2
+- Text formatting helpers for HTML, Markdown, and MarkdownV2
 - Command parsing, pagination, deep links, and callback data encoding
 - Member status helpers and chat permission checks
 - Legacy v2 compatibility layer with deprecation warnings
@@ -183,7 +183,7 @@ api.run({ timeout = 60 })
 | [API Methods](docs/methods.md) | Complete method reference |
 | [Builders](docs/builders.md) | Keyboards, inline results, and type constructors |
 | [Framework](docs/framework.md) | Command router, sessions, conversations, webhooks, retries, logging |
-| [Utilities](docs/utilities.md) | Foryosefing, command parsing, pagination, and tools |
+| [Utilities](docs/utilities.md) | Formatting, command parsing, pagination, and tools |
 | [Async / Concurrency](docs/async.md) | Concurrent updates, parallel calls, background tasks |
 | [Adapters](docs/adapters.md) | Database, Redis, LLM, and email integrations |
 | [Migration from v2](docs/migration.md) | Breaking changes and upgrade guide |
@@ -238,7 +238,7 @@ src/
   async.lua             -- Copas-based concurrency module
   b64url.lua            -- Base64 URL encoding/decoding
   log.lua               -- Structured logging and lightweight metrics
-  tools.lua             -- Utility functions (foryosefing, file ops, etc.)
+  tools.lua             -- Utility functions (formatting, file ops, etc.)
   handlers.lua          -- Update routing and on_* handler stubs (async-first)
   builders.lua          -- Keyboard, inline result, and type constructors
   builders_rich.lua     -- Rich message builders (RichText/RichBlock DSL)
@@ -272,7 +272,7 @@ src/
     business.lua        -- Business account methods
     suggested_posts.lua -- Suggested post methods
     rich.lua            -- Rich message methods (send_rich_message, drafts)
-    userbot.lua         -- Optional TDLib user-account client constructor
+    userbot.lua         -- Optional TDLib-backed user-account client entry point
     userbot/
       send_message.lua  -- Send a text message
       send_photo.lua    -- Send a photo
@@ -292,14 +292,6 @@ src/
       send.lua          -- Low-level TDLib request
       execute.lua       -- Synchronous TDLib method
       receive.lua       -- Receive and dispatch one TDLib update
-      run.lua           -- Run the receive loop
-      stop.lua          -- Stop the receive loop
-      close.lua         -- Close the TDLib client
-    userbot.lua         -- Optional TDLib-backed user-account client entry point
-    userbot/
-      send.lua          -- Send TDLib methods
-      execute.lua       -- Execute synchronous TDLib methods
-      receive.lua       -- Receive and dispatch updates
       run.lua           -- Run the receive loop
       stop.lua          -- Stop the receive loop
       close.lua         -- Close the TDLib client
@@ -385,3 +377,5 @@ api.run({ sync = true, timeout = 60 })
 This project is licensed under the GPL-3.0 License - see the LICENSE file for details.
 
 Copyright (c) 2017-2026 Yousef Hesham
+
+Portions Copyright (c) Matthew Hesketh, from the original [telegram-bot-lua](https://github.com/wrxck/telegram-bot-lua) project. Keep the original copyright notices in the `LICENSE` file, as the GPL requires.
