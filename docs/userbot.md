@@ -76,6 +76,19 @@ The client includes named wrappers for common chat, message, and story operation
 | `delete_story(poster_chat_id, story_id)` | `delete_story.lua` | Delete a story when permitted. |
 | `edit_story(poster_chat_id, story_id, content, opts)` | `edit_story.lua` | Edit a story when permitted. |
 | `set_story_privacy_settings(story_id, privacy_settings)` | `set_story_privacy_settings.lua` | Change story privacy when permitted. |
+| `block_user(user_id)` / `unblock_user(user_id)` | `block_user.lua` / `unblock_user.lua` | Add or remove a user from the main block list. |
+| `check_username(chat_id, username)` / `set_username(username)` | `check_username.lua` / `set_username.lua` | Check a chat username or change the account username. `check_username` follows TDLib chat rules and is not an account-username availability check. |
+| `delete_profile_photos(photo_ids)` | `delete_profile_photos.lua` | Delete profile photos by ID; returns request IDs for the individual deletes. |
+| `get_chat_audios(user_id, offset, limit)` / `get_chat_audios_count(user_id)` | `get_chat_audios.lua` / `get_chat_audios_count.lua` | Read a user's profile audio list. TDLib returns the total count alongside the list response. |
+| `get_chat_photos(chat_id, limit, chat_history)` / `get_chat_photos_count(chat_id, chat_history)` | `get_chat_photos.lua` / `get_chat_photos_count.lua` | Read a user's profile photos, or chat-photo history when `chat_history` is true. |
+| `get_common_chats(user_id, offset_chat_id, limit)` | `get_common_chats.lua` | Read groups shared with a user. |
+| `get_default_emoji_statuses()` / `set_emoji_status(chat_id, emoji_status)` | `get_default_emoji_statuses.lua` / `set_emoji_status.lua` | List default status emojis or set/clear an account/chat emoji status. |
+| `get_me()` / `get_users(user_ids)` | `get_me.lua` / `get_users.lua` | Read the current account or one/multiple users by ID. |
+| `set_personal_channel(chat_id)` | `set_personal_channel.lua` | Set the personal chat/channel; omit the ID to remove it. |
+| `set_profile_photo(photo, is_public)` | `set_profile_photo.lua` | Set a profile photo with a TDLib `InputChatPhoto` object. |
+| `update_birthday(birthdate)` | `update_birthday.lua` | Set or clear the account birthday with a TDLib `birthdate` object. |
+| `update_profile(fields)` | `update_profile.lua` | Update name and/or bio; supply both first and last name together when changing the name. |
+| `update_status(offline)` | `update_status.lua` | Set the account online state via TDLib. |
 
 ### Send a message
 
@@ -125,6 +138,8 @@ user:send('sendMessage', {
 ```
 
 `client:execute(method, params)` is synchronous and should only be used for TDLib methods documented as locally executable. `client:receive(timeout)` processes a single update/response; `client:stop()` stops a running receive loop and `client:close()` releases the TDLib handle. Run one receive loop per client.
+
+The methods above return the TDLib request ID (or a table of IDs for multi-request helpers). They do not block for Telegram's response. Use `on_update` to inspect the response, including `ChatPhotos`, `ChatAudios`, `Count`, and `Ok` objects. `get_chat_photos` distinguishes user profile photos from a group's photo-change history through its third `chat_history` argument. The user-method names mirror the referenced Pyrogram API where possible, but their parameters and response behavior follow TDLib.
 
 ## Bot API and user accounts are different clients
 
