@@ -23,7 +23,9 @@ ldoc -d "$tmp" . >/dev/null
 
 # blank out ldoc's per-page timestamp so it does not count as drift
 norm() {
-    sed -E 's/Last updated [0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}/Last updated TIMESTAMP/g' "$1"
+    sed -E \
+        -e 's/Last updated [0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}/Last updated TIMESTAMP/g' \
+        -e 's/README\.md/readme.md/g' "$1"
 }
 
 drift=0
@@ -32,6 +34,13 @@ drift=0
 while IFS= read -r gen; do
     rel="${gen#"$tmp"/}"
     committed="docs/$rel"
+    # LDoc derives the topic output filename from the configured README path.
+    # Windows filesystems are case-insensitive, so docs generated there have
+    # historically been committed as README.md.html. Linux preserves the
+    # configured README.md casing and emits readme.md.html instead.
+    if [ "$rel" = "topics/readme.md.html" ] && [ -f "docs/topics/README.md.html" ]; then
+        committed="docs/topics/README.md.html"
+    fi
     if [ ! -f "$committed" ]; then
         echo "drift: docs/$rel is missing" >&2
         drift=1
@@ -47,6 +56,9 @@ done < <(find "$tmp" -type f | sort)
 # committed html that ldoc no longer emits (e.g. a removed module) is stale
 while IFS= read -r committed; do
     rel="${committed#docs/}"
+    if [ "$rel" = "topics/README.md.html" ]; then
+        rel="topics/readme.md.html"
+    fi
     if [ ! -f "$tmp/$rel" ]; then
         echo "drift: $committed is stale -- ldoc no longer generates it" >&2
         drift=1
