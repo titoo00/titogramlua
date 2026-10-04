@@ -6,11 +6,139 @@ A feature-filled Telegram API library written in Lua, created by [Yosef](https:/
 
 ## Installation
 
-Requires Lua 5.1+ and LuaRocks:
+Requires Lua 5.1+ and LuaRocks. LuaRocks installs the library's Lua dependencies (`dkjson`, `luasec`, `luasocket`, `multipart-post`, `luautf8`, and `copas`) automatically:
 
 ```
 luarocks install titogramlua
 ```
+
+### Complete installation on Ubuntu 22.04
+
+The regular Bot API client needs Lua and LuaRocks. The optional user-account client additionally needs LuaJIT and the native TDLib JSON library; TDLib is built separately and is not installed by LuaRocks.
+
+Install the library and its Lua dependencies:
+
+```bash
+sudo apt update
+sudo apt install -y lua5.4 liblua5.4-dev luarocks build-essential libssl-dev zlib1g-dev
+sudo luarocks --lua-version=5.4 install titogramlua
+```
+
+To use the optional TDLib-backed user-account client, install its build tools and LuaJIT. `gperf` is required during TDLib configuration (without it CMake stops before creating the build files):
+
+```bash
+sudo apt install -y git cmake gperf pkg-config libssl-dev zlib1g-dev build-essential lua5.1 liblua5.1-0-dev luajit libluajit-5.1-dev
+```
+
+Build and install TDLib's JSON shared library:
+
+```bash
+if [ ! -d ~/td/.git ]; then git clone https://github.com/tdlib/td.git ~/td; fi
+cmake -S ~/td -B ~/td/build -DCMAKE_BUILD_TYPE=Release
+cmake --build ~/td/build --target tdjson -j2
+sudo cmake --install ~/td/build
+sudo ldconfig
+ldconfig -p | grep tdjson
+```
+
+Install titogramlua's Lua modules for LuaJIT's Lua 5.1 module ABI, then run user-account code with `luajit`:
+
+```bash
+sudo luarocks --lua-version=5.1 install titogramlua
+luajit -e "require('titogramlua.methods.userbot'); print('userbot module loaded')"
+```
+
+The TDLib build follows [TDLib's official build instructions](https://github.com/tdlib/td#building). For lower-memory servers, `-j2` limits parallel compilation. See [User accounts / MTProto](docs/userbot.md) for the complete user-account guide. Optional database adapters are not installed by default: SQLite uses `lsqlite3` (`sudo apt install libsqlite3-dev`, then `sudo luarocks --lua-version=5.4 install lsqlite3`); PostgreSQL uses `pgmoon` (`sudo luarocks --lua-version=5.4 install pgmoon`). Redis, LLM, and SMTP use the library's built-in Lua clients and need their service/API credentials.
+
+For development and diagnosing library changes, install the optional project tools:
+
+```bash
+sudo luarocks --lua-version=5.4 install busted
+sudo luarocks --lua-version=5.4 install luacheck
+sudo luarocks --lua-version=5.4 install ldoc
+```
+
+Then run `busted --no-coverage -o utfTerminal` for tests, `luacheck src/ --no-unused-args --no-max-line-length --globals _G _TEST` for lint, or `make docs` to regenerate API documentation.
+
+### User account (UserBot): login and first run
+
+The UserBot is a separate TDLib client that signs into a Telegram **user account**. It does not use a BotFather token and does not replace the normal Bot API client. Get `api_id` and `api_hash` from [my.telegram.org](https://my.telegram.org), then set them and a persistent encryption key in the server environment. Keep the same key between runs so TDLib can reopen its encrypted session database:
+
+```bash
+export TELEGRAM_API_ID='YOUR_API_ID'
+export TELEGRAM_API_HASH='YOUR_API_HASH'
+export TELEGRAM_DB_KEY='A_LONG_RANDOM_SECRET_SAVED_PRIVATELY'
+mkdir -p "$HOME/.local/share/titogramlua-userbot/db" "$HOME/.local/share/titogramlua-userbot/files"
+chmod 700 "$HOME/.local/share/titogramlua-userbot" "$HOME/.local/share/titogramlua-userbot/db" "$HOME/.local/share/titogramlua-userbot/files"
+```
+
+Save these environment variables securely for future launches; do not commit them to GitHub or paste them into source code. Create `userbot.lua` with this minimal interactive login example:
+
+```lua
+local user = require('titogramlua.methods.userbot').new({
+    api_id = assert(tonumber(os.getenv('TELEGRAM_API_ID')), 'set TELEGRAM_API_ID'),
+    api_hash = assert(os.getenv('TELEGRAM_API_HASH'), 'set TELEGRAM_API_HASH'),
+    database_directory = os.getenv('HOME') .. '/.local/share/titogramlua-userbot/db',
+    files_directory = os.getenv('HOME') .. '/.local/share/titogramlua-userbot/files',
+    encryption_key = assert(os.getenv('TELEGRAM_DB_KEY'), 'set TELEGRAM_DB_KEY'),
+})
+
+local function prompt(label)
+    io.write(label)
+    io.flush()
+    return assert(io.read('*l'), 'could not read terminal input')
+end
+
+user.on_auth_state = function(state, client)
+    local kind = state['@type']
+    if kind == 'authorizationStateWaitPhoneNumber' then
+        client:send('setAuthenticationPhoneNumber', {
+            phone_number = prompt('Telegram phone number (international format): '),
+        })
+    elseif kind == 'authorizationStateWaitCode' then
+        client:send('checkAuthenticationCode', {
+            code = prompt('Login code from Telegram: '),
+        })
+    elseif kind == 'authorizationStateWaitPassword' then
+        client:send('checkAuthenticationPassword', {
+            password = prompt('Telegram two-step verification password: '),
+        })
+    elseif kind == 'authorizationStateWaitEmailAddress' then
+        client:send('setAuthenticationEmailAddress', {
+            email_address = prompt('Telegram login email: '),
+        })
+    elseif kind == 'authorizationStateWaitEmailCode' then
+        client:send('checkAuthenticationEmailCode', {
+            code = {
+                ['@type'] = 'emailAddressAuthenticationCode',
+                code = prompt('Telegram email code: '),
+            },
+        })
+    end
+end
+
+user.on_authorized = function()
+    print('User account is signed in; session is stored in the private TDLib database.')
+end
+
+user.on_update = function(update)
+    if update['@type'] == 'error' then
+        io.stderr:write('TDLib error ', tostring(update.code), ': ', tostring(update.message), '\n')
+    end
+end
+
+user:run() -- keep this process running to receive updates
+```
+
+Start it with:
+
+```bash
+luajit ./userbot.lua
+```
+
+On first run, type your own phone number, then the login code Telegram sends (it may arrive in an existing Telegram session). If two-step verification or email verification is enabled, type the requested password, email address, or email code when prompted. Once authorized, TDLib saves the encrypted login session in the database directory; later runs use that session. Keep the database directory and encryption key private and backed up together. The `export` commands above apply to the current shell; for a service or later session, configure the same variables in a protected environment file. Stop the running client with `Ctrl+C`.
+
+After sign-in, use named methods such as `user:send_message(chat_id, 'Hello')` or `user:upload_story(...)`; their requests are asynchronous and responses arrive through `user.on_update`. TDLib calls that do not yet have a named wrapper are available through `user:send('methodName', params)`. See [the full UserBot guide](docs/userbot.md) for all wrappers and examples. Never share login codes, passwords, API hashes, or the session database.
 
 ## Quick Start
 
