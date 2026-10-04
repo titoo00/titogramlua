@@ -1,5 +1,6 @@
 --- run the TDLib receive loop until stop() or close() is called.
 -- @module titogramlua.methods.userbot.run
+-- @usage client:run()
 return function(self)
     assert(not self._closed, 'user client is closed')
     assert(not self._running, 'user client is already running')

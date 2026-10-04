@@ -1,5 +1,6 @@
 --- execute a synchronous TDLib method.
 -- @module titogramlua.methods.userbot.execute
+-- @usage local version = client:execute('getOption', {name = 'version'})
 local json = require('dkjson')
 
 return function(self, method, params)

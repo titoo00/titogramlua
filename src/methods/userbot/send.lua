@@ -1,5 +1,6 @@
 --- send a TDLib method asynchronously.
 -- @module titogramlua.methods.userbot.send
+-- @usage client:send('getMe')
 local json = require('dkjson')
 
 return function(self, method, params)

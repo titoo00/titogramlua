@@ -1,5 +1,6 @@
 --- destroy this TDLib handle while preserving its encrypted database.
 -- @module titogramlua.methods.userbot.close
+-- @usage client:close()
 return function(self)
     if self._closed then return false end
     self._running = false

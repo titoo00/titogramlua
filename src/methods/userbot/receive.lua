@@ -1,5 +1,6 @@
 --- receive and dispatch one TDLib update or response.
 -- @module titogramlua.methods.userbot.receive
+-- @usage local update, err = client:receive(1)
 local json = require('dkjson')
 local mime = require('mime')
 
