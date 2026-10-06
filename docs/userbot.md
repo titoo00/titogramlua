@@ -71,10 +71,24 @@ The client includes named wrappers for common chat, message, and story operation
 | `get_message(chat_id, message_id)` / `get_messages(chat_id, ids)` | `get_message.lua` / `get_messages.lua` | Read one or several messages. |
 | `search_messages(params)` | `search_messages.lua` | Search using TDLib `searchMessages` fields. |
 | `upload_story(chat_id, content, opts)` | `upload_story.lua` | Post a photo or video story with an explicit privacy setting. |
+| `send_story(chat_id, content, opts)` | `send_story.lua` | Alias of `upload_story`; takes TDLib story content and options. |
 | `get_story(poster_chat_id, story_id)` | `get_story.lua` | Read a story. |
+| `get_stories(poster_chat_id, story_ids)` | `get_stories.lua` | Get one or more story IDs; multiple requests return multiple request IDs. |
+| `get_all_stories(story_list)` | `get_all_stories.lua` | Ask TDLib to load the main or archive story list. |
 | `get_chat_active_stories(chat_id)` | `get_chat_active_stories.lua` | List a chat's active stories. |
+| `get_chat_stories(chat_id)` | `get_chat_stories.lua` | Alias of `get_chat_active_stories`. |
+| `get_archived_stories(chat_id, from_story_id, limit)` | `get_archived_stories.lua` | Read an archived story page where the account has access. |
+| `get_pinned_stories(chat_id, from_story_id, limit)` | `get_pinned_stories.lua` | Read chat-page stories; Telegram returns pinned stories first. |
+| `get_story_views(story_id, opts)` | `get_story_views.lua` | Get story interactions for a story posted by the current account. |
+| `can_post_stories(chat_id)` / `enable_stealth_mode()` | `can_post_stories.lua` / `enable_stealth_mode.lua` | Check story posting rights or enable Premium stealth mode. |
+| `read_chat_stories(poster_chat_id, story_id)` / `view_stories(poster_chat_id, story_ids)` | `read_chat_stories.lua` / `view_stories.lua` | Open stories so TDLib marks them as viewed. |
+| `hide_chat_stories(chat_id)` / `show_chat_stories(chat_id)` | `hide_chat_stories.lua` / `show_chat_stories.lua` | Remove stories from the main list or return them to it. |
+| `pin_chat_stories(chat_id, story_ids)` / `unpin_chat_stories(chat_id, story_ids)` | `pin_chat_stories.lua` / `unpin_chat_stories.lua` | Set or clear pinned story IDs for an eligible chat. |
+| `delete_stories(poster_chat_id, story_ids)` | `delete_stories.lua` | Delete one or more stories, returning request IDs. |
 | `delete_story(poster_chat_id, story_id)` | `delete_story.lua` | Delete a story when permitted. |
 | `edit_story(poster_chat_id, story_id, content, opts)` | `edit_story.lua` | Edit a story when permitted. |
+| `edit_story_caption(...)` / `edit_story_media(...)` / `edit_story_privacy(...)` | matching `edit_story_*.lua` | Story edit aliases; TDLib requires complete story content for caption/media edits. |
+| `copy_story(...)` / `forward_story(...)` | matching `*_story.lua` | Create a story using content and a TDLib `storyFullId` source reference. |
 | `set_story_privacy_settings(story_id, privacy_settings)` | `set_story_privacy_settings.lua` | Change story privacy when permitted. |
 | `block_user(user_id)` / `unblock_user(user_id)` | `block_user.lua` / `unblock_user.lua` | Add or remove a user from the main block list. |
 | `check_username(chat_id, username)` / `set_username(username)` | `check_username.lua` / `set_username.lua` | Check a chat username or change the account username. `check_username` follows TDLib chat rules and is not an account-username availability check. |
@@ -89,6 +103,9 @@ The client includes named wrappers for common chat, message, and story operation
 | `update_birthday(birthdate)` | `update_birthday.lua` | Set or clear the account birthday with a TDLib `birthdate` object. |
 | `update_profile(fields)` | `update_profile.lua` | Update name and/or bio; supply both first and last name together when changing the name. |
 | `update_status(offline)` | `update_status.lua` | Set the account online state via TDLib. |
+| `add_profile_audio(audio, opts)` / `remove_profile_audio(audio_id)` / `set_profile_audio_position(audio_id, position)` | matching `*_profile_audio.lua` | Manage profile audio. |
+| `get_account_ttl()` / `set_account_ttl(ttl)` / `set_inactive_session_ttl(days)` | matching TTL modules | Read/set account deletion and inactive session timeouts; `set_account_ttl` takes a TDLib `accountTtl` object. |
+| `get_privacy(setting)` / `set_privacy(setting, rules)` / `get_global_privacy_settings()` / `set_global_privacy_settings(settings)` | matching privacy modules | Manage per-setting and global privacy; values follow TDLib schemas. |
 
 ### Send a message
 
