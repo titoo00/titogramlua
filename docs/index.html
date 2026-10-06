@@ -72,6 +72,7 @@
   <li><a href="modules/titogramlua.methods.userbot.can_post_stories.html">titogramlua.methods.userbot.can_post_stories</a></li>
   <li><a href="modules/titogramlua.methods.userbot.check_username.html">titogramlua.methods.userbot.check_username</a></li>
   <li><a href="modules/titogramlua.methods.userbot.close.html">titogramlua.methods.userbot.close</a></li>
+  <li><a href="modules/titogramlua.methods.userbot.close_story.html">titogramlua.methods.userbot.close_story</a></li>
   <li><a href="modules/titogramlua.methods.userbot.copy_story.html">titogramlua.methods.userbot.copy_story</a></li>
   <li><a href="modules/titogramlua.methods.userbot.delete_messages.html">titogramlua.methods.userbot.delete_messages</a></li>
   <li><a href="modules/titogramlua.methods.userbot.delete_profile_photos.html">titogramlua.methods.userbot.delete_profile_photos</a></li>
@@ -113,6 +114,7 @@
   <li><a href="modules/titogramlua.methods.userbot.read_chat_stories.html">titogramlua.methods.userbot.read_chat_stories</a></li>
   <li><a href="modules/titogramlua.methods.userbot.receive.html">titogramlua.methods.userbot.receive</a></li>
   <li><a href="modules/titogramlua.methods.userbot.remove_profile_audio.html">titogramlua.methods.userbot.remove_profile_audio</a></li>
+  <li><a href="modules/titogramlua.methods.userbot.request.html">titogramlua.methods.userbot.request</a></li>
   <li><a href="modules/titogramlua.methods.userbot.run.html">titogramlua.methods.userbot.run</a></li>
   <li><a href="modules/titogramlua.methods.userbot.search_messages.html">titogramlua.methods.userbot.search_messages</a></li>
   <li><a href="modules/titogramlua.methods.userbot.send.html">titogramlua.methods.userbot.send</a></li>
@@ -320,8 +322,12 @@
 		<td class="summary">destroy this TDLib handle while preserving its encrypted database.</td>
 	</tr>
 	<tr>
+		<td class="name"  nowrap><a href="modules/titogramlua.methods.userbot.close_story.html">titogramlua.methods.userbot.close_story</a></td>
+		<td class="summary">Close a story previously opened with read<em>chat</em>stories or view_stories.</td>
+	</tr>
+	<tr>
 		<td class="name"  nowrap><a href="modules/titogramlua.methods.userbot.copy_story.html">titogramlua.methods.userbot.copy_story</a></td>
-		<td class="summary">Copy story content into a new story; TDLib requires its content and full ID.</td>
+		<td class="summary">Copy supplied story content into a new story without a repost reference.</td>
 	</tr>
 	<tr>
 		<td class="name"  nowrap><a href="modules/titogramlua.methods.userbot.delete_messages.html">titogramlua.methods.userbot.delete_messages</a></td>
@@ -425,7 +431,7 @@
 	</tr>
 	<tr>
 		<td class="name"  nowrap><a href="modules/titogramlua.methods.userbot.get_global_privacy_settings.html">titogramlua.methods.userbot.get_global_privacy_settings</a></td>
-		<td class="summary">Get the global account privacy settings.</td>
+		<td class="summary">Request archive, read-date, and new-chat privacy settings separately.</td>
 	</tr>
 	<tr>
 		<td class="name"  nowrap><a href="modules/titogramlua.methods.userbot.get_me.html">titogramlua.methods.userbot.get_me</a></td>
@@ -484,6 +490,10 @@
 		<td class="summary">Remove an audio track from the current user's profile.</td>
 	</tr>
 	<tr>
+		<td class="name"  nowrap><a href="modules/titogramlua.methods.userbot.request.html">titogramlua.methods.userbot.request</a></td>
+		<td class="summary">Send a TDLib request and handle its matching asynchronous response.</td>
+	</tr>
+	<tr>
 		<td class="name"  nowrap><a href="modules/titogramlua.methods.userbot.run.html">titogramlua.methods.userbot.run</a></td>
 		<td class="summary">run the TDLib receive loop until stop() or close() is called.</td>
 	</tr>
@@ -517,7 +527,7 @@
 	</tr>
 	<tr>
 		<td class="name"  nowrap><a href="modules/titogramlua.methods.userbot.set_global_privacy_settings.html">titogramlua.methods.userbot.set_global_privacy_settings</a></td>
-		<td class="summary">Set the global account privacy rules.</td>
+		<td class="summary">Set complete TDLib privacy setting groups supplied by the caller.</td>
 	</tr>
 	<tr>
 		<td class="name"  nowrap><a href="modules/titogramlua.methods.userbot.set_inactive_session_ttl.html">titogramlua.methods.userbot.set_inactive_session_ttl</a></td>
@@ -533,7 +543,7 @@
 	</tr>
 	<tr>
 		<td class="name"  nowrap><a href="modules/titogramlua.methods.userbot.set_profile_audio_position.html">titogramlua.methods.userbot.set_profile_audio_position</a></td>
-		<td class="summary">Move a profile audio track to a new position.</td>
+		<td class="summary">Move a profile audio track after another file, or to the beginning.</td>
 	</tr>
 	<tr>
 		<td class="name"  nowrap><a href="modules/titogramlua.methods.userbot.set_profile_photo.html">titogramlua.methods.userbot.set_profile_photo</a></td>
@@ -561,7 +571,7 @@
 	</tr>
 	<tr>
 		<td class="name"  nowrap><a href="modules/titogramlua.methods.userbot.unpin_chat_stories.html">titogramlua.methods.userbot.unpin_chat_stories</a></td>
-		<td class="summary">Remove pinned stories from a chat.</td>
+		<td class="summary">Remove selected story IDs from the current pinned list, or clear all pins.</td>
 	</tr>
 	<tr>
 		<td class="name"  nowrap><a href="modules/titogramlua.methods.userbot.update_birthday.html">titogramlua.methods.userbot.update_birthday</a></td>
@@ -620,7 +630,7 @@
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/lunarmodules/LDoc">LDoc 1.5.0</a></i>
-<i style="float:right;">Last updated 2026-10-06 17:36:20 </i>
+<i style="float:right;">Last updated 2026-10-06 18:12:48 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>

@@ -3,8 +3,8 @@
 -- @usage client:hide_chat_stories(chat_id)
 return function(self, chat_id)
     assert(chat_id ~= nil, 'chat_id is required')
-    return self:send('removeTopChat', {
-        category = {['@type'] = 'topChatCategoryUsers'},
+    return self:send('setChatActiveStoriesList', {
+        story_list = {['@type'] = 'storyListArchive'},
         chat_id = chat_id,
     })
 end

@@ -4,7 +4,8 @@
 return function(self, poster_chat_id, story_id, content, opts)
     assert(poster_chat_id ~= nil, 'poster_chat_id is required')
     assert(story_id ~= nil, 'story_id is required')
-    assert(type(content) == 'table' and content['@type'], 'content must be an inputStoryContentPhoto or inputStoryContentVideo object')
+    assert(content == nil or (type(content) == 'table' and content['@type']),
+        'content must be a TDLib InputStoryContent object or nil to keep the media')
     opts = opts or {}
     assert(type(opts) == 'table', 'opts must be a table')
 

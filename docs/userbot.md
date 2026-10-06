@@ -49,7 +49,7 @@ user.on_message = function(message)
 end
 
 user.on_error = function(err)
-    io.stderr:write('TDLib JSON error: ', tostring(err), '\n')
+    io.stderr:write('TDLib error: ', type(err) == 'table' and err.message or tostring(err), '\n')
 end
 
 user:run()
@@ -82,13 +82,14 @@ The client includes named wrappers for common chat, message, and story operation
 | `get_story_views(story_id, opts)` | `get_story_views.lua` | Get story interactions for a story posted by the current account. |
 | `can_post_stories(chat_id)` / `enable_stealth_mode()` | `can_post_stories.lua` / `enable_stealth_mode.lua` | Check story posting rights or enable Premium stealth mode. |
 | `read_chat_stories(poster_chat_id, story_id)` / `view_stories(poster_chat_id, story_ids)` | `read_chat_stories.lua` / `view_stories.lua` | Open stories so TDLib marks them as viewed. |
+| `close_story(poster_chat_id, story_id)` | `close_story.lua` | Close a story after viewing it. |
 | `hide_chat_stories(chat_id)` / `show_chat_stories(chat_id)` | `hide_chat_stories.lua` / `show_chat_stories.lua` | Remove stories from the main list or return them to it. |
-| `pin_chat_stories(chat_id, story_ids)` / `unpin_chat_stories(chat_id, story_ids)` | `pin_chat_stories.lua` / `unpin_chat_stories.lua` | Set or clear pinned story IDs for an eligible chat. |
+| `pin_chat_stories(chat_id, story_ids)` / `unpin_chat_stories(chat_id, story_ids)` | `pin_chat_stories.lua` / `unpin_chat_stories.lua` | Replace the pinned list, or remove selected pins. Pass nil or `{}` to unpin all. |
 | `delete_stories(poster_chat_id, story_ids)` | `delete_stories.lua` | Delete one or more stories, returning request IDs. |
 | `delete_story(poster_chat_id, story_id)` | `delete_story.lua` | Delete a story when permitted. |
 | `edit_story(poster_chat_id, story_id, content, opts)` | `edit_story.lua` | Edit a story when permitted. |
-| `edit_story_caption(...)` / `edit_story_media(...)` / `edit_story_privacy(...)` | matching `edit_story_*.lua` | Story edit aliases; TDLib requires complete story content for caption/media edits. |
-| `copy_story(...)` / `forward_story(...)` | matching `*_story.lua` | Create a story using content and a TDLib `storyFullId` source reference. |
+| `edit_story_caption(...)` / `edit_story_media(...)` / `edit_story_privacy(...)` | matching `edit_story_*.lua` | Edit captions, media, or privacy. Pass nil for content to preserve media when changing the caption. |
+| `copy_story(chat_id, content, opts)` / `forward_story(chat_id, content, source, opts)` | matching `*_story.lua` | Copy supplied content without attribution, or repost it using a TDLib `storyFullId` source reference. |
 | `set_story_privacy_settings(story_id, privacy_settings)` | `set_story_privacy_settings.lua` | Change story privacy when permitted. |
 | `block_user(user_id)` / `unblock_user(user_id)` | `block_user.lua` / `unblock_user.lua` | Add or remove a user from the main block list. |
 | `check_username(chat_id, username)` / `set_username(username)` | `check_username.lua` / `set_username.lua` | Check a chat username or change the account username. `check_username` follows TDLib chat rules and is not an account-username availability check. |
@@ -103,9 +104,9 @@ The client includes named wrappers for common chat, message, and story operation
 | `update_birthday(birthdate)` | `update_birthday.lua` | Set or clear the account birthday with a TDLib `birthdate` object. |
 | `update_profile(fields)` | `update_profile.lua` | Update name and/or bio; supply both first and last name together when changing the name. |
 | `update_status(offline)` | `update_status.lua` | Set the account online state via TDLib. |
-| `add_profile_audio(audio, opts)` / `remove_profile_audio(audio_id)` / `set_profile_audio_position(audio_id, position)` | matching `*_profile_audio.lua` | Manage profile audio. |
+| `add_profile_audio(audio, opts)` / `remove_profile_audio(audio_id)` / `set_profile_audio_position(audio_id, after_file_id)` | matching `*_profile_audio.lua` | Add an InputFile or inputAudio; remove/reorder by TDLib file ID. Use 0 to move to the beginning. |
 | `get_account_ttl()` / `set_account_ttl(ttl)` / `set_inactive_session_ttl(days)` | matching TTL modules | Read/set account deletion and inactive session timeouts; `set_account_ttl` takes a TDLib `accountTtl` object. |
-| `get_privacy(setting)` / `set_privacy(setting, rules)` / `get_global_privacy_settings()` / `set_global_privacy_settings(settings)` | matching privacy modules | Manage per-setting and global privacy; values follow TDLib schemas. |
+| `get_privacy(setting)` / `set_privacy(setting, rules)` / `get_global_privacy_settings()` / `set_global_privacy_settings(settings)` | matching privacy modules | Manage privacy rules and separate TDLib privacy groups; global helpers return a table of request IDs. |
 
 ### Send a message
 
@@ -135,6 +136,38 @@ local request_id = user:upload_story(saved_messages_chat_id, {
 The story operation maps to TDLib's `postStory`; TDLib returns the posted story asynchronously in updates.
 
 ## Calling any TDLib method
+
+Use `request(method, params, callback)` to handle a specific response without
+matching IDs yourself. The callback runs during `receive()` or `run()` and gets
+`(result, nil, client)` on success or `(nil, error, client)` on failure. The response
+also reaches `on_update`. `receive()` returns TDLib errors as its second result;
+`run()` forwards them to `on_error`.
+
+```lua
+user:request('getMe', {}, function(result, err)
+    if err then print(err.code, err.message) else print(result.id) end
+end)
+```
+
+TDLib exposes global privacy through separate methods. For example:
+
+```lua
+local request_ids = user:get_global_privacy_settings()
+-- Match request_ids.archive_chat_list/read_date/new_chat in on_update.
+user:set_global_privacy_settings({
+    read_date = {['@type'] = 'readDatePrivacySettings', show_read_date = false},
+})
+```
+
+The setter accepts `archive_chat_list`, `read_date`, `new_chat`, and
+`gift_settings`, each containing its complete TDLib settings object. Read the
+current settings before replacing a group to preserve its other fields.
+Selected-story unpinning first reads the pinned IDs, then sends the replacement
+list during response handling; its returned ID belongs to the initial read.
+
+These wrappers follow the [official TDLib schema](https://github.com/tdlib/td/blob/master/td/generate/scheme/td_api.tl).
+Recent methods and the nested `inputPhoto`/`inputAudio` structures require a
+TDLib build with the corresponding schema.
 
 `client:send(method, params)` remains available for every method supported by the installed TDLib version, including methods that do not have a named wrapper yet. It returns its request ID. Responses and updates arrive through `on_update(update, client)`; each response retains its `@extra` request ID. All method names and object type names use TDLib's camelCase / `@type` schema.
 
