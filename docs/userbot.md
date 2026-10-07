@@ -194,3 +194,7 @@ The methods above return the TDLib request ID (or a table of IDs for multi-reque
 ## Bot API and user accounts are different clients
 
 Do not pass a user phone number or MTProto credentials to `require('titogramlua').configure()`: that function takes a BotFather token. Use the separate TDLib client for a user session. Keep sessions isolated per account and follow Telegram's API terms and rate limits.
+
+## Additional Ravengram adapters
+
+See [the adapter catalog and compatibility notes](userbot-port.md) for all 439 source names, TDLib parameter conventions, event registration and asynchronous composed operations. The catalog has 438 covered names and one unsupported session-export feature; it does not claim Python signature or runtime equivalence.

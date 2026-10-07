@@ -20,7 +20,7 @@ return function(self, chat_id, story_ids)
     }, function(result, err, client)
         if err then return end
         if type(result.pinned_story_ids) ~= 'table' then
-            if client.on_error then client.on_error('TDLib did not return pinned_story_ids', client) end
+            require('titogramlua.methods.userbot._events').emit(client, 'error', 'TDLib did not return pinned_story_ids')
             return
         end
         local remaining = {}

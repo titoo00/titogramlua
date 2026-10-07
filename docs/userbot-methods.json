@@ -1,0 +1,6190 @@
+{
+  "source": "ahmedahah4/ravengram",
+  "source_commit": "75a8fe833a952403900de55ebfa0cfea77f4c430",
+  "backend": "TDLib JSON",
+  "public_modules": 452,
+  "entries": [
+    {
+      "name": "add_profile_audio",
+      "category": "account",
+      "status": "existing",
+      "tdlib_commands": [
+        "addProfileAudio"
+      ],
+      "tdlib_parameters": {
+        "addProfileAudio": {
+          "audio": "inputAudio"
+        }
+      },
+      "module": "src/methods/userbot/add_profile_audio.lua"
+    },
+    {
+      "name": "get_account_ttl",
+      "category": "account",
+      "status": "existing",
+      "tdlib_commands": [
+        "getAccountTtl"
+      ],
+      "tdlib_parameters": {
+        "getAccountTtl": {}
+      },
+      "module": "src/methods/userbot/get_account_ttl.lua"
+    },
+    {
+      "name": "get_global_privacy_settings",
+      "category": "account",
+      "status": "existing",
+      "tdlib_commands": [
+        "getArchiveChatListSettings",
+        "getNewChatPrivacySettings",
+        "getReadDatePrivacySettings"
+      ],
+      "tdlib_parameters": {
+        "getArchiveChatListSettings": {},
+        "getNewChatPrivacySettings": {},
+        "getReadDatePrivacySettings": {}
+      },
+      "module": "src/methods/userbot/get_global_privacy_settings.lua"
+    },
+    {
+      "name": "get_privacy",
+      "category": "account",
+      "status": "existing",
+      "tdlib_commands": [
+        "getUserPrivacySettingRules"
+      ],
+      "tdlib_parameters": {
+        "getUserPrivacySettingRules": {
+          "setting": "UserPrivacySetting"
+        }
+      },
+      "module": "src/methods/userbot/get_privacy.lua"
+    },
+    {
+      "name": "remove_profile_audio",
+      "category": "account",
+      "status": "existing",
+      "tdlib_commands": [
+        "removeProfileAudio"
+      ],
+      "tdlib_parameters": {
+        "removeProfileAudio": {
+          "file_id": "int32"
+        }
+      },
+      "module": "src/methods/userbot/remove_profile_audio.lua"
+    },
+    {
+      "name": "set_account_ttl",
+      "category": "account",
+      "status": "existing",
+      "tdlib_commands": [
+        "setAccountTtl"
+      ],
+      "tdlib_parameters": {
+        "setAccountTtl": {
+          "ttl": "accountTtl"
+        }
+      },
+      "module": "src/methods/userbot/set_account_ttl.lua"
+    },
+    {
+      "name": "set_global_privacy_settings",
+      "category": "account",
+      "status": "existing",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/set_global_privacy_settings.lua"
+    },
+    {
+      "name": "set_inactive_session_ttl",
+      "category": "account",
+      "status": "existing",
+      "tdlib_commands": [
+        "setInactiveSessionTtl"
+      ],
+      "tdlib_parameters": {
+        "setInactiveSessionTtl": {
+          "inactive_session_ttl_days": "int32"
+        }
+      },
+      "module": "src/methods/userbot/set_inactive_session_ttl.lua"
+    },
+    {
+      "name": "set_privacy",
+      "category": "account",
+      "status": "existing",
+      "tdlib_commands": [
+        "setUserPrivacySettingRules"
+      ],
+      "tdlib_parameters": {
+        "setUserPrivacySettingRules": {
+          "setting": "UserPrivacySetting",
+          "rules": "userPrivacySettingRules"
+        }
+      },
+      "module": "src/methods/userbot/set_privacy.lua"
+    },
+    {
+      "name": "set_profile_audio_position",
+      "category": "account",
+      "status": "existing",
+      "tdlib_commands": [
+        "setProfileAudioPosition"
+      ],
+      "tdlib_parameters": {
+        "setProfileAudioPosition": {
+          "file_id": "int32",
+          "after_file_id": "int32"
+        }
+      },
+      "module": "src/methods/userbot/set_profile_audio_position.lua"
+    },
+    {
+      "name": "invoke",
+      "category": "advanced",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/invoke.lua"
+    },
+    {
+      "name": "recover_gaps",
+      "category": "advanced",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/recover_gaps.lua"
+    },
+    {
+      "name": "resolve_peer",
+      "category": "advanced",
+      "status": "adapted",
+      "tdlib_commands": [
+        "createPrivateChat",
+        "getChat",
+        "searchPublicChat"
+      ],
+      "tdlib_parameters": {
+        "createPrivateChat": {
+          "user_id": "int53",
+          "force": "Bool"
+        },
+        "getChat": {
+          "chat_id": "int53"
+        },
+        "searchPublicChat": {
+          "username": "string"
+        }
+      },
+      "module": "src/methods/userbot/resolve_peer.lua"
+    },
+    {
+      "name": "save_file",
+      "category": "advanced",
+      "status": "adapted",
+      "tdlib_commands": [
+        "preliminaryUploadFile"
+      ],
+      "tdlib_parameters": {
+        "preliminaryUploadFile": {
+          "file": "InputFile",
+          "file_type": "FileType",
+          "priority": "int32"
+        }
+      },
+      "module": "src/methods/userbot/save_file.lua"
+    },
+    {
+      "name": "accept_terms_of_service",
+      "category": "auth",
+      "status": "adapted",
+      "tdlib_commands": [
+        "acceptTermsOfService"
+      ],
+      "tdlib_parameters": {
+        "acceptTermsOfService": {
+          "terms_of_service_id": "string"
+        }
+      },
+      "module": "src/methods/userbot/accept_terms_of_service.lua"
+    },
+    {
+      "name": "change_phone_number",
+      "category": "auth",
+      "status": "adapted",
+      "tdlib_commands": [
+        "checkPhoneNumberCode"
+      ],
+      "tdlib_parameters": {
+        "checkPhoneNumberCode": {
+          "code": "string"
+        }
+      },
+      "module": "src/methods/userbot/change_phone_number.lua"
+    },
+    {
+      "name": "check_password",
+      "category": "auth",
+      "status": "adapted",
+      "tdlib_commands": [
+        "checkAuthenticationPassword"
+      ],
+      "tdlib_parameters": {
+        "checkAuthenticationPassword": {
+          "password": "string"
+        }
+      },
+      "module": "src/methods/userbot/check_password.lua"
+    },
+    {
+      "name": "connect",
+      "category": "auth",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/connect.lua"
+    },
+    {
+      "name": "disconnect",
+      "category": "auth",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/disconnect.lua"
+    },
+    {
+      "name": "get_active_sessions",
+      "category": "auth",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getActiveSessions"
+      ],
+      "tdlib_parameters": {
+        "getActiveSessions": {}
+      },
+      "module": "src/methods/userbot/get_active_sessions.lua"
+    },
+    {
+      "name": "get_password_hint",
+      "category": "auth",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getPasswordState"
+      ],
+      "tdlib_parameters": {
+        "getPasswordState": {}
+      },
+      "module": "src/methods/userbot/get_password_hint.lua"
+    },
+    {
+      "name": "initialize",
+      "category": "auth",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/initialize.lua"
+    },
+    {
+      "name": "log_out",
+      "category": "auth",
+      "status": "adapted",
+      "tdlib_commands": [
+        "logOut"
+      ],
+      "tdlib_parameters": {
+        "logOut": {}
+      },
+      "module": "src/methods/userbot/log_out.lua"
+    },
+    {
+      "name": "recover_password",
+      "category": "auth",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/recover_password.lua"
+    },
+    {
+      "name": "resend_phone_number_code",
+      "category": "auth",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/resend_phone_number_code.lua"
+    },
+    {
+      "name": "reset_session",
+      "category": "auth",
+      "status": "adapted",
+      "tdlib_commands": [
+        "terminateSession"
+      ],
+      "tdlib_parameters": {
+        "terminateSession": {
+          "session_id": "int64"
+        }
+      },
+      "module": "src/methods/userbot/reset_session.lua"
+    },
+    {
+      "name": "reset_sessions",
+      "category": "auth",
+      "status": "adapted",
+      "tdlib_commands": [
+        "terminateAllOtherSessions"
+      ],
+      "tdlib_parameters": {
+        "terminateAllOtherSessions": {}
+      },
+      "module": "src/methods/userbot/reset_sessions.lua"
+    },
+    {
+      "name": "send_phone_number_code",
+      "category": "auth",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/send_phone_number_code.lua"
+    },
+    {
+      "name": "send_recovery_code",
+      "category": "auth",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/send_recovery_code.lua"
+    },
+    {
+      "name": "sign_in",
+      "category": "auth",
+      "status": "adapted",
+      "tdlib_commands": [
+        "checkAuthenticationCode"
+      ],
+      "tdlib_parameters": {
+        "checkAuthenticationCode": {
+          "code": "string"
+        }
+      },
+      "module": "src/methods/userbot/sign_in.lua"
+    },
+    {
+      "name": "sign_in_bot",
+      "category": "auth",
+      "status": "adapted",
+      "tdlib_commands": [
+        "checkAuthenticationBotToken"
+      ],
+      "tdlib_parameters": {
+        "checkAuthenticationBotToken": {
+          "token": "string"
+        }
+      },
+      "module": "src/methods/userbot/sign_in_bot.lua"
+    },
+    {
+      "name": "sign_up",
+      "category": "auth",
+      "status": "adapted",
+      "tdlib_commands": [
+        "registerUser"
+      ],
+      "tdlib_parameters": {
+        "registerUser": {
+          "first_name": "string",
+          "last_name": "string",
+          "disable_notification": "Bool"
+        }
+      },
+      "module": "src/methods/userbot/sign_up.lua"
+    },
+    {
+      "name": "terminate",
+      "category": "auth",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/terminate.lua"
+    },
+    {
+      "name": "answer_callback_query",
+      "category": "bots",
+      "status": "adapted",
+      "tdlib_commands": [
+        "answerCallbackQuery"
+      ],
+      "tdlib_parameters": {
+        "answerCallbackQuery": {
+          "callback_query_id": "int64",
+          "text": "string",
+          "show_alert": "Bool",
+          "url": "string",
+          "cache_time": "int32"
+        }
+      },
+      "module": "src/methods/userbot/answer_callback_query.lua"
+    },
+    {
+      "name": "answer_chat_join_request_query",
+      "category": "bots",
+      "status": "adapted",
+      "tdlib_commands": [
+        "answerChatJoinRequestQuery"
+      ],
+      "tdlib_parameters": {
+        "answerChatJoinRequestQuery": {
+          "query_id": "int64",
+          "result": "ChatJoinRequestResult",
+          "url": "string"
+        }
+      },
+      "module": "src/methods/userbot/answer_chat_join_request_query.lua"
+    },
+    {
+      "name": "answer_guest_query",
+      "category": "bots",
+      "status": "adapted",
+      "tdlib_commands": [
+        "answerGuestQuery"
+      ],
+      "tdlib_parameters": {
+        "answerGuestQuery": {
+          "guest_query_id": "int64",
+          "result": "InputInlineQueryResult"
+        }
+      },
+      "module": "src/methods/userbot/answer_guest_query.lua"
+    },
+    {
+      "name": "answer_inline_query",
+      "category": "bots",
+      "status": "adapted",
+      "tdlib_commands": [
+        "answerInlineQuery"
+      ],
+      "tdlib_parameters": {
+        "answerInlineQuery": {
+          "inline_query_id": "int64",
+          "is_personal": "Bool",
+          "button": "inlineQueryResultsButton",
+          "results": "vector<InputInlineQueryResult>",
+          "cache_time": "int32",
+          "next_offset": "string"
+        }
+      },
+      "module": "src/methods/userbot/answer_inline_query.lua"
+    },
+    {
+      "name": "answer_pre_checkout_query",
+      "category": "bots",
+      "status": "adapted",
+      "tdlib_commands": [
+        "answerPreCheckoutQuery"
+      ],
+      "tdlib_parameters": {
+        "answerPreCheckoutQuery": {
+          "pre_checkout_query_id": "int64",
+          "error_message": "string"
+        }
+      },
+      "module": "src/methods/userbot/answer_pre_checkout_query.lua"
+    },
+    {
+      "name": "answer_shipping_query",
+      "category": "bots",
+      "status": "adapted",
+      "tdlib_commands": [
+        "answerShippingQuery"
+      ],
+      "tdlib_parameters": {
+        "answerShippingQuery": {
+          "shipping_query_id": "int64",
+          "shipping_options": "vector<shippingOption>",
+          "error_message": "string"
+        }
+      },
+      "module": "src/methods/userbot/answer_shipping_query.lua"
+    },
+    {
+      "name": "answer_web_app_query",
+      "category": "bots",
+      "status": "adapted",
+      "tdlib_commands": [
+        "answerWebAppQuery"
+      ],
+      "tdlib_parameters": {
+        "answerWebAppQuery": {
+          "web_app_query_id": "string",
+          "result": "InputInlineQueryResult"
+        }
+      },
+      "module": "src/methods/userbot/answer_web_app_query.lua"
+    },
+    {
+      "name": "check_bot_username",
+      "category": "bots",
+      "status": "adapted",
+      "tdlib_commands": [
+        "checkBotUsername"
+      ],
+      "tdlib_parameters": {
+        "checkBotUsername": {
+          "username": "string"
+        }
+      },
+      "module": "src/methods/userbot/check_bot_username.lua"
+    },
+    {
+      "name": "create_bot",
+      "category": "bots",
+      "status": "adapted",
+      "tdlib_commands": [
+        "createBot"
+      ],
+      "tdlib_parameters": {
+        "createBot": {
+          "manager_bot_user_id": "int53",
+          "name": "string",
+          "username": "string",
+          "via_link": "Bool"
+        }
+      },
+      "module": "src/methods/userbot/create_bot.lua"
+    },
+    {
+      "name": "create_invoice_link",
+      "category": "bots",
+      "status": "adapted",
+      "tdlib_commands": [
+        "createInvoiceLink"
+      ],
+      "tdlib_parameters": {
+        "createInvoiceLink": {
+          "business_connection_id": "string",
+          "invoice": "InputMessageContent"
+        }
+      },
+      "module": "src/methods/userbot/create_invoice_link.lua"
+    },
+    {
+      "name": "delete_bot_commands",
+      "category": "bots",
+      "status": "adapted",
+      "tdlib_commands": [
+        "deleteCommands"
+      ],
+      "tdlib_parameters": {
+        "deleteCommands": {
+          "scope": "BotCommandScope",
+          "language_code": "string"
+        }
+      },
+      "module": "src/methods/userbot/delete_bot_commands.lua"
+    },
+    {
+      "name": "delete_ephemeral_message",
+      "category": "bots",
+      "status": "adapted",
+      "tdlib_commands": [
+        "deleteEphemeralMessage"
+      ],
+      "tdlib_parameters": {
+        "deleteEphemeralMessage": {
+          "chat_id": "int53",
+          "receiver_user_id": "int53",
+          "ephemeral_message_id": "int32"
+        }
+      },
+      "module": "src/methods/userbot/delete_ephemeral_message.lua"
+    },
+    {
+      "name": "edit_ephemeral_message_caption",
+      "category": "bots",
+      "status": "adapted",
+      "tdlib_commands": [
+        "editEphemeralMessageCaption"
+      ],
+      "tdlib_parameters": {
+        "editEphemeralMessageCaption": {
+          "chat_id": "int53",
+          "receiver_user_id": "int53",
+          "ephemeral_message_id": "int32",
+          "reply_markup": "ReplyMarkup",
+          "caption": "formattedText",
+          "show_caption_above_media": "Bool"
+        }
+      },
+      "module": "src/methods/userbot/edit_ephemeral_message_caption.lua"
+    },
+    {
+      "name": "edit_ephemeral_message_media",
+      "category": "bots",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/edit_ephemeral_message_media.lua"
+    },
+    {
+      "name": "edit_ephemeral_message_reply_markup",
+      "category": "bots",
+      "status": "adapted",
+      "tdlib_commands": [
+        "editEphemeralMessage"
+      ],
+      "tdlib_parameters": {
+        "editEphemeralMessage": {
+          "chat_id": "int53",
+          "receiver_user_id": "int53",
+          "ephemeral_message_id": "int32",
+          "reply_markup": "ReplyMarkup",
+          "input_message_content": "InputMessageContent"
+        }
+      },
+      "module": "src/methods/userbot/edit_ephemeral_message_reply_markup.lua"
+    },
+    {
+      "name": "edit_ephemeral_message_text",
+      "category": "bots",
+      "status": "adapted",
+      "tdlib_commands": [
+        "editEphemeralMessage"
+      ],
+      "tdlib_parameters": {
+        "editEphemeralMessage": {
+          "chat_id": "int53",
+          "receiver_user_id": "int53",
+          "ephemeral_message_id": "int32",
+          "reply_markup": "ReplyMarkup",
+          "input_message_content": "InputMessageContent"
+        }
+      },
+      "module": "src/methods/userbot/edit_ephemeral_message_text.lua"
+    },
+    {
+      "name": "edit_user_star_subscription",
+      "category": "bots",
+      "status": "adapted",
+      "tdlib_commands": [
+        "editUserStarSubscription"
+      ],
+      "tdlib_parameters": {
+        "editUserStarSubscription": {
+          "user_id": "int53",
+          "telegram_payment_charge_id": "string",
+          "is_canceled": "Bool"
+        }
+      },
+      "module": "src/methods/userbot/edit_user_star_subscription.lua"
+    },
+    {
+      "name": "get_bot_commands",
+      "category": "bots",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getCommands"
+      ],
+      "tdlib_parameters": {
+        "getCommands": {
+          "scope": "BotCommandScope",
+          "language_code": "string"
+        }
+      },
+      "module": "src/methods/userbot/get_bot_commands.lua"
+    },
+    {
+      "name": "get_bot_default_privileges",
+      "category": "bots",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getMe",
+        "getUserFullInfo"
+      ],
+      "tdlib_parameters": {
+        "getMe": {},
+        "getUserFullInfo": {
+          "user_id": "int53"
+        }
+      },
+      "module": "src/methods/userbot/get_bot_default_privileges.lua"
+    },
+    {
+      "name": "get_bot_info_description",
+      "category": "bots",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getBotInfoDescription"
+      ],
+      "tdlib_parameters": {
+        "getBotInfoDescription": {
+          "bot_user_id": "int53",
+          "language_code": "string"
+        }
+      },
+      "module": "src/methods/userbot/get_bot_info_description.lua"
+    },
+    {
+      "name": "get_bot_info_short_description",
+      "category": "bots",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getBotInfoShortDescription"
+      ],
+      "tdlib_parameters": {
+        "getBotInfoShortDescription": {
+          "bot_user_id": "int53",
+          "language_code": "string"
+        }
+      },
+      "module": "src/methods/userbot/get_bot_info_short_description.lua"
+    },
+    {
+      "name": "get_bot_name",
+      "category": "bots",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getBotName"
+      ],
+      "tdlib_parameters": {
+        "getBotName": {
+          "bot_user_id": "int53",
+          "language_code": "string"
+        }
+      },
+      "module": "src/methods/userbot/get_bot_name.lua"
+    },
+    {
+      "name": "get_chat_menu_button",
+      "category": "bots",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getMenuButton"
+      ],
+      "tdlib_parameters": {
+        "getMenuButton": {
+          "user_id": "int53"
+        }
+      },
+      "module": "src/methods/userbot/get_chat_menu_button.lua"
+    },
+    {
+      "name": "get_game_high_scores",
+      "category": "bots",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getGameHighScores"
+      ],
+      "tdlib_parameters": {
+        "getGameHighScores": {
+          "chat_id": "int53",
+          "message_id": "int53",
+          "user_id": "int53"
+        }
+      },
+      "module": "src/methods/userbot/get_game_high_scores.lua"
+    },
+    {
+      "name": "get_inline_bot_results",
+      "category": "bots",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getInlineQueryResults"
+      ],
+      "tdlib_parameters": {
+        "getInlineQueryResults": {
+          "bot_user_id": "int53",
+          "chat_id": "int53",
+          "user_location": "location",
+          "query": "string",
+          "offset": "string"
+        }
+      },
+      "module": "src/methods/userbot/get_inline_bot_results.lua"
+    },
+    {
+      "name": "get_managed_bot_access_settings",
+      "category": "bots",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getManagedBotAccessSettings"
+      ],
+      "tdlib_parameters": {
+        "getManagedBotAccessSettings": {
+          "bot_user_id": "int53"
+        }
+      },
+      "module": "src/methods/userbot/get_managed_bot_access_settings.lua"
+    },
+    {
+      "name": "get_managed_bot_token",
+      "category": "bots",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getManagedBotToken"
+      ],
+      "tdlib_parameters": {
+        "getManagedBotToken": {
+          "bot_user_id": "int53",
+          "revoke": "Bool"
+        }
+      },
+      "module": "src/methods/userbot/get_managed_bot_token.lua"
+    },
+    {
+      "name": "get_owned_bots",
+      "category": "bots",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getOwnedBots"
+      ],
+      "tdlib_parameters": {
+        "getOwnedBots": {}
+      },
+      "module": "src/methods/userbot/get_owned_bots.lua"
+    },
+    {
+      "name": "refund_star_payment",
+      "category": "bots",
+      "status": "adapted",
+      "tdlib_commands": [
+        "refundStarPayment"
+      ],
+      "tdlib_parameters": {
+        "refundStarPayment": {
+          "user_id": "int53",
+          "telegram_payment_charge_id": "string"
+        }
+      },
+      "module": "src/methods/userbot/refund_star_payment.lua"
+    },
+    {
+      "name": "replace_managed_bot_token",
+      "category": "bots",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getManagedBotToken"
+      ],
+      "tdlib_parameters": {
+        "getManagedBotToken": {
+          "bot_user_id": "int53",
+          "revoke": "Bool"
+        }
+      },
+      "module": "src/methods/userbot/replace_managed_bot_token.lua"
+    },
+    {
+      "name": "request_callback_answer",
+      "category": "bots",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getCallbackQueryAnswer"
+      ],
+      "tdlib_parameters": {
+        "getCallbackQueryAnswer": {
+          "chat_id": "int53",
+          "message_id": "int53",
+          "payload": "CallbackQueryPayload"
+        }
+      },
+      "module": "src/methods/userbot/request_callback_answer.lua"
+    },
+    {
+      "name": "send_chat_join_request_web_app",
+      "category": "bots",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/send_chat_join_request_web_app.lua"
+    },
+    {
+      "name": "send_game",
+      "category": "bots",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/send_game.lua"
+    },
+    {
+      "name": "send_inline_bot_result",
+      "category": "bots",
+      "status": "adapted",
+      "tdlib_commands": [
+        "sendInlineQueryResultMessage"
+      ],
+      "tdlib_parameters": {
+        "sendInlineQueryResultMessage": {
+          "chat_id": "int53",
+          "topic_id": "MessageTopic",
+          "reply_to": "InputMessageReplyTo",
+          "options": "messageSendOptions",
+          "query_id": "int64",
+          "result_id": "string",
+          "hide_via_bot": "Bool"
+        }
+      },
+      "module": "src/methods/userbot/send_inline_bot_result.lua"
+    },
+    {
+      "name": "send_invoice",
+      "category": "bots",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/send_invoice.lua"
+    },
+    {
+      "name": "set_bot_commands",
+      "category": "bots",
+      "status": "adapted",
+      "tdlib_commands": [
+        "setCommands"
+      ],
+      "tdlib_parameters": {
+        "setCommands": {
+          "scope": "BotCommandScope",
+          "language_code": "string",
+          "commands": "vector<botCommand>"
+        }
+      },
+      "module": "src/methods/userbot/set_bot_commands.lua"
+    },
+    {
+      "name": "set_bot_default_privileges",
+      "category": "bots",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/set_bot_default_privileges.lua"
+    },
+    {
+      "name": "set_bot_info_description",
+      "category": "bots",
+      "status": "adapted",
+      "tdlib_commands": [
+        "setBotInfoDescription"
+      ],
+      "tdlib_parameters": {
+        "setBotInfoDescription": {
+          "bot_user_id": "int53",
+          "language_code": "string",
+          "description": "string"
+        }
+      },
+      "module": "src/methods/userbot/set_bot_info_description.lua"
+    },
+    {
+      "name": "set_bot_info_short_description",
+      "category": "bots",
+      "status": "adapted",
+      "tdlib_commands": [
+        "setBotInfoShortDescription"
+      ],
+      "tdlib_parameters": {
+        "setBotInfoShortDescription": {
+          "bot_user_id": "int53",
+          "language_code": "string",
+          "short_description": "string"
+        }
+      },
+      "module": "src/methods/userbot/set_bot_info_short_description.lua"
+    },
+    {
+      "name": "set_bot_name",
+      "category": "bots",
+      "status": "adapted",
+      "tdlib_commands": [
+        "setBotName"
+      ],
+      "tdlib_parameters": {
+        "setBotName": {
+          "bot_user_id": "int53",
+          "language_code": "string",
+          "name": "string"
+        }
+      },
+      "module": "src/methods/userbot/set_bot_name.lua"
+    },
+    {
+      "name": "set_chat_menu_button",
+      "category": "bots",
+      "status": "adapted",
+      "tdlib_commands": [
+        "setMenuButton"
+      ],
+      "tdlib_parameters": {
+        "setMenuButton": {
+          "user_id": "int53",
+          "menu_button": "botMenuButton"
+        }
+      },
+      "module": "src/methods/userbot/set_chat_menu_button.lua"
+    },
+    {
+      "name": "set_game_score",
+      "category": "bots",
+      "status": "adapted",
+      "tdlib_commands": [
+        "setGameScore"
+      ],
+      "tdlib_parameters": {
+        "setGameScore": {
+          "chat_id": "int53",
+          "message_id": "int53",
+          "edit_message": "Bool",
+          "user_id": "int53",
+          "score": "int32",
+          "force": "Bool"
+        }
+      },
+      "module": "src/methods/userbot/set_game_score.lua"
+    },
+    {
+      "name": "set_managed_bot_access_settings",
+      "category": "bots",
+      "status": "adapted",
+      "tdlib_commands": [
+        "setManagedBotAccessSettings"
+      ],
+      "tdlib_parameters": {
+        "setManagedBotAccessSettings": {
+          "bot_user_id": "int53",
+          "settings": "botAccessSettings"
+        }
+      },
+      "module": "src/methods/userbot/set_managed_bot_access_settings.lua"
+    },
+    {
+      "name": "delete_business_messages",
+      "category": "business",
+      "status": "adapted",
+      "tdlib_commands": [
+        "deleteBusinessMessages"
+      ],
+      "tdlib_parameters": {
+        "deleteBusinessMessages": {
+          "business_connection_id": "string",
+          "message_ids": "vector<int53>"
+        }
+      },
+      "module": "src/methods/userbot/delete_business_messages.lua"
+    },
+    {
+      "name": "get_business_account_gifts",
+      "category": "business",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getReceivedGifts"
+      ],
+      "tdlib_parameters": {
+        "getReceivedGifts": {
+          "business_connection_id": "string",
+          "owner_id": "MessageSender",
+          "collection_id": "int32",
+          "exclude_unsaved": "Bool",
+          "exclude_saved": "Bool",
+          "exclude_unlimited": "Bool",
+          "exclude_upgradable": "Bool",
+          "exclude_non_upgradable": "Bool",
+          "exclude_upgraded": "Bool",
+          "exclude_without_colors": "Bool",
+          "exclude_hosted": "Bool",
+          "sort_by_price": "Bool",
+          "offset": "string",
+          "limit": "int32"
+        }
+      },
+      "module": "src/methods/userbot/get_business_account_gifts.lua"
+    },
+    {
+      "name": "get_business_account_star_balance",
+      "category": "business",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getBusinessAccountStarAmount"
+      ],
+      "tdlib_parameters": {
+        "getBusinessAccountStarAmount": {
+          "business_connection_id": "string"
+        }
+      },
+      "module": "src/methods/userbot/get_business_account_star_balance.lua"
+    },
+    {
+      "name": "get_business_connection",
+      "category": "business",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getBusinessConnection"
+      ],
+      "tdlib_parameters": {
+        "getBusinessConnection": {
+          "connection_id": "string"
+        }
+      },
+      "module": "src/methods/userbot/get_business_connection.lua"
+    },
+    {
+      "name": "transfer_business_account_stars",
+      "category": "business",
+      "status": "adapted",
+      "tdlib_commands": [
+        "transferBusinessAccountStars"
+      ],
+      "tdlib_parameters": {
+        "transferBusinessAccountStars": {
+          "business_connection_id": "string",
+          "star_count": "int53"
+        }
+      },
+      "module": "src/methods/userbot/transfer_business_account_stars.lua"
+    },
+    {
+      "name": "add_chat_members",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "addChatMembers"
+      ],
+      "tdlib_parameters": {
+        "addChatMembers": {
+          "chat_id": "int53",
+          "user_ids": "vector<int53>"
+        }
+      },
+      "module": "src/methods/userbot/add_chat_members.lua"
+    },
+    {
+      "name": "archive_chats",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/archive_chats.lua"
+    },
+    {
+      "name": "ban_chat_member",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "banChatMember"
+      ],
+      "tdlib_parameters": {
+        "banChatMember": {
+          "chat_id": "int53",
+          "member_id": "MessageSender",
+          "banned_until_date": "int32",
+          "revoke_messages": "Bool"
+        }
+      },
+      "module": "src/methods/userbot/ban_chat_member.lua"
+    },
+    {
+      "name": "close_forum_topic",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/close_forum_topic.lua"
+    },
+    {
+      "name": "create_channel",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/create_channel.lua"
+    },
+    {
+      "name": "create_folder",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "createChatFolder"
+      ],
+      "tdlib_parameters": {
+        "createChatFolder": {
+          "folder": "chatFolder"
+        }
+      },
+      "module": "src/methods/userbot/create_folder.lua"
+    },
+    {
+      "name": "create_folder_invite_link",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "createChatFolderInviteLink"
+      ],
+      "tdlib_parameters": {
+        "createChatFolderInviteLink": {
+          "chat_folder_id": "int32",
+          "name": "string",
+          "chat_ids": "vector<int53>"
+        }
+      },
+      "module": "src/methods/userbot/create_folder_invite_link.lua"
+    },
+    {
+      "name": "create_forum_topic",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "createForumTopic"
+      ],
+      "tdlib_parameters": {
+        "createForumTopic": {
+          "chat_id": "int53",
+          "name": "string",
+          "is_name_implicit": "Bool",
+          "icon": "forumTopicIcon"
+        }
+      },
+      "module": "src/methods/userbot/create_forum_topic.lua"
+    },
+    {
+      "name": "create_group",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "createNewBasicGroupChat"
+      ],
+      "tdlib_parameters": {
+        "createNewBasicGroupChat": {
+          "user_ids": "vector<int53>",
+          "title": "string",
+          "message_auto_delete_time": "int32"
+        }
+      },
+      "module": "src/methods/userbot/create_group.lua"
+    },
+    {
+      "name": "create_supergroup",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/create_supergroup.lua"
+    },
+    {
+      "name": "delete_all_message_reactions",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "deleteAllRecentMessageReactionsFromSender"
+      ],
+      "tdlib_parameters": {
+        "deleteAllRecentMessageReactionsFromSender": {
+          "chat_id": "int53",
+          "sender_id": "MessageSender"
+        }
+      },
+      "module": "src/methods/userbot/delete_all_message_reactions.lua"
+    },
+    {
+      "name": "delete_channel",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "deleteChat"
+      ],
+      "tdlib_parameters": {
+        "deleteChat": {
+          "chat_id": "int53"
+        }
+      },
+      "module": "src/methods/userbot/delete_channel.lua"
+    },
+    {
+      "name": "delete_chat_photo",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "setChatPhoto"
+      ],
+      "tdlib_parameters": {
+        "setChatPhoto": {
+          "chat_id": "int53",
+          "photo": "InputChatPhoto"
+        }
+      },
+      "module": "src/methods/userbot/delete_chat_photo.lua"
+    },
+    {
+      "name": "delete_folder",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "deleteChatFolder"
+      ],
+      "tdlib_parameters": {
+        "deleteChatFolder": {
+          "chat_folder_id": "int32",
+          "leave_chat_ids": "vector<int53>"
+        }
+      },
+      "module": "src/methods/userbot/delete_folder.lua"
+    },
+    {
+      "name": "delete_folder_invite_link",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "deleteChatFolderInviteLink"
+      ],
+      "tdlib_parameters": {
+        "deleteChatFolderInviteLink": {
+          "chat_folder_id": "int32",
+          "invite_link": "string"
+        }
+      },
+      "module": "src/methods/userbot/delete_folder_invite_link.lua"
+    },
+    {
+      "name": "delete_forum_topic",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "deleteForumTopic"
+      ],
+      "tdlib_parameters": {
+        "deleteForumTopic": {
+          "chat_id": "int53",
+          "forum_topic_id": "int32"
+        }
+      },
+      "module": "src/methods/userbot/delete_forum_topic.lua"
+    },
+    {
+      "name": "delete_message_reaction",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "deleteMessageReactionsFromSender"
+      ],
+      "tdlib_parameters": {
+        "deleteMessageReactionsFromSender": {
+          "chat_id": "int53",
+          "message_id": "int53",
+          "sender_id": "MessageSender"
+        }
+      },
+      "module": "src/methods/userbot/delete_message_reaction.lua"
+    },
+    {
+      "name": "delete_supergroup",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "deleteChat"
+      ],
+      "tdlib_parameters": {
+        "deleteChat": {
+          "chat_id": "int53"
+        }
+      },
+      "module": "src/methods/userbot/delete_supergroup.lua"
+    },
+    {
+      "name": "delete_user_history",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "deleteChatMessagesBySender"
+      ],
+      "tdlib_parameters": {
+        "deleteChatMessagesBySender": {
+          "chat_id": "int53",
+          "sender_id": "MessageSender"
+        }
+      },
+      "module": "src/methods/userbot/delete_user_history.lua"
+    },
+    {
+      "name": "edit_folder",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "editChatFolder"
+      ],
+      "tdlib_parameters": {
+        "editChatFolder": {
+          "chat_folder_id": "int32",
+          "folder": "chatFolder"
+        }
+      },
+      "module": "src/methods/userbot/edit_folder.lua"
+    },
+    {
+      "name": "edit_folder_invite_link",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "editChatFolderInviteLink"
+      ],
+      "tdlib_parameters": {
+        "editChatFolderInviteLink": {
+          "chat_folder_id": "int32",
+          "invite_link": "string",
+          "name": "string",
+          "chat_ids": "vector<int53>"
+        }
+      },
+      "module": "src/methods/userbot/edit_folder_invite_link.lua"
+    },
+    {
+      "name": "edit_forum_topic",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "editForumTopic"
+      ],
+      "tdlib_parameters": {
+        "editForumTopic": {
+          "chat_id": "int53",
+          "forum_topic_id": "int32",
+          "name": "string",
+          "edit_icon_custom_emoji": "Bool",
+          "icon_custom_emoji_id": "int64"
+        }
+      },
+      "module": "src/methods/userbot/edit_forum_topic.lua"
+    },
+    {
+      "name": "get_chat",
+      "category": "chats",
+      "status": "existing",
+      "tdlib_commands": [
+        "getChat"
+      ],
+      "tdlib_parameters": {
+        "getChat": {
+          "chat_id": "int53"
+        }
+      },
+      "module": "src/methods/userbot/get_chat.lua"
+    },
+    {
+      "name": "get_chat_event_log",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getChatEventLog"
+      ],
+      "tdlib_parameters": {
+        "getChatEventLog": {
+          "chat_id": "int53",
+          "query": "string",
+          "from_event_id": "int64",
+          "limit": "int32",
+          "filters": "chatEventLogFilters",
+          "user_ids": "vector<int53>"
+        }
+      },
+      "module": "src/methods/userbot/get_chat_event_log.lua"
+    },
+    {
+      "name": "get_chat_member",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getChatMember"
+      ],
+      "tdlib_parameters": {
+        "getChatMember": {
+          "chat_id": "int53",
+          "member_id": "MessageSender"
+        }
+      },
+      "module": "src/methods/userbot/get_chat_member.lua"
+    },
+    {
+      "name": "get_chat_members",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "searchChatMembers"
+      ],
+      "tdlib_parameters": {
+        "searchChatMembers": {
+          "chat_id": "int53",
+          "query": "string",
+          "limit": "int32",
+          "filter": "ChatMembersFilter"
+        }
+      },
+      "module": "src/methods/userbot/get_chat_members.lua"
+    },
+    {
+      "name": "get_chat_members_count",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getChat"
+      ],
+      "tdlib_parameters": {
+        "getChat": {
+          "chat_id": "int53"
+        }
+      },
+      "module": "src/methods/userbot/get_chat_members_count.lua"
+    },
+    {
+      "name": "get_chat_online_count",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/get_chat_online_count.lua"
+    },
+    {
+      "name": "get_chat_settings",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getChat"
+      ],
+      "tdlib_parameters": {
+        "getChat": {
+          "chat_id": "int53"
+        }
+      },
+      "module": "src/methods/userbot/get_chat_settings.lua"
+    },
+    {
+      "name": "get_chats_for_folder_invite_link",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getChatsForChatFolderInviteLink"
+      ],
+      "tdlib_parameters": {
+        "getChatsForChatFolderInviteLink": {
+          "chat_folder_id": "int32"
+        }
+      },
+      "module": "src/methods/userbot/get_chats_for_folder_invite_link.lua"
+    },
+    {
+      "name": "get_dialogs",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getChats"
+      ],
+      "tdlib_parameters": {
+        "getChats": {
+          "chat_list": "ChatList",
+          "limit": "int32"
+        }
+      },
+      "module": "src/methods/userbot/get_dialogs.lua"
+    },
+    {
+      "name": "get_dialogs_count",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/get_dialogs_count.lua"
+    },
+    {
+      "name": "get_direct_messages_topics",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "loadDirectMessagesChatTopics"
+      ],
+      "tdlib_parameters": {
+        "loadDirectMessagesChatTopics": {
+          "chat_id": "int53",
+          "limit": "int32"
+        }
+      },
+      "module": "src/methods/userbot/get_direct_messages_topics.lua"
+    },
+    {
+      "name": "get_direct_messages_topics_by_id",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/get_direct_messages_topics_by_id.lua"
+    },
+    {
+      "name": "get_folder_invite_links",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getChatFolderInviteLinks"
+      ],
+      "tdlib_parameters": {
+        "getChatFolderInviteLinks": {
+          "chat_folder_id": "int32"
+        }
+      },
+      "module": "src/methods/userbot/get_folder_invite_links.lua"
+    },
+    {
+      "name": "get_folders",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/get_folders.lua"
+    },
+    {
+      "name": "get_forum_topics",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getForumTopics"
+      ],
+      "tdlib_parameters": {
+        "getForumTopics": {
+          "chat_id": "int53",
+          "query": "string",
+          "offset_date": "int32",
+          "offset_message_id": "int53",
+          "offset_forum_topic_id": "int32",
+          "limit": "int32"
+        }
+      },
+      "module": "src/methods/userbot/get_forum_topics.lua"
+    },
+    {
+      "name": "get_forum_topics_by_id",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/get_forum_topics_by_id.lua"
+    },
+    {
+      "name": "get_personal_channels",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getSuitablePersonalChats"
+      ],
+      "tdlib_parameters": {
+        "getSuitablePersonalChats": {}
+      },
+      "module": "src/methods/userbot/get_personal_channels.lua"
+    },
+    {
+      "name": "get_send_as_chats",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getChatAvailableMessageSenders"
+      ],
+      "tdlib_parameters": {
+        "getChatAvailableMessageSenders": {
+          "chat_id": "int53"
+        }
+      },
+      "module": "src/methods/userbot/get_send_as_chats.lua"
+    },
+    {
+      "name": "get_similar_channels",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getChatSimilarChats"
+      ],
+      "tdlib_parameters": {
+        "getChatSimilarChats": {
+          "chat_id": "int53"
+        }
+      },
+      "module": "src/methods/userbot/get_similar_channels.lua"
+    },
+    {
+      "name": "get_suitable_discussion_chats",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getSuitableDiscussionChats"
+      ],
+      "tdlib_parameters": {
+        "getSuitableDiscussionChats": {}
+      },
+      "module": "src/methods/userbot/get_suitable_discussion_chats.lua"
+    },
+    {
+      "name": "get_top_chats",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getTopChats"
+      ],
+      "tdlib_parameters": {
+        "getTopChats": {
+          "category": "TopChatCategory",
+          "limit": "int32"
+        }
+      },
+      "module": "src/methods/userbot/get_top_chats.lua"
+    },
+    {
+      "name": "hide_general_forum_topic",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/hide_general_forum_topic.lua"
+    },
+    {
+      "name": "join_chat",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "joinChat",
+        "joinChatByInviteLink",
+        "searchPublicChat"
+      ],
+      "tdlib_parameters": {
+        "joinChat": {
+          "chat_id": "int53"
+        },
+        "joinChatByInviteLink": {
+          "invite_link": "string"
+        },
+        "searchPublicChat": {
+          "username": "string"
+        }
+      },
+      "module": "src/methods/userbot/join_chat.lua"
+    },
+    {
+      "name": "join_folder",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "addChatFolderByInviteLink"
+      ],
+      "tdlib_parameters": {
+        "addChatFolderByInviteLink": {
+          "invite_link": "string",
+          "chat_ids": "vector<int53>"
+        }
+      },
+      "module": "src/methods/userbot/join_folder.lua"
+    },
+    {
+      "name": "leave_chat",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "leaveChat"
+      ],
+      "tdlib_parameters": {
+        "leaveChat": {
+          "chat_id": "int53"
+        }
+      },
+      "module": "src/methods/userbot/leave_chat.lua"
+    },
+    {
+      "name": "leave_folder",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "deleteChatFolder"
+      ],
+      "tdlib_parameters": {
+        "deleteChatFolder": {
+          "chat_folder_id": "int32",
+          "leave_chat_ids": "vector<int53>"
+        }
+      },
+      "module": "src/methods/userbot/leave_folder.lua"
+    },
+    {
+      "name": "mark_chat_unread",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/mark_chat_unread.lua"
+    },
+    {
+      "name": "pin_chat_message",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "pinChatMessage"
+      ],
+      "tdlib_parameters": {
+        "pinChatMessage": {
+          "chat_id": "int53",
+          "message_id": "int53",
+          "disable_notification": "Bool",
+          "only_for_self": "Bool"
+        }
+      },
+      "module": "src/methods/userbot/pin_chat_message.lua"
+    },
+    {
+      "name": "pin_forum_topic",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/pin_forum_topic.lua"
+    },
+    {
+      "name": "process_chat_has_protected_content_disable_request",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "processChatHasProtectedContentDisableRequest"
+      ],
+      "tdlib_parameters": {
+        "processChatHasProtectedContentDisableRequest": {
+          "chat_id": "int53",
+          "request_message_id": "int53",
+          "approve": "Bool"
+        }
+      },
+      "module": "src/methods/userbot/process_chat_has_protected_content_disable_request.lua"
+    },
+    {
+      "name": "promote_chat_member",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "setChatMemberStatus"
+      ],
+      "tdlib_parameters": {
+        "setChatMemberStatus": {
+          "chat_id": "int53",
+          "member_id": "MessageSender",
+          "status": "ChatMemberStatus"
+        }
+      },
+      "module": "src/methods/userbot/promote_chat_member.lua"
+    },
+    {
+      "name": "reopen_forum_topic",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/reopen_forum_topic.lua"
+    },
+    {
+      "name": "reorder_folders",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "reorderChatFolders"
+      ],
+      "tdlib_parameters": {
+        "reorderChatFolders": {
+          "chat_folder_ids": "vector<int32>",
+          "main_chat_list_position": "int32"
+        }
+      },
+      "module": "src/methods/userbot/reorder_folders.lua"
+    },
+    {
+      "name": "restrict_chat_member",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "setChatMemberStatus"
+      ],
+      "tdlib_parameters": {
+        "setChatMemberStatus": {
+          "chat_id": "int53",
+          "member_id": "MessageSender",
+          "status": "ChatMemberStatus"
+        }
+      },
+      "module": "src/methods/userbot/restrict_chat_member.lua"
+    },
+    {
+      "name": "set_administrator_title",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "setChatMemberTag"
+      ],
+      "tdlib_parameters": {
+        "setChatMemberTag": {
+          "chat_id": "int53",
+          "user_id": "int53",
+          "tag": "string"
+        }
+      },
+      "module": "src/methods/userbot/set_administrator_title.lua"
+    },
+    {
+      "name": "set_chat_accent_color",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "setChatAccentColor"
+      ],
+      "tdlib_parameters": {
+        "setChatAccentColor": {
+          "chat_id": "int53",
+          "accent_color_id": "int32",
+          "background_custom_emoji_id": "int64"
+        }
+      },
+      "module": "src/methods/userbot/set_chat_accent_color.lua"
+    },
+    {
+      "name": "set_chat_description",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "setChatDescription"
+      ],
+      "tdlib_parameters": {
+        "setChatDescription": {
+          "chat_id": "int53",
+          "description": "string"
+        }
+      },
+      "module": "src/methods/userbot/set_chat_description.lua"
+    },
+    {
+      "name": "set_chat_direct_messages_group",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "setChatDirectMessagesGroup"
+      ],
+      "tdlib_parameters": {
+        "setChatDirectMessagesGroup": {
+          "chat_id": "int53",
+          "is_enabled": "Bool",
+          "paid_message_star_count": "int53"
+        }
+      },
+      "module": "src/methods/userbot/set_chat_direct_messages_group.lua"
+    },
+    {
+      "name": "set_chat_discussion_group",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "setChatDiscussionGroup"
+      ],
+      "tdlib_parameters": {
+        "setChatDiscussionGroup": {
+          "chat_id": "int53",
+          "discussion_chat_id": "int53"
+        }
+      },
+      "module": "src/methods/userbot/set_chat_discussion_group.lua"
+    },
+    {
+      "name": "set_chat_member_tag",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "setChatMemberTag"
+      ],
+      "tdlib_parameters": {
+        "setChatMemberTag": {
+          "chat_id": "int53",
+          "user_id": "int53",
+          "tag": "string"
+        }
+      },
+      "module": "src/methods/userbot/set_chat_member_tag.lua"
+    },
+    {
+      "name": "set_chat_permissions",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "setChatPermissions"
+      ],
+      "tdlib_parameters": {
+        "setChatPermissions": {
+          "chat_id": "int53",
+          "permissions": "chatPermissions"
+        }
+      },
+      "module": "src/methods/userbot/set_chat_permissions.lua"
+    },
+    {
+      "name": "set_chat_photo",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "setChatPhoto"
+      ],
+      "tdlib_parameters": {
+        "setChatPhoto": {
+          "chat_id": "int53",
+          "photo": "InputChatPhoto"
+        }
+      },
+      "module": "src/methods/userbot/set_chat_photo.lua"
+    },
+    {
+      "name": "set_chat_profile_accent_color",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "setChatProfileAccentColor"
+      ],
+      "tdlib_parameters": {
+        "setChatProfileAccentColor": {
+          "chat_id": "int53",
+          "profile_accent_color_id": "int32",
+          "profile_background_custom_emoji_id": "int64"
+        }
+      },
+      "module": "src/methods/userbot/set_chat_profile_accent_color.lua"
+    },
+    {
+      "name": "set_chat_protected_content",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "toggleChatHasProtectedContent"
+      ],
+      "tdlib_parameters": {
+        "toggleChatHasProtectedContent": {
+          "chat_id": "int53",
+          "has_protected_content": "Bool"
+        }
+      },
+      "module": "src/methods/userbot/set_chat_protected_content.lua"
+    },
+    {
+      "name": "set_chat_title",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "setChatTitle"
+      ],
+      "tdlib_parameters": {
+        "setChatTitle": {
+          "chat_id": "int53",
+          "title": "string"
+        }
+      },
+      "module": "src/methods/userbot/set_chat_title.lua"
+    },
+    {
+      "name": "set_chat_ttl",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "setChatMessageAutoDeleteTime"
+      ],
+      "tdlib_parameters": {
+        "setChatMessageAutoDeleteTime": {
+          "chat_id": "int53",
+          "message_auto_delete_time": "int32"
+        }
+      },
+      "module": "src/methods/userbot/set_chat_ttl.lua"
+    },
+    {
+      "name": "set_chat_username",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "setSupergroupUsername"
+      ],
+      "tdlib_parameters": {
+        "setSupergroupUsername": {
+          "supergroup_id": "int53",
+          "username": "string"
+        }
+      },
+      "module": "src/methods/userbot/set_chat_username.lua"
+    },
+    {
+      "name": "set_main_profile_tab",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "setMainProfileTab",
+        "setSupergroupMainProfileTab"
+      ],
+      "tdlib_parameters": {
+        "setMainProfileTab": {
+          "main_profile_tab": "ProfileTab"
+        },
+        "setSupergroupMainProfileTab": {
+          "supergroup_id": "int53",
+          "main_profile_tab": "ProfileTab"
+        }
+      },
+      "module": "src/methods/userbot/set_main_profile_tab.lua"
+    },
+    {
+      "name": "set_send_as_chat",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "setChatMessageSender"
+      ],
+      "tdlib_parameters": {
+        "setChatMessageSender": {
+          "chat_id": "int53",
+          "message_sender_id": "MessageSender"
+        }
+      },
+      "module": "src/methods/userbot/set_send_as_chat.lua"
+    },
+    {
+      "name": "set_slow_mode",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "setChatSlowModeDelay"
+      ],
+      "tdlib_parameters": {
+        "setChatSlowModeDelay": {
+          "chat_id": "int53",
+          "slow_mode_delay": "int32"
+        }
+      },
+      "module": "src/methods/userbot/set_slow_mode.lua"
+    },
+    {
+      "name": "set_upgraded_gift_colors",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "setUpgradedGiftColors"
+      ],
+      "tdlib_parameters": {
+        "setUpgradedGiftColors": {
+          "upgraded_gift_colors_id": "int64"
+        }
+      },
+      "module": "src/methods/userbot/set_upgraded_gift_colors.lua"
+    },
+    {
+      "name": "toggle_folder_tags",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "toggleChatFolderTags"
+      ],
+      "tdlib_parameters": {
+        "toggleChatFolderTags": {
+          "are_tags_enabled": "Bool"
+        }
+      },
+      "module": "src/methods/userbot/toggle_folder_tags.lua"
+    },
+    {
+      "name": "toggle_forum_topics",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "toggleSupergroupIsForum"
+      ],
+      "tdlib_parameters": {
+        "toggleSupergroupIsForum": {
+          "supergroup_id": "int53",
+          "is_forum": "Bool",
+          "has_forum_tabs": "Bool"
+        }
+      },
+      "module": "src/methods/userbot/toggle_forum_topics.lua"
+    },
+    {
+      "name": "toggle_join_to_send",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "toggleSupergroupJoinToSendMessages"
+      ],
+      "tdlib_parameters": {
+        "toggleSupergroupJoinToSendMessages": {
+          "supergroup_id": "int53",
+          "join_to_send_messages": "Bool"
+        }
+      },
+      "module": "src/methods/userbot/toggle_join_to_send.lua"
+    },
+    {
+      "name": "transfer_chat_ownership",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "transferChatOwnership"
+      ],
+      "tdlib_parameters": {
+        "transferChatOwnership": {
+          "chat_id": "int53",
+          "user_id": "int53",
+          "password": "string"
+        }
+      },
+      "module": "src/methods/userbot/transfer_chat_ownership.lua"
+    },
+    {
+      "name": "unarchive_chats",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/unarchive_chats.lua"
+    },
+    {
+      "name": "unban_chat_member",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/unban_chat_member.lua"
+    },
+    {
+      "name": "unhide_general_forum_topic",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/unhide_general_forum_topic.lua"
+    },
+    {
+      "name": "unpin_all_chat_messages",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "unpinAllChatMessages"
+      ],
+      "tdlib_parameters": {
+        "unpinAllChatMessages": {
+          "chat_id": "int53"
+        }
+      },
+      "module": "src/methods/userbot/unpin_all_chat_messages.lua"
+    },
+    {
+      "name": "unpin_all_forum_topic_messages",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "unpinAllForumTopicMessages"
+      ],
+      "tdlib_parameters": {
+        "unpinAllForumTopicMessages": {
+          "chat_id": "int53",
+          "forum_topic_id": "int32"
+        }
+      },
+      "module": "src/methods/userbot/unpin_all_forum_topic_messages.lua"
+    },
+    {
+      "name": "unpin_chat_message",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "unpinChatMessage"
+      ],
+      "tdlib_parameters": {
+        "unpinChatMessage": {
+          "chat_id": "int53",
+          "message_id": "int53"
+        }
+      },
+      "module": "src/methods/userbot/unpin_chat_message.lua"
+    },
+    {
+      "name": "unpin_forum_topic",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/unpin_forum_topic.lua"
+    },
+    {
+      "name": "update_chat_notifications",
+      "category": "chats",
+      "status": "adapted",
+      "tdlib_commands": [
+        "setChatNotificationSettings"
+      ],
+      "tdlib_parameters": {
+        "setChatNotificationSettings": {
+          "chat_id": "int53",
+          "notification_settings": "chatNotificationSettings"
+        }
+      },
+      "module": "src/methods/userbot/update_chat_notifications.lua"
+    },
+    {
+      "name": "add_contact",
+      "category": "contacts",
+      "status": "adapted",
+      "tdlib_commands": [
+        "addContact"
+      ],
+      "tdlib_parameters": {
+        "addContact": {
+          "user_id": "int53",
+          "contact": "importedContact",
+          "share_phone_number": "Bool"
+        }
+      },
+      "module": "src/methods/userbot/add_contact.lua"
+    },
+    {
+      "name": "delete_contacts",
+      "category": "contacts",
+      "status": "adapted",
+      "tdlib_commands": [
+        "removeContacts"
+      ],
+      "tdlib_parameters": {
+        "removeContacts": {
+          "user_ids": "vector<int53>"
+        }
+      },
+      "module": "src/methods/userbot/delete_contacts.lua"
+    },
+    {
+      "name": "get_blocked_message_senders",
+      "category": "contacts",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getBlockedMessageSenders"
+      ],
+      "tdlib_parameters": {
+        "getBlockedMessageSenders": {
+          "block_list": "BlockList",
+          "offset": "int32",
+          "limit": "int32"
+        }
+      },
+      "module": "src/methods/userbot/get_blocked_message_senders.lua"
+    },
+    {
+      "name": "get_contacts",
+      "category": "contacts",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getContacts"
+      ],
+      "tdlib_parameters": {
+        "getContacts": {}
+      },
+      "module": "src/methods/userbot/get_contacts.lua"
+    },
+    {
+      "name": "get_contacts_count",
+      "category": "contacts",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getContacts"
+      ],
+      "tdlib_parameters": {
+        "getContacts": {}
+      },
+      "module": "src/methods/userbot/get_contacts_count.lua"
+    },
+    {
+      "name": "import_contacts",
+      "category": "contacts",
+      "status": "adapted",
+      "tdlib_commands": [
+        "importContacts"
+      ],
+      "tdlib_parameters": {
+        "importContacts": {
+          "contacts": "vector<importedContact>"
+        }
+      },
+      "module": "src/methods/userbot/import_contacts.lua"
+    },
+    {
+      "name": "search_contacts",
+      "category": "contacts",
+      "status": "adapted",
+      "tdlib_commands": [
+        "searchContacts"
+      ],
+      "tdlib_parameters": {
+        "searchContacts": {
+          "query": "string",
+          "limit": "int32"
+        }
+      },
+      "module": "src/methods/userbot/search_contacts.lua"
+    },
+    {
+      "name": "set_contact_note",
+      "category": "contacts",
+      "status": "adapted",
+      "tdlib_commands": [
+        "setUserNote"
+      ],
+      "tdlib_parameters": {
+        "setUserNote": {
+          "user_id": "int53",
+          "note": "formattedText"
+        }
+      },
+      "module": "src/methods/userbot/set_contact_note.lua"
+    },
+    {
+      "name": "on_business_connection",
+      "category": "decorators",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/on_business_connection.lua"
+    },
+    {
+      "name": "on_business_message",
+      "category": "decorators",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/on_business_message.lua"
+    },
+    {
+      "name": "on_callback_query",
+      "category": "decorators",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/on_callback_query.lua"
+    },
+    {
+      "name": "on_chat_boost",
+      "category": "decorators",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/on_chat_boost.lua"
+    },
+    {
+      "name": "on_chat_join_request",
+      "category": "decorators",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/on_chat_join_request.lua"
+    },
+    {
+      "name": "on_chat_member_updated",
+      "category": "decorators",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/on_chat_member_updated.lua"
+    },
+    {
+      "name": "on_chosen_inline_result",
+      "category": "decorators",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/on_chosen_inline_result.lua"
+    },
+    {
+      "name": "on_connect",
+      "category": "decorators",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/on_connect.lua"
+    },
+    {
+      "name": "on_deleted_business_messages",
+      "category": "decorators",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/on_deleted_business_messages.lua"
+    },
+    {
+      "name": "on_deleted_messages",
+      "category": "decorators",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/on_deleted_messages.lua"
+    },
+    {
+      "name": "on_disconnect",
+      "category": "decorators",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/on_disconnect.lua"
+    },
+    {
+      "name": "on_edited_business_message",
+      "category": "decorators",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/on_edited_business_message.lua"
+    },
+    {
+      "name": "on_edited_message",
+      "category": "decorators",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/on_edited_message.lua"
+    },
+    {
+      "name": "on_error",
+      "category": "decorators",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/on_error.lua"
+    },
+    {
+      "name": "on_guest_message",
+      "category": "decorators",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/on_guest_message.lua"
+    },
+    {
+      "name": "on_inline_query",
+      "category": "decorators",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/on_inline_query.lua"
+    },
+    {
+      "name": "on_managed_bot",
+      "category": "decorators",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/on_managed_bot.lua"
+    },
+    {
+      "name": "on_message",
+      "category": "decorators",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/on_message.lua"
+    },
+    {
+      "name": "on_message_reaction",
+      "category": "decorators",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/on_message_reaction.lua"
+    },
+    {
+      "name": "on_message_reaction_count",
+      "category": "decorators",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/on_message_reaction_count.lua"
+    },
+    {
+      "name": "on_poll",
+      "category": "decorators",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/on_poll.lua"
+    },
+    {
+      "name": "on_pre_checkout_query",
+      "category": "decorators",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/on_pre_checkout_query.lua"
+    },
+    {
+      "name": "on_purchased_paid_media",
+      "category": "decorators",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/on_purchased_paid_media.lua"
+    },
+    {
+      "name": "on_raw_update",
+      "category": "decorators",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/on_raw_update.lua"
+    },
+    {
+      "name": "on_shipping_query",
+      "category": "decorators",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/on_shipping_query.lua"
+    },
+    {
+      "name": "on_start",
+      "category": "decorators",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/on_start.lua"
+    },
+    {
+      "name": "on_stop",
+      "category": "decorators",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/on_stop.lua"
+    },
+    {
+      "name": "on_stopped_message_generation",
+      "category": "decorators",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/on_stopped_message_generation.lua"
+    },
+    {
+      "name": "on_story",
+      "category": "decorators",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/on_story.lua"
+    },
+    {
+      "name": "on_user_status",
+      "category": "decorators",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/on_user_status.lua"
+    },
+    {
+      "name": "unbound_arguments",
+      "category": "decorators",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/unbound_arguments.lua"
+    },
+    {
+      "name": "check_chat_folder_invite_link",
+      "category": "folders",
+      "status": "adapted",
+      "tdlib_commands": [
+        "checkChatFolderInviteLink"
+      ],
+      "tdlib_parameters": {
+        "checkChatFolderInviteLink": {
+          "invite_link": "string"
+        }
+      },
+      "module": "src/methods/userbot/check_chat_folder_invite_link.lua"
+    },
+    {
+      "name": "approve_all_chat_join_requests",
+      "category": "invite_links",
+      "status": "adapted",
+      "tdlib_commands": [
+        "processChatJoinRequests"
+      ],
+      "tdlib_parameters": {
+        "processChatJoinRequests": {
+          "chat_id": "int53",
+          "invite_link": "string",
+          "approve": "Bool"
+        }
+      },
+      "module": "src/methods/userbot/approve_all_chat_join_requests.lua"
+    },
+    {
+      "name": "approve_chat_join_request",
+      "category": "invite_links",
+      "status": "adapted",
+      "tdlib_commands": [
+        "processChatJoinRequest"
+      ],
+      "tdlib_parameters": {
+        "processChatJoinRequest": {
+          "chat_id": "int53",
+          "user_id": "int53",
+          "approve": "Bool"
+        }
+      },
+      "module": "src/methods/userbot/approve_chat_join_request.lua"
+    },
+    {
+      "name": "create_chat_invite_link",
+      "category": "invite_links",
+      "status": "adapted",
+      "tdlib_commands": [
+        "createChatInviteLink"
+      ],
+      "tdlib_parameters": {
+        "createChatInviteLink": {
+          "chat_id": "int53",
+          "name": "string",
+          "expiration_date": "int32",
+          "member_limit": "int32",
+          "creates_join_request": "Bool"
+        }
+      },
+      "module": "src/methods/userbot/create_chat_invite_link.lua"
+    },
+    {
+      "name": "decline_all_chat_join_requests",
+      "category": "invite_links",
+      "status": "adapted",
+      "tdlib_commands": [
+        "processChatJoinRequests"
+      ],
+      "tdlib_parameters": {
+        "processChatJoinRequests": {
+          "chat_id": "int53",
+          "invite_link": "string",
+          "approve": "Bool"
+        }
+      },
+      "module": "src/methods/userbot/decline_all_chat_join_requests.lua"
+    },
+    {
+      "name": "decline_chat_join_request",
+      "category": "invite_links",
+      "status": "adapted",
+      "tdlib_commands": [
+        "processChatJoinRequest"
+      ],
+      "tdlib_parameters": {
+        "processChatJoinRequest": {
+          "chat_id": "int53",
+          "user_id": "int53",
+          "approve": "Bool"
+        }
+      },
+      "module": "src/methods/userbot/decline_chat_join_request.lua"
+    },
+    {
+      "name": "delete_chat_admin_invite_links",
+      "category": "invite_links",
+      "status": "adapted",
+      "tdlib_commands": [
+        "deleteAllRevokedChatInviteLinks"
+      ],
+      "tdlib_parameters": {
+        "deleteAllRevokedChatInviteLinks": {
+          "chat_id": "int53",
+          "creator_user_id": "int53"
+        }
+      },
+      "module": "src/methods/userbot/delete_chat_admin_invite_links.lua"
+    },
+    {
+      "name": "delete_chat_invite_link",
+      "category": "invite_links",
+      "status": "adapted",
+      "tdlib_commands": [
+        "deleteRevokedChatInviteLink"
+      ],
+      "tdlib_parameters": {
+        "deleteRevokedChatInviteLink": {
+          "chat_id": "int53",
+          "invite_link": "string"
+        }
+      },
+      "module": "src/methods/userbot/delete_chat_invite_link.lua"
+    },
+    {
+      "name": "edit_chat_invite_link",
+      "category": "invite_links",
+      "status": "adapted",
+      "tdlib_commands": [
+        "editChatInviteLink"
+      ],
+      "tdlib_parameters": {
+        "editChatInviteLink": {
+          "chat_id": "int53",
+          "invite_link": "string",
+          "name": "string",
+          "expiration_date": "int32",
+          "member_limit": "int32",
+          "creates_join_request": "Bool"
+        }
+      },
+      "module": "src/methods/userbot/edit_chat_invite_link.lua"
+    },
+    {
+      "name": "export_chat_invite_link",
+      "category": "invite_links",
+      "status": "adapted",
+      "tdlib_commands": [
+        "replacePrimaryChatInviteLink"
+      ],
+      "tdlib_parameters": {
+        "replacePrimaryChatInviteLink": {
+          "chat_id": "int53"
+        }
+      },
+      "module": "src/methods/userbot/export_chat_invite_link.lua"
+    },
+    {
+      "name": "get_chat_admin_invite_links",
+      "category": "invite_links",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getChatInviteLinks"
+      ],
+      "tdlib_parameters": {
+        "getChatInviteLinks": {
+          "chat_id": "int53",
+          "creator_user_id": "int53",
+          "is_revoked": "Bool",
+          "offset_date": "int32",
+          "offset_invite_link": "string",
+          "limit": "int32"
+        }
+      },
+      "module": "src/methods/userbot/get_chat_admin_invite_links.lua"
+    },
+    {
+      "name": "get_chat_admin_invite_links_count",
+      "category": "invite_links",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getChatInviteLinks"
+      ],
+      "tdlib_parameters": {
+        "getChatInviteLinks": {
+          "chat_id": "int53",
+          "creator_user_id": "int53",
+          "is_revoked": "Bool",
+          "offset_date": "int32",
+          "offset_invite_link": "string",
+          "limit": "int32"
+        }
+      },
+      "module": "src/methods/userbot/get_chat_admin_invite_links_count.lua"
+    },
+    {
+      "name": "get_chat_admins_with_invite_links",
+      "category": "invite_links",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getChatInviteLinkCounts"
+      ],
+      "tdlib_parameters": {
+        "getChatInviteLinkCounts": {
+          "chat_id": "int53"
+        }
+      },
+      "module": "src/methods/userbot/get_chat_admins_with_invite_links.lua"
+    },
+    {
+      "name": "get_chat_invite_link",
+      "category": "invite_links",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getChatInviteLink"
+      ],
+      "tdlib_parameters": {
+        "getChatInviteLink": {
+          "chat_id": "int53",
+          "invite_link": "string"
+        }
+      },
+      "module": "src/methods/userbot/get_chat_invite_link.lua"
+    },
+    {
+      "name": "get_chat_invite_link_joiners",
+      "category": "invite_links",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getChatInviteLinkMembers"
+      ],
+      "tdlib_parameters": {
+        "getChatInviteLinkMembers": {
+          "chat_id": "int53",
+          "invite_link": "string",
+          "only_with_expired_subscription": "Bool",
+          "offset_member": "chatInviteLinkMember",
+          "limit": "int32"
+        }
+      },
+      "module": "src/methods/userbot/get_chat_invite_link_joiners.lua"
+    },
+    {
+      "name": "get_chat_invite_link_joiners_count",
+      "category": "invite_links",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getChatInviteLinkMembers"
+      ],
+      "tdlib_parameters": {
+        "getChatInviteLinkMembers": {
+          "chat_id": "int53",
+          "invite_link": "string",
+          "only_with_expired_subscription": "Bool",
+          "offset_member": "chatInviteLinkMember",
+          "limit": "int32"
+        }
+      },
+      "module": "src/methods/userbot/get_chat_invite_link_joiners_count.lua"
+    },
+    {
+      "name": "get_chat_join_requests",
+      "category": "invite_links",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getChatJoinRequests"
+      ],
+      "tdlib_parameters": {
+        "getChatJoinRequests": {
+          "chat_id": "int53",
+          "invite_link": "string",
+          "query": "string",
+          "offset_request": "chatJoinRequest",
+          "limit": "int32"
+        }
+      },
+      "module": "src/methods/userbot/get_chat_join_requests.lua"
+    },
+    {
+      "name": "revoke_chat_invite_link",
+      "category": "invite_links",
+      "status": "adapted",
+      "tdlib_commands": [
+        "revokeChatInviteLink"
+      ],
+      "tdlib_parameters": {
+        "revokeChatInviteLink": {
+          "chat_id": "int53",
+          "invite_link": "string"
+        }
+      },
+      "module": "src/methods/userbot/revoke_chat_invite_link.lua"
+    },
+    {
+      "name": "add_checklist_tasks",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "addChecklistTasks"
+      ],
+      "tdlib_parameters": {
+        "addChecklistTasks": {
+          "chat_id": "int53",
+          "message_id": "int53",
+          "tasks": "vector<inputChecklistTask>"
+        }
+      },
+      "module": "src/methods/userbot/add_checklist_tasks.lua"
+    },
+    {
+      "name": "add_poll_option",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "addPollOption"
+      ],
+      "tdlib_parameters": {
+        "addPollOption": {
+          "chat_id": "int53",
+          "message_id": "int53",
+          "option": "inputPollOption"
+        }
+      },
+      "module": "src/methods/userbot/add_poll_option.lua"
+    },
+    {
+      "name": "add_to_gifs",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "addSavedAnimation"
+      ],
+      "tdlib_parameters": {
+        "addSavedAnimation": {
+          "animation": "InputFile"
+        }
+      },
+      "module": "src/methods/userbot/add_to_gifs.lua"
+    },
+    {
+      "name": "approve_suggested_post",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "approveSuggestedPost"
+      ],
+      "tdlib_parameters": {
+        "approveSuggestedPost": {
+          "chat_id": "int53",
+          "message_id": "int53",
+          "send_date": "int32"
+        }
+      },
+      "module": "src/methods/userbot/approve_suggested_post.lua"
+    },
+    {
+      "name": "compose_text_with_ai",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "composeTextWithAi"
+      ],
+      "tdlib_parameters": {
+        "composeTextWithAi": {
+          "text": "formattedText",
+          "translate_to_language_code": "string",
+          "style_name": "string",
+          "add_emojis": "Bool"
+        }
+      },
+      "module": "src/methods/userbot/compose_text_with_ai.lua"
+    },
+    {
+      "name": "copy_media_group",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/copy_media_group.lua"
+    },
+    {
+      "name": "copy_message",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "forwardMessages"
+      ],
+      "tdlib_parameters": {
+        "forwardMessages": {
+          "chat_id": "int53",
+          "topic_id": "MessageTopic",
+          "from_chat_id": "int53",
+          "message_ids": "vector<int53>",
+          "options": "messageSendOptions",
+          "send_copy": "Bool",
+          "remove_caption": "Bool"
+        }
+      },
+      "module": "src/methods/userbot/copy_message.lua"
+    },
+    {
+      "name": "decline_suggested_post",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "declineSuggestedPost"
+      ],
+      "tdlib_parameters": {
+        "declineSuggestedPost": {
+          "chat_id": "int53",
+          "message_id": "int53",
+          "comment": "string"
+        }
+      },
+      "module": "src/methods/userbot/decline_suggested_post.lua"
+    },
+    {
+      "name": "delete_chat_history",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "deleteChatHistory"
+      ],
+      "tdlib_parameters": {
+        "deleteChatHistory": {
+          "chat_id": "int53",
+          "remove_from_chat_list": "Bool",
+          "revoke": "Bool"
+        }
+      },
+      "module": "src/methods/userbot/delete_chat_history.lua"
+    },
+    {
+      "name": "delete_direct_messages_chat_topic_history",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "deleteDirectMessagesChatTopicHistory"
+      ],
+      "tdlib_parameters": {
+        "deleteDirectMessagesChatTopicHistory": {
+          "chat_id": "int53",
+          "topic_id": "int53"
+        }
+      },
+      "module": "src/methods/userbot/delete_direct_messages_chat_topic_history.lua"
+    },
+    {
+      "name": "delete_messages",
+      "category": "messages",
+      "status": "existing",
+      "tdlib_commands": [
+        "deleteMessages"
+      ],
+      "tdlib_parameters": {
+        "deleteMessages": {
+          "chat_id": "int53",
+          "message_ids": "vector<int53>",
+          "revoke": "Bool"
+        }
+      },
+      "module": "src/methods/userbot/delete_messages.lua"
+    },
+    {
+      "name": "delete_poll_option",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "deletePollOption"
+      ],
+      "tdlib_parameters": {
+        "deletePollOption": {
+          "chat_id": "int53",
+          "message_id": "int53",
+          "option_id": "string"
+        }
+      },
+      "module": "src/methods/userbot/delete_poll_option.lua"
+    },
+    {
+      "name": "download_media",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "downloadFile"
+      ],
+      "tdlib_parameters": {
+        "downloadFile": {
+          "file_id": "int32",
+          "priority": "int32",
+          "offset": "int53",
+          "limit": "int53",
+          "synchronous": "Bool"
+        }
+      },
+      "module": "src/methods/userbot/download_media.lua"
+    },
+    {
+      "name": "edit_inline_caption",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "editInlineMessageCaption"
+      ],
+      "tdlib_parameters": {
+        "editInlineMessageCaption": {
+          "inline_message_id": "string",
+          "reply_markup": "ReplyMarkup",
+          "caption": "formattedText",
+          "show_caption_above_media": "Bool"
+        }
+      },
+      "module": "src/methods/userbot/edit_inline_caption.lua"
+    },
+    {
+      "name": "edit_inline_media",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "editInlineMessageMedia"
+      ],
+      "tdlib_parameters": {
+        "editInlineMessageMedia": {
+          "inline_message_id": "string",
+          "reply_markup": "ReplyMarkup",
+          "input_message_content": "InputMessageContent"
+        }
+      },
+      "module": "src/methods/userbot/edit_inline_media.lua"
+    },
+    {
+      "name": "edit_inline_reply_markup",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "editInlineMessageReplyMarkup"
+      ],
+      "tdlib_parameters": {
+        "editInlineMessageReplyMarkup": {
+          "inline_message_id": "string",
+          "reply_markup": "ReplyMarkup"
+        }
+      },
+      "module": "src/methods/userbot/edit_inline_reply_markup.lua"
+    },
+    {
+      "name": "edit_inline_text",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "editInlineMessageText"
+      ],
+      "tdlib_parameters": {
+        "editInlineMessageText": {
+          "inline_message_id": "string",
+          "reply_markup": "ReplyMarkup",
+          "input_message_content": "InputMessageContent"
+        }
+      },
+      "module": "src/methods/userbot/edit_inline_text.lua"
+    },
+    {
+      "name": "edit_message_caption",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "editMessageCaption"
+      ],
+      "tdlib_parameters": {
+        "editMessageCaption": {
+          "chat_id": "int53",
+          "message_id": "int53",
+          "reply_markup": "ReplyMarkup",
+          "caption": "formattedText",
+          "show_caption_above_media": "Bool"
+        }
+      },
+      "module": "src/methods/userbot/edit_message_caption.lua"
+    },
+    {
+      "name": "edit_message_checklist",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "editMessageChecklist"
+      ],
+      "tdlib_parameters": {
+        "editMessageChecklist": {
+          "chat_id": "int53",
+          "message_id": "int53",
+          "reply_markup": "ReplyMarkup",
+          "checklist": "inputChecklist"
+        }
+      },
+      "module": "src/methods/userbot/edit_message_checklist.lua"
+    },
+    {
+      "name": "edit_message_media",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "editMessageMedia"
+      ],
+      "tdlib_parameters": {
+        "editMessageMedia": {
+          "chat_id": "int53",
+          "message_id": "int53",
+          "reply_markup": "ReplyMarkup",
+          "input_message_content": "InputMessageContent"
+        }
+      },
+      "module": "src/methods/userbot/edit_message_media.lua"
+    },
+    {
+      "name": "edit_message_reply_markup",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "editMessageReplyMarkup"
+      ],
+      "tdlib_parameters": {
+        "editMessageReplyMarkup": {
+          "chat_id": "int53",
+          "message_id": "int53",
+          "reply_markup": "ReplyMarkup"
+        }
+      },
+      "module": "src/methods/userbot/edit_message_reply_markup.lua"
+    },
+    {
+      "name": "edit_message_text",
+      "category": "messages",
+      "status": "existing",
+      "tdlib_commands": [
+        "editMessageText"
+      ],
+      "tdlib_parameters": {
+        "editMessageText": {
+          "chat_id": "int53",
+          "message_id": "int53",
+          "reply_markup": "ReplyMarkup",
+          "input_message_content": "InputMessageContent"
+        }
+      },
+      "module": "src/methods/userbot/edit_message_text.lua"
+    },
+    {
+      "name": "fix_text_with_ai",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "fixTextWithAi"
+      ],
+      "tdlib_parameters": {
+        "fixTextWithAi": {
+          "text": "formattedText"
+        }
+      },
+      "module": "src/methods/userbot/fix_text_with_ai.lua"
+    },
+    {
+      "name": "forward_media_group",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/forward_media_group.lua"
+    },
+    {
+      "name": "forward_messages",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "forwardMessages"
+      ],
+      "tdlib_parameters": {
+        "forwardMessages": {
+          "chat_id": "int53",
+          "topic_id": "MessageTopic",
+          "from_chat_id": "int53",
+          "message_ids": "vector<int53>",
+          "options": "messageSendOptions",
+          "send_copy": "Bool",
+          "remove_caption": "Bool"
+        }
+      },
+      "module": "src/methods/userbot/forward_messages.lua"
+    },
+    {
+      "name": "get_available_effects",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/get_available_effects.lua"
+    },
+    {
+      "name": "get_chat_history",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getChatHistory"
+      ],
+      "tdlib_parameters": {
+        "getChatHistory": {
+          "chat_id": "int53",
+          "from_message_id": "int53",
+          "offset": "int32",
+          "limit": "int32",
+          "only_local": "Bool"
+        }
+      },
+      "module": "src/methods/userbot/get_chat_history.lua"
+    },
+    {
+      "name": "get_chat_history_count",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "searchChatMessages"
+      ],
+      "tdlib_parameters": {
+        "searchChatMessages": {
+          "chat_id": "int53",
+          "topic_id": "MessageTopic",
+          "query": "string",
+          "sender_id": "MessageSender",
+          "from_message_id": "int53",
+          "offset": "int32",
+          "limit": "int32",
+          "filter": "SearchMessagesFilter"
+        }
+      },
+      "module": "src/methods/userbot/get_chat_history_count.lua"
+    },
+    {
+      "name": "get_direct_messages_chat_topic_history",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getDirectMessagesChatTopicHistory"
+      ],
+      "tdlib_parameters": {
+        "getDirectMessagesChatTopicHistory": {
+          "chat_id": "int53",
+          "topic_id": "int53",
+          "from_message_id": "int53",
+          "offset": "int32",
+          "limit": "int32"
+        }
+      },
+      "module": "src/methods/userbot/get_direct_messages_chat_topic_history.lua"
+    },
+    {
+      "name": "get_discussion_message",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getMessageThread"
+      ],
+      "tdlib_parameters": {
+        "getMessageThread": {
+          "chat_id": "int53",
+          "message_id": "int53"
+        }
+      },
+      "module": "src/methods/userbot/get_discussion_message.lua"
+    },
+    {
+      "name": "get_discussion_replies",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getMessageThreadHistory"
+      ],
+      "tdlib_parameters": {
+        "getMessageThreadHistory": {
+          "chat_id": "int53",
+          "message_id": "int53",
+          "from_message_id": "int53",
+          "offset": "int32",
+          "limit": "int32"
+        }
+      },
+      "module": "src/methods/userbot/get_discussion_replies.lua"
+    },
+    {
+      "name": "get_discussion_replies_count",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getMessageThread"
+      ],
+      "tdlib_parameters": {
+        "getMessageThread": {
+          "chat_id": "int53",
+          "message_id": "int53"
+        }
+      },
+      "module": "src/methods/userbot/get_discussion_replies_count.lua"
+    },
+    {
+      "name": "get_main_web_app",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getMainWebApp"
+      ],
+      "tdlib_parameters": {
+        "getMainWebApp": {
+          "chat_id": "int53",
+          "bot_user_id": "int53",
+          "start_parameter": "string",
+          "parameters": "webAppOpenParameters"
+        }
+      },
+      "module": "src/methods/userbot/get_main_web_app.lua"
+    },
+    {
+      "name": "get_media_group",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "forwardMessages",
+        "getMessage",
+        "getMessages"
+      ],
+      "tdlib_parameters": {
+        "forwardMessages": {
+          "chat_id": "int53",
+          "topic_id": "MessageTopic",
+          "from_chat_id": "int53",
+          "message_ids": "vector<int53>",
+          "options": "messageSendOptions",
+          "send_copy": "Bool",
+          "remove_caption": "Bool"
+        },
+        "getMessage": {
+          "chat_id": "int53",
+          "message_id": "int53"
+        },
+        "getMessages": {
+          "chat_id": "int53",
+          "message_ids": "vector<int53>"
+        }
+      },
+      "module": "src/methods/userbot/get_media_group.lua"
+    },
+    {
+      "name": "get_messages",
+      "category": "messages",
+      "status": "existing",
+      "tdlib_commands": [
+        "getMessages"
+      ],
+      "tdlib_parameters": {
+        "getMessages": {
+          "chat_id": "int53",
+          "message_ids": "vector<int53>"
+        }
+      },
+      "module": "src/methods/userbot/get_messages.lua"
+    },
+    {
+      "name": "get_scheduled_messages",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getChatScheduledMessages"
+      ],
+      "tdlib_parameters": {
+        "getChatScheduledMessages": {
+          "chat_id": "int53"
+        }
+      },
+      "module": "src/methods/userbot/get_scheduled_messages.lua"
+    },
+    {
+      "name": "get_user_personal_chat_messages",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getPersonalChatHistory"
+      ],
+      "tdlib_parameters": {
+        "getPersonalChatHistory": {
+          "user_id": "int53",
+          "limit": "int32"
+        }
+      },
+      "module": "src/methods/userbot/get_user_personal_chat_messages.lua"
+    },
+    {
+      "name": "get_web_app_link_url",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getWebAppLinkUrl"
+      ],
+      "tdlib_parameters": {
+        "getWebAppLinkUrl": {
+          "chat_id": "int53",
+          "bot_user_id": "int53",
+          "web_app_short_name": "string",
+          "start_parameter": "string",
+          "allow_write_access": "Bool",
+          "parameters": "webAppOpenParameters"
+        }
+      },
+      "module": "src/methods/userbot/get_web_app_link_url.lua"
+    },
+    {
+      "name": "get_web_app_url",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getWebAppUrl"
+      ],
+      "tdlib_parameters": {
+        "getWebAppUrl": {
+          "bot_user_id": "int53",
+          "url": "string",
+          "parameters": "webAppOpenParameters"
+        }
+      },
+      "module": "src/methods/userbot/get_web_app_url.lua"
+    },
+    {
+      "name": "mark_checklist_tasks_as_done",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "markChecklistTasksAsDone"
+      ],
+      "tdlib_parameters": {
+        "markChecklistTasksAsDone": {
+          "chat_id": "int53",
+          "message_id": "int53",
+          "marked_as_done_task_ids": "vector<int32>",
+          "marked_as_not_done_task_ids": "vector<int32>"
+        }
+      },
+      "module": "src/methods/userbot/mark_checklist_tasks_as_done.lua"
+    },
+    {
+      "name": "open_web_app",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "openWebApp"
+      ],
+      "tdlib_parameters": {
+        "openWebApp": {
+          "chat_id": "int53",
+          "bot_user_id": "int53",
+          "url": "string",
+          "topic_id": "MessageTopic",
+          "reply_to": "InputMessageReplyTo",
+          "parameters": "webAppOpenParameters"
+        }
+      },
+      "module": "src/methods/userbot/open_web_app.lua"
+    },
+    {
+      "name": "read_chat_history",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getChat",
+        "viewMessages"
+      ],
+      "tdlib_parameters": {
+        "getChat": {
+          "chat_id": "int53"
+        },
+        "viewMessages": {
+          "chat_id": "int53",
+          "message_ids": "vector<int53>",
+          "source": "MessageSource",
+          "force_read": "Bool"
+        }
+      },
+      "module": "src/methods/userbot/read_chat_history.lua"
+    },
+    {
+      "name": "read_mentions",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "readAllChatMentions"
+      ],
+      "tdlib_parameters": {
+        "readAllChatMentions": {
+          "chat_id": "int53"
+        }
+      },
+      "module": "src/methods/userbot/read_mentions.lua"
+    },
+    {
+      "name": "read_reactions",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "readAllChatReactions"
+      ],
+      "tdlib_parameters": {
+        "readAllChatReactions": {
+          "chat_id": "int53"
+        }
+      },
+      "module": "src/methods/userbot/read_reactions.lua"
+    },
+    {
+      "name": "retract_vote",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "setPollAnswer"
+      ],
+      "tdlib_parameters": {
+        "setPollAnswer": {
+          "chat_id": "int53",
+          "message_id": "int53",
+          "option_ids": "vector<int32>"
+        }
+      },
+      "module": "src/methods/userbot/retract_vote.lua"
+    },
+    {
+      "name": "search_global",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "searchMessages"
+      ],
+      "tdlib_parameters": {
+        "searchMessages": {
+          "chat_list": "ChatList",
+          "query": "string",
+          "offset": "string",
+          "limit": "int32",
+          "filter": "SearchMessagesFilter",
+          "chat_type_filter": "SearchMessagesChatTypeFilter",
+          "min_date": "int32",
+          "max_date": "int32"
+        }
+      },
+      "module": "src/methods/userbot/search_global.lua"
+    },
+    {
+      "name": "search_global_count",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "searchMessages"
+      ],
+      "tdlib_parameters": {
+        "searchMessages": {
+          "chat_list": "ChatList",
+          "query": "string",
+          "offset": "string",
+          "limit": "int32",
+          "filter": "SearchMessagesFilter",
+          "chat_type_filter": "SearchMessagesChatTypeFilter",
+          "min_date": "int32",
+          "max_date": "int32"
+        }
+      },
+      "module": "src/methods/userbot/search_global_count.lua"
+    },
+    {
+      "name": "search_messages",
+      "category": "messages",
+      "status": "existing",
+      "tdlib_commands": [
+        "searchMessages"
+      ],
+      "tdlib_parameters": {
+        "searchMessages": {
+          "chat_list": "ChatList",
+          "query": "string",
+          "offset": "string",
+          "limit": "int32",
+          "filter": "SearchMessagesFilter",
+          "chat_type_filter": "SearchMessagesChatTypeFilter",
+          "min_date": "int32",
+          "max_date": "int32"
+        }
+      },
+      "module": "src/methods/userbot/search_messages.lua"
+    },
+    {
+      "name": "search_messages_count",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "searchChatMessages"
+      ],
+      "tdlib_parameters": {
+        "searchChatMessages": {
+          "chat_id": "int53",
+          "topic_id": "MessageTopic",
+          "query": "string",
+          "sender_id": "MessageSender",
+          "from_message_id": "int53",
+          "offset": "int32",
+          "limit": "int32",
+          "filter": "SearchMessagesFilter"
+        }
+      },
+      "module": "src/methods/userbot/search_messages_count.lua"
+    },
+    {
+      "name": "search_posts",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "searchPublicPosts"
+      ],
+      "tdlib_parameters": {
+        "searchPublicPosts": {
+          "query": "string",
+          "offset": "string",
+          "limit": "int32",
+          "star_count": "int53"
+        }
+      },
+      "module": "src/methods/userbot/search_posts.lua"
+    },
+    {
+      "name": "search_posts_count",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "searchPublicPosts"
+      ],
+      "tdlib_parameters": {
+        "searchPublicPosts": {
+          "query": "string",
+          "offset": "string",
+          "limit": "int32",
+          "star_count": "int53"
+        }
+      },
+      "module": "src/methods/userbot/search_posts_count.lua"
+    },
+    {
+      "name": "send_animation",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/send_animation.lua"
+    },
+    {
+      "name": "send_audio",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/send_audio.lua"
+    },
+    {
+      "name": "send_cached_media",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/send_cached_media.lua"
+    },
+    {
+      "name": "send_chat_action",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "sendChatAction"
+      ],
+      "tdlib_parameters": {
+        "sendChatAction": {
+          "chat_id": "int53",
+          "topic_id": "MessageTopic",
+          "business_connection_id": "string",
+          "action": "ChatAction"
+        }
+      },
+      "module": "src/methods/userbot/send_chat_action.lua"
+    },
+    {
+      "name": "send_checklist",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/send_checklist.lua"
+    },
+    {
+      "name": "send_contact",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/send_contact.lua"
+    },
+    {
+      "name": "send_dice",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/send_dice.lua"
+    },
+    {
+      "name": "send_document",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/send_document.lua"
+    },
+    {
+      "name": "send_live_photo",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/send_live_photo.lua"
+    },
+    {
+      "name": "send_location",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/send_location.lua"
+    },
+    {
+      "name": "send_media_group",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "sendMessageAlbum"
+      ],
+      "tdlib_parameters": {
+        "sendMessageAlbum": {
+          "chat_id": "int53",
+          "topic_id": "MessageTopic",
+          "reply_to": "InputMessageReplyTo",
+          "options": "messageSendOptions",
+          "input_message_contents": "vector<InputMessageContent>"
+        }
+      },
+      "module": "src/methods/userbot/send_media_group.lua"
+    },
+    {
+      "name": "send_message",
+      "category": "messages",
+      "status": "existing",
+      "tdlib_commands": [
+        "sendMessage"
+      ],
+      "tdlib_parameters": {
+        "sendMessage": {
+          "chat_id": "int53",
+          "topic_id": "MessageTopic",
+          "reply_to": "InputMessageReplyTo",
+          "options": "messageSendOptions",
+          "reply_markup": "ReplyMarkup",
+          "input_message_content": "InputMessageContent"
+        }
+      },
+      "module": "src/methods/userbot/send_message.lua"
+    },
+    {
+      "name": "send_message_draft",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "sendTextMessageDraft"
+      ],
+      "tdlib_parameters": {
+        "sendTextMessageDraft": {
+          "chat_id": "int53",
+          "forum_topic_id": "int32",
+          "draft_id": "int64",
+          "can_stop": "Bool",
+          "keep_on_stop": "Bool",
+          "text": "formattedText"
+        }
+      },
+      "module": "src/methods/userbot/send_message_draft.lua"
+    },
+    {
+      "name": "send_paid_media",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/send_paid_media.lua"
+    },
+    {
+      "name": "send_paid_reaction",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "addPendingPaidMessageReaction",
+        "commitPendingPaidMessageReactions"
+      ],
+      "tdlib_parameters": {
+        "addPendingPaidMessageReaction": {
+          "chat_id": "int53",
+          "message_id": "int53",
+          "star_count": "int53",
+          "type": "PaidReactionType"
+        },
+        "commitPendingPaidMessageReactions": {
+          "chat_id": "int53",
+          "message_id": "int53"
+        }
+      },
+      "module": "src/methods/userbot/send_paid_reaction.lua"
+    },
+    {
+      "name": "send_photo",
+      "category": "messages",
+      "status": "existing",
+      "tdlib_commands": [
+        "sendMessage"
+      ],
+      "tdlib_parameters": {
+        "sendMessage": {
+          "chat_id": "int53",
+          "topic_id": "MessageTopic",
+          "reply_to": "InputMessageReplyTo",
+          "options": "messageSendOptions",
+          "reply_markup": "ReplyMarkup",
+          "input_message_content": "InputMessageContent"
+        }
+      },
+      "module": "src/methods/userbot/send_photo.lua"
+    },
+    {
+      "name": "send_poll",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/send_poll.lua"
+    },
+    {
+      "name": "send_reaction",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "setMessageReactions",
+        "setStoryReaction"
+      ],
+      "tdlib_parameters": {
+        "setMessageReactions": {
+          "chat_id": "int53",
+          "message_id": "int53",
+          "reaction_types": "vector<ReactionType>",
+          "is_big": "Bool"
+        },
+        "setStoryReaction": {
+          "story_poster_chat_id": "int53",
+          "story_id": "int32",
+          "reaction_type": "ReactionType",
+          "update_recent_reactions": "Bool"
+        }
+      },
+      "module": "src/methods/userbot/send_reaction.lua"
+    },
+    {
+      "name": "send_rich_message",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/send_rich_message.lua"
+    },
+    {
+      "name": "send_rich_message_draft",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "sendRichMessageDraft"
+      ],
+      "tdlib_parameters": {
+        "sendRichMessageDraft": {
+          "chat_id": "int53",
+          "forum_topic_id": "int32",
+          "draft_id": "int64",
+          "can_stop": "Bool",
+          "keep_on_stop": "Bool",
+          "message": "inputRichMessage"
+        }
+      },
+      "module": "src/methods/userbot/send_rich_message_draft.lua"
+    },
+    {
+      "name": "send_screenshot_notification",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "viewMessages"
+      ],
+      "tdlib_parameters": {
+        "viewMessages": {
+          "chat_id": "int53",
+          "message_ids": "vector<int53>",
+          "source": "MessageSource",
+          "force_read": "Bool"
+        }
+      },
+      "module": "src/methods/userbot/send_screenshot_notification.lua"
+    },
+    {
+      "name": "send_sticker",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/send_sticker.lua"
+    },
+    {
+      "name": "send_venue",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/send_venue.lua"
+    },
+    {
+      "name": "send_video",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/send_video.lua"
+    },
+    {
+      "name": "send_video_note",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/send_video_note.lua"
+    },
+    {
+      "name": "send_voice",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/send_voice.lua"
+    },
+    {
+      "name": "send_web_page",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/send_web_page.lua"
+    },
+    {
+      "name": "set_direct_messages_chat_topic_is_marked_as_unread",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "setDirectMessagesChatTopicIsMarkedAsUnread"
+      ],
+      "tdlib_parameters": {
+        "setDirectMessagesChatTopicIsMarkedAsUnread": {
+          "chat_id": "int53",
+          "topic_id": "int53",
+          "is_marked_as_unread": "Bool"
+        }
+      },
+      "module": "src/methods/userbot/set_direct_messages_chat_topic_is_marked_as_unread.lua"
+    },
+    {
+      "name": "start_bot",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "sendBotStartMessage"
+      ],
+      "tdlib_parameters": {
+        "sendBotStartMessage": {
+          "bot_user_id": "int53",
+          "chat_id": "int53",
+          "parameter": "string"
+        }
+      },
+      "module": "src/methods/userbot/start_bot.lua"
+    },
+    {
+      "name": "stop_poll",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "stopPoll"
+      ],
+      "tdlib_parameters": {
+        "stopPoll": {
+          "chat_id": "int53",
+          "message_id": "int53",
+          "reply_markup": "ReplyMarkup"
+        }
+      },
+      "module": "src/methods/userbot/stop_poll.lua"
+    },
+    {
+      "name": "stream_media",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "downloadFile",
+        "readFilePart"
+      ],
+      "tdlib_parameters": {
+        "downloadFile": {
+          "file_id": "int32",
+          "priority": "int32",
+          "offset": "int53",
+          "limit": "int53",
+          "synchronous": "Bool"
+        },
+        "readFilePart": {
+          "file_id": "int32",
+          "offset": "int53",
+          "count": "int53"
+        }
+      },
+      "module": "src/methods/userbot/stream_media.lua"
+    },
+    {
+      "name": "summarize_message",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "summarizeMessage"
+      ],
+      "tdlib_parameters": {
+        "summarizeMessage": {
+          "chat_id": "int53",
+          "message_id": "int53",
+          "translate_to_language_code": "string",
+          "tone": "string"
+        }
+      },
+      "module": "src/methods/userbot/summarize_message.lua"
+    },
+    {
+      "name": "translate_message_text",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "translateMessageText"
+      ],
+      "tdlib_parameters": {
+        "translateMessageText": {
+          "chat_id": "int53",
+          "message_id": "int53",
+          "to_language_code": "string",
+          "tone": "string"
+        }
+      },
+      "module": "src/methods/userbot/translate_message_text.lua"
+    },
+    {
+      "name": "translate_text",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "translateText"
+      ],
+      "tdlib_parameters": {
+        "translateText": {
+          "text": "formattedText",
+          "to_language_code": "string",
+          "tone": "string"
+        }
+      },
+      "module": "src/methods/userbot/translate_text.lua"
+    },
+    {
+      "name": "view_messages",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "viewMessages"
+      ],
+      "tdlib_parameters": {
+        "viewMessages": {
+          "chat_id": "int53",
+          "message_ids": "vector<int53>",
+          "source": "MessageSource",
+          "force_read": "Bool"
+        }
+      },
+      "module": "src/methods/userbot/view_messages.lua"
+    },
+    {
+      "name": "vote_poll",
+      "category": "messages",
+      "status": "adapted",
+      "tdlib_commands": [
+        "setPollAnswer"
+      ],
+      "tdlib_parameters": {
+        "setPollAnswer": {
+          "chat_id": "int53",
+          "message_id": "int53",
+          "option_ids": "vector<int32>"
+        }
+      },
+      "module": "src/methods/userbot/vote_poll.lua"
+    },
+    {
+      "name": "change_cloud_password",
+      "category": "password",
+      "status": "adapted",
+      "tdlib_commands": [
+        "setPassword"
+      ],
+      "tdlib_parameters": {
+        "setPassword": {
+          "old_password": "string",
+          "new_password": "string",
+          "new_hint": "string",
+          "set_recovery_email_address": "Bool",
+          "new_recovery_email_address": "string"
+        }
+      },
+      "module": "src/methods/userbot/change_cloud_password.lua"
+    },
+    {
+      "name": "enable_cloud_password",
+      "category": "password",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/enable_cloud_password.lua"
+    },
+    {
+      "name": "remove_cloud_password",
+      "category": "password",
+      "status": "adapted",
+      "tdlib_commands": [
+        "setPassword"
+      ],
+      "tdlib_parameters": {
+        "setPassword": {
+          "old_password": "string",
+          "new_password": "string",
+          "new_hint": "string",
+          "set_recovery_email_address": "Bool",
+          "new_recovery_email_address": "string"
+        }
+      },
+      "module": "src/methods/userbot/remove_cloud_password.lua"
+    },
+    {
+      "name": "add_collection_gifts",
+      "category": "payments",
+      "status": "adapted",
+      "tdlib_commands": [
+        "addGiftCollectionGifts"
+      ],
+      "tdlib_parameters": {
+        "addGiftCollectionGifts": {
+          "owner_id": "MessageSender",
+          "collection_id": "int32",
+          "received_gift_ids": "vector<string>"
+        }
+      },
+      "module": "src/methods/userbot/add_collection_gifts.lua"
+    },
+    {
+      "name": "apply_gift_code",
+      "category": "payments",
+      "status": "adapted",
+      "tdlib_commands": [
+        "applyPremiumGiftCode"
+      ],
+      "tdlib_parameters": {
+        "applyPremiumGiftCode": {
+          "code": "string"
+        }
+      },
+      "module": "src/methods/userbot/apply_gift_code.lua"
+    },
+    {
+      "name": "buy_gift_upgrade",
+      "category": "payments",
+      "status": "adapted",
+      "tdlib_commands": [
+        "buyGiftUpgrade"
+      ],
+      "tdlib_parameters": {
+        "buyGiftUpgrade": {
+          "owner_id": "MessageSender",
+          "prepaid_upgrade_hash": "string",
+          "star_count": "int53"
+        }
+      },
+      "module": "src/methods/userbot/buy_gift_upgrade.lua"
+    },
+    {
+      "name": "check_gift_code",
+      "category": "payments",
+      "status": "adapted",
+      "tdlib_commands": [
+        "checkPremiumGiftCode"
+      ],
+      "tdlib_parameters": {
+        "checkPremiumGiftCode": {
+          "code": "string"
+        }
+      },
+      "module": "src/methods/userbot/check_gift_code.lua"
+    },
+    {
+      "name": "convert_gift_to_stars",
+      "category": "payments",
+      "status": "adapted",
+      "tdlib_commands": [
+        "sellGift"
+      ],
+      "tdlib_parameters": {
+        "sellGift": {
+          "business_connection_id": "string",
+          "received_gift_id": "string"
+        }
+      },
+      "module": "src/methods/userbot/convert_gift_to_stars.lua"
+    },
+    {
+      "name": "craft_gift",
+      "category": "payments",
+      "status": "adapted",
+      "tdlib_commands": [
+        "craftGift"
+      ],
+      "tdlib_parameters": {
+        "craftGift": {
+          "received_gift_ids": "vector<string>"
+        }
+      },
+      "module": "src/methods/userbot/craft_gift.lua"
+    },
+    {
+      "name": "create_gift_collection",
+      "category": "payments",
+      "status": "adapted",
+      "tdlib_commands": [
+        "createGiftCollection"
+      ],
+      "tdlib_parameters": {
+        "createGiftCollection": {
+          "owner_id": "MessageSender",
+          "name": "string",
+          "received_gift_ids": "vector<string>"
+        }
+      },
+      "module": "src/methods/userbot/create_gift_collection.lua"
+    },
+    {
+      "name": "delete_gift_collection",
+      "category": "payments",
+      "status": "adapted",
+      "tdlib_commands": [
+        "deleteGiftCollection"
+      ],
+      "tdlib_parameters": {
+        "deleteGiftCollection": {
+          "owner_id": "MessageSender",
+          "collection_id": "int32"
+        }
+      },
+      "module": "src/methods/userbot/delete_gift_collection.lua"
+    },
+    {
+      "name": "drop_gift_original_details",
+      "category": "payments",
+      "status": "adapted",
+      "tdlib_commands": [
+        "dropGiftOriginalDetails"
+      ],
+      "tdlib_parameters": {
+        "dropGiftOriginalDetails": {
+          "received_gift_id": "string",
+          "star_count": "int53"
+        }
+      },
+      "module": "src/methods/userbot/drop_gift_original_details.lua"
+    },
+    {
+      "name": "edit_star_subscription",
+      "category": "payments",
+      "status": "adapted",
+      "tdlib_commands": [
+        "editStarSubscription"
+      ],
+      "tdlib_parameters": {
+        "editStarSubscription": {
+          "subscription_id": "string",
+          "is_canceled": "Bool"
+        }
+      },
+      "module": "src/methods/userbot/edit_star_subscription.lua"
+    },
+    {
+      "name": "get_available_gifts",
+      "category": "payments",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getAvailableGifts"
+      ],
+      "tdlib_parameters": {
+        "getAvailableGifts": {}
+      },
+      "module": "src/methods/userbot/get_available_gifts.lua"
+    },
+    {
+      "name": "get_chat_gifts",
+      "category": "payments",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getReceivedGifts"
+      ],
+      "tdlib_parameters": {
+        "getReceivedGifts": {
+          "business_connection_id": "string",
+          "owner_id": "MessageSender",
+          "collection_id": "int32",
+          "exclude_unsaved": "Bool",
+          "exclude_saved": "Bool",
+          "exclude_unlimited": "Bool",
+          "exclude_upgradable": "Bool",
+          "exclude_non_upgradable": "Bool",
+          "exclude_upgraded": "Bool",
+          "exclude_without_colors": "Bool",
+          "exclude_hosted": "Bool",
+          "sort_by_price": "Bool",
+          "offset": "string",
+          "limit": "int32"
+        }
+      },
+      "module": "src/methods/userbot/get_chat_gifts.lua"
+    },
+    {
+      "name": "get_chat_gifts_count",
+      "category": "payments",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getReceivedGifts"
+      ],
+      "tdlib_parameters": {
+        "getReceivedGifts": {
+          "business_connection_id": "string",
+          "owner_id": "MessageSender",
+          "collection_id": "int32",
+          "exclude_unsaved": "Bool",
+          "exclude_saved": "Bool",
+          "exclude_unlimited": "Bool",
+          "exclude_upgradable": "Bool",
+          "exclude_non_upgradable": "Bool",
+          "exclude_upgraded": "Bool",
+          "exclude_without_colors": "Bool",
+          "exclude_hosted": "Bool",
+          "sort_by_price": "Bool",
+          "offset": "string",
+          "limit": "int32"
+        }
+      },
+      "module": "src/methods/userbot/get_chat_gifts_count.lua"
+    },
+    {
+      "name": "get_gift_auction_state",
+      "category": "payments",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getGiftAuctionState"
+      ],
+      "tdlib_parameters": {
+        "getGiftAuctionState": {
+          "auction_id": "string"
+        }
+      },
+      "module": "src/methods/userbot/get_gift_auction_state.lua"
+    },
+    {
+      "name": "get_gift_collections",
+      "category": "payments",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getGiftCollections"
+      ],
+      "tdlib_parameters": {
+        "getGiftCollections": {
+          "owner_id": "MessageSender"
+        }
+      },
+      "module": "src/methods/userbot/get_gift_collections.lua"
+    },
+    {
+      "name": "get_gift_upgrade_preview",
+      "category": "payments",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getGiftUpgradePreview"
+      ],
+      "tdlib_parameters": {
+        "getGiftUpgradePreview": {
+          "regular_gift_id": "int64"
+        }
+      },
+      "module": "src/methods/userbot/get_gift_upgrade_preview.lua"
+    },
+    {
+      "name": "get_gift_upgrade_variants",
+      "category": "payments",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getUpgradedGiftVariants"
+      ],
+      "tdlib_parameters": {
+        "getUpgradedGiftVariants": {
+          "regular_gift_id": "int64",
+          "return_upgrade_models": "Bool",
+          "return_craft_models": "Bool"
+        }
+      },
+      "module": "src/methods/userbot/get_gift_upgrade_variants.lua"
+    },
+    {
+      "name": "get_gifts_for_crafting",
+      "category": "payments",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getGiftsForCrafting"
+      ],
+      "tdlib_parameters": {
+        "getGiftsForCrafting": {
+          "regular_gift_id": "int64",
+          "offset": "string",
+          "limit": "int32"
+        }
+      },
+      "module": "src/methods/userbot/get_gifts_for_crafting.lua"
+    },
+    {
+      "name": "get_payment_form",
+      "category": "payments",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getPaymentForm"
+      ],
+      "tdlib_parameters": {
+        "getPaymentForm": {
+          "input_invoice": "InputInvoice",
+          "theme": "themeParameters"
+        }
+      },
+      "module": "src/methods/userbot/get_payment_form.lua"
+    },
+    {
+      "name": "get_stars_balance",
+      "category": "payments",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getStarTransactions"
+      ],
+      "tdlib_parameters": {
+        "getStarTransactions": {
+          "owner_id": "MessageSender",
+          "subscription_id": "string",
+          "direction": "TransactionDirection",
+          "offset": "string",
+          "limit": "int32"
+        }
+      },
+      "module": "src/methods/userbot/get_stars_balance.lua"
+    },
+    {
+      "name": "get_ton_balance",
+      "category": "payments",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getTonTransactions"
+      ],
+      "tdlib_parameters": {
+        "getTonTransactions": {
+          "direction": "TransactionDirection",
+          "offset": "string",
+          "limit": "int32"
+        }
+      },
+      "module": "src/methods/userbot/get_ton_balance.lua"
+    },
+    {
+      "name": "get_upgraded_gift",
+      "category": "payments",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getUpgradedGift"
+      ],
+      "tdlib_parameters": {
+        "getUpgradedGift": {
+          "name": "string"
+        }
+      },
+      "module": "src/methods/userbot/get_upgraded_gift.lua"
+    },
+    {
+      "name": "get_upgraded_gift_value_info",
+      "category": "payments",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getUpgradedGiftValueInfo"
+      ],
+      "tdlib_parameters": {
+        "getUpgradedGiftValueInfo": {
+          "name": "string"
+        }
+      },
+      "module": "src/methods/userbot/get_upgraded_gift_value_info.lua"
+    },
+    {
+      "name": "gift_premium_with_stars",
+      "category": "payments",
+      "status": "adapted",
+      "tdlib_commands": [
+        "giftPremiumWithStars"
+      ],
+      "tdlib_parameters": {
+        "giftPremiumWithStars": {
+          "user_id": "int53",
+          "star_count": "int53",
+          "month_count": "int32",
+          "text": "formattedText"
+        }
+      },
+      "module": "src/methods/userbot/gift_premium_with_stars.lua"
+    },
+    {
+      "name": "hide_gift",
+      "category": "payments",
+      "status": "adapted",
+      "tdlib_commands": [
+        "toggleGiftIsSaved"
+      ],
+      "tdlib_parameters": {
+        "toggleGiftIsSaved": {
+          "received_gift_id": "string",
+          "is_saved": "Bool"
+        }
+      },
+      "module": "src/methods/userbot/hide_gift.lua"
+    },
+    {
+      "name": "increase_gift_auction_bid",
+      "category": "payments",
+      "status": "adapted",
+      "tdlib_commands": [
+        "increaseGiftAuctionBid"
+      ],
+      "tdlib_parameters": {
+        "increaseGiftAuctionBid": {
+          "gift_id": "int64",
+          "star_count": "int53"
+        }
+      },
+      "module": "src/methods/userbot/increase_gift_auction_bid.lua"
+    },
+    {
+      "name": "place_gift_auction_bid",
+      "category": "payments",
+      "status": "adapted",
+      "tdlib_commands": [
+        "placeGiftAuctionBid"
+      ],
+      "tdlib_parameters": {
+        "placeGiftAuctionBid": {
+          "gift_id": "int64",
+          "star_count": "int53",
+          "user_id": "int53",
+          "text": "formattedText",
+          "is_private": "Bool"
+        }
+      },
+      "module": "src/methods/userbot/place_gift_auction_bid.lua"
+    },
+    {
+      "name": "process_gift_purchase_offer",
+      "category": "payments",
+      "status": "adapted",
+      "tdlib_commands": [
+        "processGiftPurchaseOffer"
+      ],
+      "tdlib_parameters": {
+        "processGiftPurchaseOffer": {
+          "message_id": "int53",
+          "accept": "Bool"
+        }
+      },
+      "module": "src/methods/userbot/process_gift_purchase_offer.lua"
+    },
+    {
+      "name": "remove_collection_gifts",
+      "category": "payments",
+      "status": "adapted",
+      "tdlib_commands": [
+        "removeGiftCollectionGifts"
+      ],
+      "tdlib_parameters": {
+        "removeGiftCollectionGifts": {
+          "owner_id": "MessageSender",
+          "collection_id": "int32",
+          "received_gift_ids": "vector<string>"
+        }
+      },
+      "module": "src/methods/userbot/remove_collection_gifts.lua"
+    },
+    {
+      "name": "reorder_collection_gifts",
+      "category": "payments",
+      "status": "adapted",
+      "tdlib_commands": [
+        "reorderGiftCollectionGifts"
+      ],
+      "tdlib_parameters": {
+        "reorderGiftCollectionGifts": {
+          "owner_id": "MessageSender",
+          "collection_id": "int32",
+          "received_gift_ids": "vector<string>"
+        }
+      },
+      "module": "src/methods/userbot/reorder_collection_gifts.lua"
+    },
+    {
+      "name": "reorder_gift_collections",
+      "category": "payments",
+      "status": "adapted",
+      "tdlib_commands": [
+        "reorderGiftCollections"
+      ],
+      "tdlib_parameters": {
+        "reorderGiftCollections": {
+          "owner_id": "MessageSender",
+          "collection_ids": "vector<int32>"
+        }
+      },
+      "module": "src/methods/userbot/reorder_gift_collections.lua"
+    },
+    {
+      "name": "reuse_star_subscription",
+      "category": "payments",
+      "status": "adapted",
+      "tdlib_commands": [
+        "reuseStarSubscription"
+      ],
+      "tdlib_parameters": {
+        "reuseStarSubscription": {
+          "subscription_id": "string"
+        }
+      },
+      "module": "src/methods/userbot/reuse_star_subscription.lua"
+    },
+    {
+      "name": "search_gifts_for_resale",
+      "category": "payments",
+      "status": "adapted",
+      "tdlib_commands": [
+        "searchGiftsForResale"
+      ],
+      "tdlib_parameters": {
+        "searchGiftsForResale": {
+          "gift_id": "int64",
+          "order": "GiftForResaleOrder",
+          "for_crafting": "Bool",
+          "for_stars": "Bool",
+          "attributes": "vector<UpgradedGiftAttributeId>",
+          "offset": "string",
+          "limit": "int32"
+        }
+      },
+      "module": "src/methods/userbot/search_gifts_for_resale.lua"
+    },
+    {
+      "name": "send_gift",
+      "category": "payments",
+      "status": "adapted",
+      "tdlib_commands": [
+        "sendGift"
+      ],
+      "tdlib_parameters": {
+        "sendGift": {
+          "gift_id": "int64",
+          "owner_id": "MessageSender",
+          "text": "formattedText",
+          "is_private": "Bool",
+          "pay_for_upgrade": "Bool"
+        }
+      },
+      "module": "src/methods/userbot/send_gift.lua"
+    },
+    {
+      "name": "send_gift_purchase_offer",
+      "category": "payments",
+      "status": "adapted",
+      "tdlib_commands": [
+        "sendGiftPurchaseOffer"
+      ],
+      "tdlib_parameters": {
+        "sendGiftPurchaseOffer": {
+          "owner_id": "MessageSender",
+          "gift_name": "string",
+          "price": "GiftResalePrice",
+          "duration": "int32",
+          "paid_message_star_count": "int53"
+        }
+      },
+      "module": "src/methods/userbot/send_gift_purchase_offer.lua"
+    },
+    {
+      "name": "send_payment_form",
+      "category": "payments",
+      "status": "adapted",
+      "tdlib_commands": [
+        "sendPaymentForm"
+      ],
+      "tdlib_parameters": {
+        "sendPaymentForm": {
+          "input_invoice": "InputInvoice",
+          "payment_form_id": "int64",
+          "order_info_id": "string",
+          "shipping_option_id": "string",
+          "credentials": "InputCredentials",
+          "tip_amount": "int53"
+        }
+      },
+      "module": "src/methods/userbot/send_payment_form.lua"
+    },
+    {
+      "name": "send_resold_gift",
+      "category": "payments",
+      "status": "adapted",
+      "tdlib_commands": [
+        "sendResoldGift"
+      ],
+      "tdlib_parameters": {
+        "sendResoldGift": {
+          "gift_name": "string",
+          "owner_id": "MessageSender",
+          "price": "GiftResalePrice",
+          "text": "formattedText",
+          "is_private": "Bool"
+        }
+      },
+      "module": "src/methods/userbot/send_resold_gift.lua"
+    },
+    {
+      "name": "set_gift_collection_name",
+      "category": "payments",
+      "status": "adapted",
+      "tdlib_commands": [
+        "setGiftCollectionName"
+      ],
+      "tdlib_parameters": {
+        "setGiftCollectionName": {
+          "owner_id": "MessageSender",
+          "collection_id": "int32",
+          "name": "string"
+        }
+      },
+      "module": "src/methods/userbot/set_gift_collection_name.lua"
+    },
+    {
+      "name": "set_gift_resale_price",
+      "category": "payments",
+      "status": "adapted",
+      "tdlib_commands": [
+        "setGiftResalePrice"
+      ],
+      "tdlib_parameters": {
+        "setGiftResalePrice": {
+          "received_gift_id": "string",
+          "price": "GiftResalePrice"
+        }
+      },
+      "module": "src/methods/userbot/set_gift_resale_price.lua"
+    },
+    {
+      "name": "set_pinned_gifts",
+      "category": "payments",
+      "status": "adapted",
+      "tdlib_commands": [
+        "setPinnedGifts"
+      ],
+      "tdlib_parameters": {
+        "setPinnedGifts": {
+          "owner_id": "MessageSender",
+          "received_gift_ids": "vector<string>"
+        }
+      },
+      "module": "src/methods/userbot/set_pinned_gifts.lua"
+    },
+    {
+      "name": "show_gift",
+      "category": "payments",
+      "status": "adapted",
+      "tdlib_commands": [
+        "toggleGiftIsSaved"
+      ],
+      "tdlib_parameters": {
+        "toggleGiftIsSaved": {
+          "received_gift_id": "string",
+          "is_saved": "Bool"
+        }
+      },
+      "module": "src/methods/userbot/show_gift.lua"
+    },
+    {
+      "name": "suggest_birthday",
+      "category": "payments",
+      "status": "adapted",
+      "tdlib_commands": [
+        "suggestUserBirthdate"
+      ],
+      "tdlib_parameters": {
+        "suggestUserBirthdate": {
+          "user_id": "int53",
+          "birthdate": "birthdate"
+        }
+      },
+      "module": "src/methods/userbot/suggest_birthday.lua"
+    },
+    {
+      "name": "transfer_gift",
+      "category": "payments",
+      "status": "adapted",
+      "tdlib_commands": [
+        "transferGift"
+      ],
+      "tdlib_parameters": {
+        "transferGift": {
+          "business_connection_id": "string",
+          "received_gift_id": "string",
+          "new_owner_id": "MessageSender",
+          "star_count": "int53"
+        }
+      },
+      "module": "src/methods/userbot/transfer_gift.lua"
+    },
+    {
+      "name": "upgrade_gift",
+      "category": "payments",
+      "status": "adapted",
+      "tdlib_commands": [
+        "upgradeGift"
+      ],
+      "tdlib_parameters": {
+        "upgradeGift": {
+          "business_connection_id": "string",
+          "received_gift_id": "string",
+          "keep_original_details": "Bool",
+          "star_count": "int53"
+        }
+      },
+      "module": "src/methods/userbot/upgrade_gift.lua"
+    },
+    {
+      "name": "get_call_members",
+      "category": "phone",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getGroupCallParticipants"
+      ],
+      "tdlib_parameters": {
+        "getGroupCallParticipants": {
+          "input_group_call": "InputGroupCall",
+          "limit": "int32"
+        }
+      },
+      "module": "src/methods/userbot/get_call_members.lua"
+    },
+    {
+      "name": "apply_boost",
+      "category": "premium",
+      "status": "adapted",
+      "tdlib_commands": [
+        "boostChat"
+      ],
+      "tdlib_parameters": {
+        "boostChat": {
+          "chat_id": "int53",
+          "slot_ids": "vector<int32>"
+        }
+      },
+      "module": "src/methods/userbot/apply_boost.lua"
+    },
+    {
+      "name": "get_boosts",
+      "category": "premium",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getAvailableChatBoostSlots"
+      ],
+      "tdlib_parameters": {
+        "getAvailableChatBoostSlots": {}
+      },
+      "module": "src/methods/userbot/get_boosts.lua"
+    },
+    {
+      "name": "get_boosts_status",
+      "category": "premium",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getChatBoostStatus"
+      ],
+      "tdlib_parameters": {
+        "getChatBoostStatus": {
+          "chat_id": "int53"
+        }
+      },
+      "module": "src/methods/userbot/get_boosts_status.lua"
+    },
+    {
+      "name": "add_favorite_sticker",
+      "category": "stickers",
+      "status": "adapted",
+      "tdlib_commands": [
+        "addFavoriteSticker"
+      ],
+      "tdlib_parameters": {
+        "addFavoriteSticker": {
+          "sticker": "InputFile"
+        }
+      },
+      "module": "src/methods/userbot/add_favorite_sticker.lua"
+    },
+    {
+      "name": "add_recent_sticker",
+      "category": "stickers",
+      "status": "adapted",
+      "tdlib_commands": [
+        "addRecentSticker"
+      ],
+      "tdlib_parameters": {
+        "addRecentSticker": {
+          "is_attached": "Bool",
+          "sticker": "InputFile"
+        }
+      },
+      "module": "src/methods/userbot/add_recent_sticker.lua"
+    },
+    {
+      "name": "add_sticker_to_set",
+      "category": "stickers",
+      "status": "adapted",
+      "tdlib_commands": [
+        "addStickerToSet"
+      ],
+      "tdlib_parameters": {
+        "addStickerToSet": {
+          "user_id": "int53",
+          "name": "string",
+          "sticker": "newSticker"
+        }
+      },
+      "module": "src/methods/userbot/add_sticker_to_set.lua"
+    },
+    {
+      "name": "change_sticker_set",
+      "category": "stickers",
+      "status": "adapted",
+      "tdlib_commands": [
+        "changeStickerSet"
+      ],
+      "tdlib_parameters": {
+        "changeStickerSet": {
+          "set_id": "int64",
+          "is_installed": "Bool",
+          "is_archived": "Bool"
+        }
+      },
+      "module": "src/methods/userbot/change_sticker_set.lua"
+    },
+    {
+      "name": "clear_recent_stickers",
+      "category": "stickers",
+      "status": "adapted",
+      "tdlib_commands": [
+        "clearRecentStickers"
+      ],
+      "tdlib_parameters": {
+        "clearRecentStickers": {
+          "is_attached": "Bool"
+        }
+      },
+      "module": "src/methods/userbot/clear_recent_stickers.lua"
+    },
+    {
+      "name": "create_new_sticker_set",
+      "category": "stickers",
+      "status": "adapted",
+      "tdlib_commands": [
+        "createNewStickerSet"
+      ],
+      "tdlib_parameters": {
+        "createNewStickerSet": {
+          "user_id": "int53",
+          "title": "string",
+          "name": "string",
+          "sticker_type": "StickerType",
+          "needs_repainting": "Bool",
+          "stickers": "vector<newSticker>",
+          "source": "string"
+        }
+      },
+      "module": "src/methods/userbot/create_new_sticker_set.lua"
+    },
+    {
+      "name": "delete_sticker_from_set",
+      "category": "stickers",
+      "status": "adapted",
+      "tdlib_commands": [
+        "removeStickerFromSet"
+      ],
+      "tdlib_parameters": {
+        "removeStickerFromSet": {
+          "sticker": "InputFile"
+        }
+      },
+      "module": "src/methods/userbot/delete_sticker_from_set.lua"
+    },
+    {
+      "name": "delete_sticker_set",
+      "category": "stickers",
+      "status": "adapted",
+      "tdlib_commands": [
+        "deleteStickerSet"
+      ],
+      "tdlib_parameters": {
+        "deleteStickerSet": {
+          "name": "string"
+        }
+      },
+      "module": "src/methods/userbot/delete_sticker_set.lua"
+    },
+    {
+      "name": "get_custom_emoji_stickers",
+      "category": "stickers",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getCustomEmojiStickers"
+      ],
+      "tdlib_parameters": {
+        "getCustomEmojiStickers": {
+          "custom_emoji_ids": "vector<int64>"
+        }
+      },
+      "module": "src/methods/userbot/get_custom_emoji_stickers.lua"
+    },
+    {
+      "name": "get_favorite_stickers",
+      "category": "stickers",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getFavoriteStickers"
+      ],
+      "tdlib_parameters": {
+        "getFavoriteStickers": {}
+      },
+      "module": "src/methods/userbot/get_favorite_stickers.lua"
+    },
+    {
+      "name": "get_owned_sticker_sets",
+      "category": "stickers",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getOwnedStickerSets"
+      ],
+      "tdlib_parameters": {
+        "getOwnedStickerSets": {
+          "offset_sticker_set_id": "int64",
+          "limit": "int32"
+        }
+      },
+      "module": "src/methods/userbot/get_owned_sticker_sets.lua"
+    },
+    {
+      "name": "get_recent_stickers",
+      "category": "stickers",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getRecentStickers"
+      ],
+      "tdlib_parameters": {
+        "getRecentStickers": {
+          "is_attached": "Bool"
+        }
+      },
+      "module": "src/methods/userbot/get_recent_stickers.lua"
+    },
+    {
+      "name": "get_sticker_set",
+      "category": "stickers",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getStickerSet"
+      ],
+      "tdlib_parameters": {
+        "getStickerSet": {
+          "set_id": "int64"
+        }
+      },
+      "module": "src/methods/userbot/get_sticker_set.lua"
+    },
+    {
+      "name": "get_suggested_sticker_set_name",
+      "category": "stickers",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getSuggestedStickerSetName"
+      ],
+      "tdlib_parameters": {
+        "getSuggestedStickerSetName": {
+          "title": "string"
+        }
+      },
+      "module": "src/methods/userbot/get_suggested_sticker_set_name.lua"
+    },
+    {
+      "name": "remove_favorite_sticker",
+      "category": "stickers",
+      "status": "adapted",
+      "tdlib_commands": [
+        "removeFavoriteSticker"
+      ],
+      "tdlib_parameters": {
+        "removeFavoriteSticker": {
+          "sticker": "InputFile"
+        }
+      },
+      "module": "src/methods/userbot/remove_favorite_sticker.lua"
+    },
+    {
+      "name": "remove_recent_sticker",
+      "category": "stickers",
+      "status": "adapted",
+      "tdlib_commands": [
+        "removeRecentSticker"
+      ],
+      "tdlib_parameters": {
+        "removeRecentSticker": {
+          "is_attached": "Bool",
+          "sticker": "InputFile"
+        }
+      },
+      "module": "src/methods/userbot/remove_recent_sticker.lua"
+    },
+    {
+      "name": "reorder_installed_sticker_sets",
+      "category": "stickers",
+      "status": "adapted",
+      "tdlib_commands": [
+        "reorderInstalledStickerSets"
+      ],
+      "tdlib_parameters": {
+        "reorderInstalledStickerSets": {
+          "sticker_type": "StickerType",
+          "sticker_set_ids": "vector<int64>"
+        }
+      },
+      "module": "src/methods/userbot/reorder_installed_sticker_sets.lua"
+    },
+    {
+      "name": "replace_sticker_in_set",
+      "category": "stickers",
+      "status": "adapted",
+      "tdlib_commands": [
+        "replaceStickerInSet"
+      ],
+      "tdlib_parameters": {
+        "replaceStickerInSet": {
+          "user_id": "int53",
+          "name": "string",
+          "old_sticker": "InputFile",
+          "new_sticker": "newSticker"
+        }
+      },
+      "module": "src/methods/userbot/replace_sticker_in_set.lua"
+    },
+    {
+      "name": "search_sticker_sets",
+      "category": "stickers",
+      "status": "adapted",
+      "tdlib_commands": [
+        "searchStickerSets"
+      ],
+      "tdlib_parameters": {
+        "searchStickerSets": {
+          "sticker_type": "StickerType",
+          "query": "string"
+        }
+      },
+      "module": "src/methods/userbot/search_sticker_sets.lua"
+    },
+    {
+      "name": "search_stickers",
+      "category": "stickers",
+      "status": "adapted",
+      "tdlib_commands": [
+        "searchStickers"
+      ],
+      "tdlib_parameters": {
+        "searchStickers": {
+          "sticker_type": "StickerType",
+          "emojis": "string",
+          "query": "string",
+          "input_language_codes": "vector<string>",
+          "offset": "int32",
+          "limit": "int32"
+        }
+      },
+      "module": "src/methods/userbot/search_stickers.lua"
+    },
+    {
+      "name": "set_custom_emoji_sticker_set_thumbnail",
+      "category": "stickers",
+      "status": "adapted",
+      "tdlib_commands": [
+        "setCustomEmojiStickerSetThumbnail"
+      ],
+      "tdlib_parameters": {
+        "setCustomEmojiStickerSetThumbnail": {
+          "name": "string",
+          "custom_emoji_id": "int64"
+        }
+      },
+      "module": "src/methods/userbot/set_custom_emoji_sticker_set_thumbnail.lua"
+    },
+    {
+      "name": "set_sticker_emoji_list",
+      "category": "stickers",
+      "status": "adapted",
+      "tdlib_commands": [
+        "setStickerEmojis"
+      ],
+      "tdlib_parameters": {
+        "setStickerEmojis": {
+          "sticker": "InputFile",
+          "emojis": "string"
+        }
+      },
+      "module": "src/methods/userbot/set_sticker_emoji_list.lua"
+    },
+    {
+      "name": "set_sticker_keywords",
+      "category": "stickers",
+      "status": "adapted",
+      "tdlib_commands": [
+        "setStickerKeywords"
+      ],
+      "tdlib_parameters": {
+        "setStickerKeywords": {
+          "sticker": "InputFile",
+          "keywords": "vector<string>"
+        }
+      },
+      "module": "src/methods/userbot/set_sticker_keywords.lua"
+    },
+    {
+      "name": "set_sticker_mask_position",
+      "category": "stickers",
+      "status": "adapted",
+      "tdlib_commands": [
+        "setStickerMaskPosition"
+      ],
+      "tdlib_parameters": {
+        "setStickerMaskPosition": {
+          "sticker": "InputFile",
+          "mask_position": "maskPosition"
+        }
+      },
+      "module": "src/methods/userbot/set_sticker_mask_position.lua"
+    },
+    {
+      "name": "set_sticker_position_in_set",
+      "category": "stickers",
+      "status": "adapted",
+      "tdlib_commands": [
+        "setStickerPositionInSet"
+      ],
+      "tdlib_parameters": {
+        "setStickerPositionInSet": {
+          "sticker": "InputFile",
+          "position": "int32"
+        }
+      },
+      "module": "src/methods/userbot/set_sticker_position_in_set.lua"
+    },
+    {
+      "name": "set_sticker_set_thumbnail",
+      "category": "stickers",
+      "status": "adapted",
+      "tdlib_commands": [
+        "setStickerSetThumbnail"
+      ],
+      "tdlib_parameters": {
+        "setStickerSetThumbnail": {
+          "user_id": "int53",
+          "name": "string",
+          "thumbnail": "InputFile",
+          "format": "StickerFormat"
+        }
+      },
+      "module": "src/methods/userbot/set_sticker_set_thumbnail.lua"
+    },
+    {
+      "name": "set_sticker_set_title",
+      "category": "stickers",
+      "status": "adapted",
+      "tdlib_commands": [
+        "setStickerSetTitle"
+      ],
+      "tdlib_parameters": {
+        "setStickerSetTitle": {
+          "name": "string",
+          "title": "string"
+        }
+      },
+      "module": "src/methods/userbot/set_sticker_set_title.lua"
+    },
+    {
+      "name": "upload_sticker_file",
+      "category": "stickers",
+      "status": "adapted",
+      "tdlib_commands": [
+        "uploadStickerFile"
+      ],
+      "tdlib_parameters": {
+        "uploadStickerFile": {
+          "user_id": "int53",
+          "sticker_format": "StickerFormat",
+          "sticker": "InputFile"
+        }
+      },
+      "module": "src/methods/userbot/upload_sticker_file.lua"
+    },
+    {
+      "name": "can_post_stories",
+      "category": "stories",
+      "status": "existing",
+      "tdlib_commands": [
+        "canPostStory"
+      ],
+      "tdlib_parameters": {
+        "canPostStory": {
+          "chat_id": "int53"
+        }
+      },
+      "module": "src/methods/userbot/can_post_stories.lua"
+    },
+    {
+      "name": "copy_story",
+      "category": "stories",
+      "status": "existing",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/copy_story.lua"
+    },
+    {
+      "name": "delete_stories",
+      "category": "stories",
+      "status": "existing",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/delete_stories.lua"
+    },
+    {
+      "name": "edit_story_caption",
+      "category": "stories",
+      "status": "existing",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/edit_story_caption.lua"
+    },
+    {
+      "name": "edit_story_media",
+      "category": "stories",
+      "status": "existing",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/edit_story_media.lua"
+    },
+    {
+      "name": "edit_story_privacy",
+      "category": "stories",
+      "status": "existing",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/edit_story_privacy.lua"
+    },
+    {
+      "name": "enable_stealth_mode",
+      "category": "stories",
+      "status": "existing",
+      "tdlib_commands": [
+        "activateStoryStealthMode"
+      ],
+      "tdlib_parameters": {
+        "activateStoryStealthMode": {}
+      },
+      "module": "src/methods/userbot/enable_stealth_mode.lua"
+    },
+    {
+      "name": "forward_story",
+      "category": "stories",
+      "status": "existing",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/forward_story.lua"
+    },
+    {
+      "name": "get_all_stories",
+      "category": "stories",
+      "status": "existing",
+      "tdlib_commands": [
+        "loadActiveStories"
+      ],
+      "tdlib_parameters": {
+        "loadActiveStories": {
+          "story_list": "StoryList"
+        }
+      },
+      "module": "src/methods/userbot/get_all_stories.lua"
+    },
+    {
+      "name": "get_archived_stories",
+      "category": "stories",
+      "status": "existing",
+      "tdlib_commands": [
+        "getChatArchivedStories"
+      ],
+      "tdlib_parameters": {
+        "getChatArchivedStories": {
+          "chat_id": "int53",
+          "from_story_id": "int32",
+          "limit": "int32"
+        }
+      },
+      "module": "src/methods/userbot/get_archived_stories.lua"
+    },
+    {
+      "name": "get_chat_stories",
+      "category": "stories",
+      "status": "existing",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/get_chat_stories.lua"
+    },
+    {
+      "name": "get_pinned_stories",
+      "category": "stories",
+      "status": "existing",
+      "tdlib_commands": [
+        "getChatPostedToChatPageStories"
+      ],
+      "tdlib_parameters": {
+        "getChatPostedToChatPageStories": {
+          "chat_id": "int53",
+          "from_story_id": "int32",
+          "limit": "int32"
+        }
+      },
+      "module": "src/methods/userbot/get_pinned_stories.lua"
+    },
+    {
+      "name": "get_stories",
+      "category": "stories",
+      "status": "existing",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/get_stories.lua"
+    },
+    {
+      "name": "get_story_views",
+      "category": "stories",
+      "status": "existing",
+      "tdlib_commands": [
+        "getStoryInteractions"
+      ],
+      "tdlib_parameters": {
+        "getStoryInteractions": {
+          "story_id": "int32",
+          "query": "string",
+          "only_contacts": "Bool",
+          "prefer_forwards": "Bool",
+          "prefer_with_reaction": "Bool",
+          "offset": "string",
+          "limit": "int32"
+        }
+      },
+      "module": "src/methods/userbot/get_story_views.lua"
+    },
+    {
+      "name": "hide_chat_stories",
+      "category": "stories",
+      "status": "existing",
+      "tdlib_commands": [
+        "setChatActiveStoriesList"
+      ],
+      "tdlib_parameters": {
+        "setChatActiveStoriesList": {
+          "chat_id": "int53",
+          "story_list": "StoryList"
+        }
+      },
+      "module": "src/methods/userbot/hide_chat_stories.lua"
+    },
+    {
+      "name": "pin_chat_stories",
+      "category": "stories",
+      "status": "existing",
+      "tdlib_commands": [
+        "setChatPinnedStories"
+      ],
+      "tdlib_parameters": {
+        "setChatPinnedStories": {
+          "chat_id": "int53",
+          "story_ids": "vector<int32>"
+        }
+      },
+      "module": "src/methods/userbot/pin_chat_stories.lua"
+    },
+    {
+      "name": "read_chat_stories",
+      "category": "stories",
+      "status": "existing",
+      "tdlib_commands": [
+        "openStory"
+      ],
+      "tdlib_parameters": {
+        "openStory": {
+          "story_poster_chat_id": "int53",
+          "story_id": "int32"
+        }
+      },
+      "module": "src/methods/userbot/read_chat_stories.lua"
+    },
+    {
+      "name": "send_story",
+      "category": "stories",
+      "status": "existing",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/send_story.lua"
+    },
+    {
+      "name": "show_chat_stories",
+      "category": "stories",
+      "status": "existing",
+      "tdlib_commands": [
+        "setChatActiveStoriesList"
+      ],
+      "tdlib_parameters": {
+        "setChatActiveStoriesList": {
+          "chat_id": "int53",
+          "story_list": "StoryList"
+        }
+      },
+      "module": "src/methods/userbot/show_chat_stories.lua"
+    },
+    {
+      "name": "unpin_chat_stories",
+      "category": "stories",
+      "status": "existing",
+      "tdlib_commands": [
+        "getChatPostedToChatPageStories",
+        "setChatPinnedStories"
+      ],
+      "tdlib_parameters": {
+        "getChatPostedToChatPageStories": {
+          "chat_id": "int53",
+          "from_story_id": "int32",
+          "limit": "int32"
+        },
+        "setChatPinnedStories": {
+          "chat_id": "int53",
+          "story_ids": "vector<int32>"
+        }
+      },
+      "module": "src/methods/userbot/unpin_chat_stories.lua"
+    },
+    {
+      "name": "view_stories",
+      "category": "stories",
+      "status": "existing",
+      "tdlib_commands": [
+        "openStory"
+      ],
+      "tdlib_parameters": {
+        "openStory": {
+          "story_poster_chat_id": "int53",
+          "story_id": "int32"
+        }
+      },
+      "module": "src/methods/userbot/view_stories.lua"
+    },
+    {
+      "name": "block_user",
+      "category": "users",
+      "status": "existing",
+      "tdlib_commands": [
+        "setMessageSenderBlockList"
+      ],
+      "tdlib_parameters": {
+        "setMessageSenderBlockList": {
+          "sender_id": "MessageSender",
+          "block_list": "BlockList"
+        }
+      },
+      "module": "src/methods/userbot/block_user.lua"
+    },
+    {
+      "name": "check_username",
+      "category": "users",
+      "status": "existing",
+      "tdlib_commands": [
+        "checkChatUsername"
+      ],
+      "tdlib_parameters": {
+        "checkChatUsername": {
+          "chat_id": "int53",
+          "username": "string"
+        }
+      },
+      "module": "src/methods/userbot/check_username.lua"
+    },
+    {
+      "name": "delete_profile_photos",
+      "category": "users",
+      "status": "existing",
+      "tdlib_commands": [
+        "deleteProfilePhoto"
+      ],
+      "tdlib_parameters": {
+        "deleteProfilePhoto": {
+          "profile_photo_id": "int64"
+        }
+      },
+      "module": "src/methods/userbot/delete_profile_photos.lua"
+    },
+    {
+      "name": "get_chat_audios",
+      "category": "users",
+      "status": "existing",
+      "tdlib_commands": [
+        "getUserProfileAudios"
+      ],
+      "tdlib_parameters": {
+        "getUserProfileAudios": {
+          "user_id": "int53",
+          "offset": "int32",
+          "limit": "int32"
+        }
+      },
+      "module": "src/methods/userbot/get_chat_audios.lua"
+    },
+    {
+      "name": "get_chat_audios_count",
+      "category": "users",
+      "status": "existing",
+      "tdlib_commands": [
+        "getUserProfileAudios"
+      ],
+      "tdlib_parameters": {
+        "getUserProfileAudios": {
+          "user_id": "int53",
+          "offset": "int32",
+          "limit": "int32"
+        }
+      },
+      "module": "src/methods/userbot/get_chat_audios_count.lua"
+    },
+    {
+      "name": "get_chat_photos",
+      "category": "users",
+      "status": "existing",
+      "tdlib_commands": [
+        "getUserProfilePhotos",
+        "searchChatMessages"
+      ],
+      "tdlib_parameters": {
+        "getUserProfilePhotos": {
+          "user_id": "int53",
+          "offset": "int32",
+          "limit": "int32"
+        },
+        "searchChatMessages": {
+          "chat_id": "int53",
+          "topic_id": "MessageTopic",
+          "query": "string",
+          "sender_id": "MessageSender",
+          "from_message_id": "int53",
+          "offset": "int32",
+          "limit": "int32",
+          "filter": "SearchMessagesFilter"
+        }
+      },
+      "module": "src/methods/userbot/get_chat_photos.lua"
+    },
+    {
+      "name": "get_chat_photos_count",
+      "category": "users",
+      "status": "existing",
+      "tdlib_commands": [
+        "getChatMessageCount",
+        "getUserProfilePhotos"
+      ],
+      "tdlib_parameters": {
+        "getChatMessageCount": {
+          "chat_id": "int53",
+          "topic_id": "MessageTopic",
+          "filter": "SearchMessagesFilter",
+          "return_local": "Bool"
+        },
+        "getUserProfilePhotos": {
+          "user_id": "int53",
+          "offset": "int32",
+          "limit": "int32"
+        }
+      },
+      "module": "src/methods/userbot/get_chat_photos_count.lua"
+    },
+    {
+      "name": "get_common_chats",
+      "category": "users",
+      "status": "existing",
+      "tdlib_commands": [
+        "getGroupsInCommon"
+      ],
+      "tdlib_parameters": {
+        "getGroupsInCommon": {
+          "user_id": "int53",
+          "offset_chat_id": "int53",
+          "limit": "int32"
+        }
+      },
+      "module": "src/methods/userbot/get_common_chats.lua"
+    },
+    {
+      "name": "get_default_emoji_statuses",
+      "category": "users",
+      "status": "existing",
+      "tdlib_commands": [
+        "getDefaultEmojiStatuses"
+      ],
+      "tdlib_parameters": {
+        "getDefaultEmojiStatuses": {}
+      },
+      "module": "src/methods/userbot/get_default_emoji_statuses.lua"
+    },
+    {
+      "name": "get_me",
+      "category": "users",
+      "status": "existing",
+      "tdlib_commands": [
+        "getMe"
+      ],
+      "tdlib_parameters": {
+        "getMe": {}
+      },
+      "module": "src/methods/userbot/get_me.lua"
+    },
+    {
+      "name": "get_users",
+      "category": "users",
+      "status": "existing",
+      "tdlib_commands": [
+        "getUser"
+      ],
+      "tdlib_parameters": {
+        "getUser": {
+          "user_id": "int53"
+        }
+      },
+      "module": "src/methods/userbot/get_users.lua"
+    },
+    {
+      "name": "set_emoji_status",
+      "category": "users",
+      "status": "existing",
+      "tdlib_commands": [
+        "setChatEmojiStatus",
+        "setEmojiStatus"
+      ],
+      "tdlib_parameters": {
+        "setChatEmojiStatus": {
+          "chat_id": "int53",
+          "emoji_status": "emojiStatus"
+        },
+        "setEmojiStatus": {
+          "emoji_status": "emojiStatus"
+        }
+      },
+      "module": "src/methods/userbot/set_emoji_status.lua"
+    },
+    {
+      "name": "set_personal_channel",
+      "category": "users",
+      "status": "existing",
+      "tdlib_commands": [
+        "setPersonalChat"
+      ],
+      "tdlib_parameters": {
+        "setPersonalChat": {
+          "chat_id": "int53"
+        }
+      },
+      "module": "src/methods/userbot/set_personal_channel.lua"
+    },
+    {
+      "name": "set_profile_photo",
+      "category": "users",
+      "status": "existing",
+      "tdlib_commands": [
+        "setProfilePhoto"
+      ],
+      "tdlib_parameters": {
+        "setProfilePhoto": {
+          "photo": "InputChatPhoto",
+          "is_public": "Bool"
+        }
+      },
+      "module": "src/methods/userbot/set_profile_photo.lua"
+    },
+    {
+      "name": "set_username",
+      "category": "users",
+      "status": "existing",
+      "tdlib_commands": [
+        "setUsername"
+      ],
+      "tdlib_parameters": {
+        "setUsername": {
+          "username": "string"
+        }
+      },
+      "module": "src/methods/userbot/set_username.lua"
+    },
+    {
+      "name": "unblock_user",
+      "category": "users",
+      "status": "existing",
+      "tdlib_commands": [
+        "setMessageSenderBlockList"
+      ],
+      "tdlib_parameters": {
+        "setMessageSenderBlockList": {
+          "sender_id": "MessageSender",
+          "block_list": "BlockList"
+        }
+      },
+      "module": "src/methods/userbot/unblock_user.lua"
+    },
+    {
+      "name": "update_birthday",
+      "category": "users",
+      "status": "existing",
+      "tdlib_commands": [
+        "setBirthdate"
+      ],
+      "tdlib_parameters": {
+        "setBirthdate": {
+          "birthdate": "birthdate"
+        }
+      },
+      "module": "src/methods/userbot/update_birthday.lua"
+    },
+    {
+      "name": "update_profile",
+      "category": "users",
+      "status": "existing",
+      "tdlib_commands": [
+        "setBio",
+        "setName"
+      ],
+      "tdlib_parameters": {
+        "setBio": {
+          "bio": "string"
+        },
+        "setName": {
+          "first_name": "string",
+          "last_name": "string"
+        }
+      },
+      "module": "src/methods/userbot/update_profile.lua"
+    },
+    {
+      "name": "update_status",
+      "category": "users",
+      "status": "existing",
+      "tdlib_commands": [
+        "setOption"
+      ],
+      "tdlib_parameters": {
+        "setOption": {
+          "name": "string",
+          "value": "OptionValue"
+        }
+      },
+      "module": "src/methods/userbot/update_status.lua"
+    },
+    {
+      "name": "add_handler",
+      "category": "utilities",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/add_handler.lua"
+    },
+    {
+      "name": "compose",
+      "category": "utilities",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/compose.lua"
+    },
+    {
+      "name": "export_session_string",
+      "category": "utilities",
+      "status": "unavailable",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": null
+    },
+    {
+      "name": "idle",
+      "category": "utilities",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/idle.lua"
+    },
+    {
+      "name": "remove_handler",
+      "category": "utilities",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/remove_handler.lua"
+    },
+    {
+      "name": "restart",
+      "category": "utilities",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/restart.lua"
+    },
+    {
+      "name": "run",
+      "category": "utilities",
+      "status": "existing",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/run.lua"
+    },
+    {
+      "name": "start",
+      "category": "utilities",
+      "status": "adapted",
+      "tdlib_commands": [
+        "getAuthorizationState"
+      ],
+      "tdlib_parameters": {
+        "getAuthorizationState": {}
+      },
+      "module": "src/methods/userbot/start.lua"
+    },
+    {
+      "name": "stop",
+      "category": "utilities",
+      "status": "existing",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/stop.lua"
+    },
+    {
+      "name": "stop_transmission",
+      "category": "utilities",
+      "status": "adapted",
+      "tdlib_commands": [],
+      "tdlib_parameters": {},
+      "module": "src/methods/userbot/stop_transmission.lua"
+    }
+  ]
+}

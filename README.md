@@ -379,3 +379,7 @@ This project is licensed under the GPL-3.0 License - see the LICENSE file for de
 Copyright (c) 2017-2026 Yousef Hesham
 
 Portions Copyright (c) Matthew Hesketh, from the original [telegram-bot-lua](https://github.com/wrxck/telegram-bot-lua) project. Keep the original copyright notices in the `LICENSE` file, as the GPL requires.
+
+### User account method adapters
+
+The optional LuaJIT/TDLib user client includes Ravengram-inspired methods, stories, event registration and composed operations. Read [userbot setup](docs/userbot.md) and [the complete adapter catalog and limitations](docs/userbot-port.md). TDLib sessions are database-backed; portable Pyrogram session strings are not supported.

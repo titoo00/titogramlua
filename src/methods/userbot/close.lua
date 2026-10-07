@@ -6,6 +6,8 @@ return function(self)
     self._running = false
     self._closed = true
     self._pending = {}
+    self._streams = {}
+    self._connected = false
     self.authorized = false
     self._ffi.gc(self._handle, nil)
     self._lib.td_json_client_destroy(self._handle)
