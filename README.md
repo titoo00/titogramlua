@@ -174,21 +174,6 @@ api.run({ timeout = 60 })
 - Legacy v2 compatibility layer with deprecation warnings
 - Optional Telegram user-account client powered by TDLib (LuaJIT + native TDLib required)
 
-## Keeping Bot API methods current
-
-New Telegram Bot API methods can be called immediately with `api.call_method`, even before the library has a named wrapper:
-
-```lua
-local result = api.call_method('newMethodName', {
-    chat_id = chat_id,
-    -- method parameters from Telegram's Bot API docs
-})
-```
-
-The scheduled GitHub workflow checks Telegram's official Bot API page daily and generates named wrappers for methods not already implemented. Generated wrappers take the method parameters as an options table, for example `api.new_method_name({ chat_id = chat_id })`; uploads can be passed as the second `files` table. It opens a pull request and asks GitHub to merge it after required checks pass.
-
-To enable the workflow, add a repository secret named `BOT_API_AUTOMATION_TOKEN` with Contents and Pull requests read/write access. The token is used so CI runs on generated pull requests. Enable GitHub auto-merge and configure required checks if you want those PRs to wait for CI before merging. The updater stops without changing the generated module if Telegram's page format changes or no methods can be parsed.
-
 ## Documentation
 
 | Document | Description |
