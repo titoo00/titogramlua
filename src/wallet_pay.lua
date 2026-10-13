@@ -1,6 +1,5 @@
 --- Wallet Pay client for accepting Wallet payments from a Telegram bot.
 -- This is a merchant API client and is separate from the Telegram Bot API.
--- @module titogramlua.wallet_pay
 local json = require('dkjson')
 local https = require('ssl.https')
 local ltn12 = require('ltn12')
