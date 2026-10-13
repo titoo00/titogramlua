@@ -23,7 +23,7 @@ jobs:
         id: changes
         shell: bash
         run: |
-          if git diff --quiet HEAD^ HEAD -- src/methods/updates.lua; then
+          if git diff --quiet HEAD^ HEAD -- src/methods/updates.lua .github/workflows/publish-bot-api-updates.yml; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
           else
             echo "changed=true" >> "$GITHUB_OUTPUT"
@@ -53,5 +53,5 @@ jobs:
           base="rockspecs/titogramlua-1.1.0-1.rockspec"
           version="1.1.1-$RUN_NUMBER"
           output="rockspecs/titogramlua-$version.rockspec"
-          sed "s/version = \"1.1.0-1\"/version = \"$version\"/" "$base" > "$output"
+          sed -e "s/rockspec_format = \"1.1.0\"/rockspec_format = \"1.1\"/" -e "s/version = \"1.1.0-1\"/version = \"$version\"/" "$base" > "$output"
           luarocks upload "$output" --api-key="$LUAROCKS_API_KEY"
