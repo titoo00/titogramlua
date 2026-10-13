@@ -6,7 +6,7 @@ on:
     types: [completed]
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   publish:
@@ -53,6 +53,20 @@ jobs:
           fi
           base="rockspecs/titogramlua-3.7.2-0.rockspec"
           version="3.7.2-$RUN_NUMBER"
+          source_tag="luarocks-v$version"
           output="rockspecs/titogramlua-$version.rockspec"
-          sed -e "s/version = \"3.7.2-0\"/version = \"$version\"/" -e "s/tag = \"v3.7.2\"/tag = \"$SOURCE_SHA\"/" "$base" > "$output"
+          sed -e "s/version = \"3.7.2-0\"/version = \"$version\"/" -e "s/tag = \"v3.7.2\"/tag = \"$source_tag\"/" "$base" > "$output"
+
+          if git ls-remote --exit-code --tags origin "refs/tags/$source_tag" >/dev/null; then
+            git fetch origin "refs/tags/$source_tag:refs/tags/$source_tag"
+            existing_sha="$(git rev-parse "$source_tag^{commit}")"
+            if [ "$existing_sha" != "$SOURCE_SHA" ]; then
+              echo "::error::Tag $source_tag already points to a different source commit."
+              exit 1
+            fi
+          else
+            git tag "$source_tag" "$SOURCE_SHA"
+            git push origin "refs/tags/$source_tag"
+          fi
+
           luarocks upload "$output" --api-key="$LUAROCKS_API_KEY"
