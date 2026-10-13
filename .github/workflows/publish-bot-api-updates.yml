@@ -23,7 +23,7 @@ jobs:
         id: changes
         shell: bash
         run: |
-          if git diff --quiet HEAD^ HEAD -- src/methods/updates.lua; then
+          if git diff --quiet HEAD^ HEAD -- src/methods/updates.lua .github/workflows/publish-bot-api-updates.yml; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
           else
             echo "changed=true" >> "$GITHUB_OUTPUT"
