@@ -526,6 +526,7 @@ build = {
         ["titogramlua.session"] = "src/session.lua",
         ["titogramlua.tools"] = "src/tools.lua",
         ["titogramlua.utils"] = "src/utils.lua",
+        ["titogramlua.wallet_pay"] = "src/wallet_pay.lua",
         ["titogramlua.webhook"] = "src/webhook.lua"
     },
     install = {
