@@ -1,89 +1,70 @@
--- Optional client for the RavenGram raw MTProto wallet bridge.
--- See examples/mtproto-wallet/README.md for setup and security requirements.
-local json = require('dkjson')
-local http = require('socket.http')
-local ltn12 = require('ltn12')
+-- Direct Lua MTProto wallet client. No Python process or HTTP bridge is used.
+local Client = require('titogramlua.mtproto.client')
+local wallet = require('titogramlua.mtproto.wallet_encode')
+local objects = require('titogramlua.mtproto.wallet_objects')
 
 local Wallet = {}
 Wallet.__index = Wallet
 
-local methods = {
-    get_state = 'wallet.getState',
-    get_user_addresses = 'wallet.getUserAddresses',
-    get_transactions = 'wallet.getTransactions',
-    get_transactions_by_ids = 'wallet.getTransactionsByIDs',
-    get_transactions_by_msg_hash = 'wallet.getTransactionsByMsgHash',
-    export_secret_phrase = 'wallet.exportSecretPhrase',
-    fetch_encrypted_secret_phrase_part = 'wallet.fetchEncryptedSecretPhrasePart',
-    replace_wallet = 'wallet.replaceWallet',
-    disable_backup = 'wallet.disableBackup',
-    get_backup_holder_dcs = 'wallet.getBackupHolderDcs',
-    enable_backup = 'wallet.enableBackup',
-    get_proof_challenge = 'wallet.getProofChallenge',
-    send_transfer = 'wallet.sendTransfer',
-    get_gasless_info = 'wallet.getGaslessInfo',
-    get_existing_wallet_balance = 'wallet.getExistingWaltBalance',
-    get_nfts = 'wallet.getNfts',
-    ton_connect_create_session = 'wallet.tonConnectCreateSession',
-    ton_connect_register_key = 'wallet.tonConnectRegisterKey',
-    ton_connect_submit_connect_result = 'wallet.tonConnectSubmitConnectResult',
-    ton_connect_get_pending = 'wallet.tonConnectGetPending',
-    ton_connect_claim_request = 'wallet.tonConnectClaimRequest',
-    ton_connect_submit_response = 'wallet.tonConnectSubmitResponse',
-    ton_connect_next_event_id = 'wallet.tonConnectNextEventId',
-    ton_connect_close_session = 'wallet.tonConnectCloseSession',
-    ton_connect_get_sessions = 'wallet.tonConnectGetSessions',
-}
-
 function Wallet.new(options)
-    options = options or {}
-    assert(type(options) == 'table', 'options must be a table')
-    local url = options.url or 'http://127.0.0.1:8765/rpc'
-    assert(type(url) == 'string' and
-        (url:match('^http://127%.0%.0%.1:%d+/rpc$') or url:match('^http://localhost:%d+/rpc$')),
-        'wallet bridge URL must use local loopback HTTP')
-    assert(type(options.token) == 'string' and #options.token >= 32,
-        'a bridge token of at least 32 characters is required')
-    return setmetatable({url = url, token = options.token}, Wallet)
+    assert(type(options) == 'table', 'MTProto wallet options are required')
+    return setmetatable({client = Client.new(options)}, Wallet)
+end
+
+function Wallet:connect()
+    return self.client:connect()
+end
+
+function Wallet:close()
+    return self.client:close()
+end
+
+function Wallet:is_authorized()
+    return self.client:is_authorized()
+end
+
+function Wallet:send_code(phone_number)
+    return self.client:send_code(phone_number)
+end
+
+function Wallet:sign_in(phone_code, phone_code_hash)
+    return self.client:sign_in(phone_code, phone_code_hash)
+end
+
+function Wallet:sign_up(first_name, last_name, no_joined_notifications)
+    return self.client:sign_up(first_name, last_name, no_joined_notifications)
+end
+
+function Wallet:check_password(password, parameters)
+    return self.client:check_password(password, parameters)
+end
+
+function Wallet:save_session(path, password)
+    return self.client:save_session(path, password)
 end
 
 function Wallet:call(method, params)
-    assert(type(method) == 'string' and method:match('^wallet%.[%w]+$'),
-        'method must be a wallet.* MTProto function')
-    assert(params == nil or type(params) == 'table', 'params must be a table')
-    local body = assert(json.encode({method = method, params = params or {}}))
-    local chunks = {}
-    local _, status = http.request({
-        url = self.url,
-        method = 'POST',
-        headers = {
-            ['Content-Type'] = 'application/json',
-            ['Content-Length'] = tostring(#body),
-            ['Authorization'] = 'Bearer ' .. self.token,
-        },
-        source = ltn12.source.string(body),
-        sink = ltn12.sink.table(chunks),
-    })
-    local payload = table.concat(chunks)
-    local response, _, decode_error = json.decode(payload)
-    if tonumber(status) ~= 200 then
-        local message = type(response) == 'table' and response.error or payload
-        return nil, {code = tonumber(status) or 0, message = tostring(message)}
+    local schema_method
+    for name, descriptor in pairs(wallet.methods) do
+        if descriptor.name == method then schema_method = name; break end
     end
-    if type(response) ~= 'table' then
-        return nil, {code = 0, message = 'invalid bridge response: ' .. tostring(decode_error)}
-    end
-    if response.error then
-        return nil, {code = tonumber(response.code) or 0, message = tostring(response.error)}
-    end
-    return response.result
+    assert(schema_method, 'unsupported Telegram wallet method: ' .. tostring(method))
+    return self.client:invoke(schema_method, params or {})
 end
 
-for name, method in pairs(methods) do
+for name, descriptor in pairs(wallet.methods) do
     Wallet[name] = function(self, params)
-        return self:call(method, params)
+        return self.client:invoke(name, params or {})
     end
 end
 
-Wallet.methods = methods
+Wallet.methods = wallet.methods
+Wallet.objects = objects
+Wallet.Client = Client
+function Wallet.load_session(options, path, password)
+    local client, err = Client.load_session(options, path, password)
+    if not client then return nil, err end
+    return setmetatable({client = client}, Wallet)
+end
 return Wallet
+
