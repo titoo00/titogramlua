@@ -741,6 +741,7 @@ api.<span class="function-name">run</span>({ timeout = <span class="number">60</
 <ul>
     <li>Full Bot API 10.3 coverage (messages, media, payments, stickers, forums, games, gifts, stories, business accounts, rich messages, live photos, and more)</li>
     <li>Optional Wallet Pay merchant client for crypto payment orders, reconciliation, and webhook signatures</li>
+    <li>Optional raw MTProto wallet bridge for wallet state, transfers, NFTs, and TON Connect (requires a separate RavenGram/Python user session)</li>
     <li><strong>Async-first architecture</strong> via copas: concurrent updates, parallel API calls, background tasks</li>
     <li><strong>Framework layer</strong>: command router, conversations, and per-chat/user sessions</li>
     <li><strong>Built-in webhook receiver</strong> with x-telegram-bot-api secret-token verification</li>
@@ -772,7 +773,8 @@ api.<span class="function-name">run</span>({ timeout = <span class="number">60</
 | <a href="docs/adapters.md">Adapters</a> | Database, Redis, LLM, and email integrations |
 | <a href="docs/migration.md">Migration from v2</a> | Breaking changes and upgrade guide |
 | <a href="docs/userbot.md">User accounts / MTProto</a> | Optional LuaJIT + TDLib user-account client |
-| <a href="docs/wallet-pay.md">Wallet Pay</a> | Optional merchant API client for Wallet Pay orders and signed payment webhooks |</p>
+| <a href="docs/wallet-pay.md">Wallet Pay</a> | Optional merchant API client for Wallet Pay orders and signed payment webhooks |
+| <a href="examples/mtproto-wallet/readme.md">Direct MTProto wallet bridge</a> | Optional RavenGram sidecar exposing raw Telegram wallet and TON Connect methods to Lua |</p>
 
 <p><a name="Example"></a></p>
 <h2>Example</h2>
@@ -861,6 +863,7 @@ api.<span class="function-name">run</span>({ timeout = <span class="number">60</
      suggested_posts.lua -- Suggested post methods
      rich.lua            -- Rich message methods (send_rich_message, drafts)
      userbot.lua         -- Optional TDLib-backed user-account client entry point
+   mtproto_wallet.lua    -- Optional Lua client for the RavenGram wallet bridge
      userbot/
        send_message.lua  -- Send a text message
        send_photo.lua    -- Send a photo
