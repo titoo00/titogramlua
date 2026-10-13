@@ -191,7 +191,7 @@ api.run({ timeout = 60 })
 | [Migration from v2](docs/migration.md) | Breaking changes and upgrade guide |
 | [User accounts / MTProto](docs/userbot.md) | Optional LuaJIT + TDLib user-account client |
 | [Wallet Pay](docs/wallet-pay.md) | Optional merchant API client for Wallet Pay orders and signed payment webhooks |
-| [Direct MTProto wallet bridge](examples/mtproto-wallet/README.md) | Optional RavenGram sidecar exposing raw Telegram wallet and TON Connect methods to Lua |
+| [Direct MTProto wallet bridge](examples/mtproto-wallet/readme.md) | Optional RavenGram sidecar exposing raw Telegram wallet and TON Connect methods to Lua |
 
 ## Example
 
