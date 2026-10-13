@@ -160,6 +160,7 @@ api.run({ timeout = 60 })
 
 - Full Bot API 10.3 coverage (messages, media, payments, stickers, forums, games, gifts, stories, business accounts, rich messages, live photos, and more)
 - Optional Wallet Pay merchant client for crypto payment orders, reconciliation, and webhook signatures
+- Optional raw MTProto wallet bridge for wallet state, transfers, NFTs, and TON Connect (requires a separate RavenGram/Python user session)
 - **Async-first architecture** via copas: concurrent updates, parallel API calls, background tasks
 - **Framework layer**: command router, conversations, and per-chat/user sessions
 - **Built-in webhook receiver** with x-telegram-bot-api secret-token verification
@@ -190,6 +191,7 @@ api.run({ timeout = 60 })
 | [Migration from v2](docs/migration.md) | Breaking changes and upgrade guide |
 | [User accounts / MTProto](docs/userbot.md) | Optional LuaJIT + TDLib user-account client |
 | [Wallet Pay](docs/wallet-pay.md) | Optional merchant API client for Wallet Pay orders and signed payment webhooks |
+| [Direct MTProto wallet bridge](examples/mtproto-wallet/readme.md) | Optional RavenGram sidecar exposing raw Telegram wallet and TON Connect methods to Lua |
 
 ## Example
 
@@ -275,6 +277,7 @@ src/
     suggested_posts.lua -- Suggested post methods
     rich.lua            -- Rich message methods (send_rich_message, drafts)
     userbot.lua         -- Optional TDLib-backed user-account client entry point
+  mtproto_wallet.lua    -- Optional Lua client for the RavenGram wallet bridge
     userbot/
       send_message.lua  -- Send a text message
       send_photo.lua    -- Send a photo

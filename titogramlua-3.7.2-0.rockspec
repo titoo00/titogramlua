@@ -64,6 +64,7 @@ build = {
         ["titogramlua.methods.stories"] = "src/methods/stories.lua",
         ["titogramlua.methods.suggested_posts"] = "src/methods/suggested_posts.lua",
         ["titogramlua.methods.updates"] = "src/methods/updates.lua",
+        ["titogramlua.mtproto_wallet"] = "src/mtproto_wallet.lua",
         ["titogramlua.methods.userbot"] = "src/methods/userbot.lua",
         ["titogramlua.methods.userbot._catalog"] = "src/methods/userbot/_catalog.lua",
         ["titogramlua.methods.userbot._events"] = "src/methods/userbot/_events.lua",
