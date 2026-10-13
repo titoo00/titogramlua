@@ -1,4 +1,4 @@
-name: Publish Bot API updates to LuaRocks
+name: Publish library updates to LuaRocks
 
 on:
   workflow_run:
@@ -19,11 +19,11 @@ jobs:
           ref: ${{ github.event.workflow_run.head_sha }}
           fetch-depth: 2
 
-      - name: Publish only generated Bot API changes
+      - name: Publish package source changes
         id: changes
         shell: bash
         run: |
-          if git diff --quiet HEAD^ HEAD -- src/methods/updates.lua .github/workflows/publish-bot-api-updates.yml; then
+          if git diff --quiet HEAD^ HEAD -- src/methods/updates.lua src/wallet_pay.lua rockspecs/titogramlua-3.7.2-0.rockspec .github/workflows/publish-bot-api-updates.yml; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
           else
             echo "changed=true" >> "$GITHUB_OUTPUT"
@@ -44,14 +44,15 @@ jobs:
         env:
           LUAROCKS_API_KEY: ${{ secrets.LUAROCKS_API_KEY }}
           RUN_NUMBER: ${{ github.event.workflow_run.run_number }}
+          SOURCE_SHA: ${{ github.event.workflow_run.head_sha }}
         shell: bash
         run: |
           if [ -z "$LUAROCKS_API_KEY" ]; then
             echo "::error::Set the LUAROCKS_API_KEY repository secret to enable publishing."
             exit 1
           fi
-          base="rockspecs/titogramlua-1.1.0-1.rockspec"
-          version="1.1.1-$RUN_NUMBER"
+          base="rockspecs/titogramlua-3.7.2-0.rockspec"
+          version="3.7.2-$RUN_NUMBER"
           output="rockspecs/titogramlua-$version.rockspec"
-          sed -e "s/rockspec_format = \"1.1.0\"/rockspec_format = \"1.1\"/" -e "s/version = \"1.1.0-1\"/version = \"$version\"/" "$base" > "$output"
+          sed -e "s/rockspecs/titogramlua-3.7.2-0.rockspec/titogramlua-$version.rockspec/" -e "s/version = \"3.7.2-0\"/version = \"$version\"/" -e "s/tag = \"v3.7.2\"/tag = \"$SOURCE_SHA\"/" "$base" > "$output"
           luarocks upload "$output" --api-key="$LUAROCKS_API_KEY"
