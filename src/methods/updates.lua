@@ -81,7 +81,6 @@ end
 
     -- BEGIN GENERATED BOT API METHODS
     -- END GENERATED BOT API METHODS
-
     --- receive incoming updates using long polling.
     -- @param opts table optional parameters (timeout, offset, limit, allowed_updates, use_beta_endpoint)
     -- @return table|false the list of update objects, or false on failure
