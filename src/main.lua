@@ -221,6 +221,86 @@ function api.request(endpoint, parameters, file)
     end)
 end
 
+--- call any Bot API method, including methods added after this release.
+-- Use the official camelCase method name and pass its parameters in a table.
+-- Nested tables are JSON-encoded; file paths/handles can be passed in `files`
+-- and are attached as multipart uploads.
+-- @param method string official Bot API method name, e.g. "sendMessage"
+-- @param parameters table optional Bot API parameters
+-- @param files table optional multipart file attachments keyed by parameter name
+-- @return table|false the decoded JSON response, or false on failure
+-- @return string|table the HTTP status or error details
+function api.call_method(method, parameters, files)
+    assert(type(method) == 'string' and method:match('^[A-Za-z][A-Za-z0-9]*
+-- @return table|false the bot user object, or false on failure
+-- @return string|table the HTTP status or error details
+function api.get_me()
+    local success, res = api.request(config.endpoint .. api.token .. '/getMe')
+    return success, res
+end
+
+--- log the bot out from the cloud bot API server.
+-- @return table|false true on success, or false on failure
+-- @return string|table the HTTP status or error details
+function api.log_out()
+    local success, res = api.request(config.endpoint .. api.token .. '/logOut')
+    return success, res
+end
+
+--- close the bot instance before moving it to a local server.
+-- @return table|false true on success, or false on failure
+-- @return string|table the HTTP status or error details
+function api.close()
+    local success, res = api.request(config.endpoint .. api.token .. '/close')
+    return success, res
+end
+
+-- load all modules
+require('titogramlua.log')(api)
+require('titogramlua.middleware')(api)
+require('titogramlua.handlers')(api)
+require('titogramlua.builders')(api)
+require('titogramlua.builders_rich')(api)
+require('titogramlua.helpers')(api)
+require('titogramlua.session')(api)
+require('titogramlua.framework')(api)
+require('titogramlua.methods.updates')(api)
+require('titogramlua.methods.messages')(api)
+require('titogramlua.methods.chat')(api)
+require('titogramlua.methods.members')(api)
+require('titogramlua.methods.forum')(api)
+require('titogramlua.methods.stickers')(api)
+require('titogramlua.methods.inline')(api)
+require('titogramlua.methods.payments')(api)
+require('titogramlua.methods.games')(api)
+require('titogramlua.methods.passport')(api)
+require('titogramlua.methods.bot')(api)
+require('titogramlua.methods.gifts')(api)
+require('titogramlua.methods.checklists')(api)
+require('titogramlua.methods.stories')(api)
+require('titogramlua.methods.business')(api)
+require('titogramlua.methods.suggested_posts')(api)
+require('titogramlua.methods.rich')(api)
+require('titogramlua.utils')(api)
+require('titogramlua.mcp')(api)
+require('titogramlua.async')(api)
+require('titogramlua.webhook')(api)
+require('titogramlua.adapters')(api)
+require('titogramlua.compat')(api)
+
+return api
+),
+        'method must be a Bot API camelCase name')
+    local encoded = {}
+    for key, value in pairs(parameters or {}) do
+        encoded[key] = type(value) == 'table' and json.encode(value) or value
+    end
+    for key in pairs(files or {}) do
+        if encoded[key] == nil then encoded[key] = 'attach://' .. key end
+    end
+    return api.request(config.endpoint .. api.token .. '/' .. method, encoded, files)
+end
+
 --- get basic information about the bot via getMe.
 -- @return table|false the bot user object, or false on failure
 -- @return string|table the HTTP status or error details
