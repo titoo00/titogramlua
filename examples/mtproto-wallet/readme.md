@@ -6,7 +6,7 @@ This optional bridge exposes RavenGram's raw Telegram wallet MTProto methods to 
 
 Install Python 3.10 or newer and RavenGram:
 
-    python -m pip install "Ravengram @ git+https://github.com/ahmedahah4/ravengram.git"
+    python -m pip install "Ravengram @ git+https://github.com/ahmedahah4/ravengram.git@f893483d9a6ce8cc7e2322a1fee65a1692eed384"
 
 Set Telegram app credentials from https://my.telegram.org and a private bridge token. Generate the token with a cryptographically secure random generator. Never commit or share these values.
 
