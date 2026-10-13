@@ -35,6 +35,6 @@ jobs:
       - name: Enable merge after required checks pass
         if: steps.cpr.outputs.pull-request-number != ''
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.BOT_API_AUTOMATION_TOKEN }}
           PR_NUMBER: ${{ steps.cpr.outputs.pull-request-number }}
         run: gh pr merge "$PR_NUMBER" --auto --squash
