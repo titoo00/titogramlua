@@ -4,6 +4,24 @@ return function(api)
     local json = require('dkjson')
     local config = require('titogramlua.config')
 
+    -- Call any Bot API method, including methods added after this release.
+    -- Nested tables are JSON-encoded; files maps parameter names to upload paths or handles.
+    function api.call_method(method, parameters, files)
+        assert(type(method) == 'string' and method:match('^[A-Za-z][A-Za-z0-9]*$'),
+            'method must be a Bot API camelCase name')
+        local encoded = {}
+        for key, value in pairs(parameters or {}) do
+            encoded[key] = type(value) == 'table' and json.encode(value) or value
+        end
+        for key in pairs(files or {}) do
+            if encoded[key] == nil then encoded[key] = 'attach://' .. key end
+        end
+        return api.request(config.endpoint .. api.token .. '/' .. method, encoded, files)
+    end
+
+    -- BEGIN GENERATED BOT API METHODS
+    -- END GENERATED BOT API METHODS
+
     --- receive incoming updates using long polling.
     -- @param opts table optional parameters (timeout, offset, limit, allowed_updates, use_beta_endpoint)
     -- @return table|false the list of update objects, or false on failure

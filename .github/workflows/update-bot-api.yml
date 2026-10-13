@@ -1,0 +1,40 @@
+name: Update Telegram Bot API methods
+
+on:
+  schedule:
+    - cron: "17 2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: Generate wrappers from Telegram's official API docs
+        run: python scripts/update_bot_api.py
+      - name: Open an update pull request
+        id: cpr
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.BOT_API_AUTOMATION_TOKEN }}
+          branch: automation/bot-api-methods
+          delete-branch: true
+          commit-message: "Update generated Telegram Bot API methods"
+          title: "Update generated Telegram Bot API methods"
+          body: |
+            This PR was generated from Telegram's official Bot API method list.
+            New methods receive generic options-table wrappers; existing hand-written methods are preserved.
+            CI must pass before GitHub auto-merges this PR.
+      - name: Enable merge after required checks pass
+        if: steps.cpr.outputs.pull-request-number != ''
+        env:
+          GH_TOKEN: ${{ secrets.BOT_API_AUTOMATION_TOKEN }}
+          PR_NUMBER: ${{ steps.cpr.outputs.pull-request-number }}
+        run: gh pr merge "$PR_NUMBER" --auto --squash
