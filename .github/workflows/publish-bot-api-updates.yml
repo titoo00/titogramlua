@@ -53,5 +53,5 @@ jobs:
           base="rockspecs/titogramlua-1.1.0-1.rockspec"
           version="1.1.1-$RUN_NUMBER"
           output="rockspecs/titogramlua-$version.rockspec"
-          sed "s/version = \"1.1.0-1\"/version = \"$version\"/" "$base" > "$output"
+          sed -e "s/rockspec_format = \"1.1.0\"/rockspec_format = \"1.1\"/" -e "s/version = \"1.1.0-1\"/version = \"$version\"/" "$base" > "$output"
           luarocks upload "$output" --api-key="$LUAROCKS_API_KEY"
