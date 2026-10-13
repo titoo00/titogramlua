@@ -98,7 +98,7 @@ def main() -> None:
         count += 1
 
     block = "\n".join([BEGIN, *wrappers, END])
-    updated = generated_pattern.sub("\n" + block, source)
+    updated = generated_pattern.sub("\n" + block + "\n", source)
     OUTPUT.write_text(updated, encoding="utf-8")
     print(f"Found {len(parser.methods)} official methods; generated {count} wrappers.")
 
