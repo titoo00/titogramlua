@@ -70,7 +70,7 @@ def main() -> None:
         if path == OUTPUT:
             continue
         source = path.read_text(encoding="utf-8")
-        implemented.update(re.findall(r"function\s+api\.([a-z][a-z0-9_]*)\s*\(", source))
+        implemented.update(re.findall(r"function\s+api\.([a-z][a-z0-9_]*)\s*\(", source))\n        implemented.update(re.findall(r"api\.([a-z][a-z0-9_]*)\s*=", source))
 
     wrappers: list[str] = []
     count = 0
