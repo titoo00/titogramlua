@@ -73,3 +73,4 @@ end
 Webhook verification uses HMAC-SHA-256. It requires the optional `luaossl` dependency; install it with `luarocks install luaossl`. Preserve the raw body exactly as received. Use the exact route path configured in Wallet Pay.
 
 Wallet Pay sends payment events asynchronously. Do not grant a purchase just because the browser returned to `returnUrl`; verify the signed webhook or query the order status server-side. See the [Wallet Pay API documentation](https://docs.wallet.tg/pay/).
+
