@@ -8,6 +8,7 @@ import os
 import re
 import threading
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from pathlib import Path
 from typing import Any
 
 from pyrogram import Client, raw
@@ -105,8 +106,20 @@ async def main() -> None:
     token = os.environ["TITOGRAM_WALLET_BRIDGE_TOKEN"]
     if len(token) < 32:
         raise SystemExit("TITOGRAM_WALLET_BRIDGE_TOKEN must be at least 32 characters")
+    session_dir = Path(
+        os.environ.get(
+            "RAVENGRAM_SESSION_DIR",
+            str(Path.home() / ".local" / "share" / "titogramlua-wallet"),
+        )
+    ).expanduser()
+    session_dir.mkdir(parents=True, exist_ok=True, mode=0o700)
+    if os.name != "nt":
+        os.chmod(session_dir, 0o700)
+        os.umask(0o077)
+
     client = Client(
         os.environ.get("RAVENGRAM_SESSION", "titogramlua_wallet"),
+        workdir=str(session_dir),
         api_id=int(os.environ["TELEGRAM_API_ID"]),
         api_hash=os.environ["TELEGRAM_API_HASH"],
     )
