@@ -15,7 +15,7 @@ Set Telegram app credentials from https://my.telegram.org and a private bridge t
     export TITOGRAM_WALLET_BRIDGE_TOKEN="a-random-secret-at-least-32-characters"
     python examples/mtproto-wallet/bridge.py
 
-At first start, RavenGram may ask you to sign in in the terminal. Its encrypted session is stored separately from TDLib. Keep its session files private. The bridge binds only to 127.0.0.1 on port 8765.
+At first start, RavenGram may ask you to sign in in the terminal. Its SQLite session is stored separately from TDLib under `~/.local/share/titogramlua-wallet` by default; set `RAVENGRAM_SESSION_DIR` to choose another directory. The session file contains the MTProto authorization key and is **not encrypted at rest**. The bridge creates the directory with owner-only permissions on Unix; on Windows, keep it under your private user profile. Treat the session file like a login credential. The bridge binds only to 127.0.0.1 on port 8765.
 
 ## Call from Lua
 
