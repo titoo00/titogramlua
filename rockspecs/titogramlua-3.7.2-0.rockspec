@@ -24,8 +24,7 @@ dependencies = {
     "luasocket >= 3.0rc1-2",
     "multipart-post >= 1.1-1",
     "luautf8 >= 0.1.1-1",
-    "copas >= 4.0",
-    "luaossl >= 20220711"
+    "copas >= 4.0"
 }
 build = {
     type = "builtin",
