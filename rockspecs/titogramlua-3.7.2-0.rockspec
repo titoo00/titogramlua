@@ -24,7 +24,8 @@ dependencies = {
     "luasocket >= 3.0rc1-2",
     "multipart-post >= 1.1-1",
     "luautf8 >= 0.1.1-1",
-    "copas >= 4.0"
+    "copas >= 4.0",
+    "luaossl >= 20220711"
 }
 build = {
     type = "builtin",
@@ -526,6 +527,7 @@ build = {
         ["titogramlua.session"] = "src/session.lua",
         ["titogramlua.tools"] = "src/tools.lua",
         ["titogramlua.utils"] = "src/utils.lua",
+        ["titogramlua.wallet_pay"] = "src/wallet_pay.lua",
         ["titogramlua.webhook"] = "src/webhook.lua"
     },
     install = {
