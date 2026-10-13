@@ -54,5 +54,5 @@ jobs:
           base="rockspecs/titogramlua-3.7.2-0.rockspec"
           version="3.7.2-$RUN_NUMBER"
           output="rockspecs/titogramlua-$version.rockspec"
-          sed -e "s/rockspecs/titogramlua-3.7.2-0.rockspec/titogramlua-$version.rockspec/" -e "s/version = \"3.7.2-0\"/version = \"$version\"/" -e "s/tag = \"v3.7.2\"/tag = \"$SOURCE_SHA\"/" "$base" > "$output"
+          sed -e "s/version = \"3.7.2-0\"/version = \"$version\"/" -e "s/tag = \"v3.7.2\"/tag = \"$SOURCE_SHA\"/" "$base" > "$output"
           luarocks upload "$output" --api-key="$LUAROCKS_API_KEY"
