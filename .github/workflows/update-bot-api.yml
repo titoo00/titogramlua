@@ -23,7 +23,7 @@ jobs:
         id: cpr
         uses: peter-evans/create-pull-request@v7
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.BOT_API_AUTOMATION_TOKEN }}
           branch: automation/bot-api-methods
           delete-branch: true
           commit-message: "Update generated Telegram Bot API methods"
@@ -32,7 +32,6 @@ jobs:
             This PR was generated from Telegram's official Bot API method list.
             New methods receive generic options-table wrappers; existing hand-written methods are preserved.
             CI must pass before GitHub auto-merges this PR.
-          labels: automated, bot-api
       - name: Enable merge after required checks pass
         if: steps.cpr.outputs.pull-request-number != ''
         env:
