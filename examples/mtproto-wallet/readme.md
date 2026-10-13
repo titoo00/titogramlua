@@ -1,50 +1,47 @@
-# Direct MTProto wallet bridge
+# Native Lua MTProto wallet (work in progress)
 
-This optional bridge exposes RavenGram's raw Telegram wallet MTProto methods to Lua. It runs separately from TitogramLua's TDLib userbot and creates a separate RavenGram session.
+The wallet API is declared from RavenGram's pinned TL schema and encoded in Lua. The MTProto transport, auth-key handshake, AES-IGE encryption, encrypted RPC envelope, phone-code login, 2FA SRP proof, and encrypted session file also run in Lua using LuaSocket and luaossl. There is no Python process or local HTTP bridge.
 
-## Install and start
+This code is experimental and has not been interoperability-tested against Telegram. Result decoding is incomplete for Telegram's generated objects (for example users, chats, and NFT documents), so every result also retains its exact raw TL bytes and some decoded data may be absent. Do not use transfer, recovery, backup, or TON Connect calls with funds until the entire result schema and live API behavior have been validated.
 
-Install Python 3.10 or newer and RavenGram:
+## Dependencies
 
-    python -m pip install "Ravengram @ git+https://github.com/ahmedahah4/ravengram.git@f893483d9a6ce8cc7e2322a1fee65a1692eed384"
+Install the package dependencies from the project rockspec, including LuaSocket and luaossl. MTProto requires a Telegram app `api_id` and `api_hash` from [my.telegram.org](https://my.telegram.org), plus a data center host and port.
 
-Set Telegram app credentials from https://my.telegram.org and a private bridge token. Generate the token with a cryptographically secure random generator. Never commit or share these values.
+## Current API shape
 
-    export TELEGRAM_API_ID="your-api-id"
-    export TELEGRAM_API_HASH="your-api-hash"
-    export TITOGRAM_WALLET_BRIDGE_TOKEN="a-random-secret-at-least-32-characters"
-    python examples/mtproto-wallet/bridge.py
+```lua
+local Wallet = require('titogramlua.mtproto_wallet')
+local wallet = Wallet.new({
+    api_id = assert(tonumber(os.getenv('TELEGRAM_API_ID'))),
+    api_hash = assert(os.getenv('TELEGRAM_API_HASH')),
+    dc_id = 2,
+    host = '149.154.167.40',
+    port = 443,
+})
 
-At first start, RavenGram may ask you to sign in in the terminal. Its SQLite session is stored separately from TDLib under `~/.local/share/titogramlua-wallet` by default; set `RAVENGRAM_SESSION_DIR` to choose another directory. The session file contains the MTProto authorization key and is **not encrypted at rest**. The bridge creates the directory with owner-only permissions on Unix; on Windows, keep it under your private user profile. Treat the session file like a login credential. The bridge binds only to 127.0.0.1 on port 8765.
+local auth_key, err = wallet:connect()
+if not auth_key then error(err) end
+local sent_code, code_err = wallet:send_code('+201000000000')
+if not sent_code then error(code_err.message or code_err) end
+local login, login_err = wallet:sign_in(assert(os.getenv('TELEGRAM_LOGIN_CODE')),
+    sent_code.phone_code_hash)
+if not login and login_err.two_factor_required then
+    login, login_err = wallet:check_password(assert(os.getenv('TELEGRAM_2FA_PASSWORD')))
+end
+if not login then error(login_err.message or login_err) end
+assert(wallet:is_authorized())
+assert(wallet:save_session('telegram-wallet.session', assert(os.getenv('SESSION_PASSWORD'))))
 
-## Call from Lua
+local state, state_err = wallet:get_state()
+if not state then error(state_err.message or state_err) end
+print('Wallet result:', state.data and state.data.address)
+wallet:close()
+```
 
-    local Wallet = require('titogramlua.mtproto_wallet')
-    local wallet = Wallet.new({
-        url = 'http://127.0.0.1:8765/rpc',
-        token = assert(os.getenv('TITOGRAM_WALLET_BRIDGE_TOKEN')),
-    })
+To reopen the encrypted session, use `Wallet.load_session(options, path, password)`, then call `connect()`. Use `Wallet.objects` to build supported nested values such as `input_user_self()`, `input_user(id, access_hash)`, and ownership proofs. Results have `raw`, `constructor`, and `data` fields; `data` is decoded for the supported custom wallet types and is `nil` with `decoding_error` when the exact type is not implemented. Preserve raw results when writing application logic for unsupported constructors.
 
-    local state, err = wallet:get_state()
-    if not state then error(err.message) end
-    print('TON balance (nanotons):', state.balance)
-    print('Wallet address:', state.address)
+## Security
 
-    local page, page_err = wallet:get_transactions({
-        inbound = true,
-        outbound = true,
-        offset = '',
-        limit = 20,
-    })
-    if not page then error(page_err.message) end
+An MTProto auth key is a credential. Session files are encrypted with AES-256-CBC and authenticated with HMAC-SHA-256 using a PBKDF2-HMAC-SHA-512 key derived from the session password. Choose a long unique password and keep it private. Recovery methods can return secret material, and transfer methods can move funds. The present implementation has not completed live interoperability validation and must not be treated as production ready.
 
-Convenience methods cover all wallet functions in the RavenGram schema: wallet state and addresses, transaction lists and lookup, wallet replacement and backup controls, proof challenges, transfers, gasless information, NFTs, and TON Connect sessions and requests. Each accepts a table of raw MTProto fields. You can also call wallet:call('wallet.getState', params).
-
-Nested TL objects use tables such as {['@type'] = 'inputUserSelf'}. Binary bytes use {['@bytes'] = 'BASE64'} and binary results use the same tagged form.
-
-## Security and limits
-
-- This is a direct MTProto user-account client. It needs a separate login and encrypted session; it cannot reuse the TDLib database.
-- The bearer token protects the loopback bridge. Do not expose port 8765 to the internet or log request and response bodies.
-- Wallet methods can move funds or return recovery material. Call only methods you understand, and never log or share secret phrase results or transaction payloads.
-- Telegram validates wallet permissions and requests. A successful RPC response does not guarantee that an on-chain transaction has settled.

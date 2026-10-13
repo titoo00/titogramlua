@@ -22,6 +22,7 @@ dependencies = {
     "dkjson >= 2.5-2",
     "luasec >= 0.6-1",
     "luasocket >= 3.0rc1-2",
+    "luaossl >= 20220711",
     "multipart-post >= 1.1-1",
     "luautf8 >= 0.1.1-1",
     "copas >= 4.0"
@@ -31,3 +32,4 @@ build = {
     build_command = "true",
     install_command = "mkdir -p '$(LUADIR)/titogramlua' '$(BINDIR)' && cp src/main.lua '$(LUADIR)/titogramlua.lua' && cp -R src/* '$(LUADIR)/titogramlua/' && rm -f '$(LUADIR)/titogramlua/main.lua' && cp bin/tgbot '$(BINDIR)/tgbot' && chmod +x '$(BINDIR)/tgbot'"
 }
+

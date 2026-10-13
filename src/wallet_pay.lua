@@ -177,3 +177,4 @@ function WalletPay:verify_webhook(method, uri_path, timestamp, signature, raw_bo
 end
 
 return WalletPay
+
