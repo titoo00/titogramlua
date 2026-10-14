@@ -584,3 +584,27 @@ Payloads are native TDLib objects, not Pyrogram types. Message/story/poll/busine
 | `start` | adapted | `getAuthorizationState` |
 | `stop` | existing | Composed / native wrapper; see module |
 | `stop_transmission` | adapted | Composed / native wrapper; see module |
+
+## Third-party bot verification
+
+`client:get_bot_verification(params, callback)` reads the third-party verification details available from TDLib. Set exactly one of `user_id` or `supergroup_id` (the latter accepts a supergroup or channel ID). It returns `nil` when Telegram has no verification details for the target.
+
+The result exposes `bot_user_id`, a compact `bot = {id = ...}` reference, the custom emoji ID as a decimal string in `custom_emoji_id`, and `description` as plain text. The original TDLib `custom_description` formatted-text object and its `description_entities` list are retained so formatting entities are not lost.
+
+```lua
+client:get_bot_verification({user_id = 123456}, function(verification, err)
+    if err then print(err.message); return end
+    if not verification then print('No bot verification'); return end
+
+    print(verification.bot.id)
+    print(verification.custom_emoji_id)
+    print(verification.description)
+    for _, entity in ipairs(verification.description_entities) do
+        print(entity.offset, entity.length, entity.type['@type'])
+    end
+end)
+client:run()
+```
+
+This is a TDLib user-client helper. Bot API `getChat` only provides the Bot API fields it documents and does not return the full TDLib `BotVerification` object. Read operations require an authenticated TDLib client and the corresponding user or supergroup to be available to that client.
+
