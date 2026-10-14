@@ -1,4 +1,4 @@
-local api = require('spec.test_helper')
+require('spec.test_helper')
 
 describe('cli', function()
     describe('arg parsing', function()
@@ -65,36 +65,55 @@ describe('cli', function()
     end)
 
     describe('tgbot script', function()
-        it('prints usage when no command given', function()
-            local handle = io.popen('lua bin/tgbot 2>&1; echo "EXIT:$?"', 'r')
+        local windows = package.config:sub(1, 1) == '\\'
+        local lua = os.getenv('LUA') or 'lua'
+
+        local function run_cli(arguments, clear_token)
+            local command = lua .. ' bin/tgbot ' .. arguments .. ' 2>&1'
+            if windows then
+                command = command:gsub('bin/tgbot', 'bin\\tgbot')
+                if clear_token then
+                    command = 'set "BOT_TOKEN=" && ' .. command
+                end
+            else
+                if clear_token then
+                    command = 'BOT_TOKEN= ' .. command
+                end
+                command = command .. '; echo "EXIT:$?"'
+            end
+            local handle = io.popen(command, 'r')
             local output = handle:read('*a')
-            handle:close()
+            local ok, _, code = handle:close()
+            local exit_code = ok and 0 or (code or 1)
+            if not windows then
+                exit_code = tonumber(output:match('EXIT:(%d+)%s*$')) or exit_code
+            end
+            return output, exit_code
+        end
+
+        it('prints usage when no command given', function()
+            local output, code = run_cli('')
             assert.truthy(output:find('Usage:'))
-            assert.truthy(output:find('EXIT:1'))
+            assert.equals(1, code)
         end)
 
         it('prints error when unknown command given', function()
-            local handle = io.popen('lua bin/tgbot badcommand 2>&1; echo "EXIT:$?"', 'r')
-            local output = handle:read('*a')
-            handle:close()
+            local output, code = run_cli('badcommand')
             assert.truthy(output:find('Unknown command'))
-            assert.truthy(output:find('EXIT:1'))
+            assert.equals(1, code)
         end)
 
         it('prints error when BOT_TOKEN is missing for info', function()
-            local handle = io.popen('BOT_TOKEN= lua bin/tgbot info 2>&1; echo "EXIT:$?"', 'r')
-            local output = handle:read('*a')
-            handle:close()
+            local output, code = run_cli('info', true)
             assert.truthy(output:find('BOT_TOKEN'))
-            assert.truthy(output:find('EXIT:1'))
+            assert.equals(1, code)
         end)
 
         it('prints error when send is missing chat_id', function()
-            local handle = io.popen('BOT_TOKEN= lua bin/tgbot send 2>&1; echo "EXIT:$?"', 'r')
-            local output = handle:read('*a')
-            handle:close()
+            local output, code = run_cli('send', true)
             assert.truthy(output:find('chat_id'))
-            assert.truthy(output:find('EXIT:1'))
+            assert.equals(1, code)
         end)
     end)
 end)
+
