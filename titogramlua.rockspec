@@ -1,14 +1,14 @@
 package = "titogramlua"
-version = "3.7.3-1"
+version = "3.7.4-1"
 
 source = {
     url = "git+https://github.com/titoo00/titogramlua.git",
-    tag = "v3.7.3"
+    tag = "v3.7.4"
 }
 
 description = {
     summary = "A feature-filled Telegram bot API library",
-    detailed = "Lua Telegram Bot API 10.3 library with rich-message helpers, Wallet Pay, and an experimental native MTProto wallet client.",
+    detailed = "Lua Telegram Bot API 10.3 library with rich-message helpers, Wallet Pay, an experimental native MTProto wallet client, and TDLib bot verification details.",
     homepage = "https://github.com/titoo00/titogramlua",
     maintainer = "Yousef Hesham",
     license = "GPL-3"
