@@ -274,10 +274,42 @@ local function sanitize_filename(name)
     return name:gsub('%.%.', ''):gsub('[/\\]', ''):gsub('%z', '')
 end
 
+local function temp_directory()
+    local separator = package.config:sub(1, 1)
+    local candidates
+    if separator == '\\' then
+        candidates = { os.getenv('TEMP'), os.getenv('TMP'), os.getenv('TMPDIR') }
+    else
+        candidates = { os.getenv('TMPDIR'), os.getenv('TMP'), os.getenv('TEMP') }
+    end
+    local directory = '/tmp'
+    for _, candidate in ipairs(candidates) do
+        if candidate and candidate ~= '' then
+            directory = candidate
+            break
+        end
+    end
+    if not directory:match('[/\\]$') then
+        directory = directory .. separator
+    end
+    return directory
+end
+
+local function is_absolute_path(path)
+    return path:match('^[/\\]') ~= nil or path:match('^%a:[/\\]') ~= nil
+end
+
+local function join_path(directory, filename)
+    if directory:match('[/\\]$') then
+        return directory .. filename
+    end
+    return directory .. package.config:sub(1, 1) .. filename
+end
+
 --- download a file from a URL and save it to disk.
 -- @param url string the URL to download from
 -- @param name string optional filename (defaults to timestamp with extension from URL)
--- @param path string optional directory path to save to (defaults to /tmp/)
+-- @param path string optional directory path to save to (defaults to the system temporary directory)
 -- @return string|boolean the full file path on success, or false on failure
 -- @return number|string the HTTP status code or error message on failure
 function tools.download_file(url, name, path)
@@ -303,27 +335,24 @@ function tools.download_file(url, name, path)
     if res ~= 200 then
         return false, res
     end
-    path = path and tostring(path) or '/tmp/'
-    if not path:match('^/') then
-        path = '/tmp/' .. path
+    path = path and tostring(path) or temp_directory()
+    if not is_absolute_path(path) then
+        path = join_path(temp_directory(), path)
     end
-    if not path:match('/$') then
-        path = path .. '/'
-    end
-    local file = io.open(path .. name, 'wb')
+    local full_path = join_path(path, name)
+    local file = io.open(full_path, 'wb')
     if not file then
         return false, 'Could not open file for writing'
     end
     local contents = table.concat(body)
     file:write(contents)
     file:close()
-    path = path .. name
-    return path
+    return full_path
 end
 
---- save data to a file in /tmp/.
+--- save data to a file in the system temporary directory.
 -- @param data string the data to write
--- @param filename string the filename to write to (saved under /tmp/)
+-- @param filename string the filename to write to (saved under the system temporary directory)
 -- @param append boolean optional flag to append instead of overwrite
 -- @return string|boolean the full file path on success, or false on failure
 function tools.save_to_file(data, filename, append)
@@ -332,7 +361,7 @@ function tools.save_to_file(data, filename, append)
     end
     filename = sanitize_filename(filename)
     local mode = append and 'a+' or 'w+'
-    local full_path = '/tmp/' .. filename
+    local full_path = join_path(temp_directory(), filename)
     local file = io.open(full_path, mode)
     if not file then
         return false
@@ -745,12 +774,6 @@ function tools.file_size(file)
         return false, 'No file/path given!'
     elseif type(file) == 'string' then
         is_path = true
-        if not file:match('^/') then
-            file = '/' .. file
-        end
-        if file:match('/$') then
-            file = file:match('^(.-)/$')
-        end
         file = io.open(file, 'r')
         if not file then
             return false, 'Could not open file!'
@@ -923,3 +946,4 @@ function tools.string_array_to_table(string_array)
 end
 
 return tools
+
