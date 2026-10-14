@@ -562,7 +562,7 @@
 <p><a name="Installation"></a></p>
 <h2>Installation</h2>
 
-<p>Requires Lua 5.1+ and LuaRocks. LuaRocks installs the library's Lua dependencies (<code>dkjson</code>, <code>luasec</code>, <code>luasocket</code>, <code>multipart-post</code>, <code>luautf8</code>, and <code>copas</code>) automatically:</p>
+<p>Requires Lua 5.1+ and LuaRocks. LuaRocks installs the library's Lua dependencies (<code>dkjson</code>, <code>luasec</code>, <code>luasocket</code>, <code>luaossl</code>, <code>multipart-post</code>, <code>luautf8</code>, and <code>copas</code>) automatically:</p>
 
 <pre><code> luarocks install titogramlua
 </code></pre>
@@ -570,7 +570,7 @@
 
 <h3>Complete installation on Ubuntu 22.04</h3>
 
-<p>The regular Bot API client needs Lua and LuaRocks. The optional user-account client additionally needs LuaJIT and the native TDLib JSON library; TDLib is built separately and is not installed by LuaRocks.</p>
+<p>The regular Bot API client needs Lua and LuaRocks. The LuaRocks package includes a cross-platform built-in installer, so it does not rely on Unix shell copy commands. The optional user-account client additionally needs LuaJIT and the native TDLib JSON library; TDLib is built separately and is not installed by LuaRocks.</p>
 
 <p>Install the library and its Lua dependencies:</p>
 
@@ -612,7 +612,7 @@ sudo luarocks <span class="comment">--lua-version=5.1 install titogramlua
 </pre>
 
 
-<p>The TDLib build follows <a href="https://github.com/tdlib/td#building">TDLib's official build instructions</a>. Building TDLib needs a lot of RAM: on lower-memory servers use <code>-j1</code> or <code>-j2</code> to limit parallel compilation, and add swap space if the build is killed. See <a href="docs/userbot.md">User accounts / MTProto</a> for the complete user-account guide. Optional database adapters are not installed by default: SQLite uses <code>lsqlite3</code> (<code>sudo apt install libsqlite3-dev</code>, then <code>sudo luarocks --lua-version=5.4 install lsqlite3</code>); PostgreSQL uses <code>pgmoon</code> (<code>sudo luarocks --lua-version=5.4 install pgmoon</code>). Redis, LLM, and SMTP use the library's built-in Lua clients and need their service/API credentials.</p>
+<p>The TDLib build follows <a href="https://github.com/tdlib/td#building">TDLib's official build instructions</a>. Building TDLib needs a lot of RAM: on lower-memory servers use <code>-j1</code> or <code>-j2</code> to limit parallel compilation, and add swap space if the build is killed. See <a href="docs/userbot.md">User accounts / MTProto</a> for the complete user-account guide. Wallet Pay and the experimental native MTProto wallet use <code>luaossl</code>, which LuaRocks installs as a dependency. Optional database adapters are not installed by default: SQLite uses <code>lsqlite3</code> (<code>sudo apt install libsqlite3-dev</code>, then <code>sudo luarocks --lua-version=5.4 install lsqlite3</code>); PostgreSQL uses <code>pgmoon</code> (<code>sudo luarocks --lua-version=5.4 install pgmoon</code>). Redis, LLM, and SMTP use the library's built-in Lua clients and need their service/API credentials.</p>
 
 <p>For development and diagnosing library changes, install the optional project tools:</p>
 
