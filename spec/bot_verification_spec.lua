@@ -1,3 +1,17 @@
+require('spec.test_helper')
+
+-- Nested userbot modules are composed at runtime and are not listed in the
+-- rockspec module map used by the test helper.
+package.preload['titogramlua.methods.userbot._support'] = function()
+    return dofile('src/methods/userbot/_support.lua')
+end
+package.preload['titogramlua.methods.userbot._events'] = function()
+    return dofile('src/methods/userbot/_events.lua')
+end
+package.preload['titogramlua.methods.userbot._operations'] = function()
+    return dofile('src/methods/userbot/_operations.lua')
+end
+
 local operations = require('titogramlua.methods.userbot._operations')
 
 describe('userbot bot verification reader', function()
