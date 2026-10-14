@@ -71,6 +71,9 @@ function user.new(opts)
         methods[name] = require('titogramlua.methods.userbot.' .. name)
     end
 
+    -- Composed native read helper; it does not mirror a Pyrogram raw TL class.
+    methods.get_bot_verification = require('titogramlua.methods.userbot._operations').get_bot_verification
+
     local handle = lib.td_json_client_create()
     assert(handle ~= nil, 'TDLib failed to create a client')
     handle = ffi.gc(handle, function(value) lib.td_json_client_destroy(value) end)
