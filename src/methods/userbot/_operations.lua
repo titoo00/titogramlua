@@ -149,6 +149,39 @@ function operations.get_bot_default_privileges(self, params, callback)
     end)
 end
 
+function operations.get_bot_verification(self, params, callback)
+    params = support.params(params, {user_id = 'int53', supergroup_id = 'int53'})
+    assert((params.user_id ~= nil) ~= (params.supergroup_id ~= nil),
+        'exactly one of user_id or supergroup_id is required')
+
+    local method, request_params
+    if params.user_id ~= nil then
+        method, request_params = 'getUserFullInfo', {user_id = params.user_id}
+    else
+        method, request_params = 'getSupergroupFullInfo', {supergroup_id = params.supergroup_id}
+    end
+
+    local done = finish(self, callback, 'get_bot_verification')
+    return self:request(method, request_params, function(info, err, client)
+        if err then return done(nil, err, client) end
+        local raw = info and info.bot_verification
+        if not raw then return done(nil, nil, client) end
+
+        local description = raw.custom_description
+        local emoji_id = raw.icon_custom_emoji_id
+        done({
+            ['@type'] = 'botVerification',
+            bot_user_id = raw.bot_user_id,
+            bot = {id = raw.bot_user_id},
+            icon_custom_emoji_id = emoji_id ~= nil and tostring(emoji_id) or nil,
+            custom_emoji_id = emoji_id ~= nil and tostring(emoji_id) or nil,
+            custom_description = description,
+            description = description and description.text or nil,
+            description_entities = description and description.entities or {}
+        }, nil, client)
+    end)
+end
+
 function operations.send_phone_number_code(self, params, callback)
     params = support.params(params, {phone_number = 'string', settings = 'phoneNumberAuthenticationSettings', type = 'PhoneNumberCodeType'})
     assert(params.phone_number, 'phone_number is required')
