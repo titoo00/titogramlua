@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Loopback-only JSON bridge to RavenGram's raw Telegram wallet MTProto API."""
+"""Loopback-only JSON bridge to TitogramLua's raw Telegram wallet MTProto API."""
 import asyncio
 import base64
 import hmac
@@ -81,7 +81,7 @@ class Handler(BaseHTTPRequestHandler):
                 raise ValueError("only supported wallet.* methods are allowed")
             cls = getattr(raw.functions.wallet, class_name(name), None)
             if cls is None:
-                raise ValueError("RavenGram does not expose " + method)
+                raise ValueError("TitogramLua does not expose " + method)
             params = decode(body.get("params") or {})
             future = asyncio.run_coroutine_threadsafe(
                 self.server.client.invoke(cls(**params)), self.server.loop
@@ -108,7 +108,7 @@ async def main() -> None:
         raise SystemExit("TITOGRAM_WALLET_BRIDGE_TOKEN must be at least 32 characters")
     session_dir = Path(
         os.environ.get(
-            "RAVENGRAM_SESSION_DIR",
+            "TitogramLua_SESSION_DIR",
             str(Path.home() / ".local" / "share" / "titogramlua-wallet"),
         )
     ).expanduser()
@@ -118,7 +118,7 @@ async def main() -> None:
         os.umask(0o077)
 
     client = Client(
-        os.environ.get("RAVENGRAM_SESSION", "titogramlua_wallet"),
+        os.environ.get("TitogramLua_SESSION", "titogramlua_wallet"),
         workdir=str(session_dir),
         api_id=int(os.environ["TELEGRAM_API_ID"]),
         api_hash=os.environ["TELEGRAM_API_HASH"],
@@ -130,7 +130,7 @@ async def main() -> None:
     server.loop = loop
     thread = threading.Thread(target=server.serve_forever, daemon=True)
     thread.start()
-    print("RavenGram wallet MTProto bridge listening on 127.0.0.1:8765")
+    print("TitogramLua wallet MTProto bridge listening on 127.0.0.1:8765")
     try:
         await asyncio.Event().wait()
     finally:

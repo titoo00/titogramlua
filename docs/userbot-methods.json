@@ -1,6 +1,4 @@
 {
-  "source": "ahmedahah4/ravengram",
-  "source_commit": "75a8fe833a952403900de55ebfa0cfea77f4c430",
   "backend": "TDLib JSON",
   "public_modules": 452,
   "entries": [

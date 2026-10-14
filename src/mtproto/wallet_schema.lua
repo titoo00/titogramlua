@@ -1,4 +1,4 @@
--- Method identifiers and parameter layouts from RavenGram's pinned Telegram TL schema.
+-- Method identifiers and parameter layouts from the pinned Telegram TL schema.
 -- This is schema data only; it does not implement authentication or the MTProto transport.
 return {
     layer = 230,

@@ -1,6 +1,6 @@
-# Ravengram method adapters for TDLib
+# TitogramLua method adapters for TDLib
 
-The source snapshot is [Ravengram 75a8fe8](https://github.com/ahmedahah4/ravengram/tree/75a8fe833a952403900de55ebfa0cfea77f4c430/pyrogram/methods). Its inventory contains 439 names, including the `unbound_arguments` decorator helper. 438 have Lua modules; `export_session_string` is unavailable. The client has 452 public method modules, including its existing TDLib methods. Existing modules are retained rather than duplicated.
+This catalog documents the TDLib-backed UserBot method adapters available in TitogramLua. It lists 439 method names; 438 have Lua modules, while session-string export is unavailable. The client has 452 public method modules, including its existing TDLib methods. Existing modules are retained rather than duplicated.
 
 This is a TDLib adaptation, not a drop-in replacement for Python/Pyrogram. The new methods take native TDLib parameter tables and return request IDs. Replies require `receive()` or `run()`. The table below records name coverage, not proof of equivalent behavior. No authenticated Telegram integration run has been performed for this port.
 
@@ -45,9 +45,9 @@ Payloads are native TDLib objects, not Pyrogram types. Message/story/poll/busine
 
 ## Sessions and native features
 
-`export_session_string` is intentionally absent: TDLib stores sessions in its encrypted database and cannot export Ravengram's portable MTProto string session. Reuse the protected database directory and encryption key. No Python backend or runtime dependency was added. Local presence of a method does not grant account permissions: bot-only, business, paid, premium and administrator operations depend on the server and the authenticated account.
+`export_session_string` is intentionally absent: TDLib stores sessions in its encrypted database and cannot export a portable MTProto session string. Reuse the protected database directory and encryption key. No Python backend or runtime dependency was added. Local presence of a method does not grant account permissions: bot-only, business, paid, premium and administrator operations depend on the server and the authenticated account.
 
-## Source name inventory
+## Method inventory
 
 `existing` means a pre-existing Lua method; its original documented interface remains. `adapted` means a new TDLib adapter. The source signatures are not copied. “Composed / native wrapper” entries have operation-specific conventions described above and in their source module.
 

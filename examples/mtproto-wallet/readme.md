@@ -1,6 +1,6 @@
 # Native Lua MTProto wallet (work in progress)
 
-The wallet API is declared from RavenGram's pinned TL schema and encoded in Lua. The MTProto transport, auth-key handshake, AES-IGE encryption, encrypted RPC envelope, phone-code login, 2FA SRP proof, and encrypted session file also run in Lua using LuaSocket and luaossl. There is no Python process or local HTTP bridge.
+The wallet API is declared from the pinned Telegram TL schema and encoded in Lua. The MTProto transport, auth-key handshake, AES-IGE encryption, encrypted RPC envelope, phone-code login, 2FA SRP proof, and encrypted session file also run in Lua using LuaSocket and luaossl. There is no Python process or local HTTP bridge.
 
 This code is experimental and has not been interoperability-tested against Telegram. Result decoding is incomplete for Telegram's generated objects (for example users, chats, and NFT documents), so every result also retains its exact raw TL bytes and some decoded data may be absent. Do not use transfer, recovery, backup, or TON Connect calls with funds until the entire result schema and live API behavior have been validated.
 
