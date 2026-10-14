@@ -387,5 +387,5 @@ Portions Copyright (c) Matthew Hesketh, from the original [telegram-bot-lua](htt
 
 ### User account method adapters
 
-The optional LuaJIT/TDLib user client includes Ravengram-inspired methods, stories, event registration and composed operations. Read [userbot setup](docs/userbot.md) and [the complete adapter catalog and limitations](docs/userbot-port.md). TDLib sessions are database-backed; portable Pyrogram session strings are not supported.
+The optional LuaJIT/TDLib user client includes additional methods, stories, event registration and composed operations. Read [userbot setup](docs/userbot.md) and [the complete adapter catalog and limitations](docs/userbot-port.md). TDLib sessions are database-backed; portable Pyrogram session strings are not supported.
 

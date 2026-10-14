@@ -1,4 +1,4 @@
--- Telegram public RSA keys reproduced from RavenGram/Pyrogram public constants.
+-- Telegram public RSA keys used for MTProto authorization.
 return {
     ['-4344800451088585951'] = { e = 65537, n =
         'C150023E2F70DB7985DED064759CFECF0AF328E69A41DAF4D6F01B538135A6F9' ..
