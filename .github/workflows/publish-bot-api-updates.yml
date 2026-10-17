@@ -52,7 +52,7 @@ jobs:
             exit 1
           fi
           base="titogramlua.rockspec"
-          base_version="$(sed -nE 's/^version = "([0-9]+\\.[0-9]+\\.[0-9]+)-[0-9]+"$/\\1/p' "$base")"
+          base_version="$(sed -nE 's/^version = "([0-9]+\.[0-9]+\.[0-9]+)-[0-9]+"$/\1/p' "$base")"
           if [ -z "$base_version" ]; then
             echo "::error::Could not read the base version from $base."
             exit 1
