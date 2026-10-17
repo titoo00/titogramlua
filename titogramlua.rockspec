@@ -1,9 +1,9 @@
 package = "titogramlua"
-version = "3.7.6-1"
+version = "3.7.7-1"
 
 source = {
     url = "git+https://github.com/titoo00/titogramlua.git",
-    tag = "v3.7.6"
+    tag = "v3.7.7"
 }
 
 description = {
