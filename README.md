@@ -381,9 +381,11 @@ api.run({ sync = true, timeout = 60 })
 
 This project is licensed under the GPL-3.0 License - see the LICENSE file for details.
 
-Copyright (c) 2017-2026 Yousef Hesham
+Copyright (c) 2026 Yousef Hesham
 
-Portions Copyright (c) Matthew Hesketh, from the original [telegram-bot-lua](https://github.com/wrxck/telegram-bot-lua) project. Keep the original copyright notices in the `LICENSE` file, as the GPL requires.
+Maintained and developed by Yousef Hesham.
+
+This project includes portions derived from [telegram-bot-lua](https://github.com/wrxck/telegram-bot-lua) by Matthew Hesketh. Its original copyright and GPL-3.0 notices remain applicable to those portions.
 
 ### User account method adapters
 
