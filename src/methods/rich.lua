@@ -64,7 +64,7 @@ return function(api)
         return api.send_rich_message(chat_id, rich_message, opts)
     end
 
-    --- send up to thirty photos in a rich message slideshow.
+    --- send every provided photo in a rich message slideshow.
     -- @param chat_id number|string unique identifier for the target chat
     -- @param photos table array of photo file IDs or URLs
     -- @param caption string|nil optional slideshow caption
@@ -72,7 +72,7 @@ return function(api)
     -- @return table,number the response object and HTTP status
     function api.send_slideshow(chat_id, photos, caption, opts)
         local slides = {}
-        for i = 1, math.min(#photos, 30) do
+        for i = 1, #photos do
             slides[i] = {
                 type = 'photo',
                 photo = { type = 'photo', media = photos[i] }
