@@ -79,10 +79,20 @@ jobs:
         uses: leafo/gh-actions-luarocks@v5
 
       - name: Validate rockspec
-        run: luarocks lint titogramlua.rockspec
+        run: |
+          ROCKSPEC_VERSION=$(sed -n 's/^version = "\(.*\)"/\1/p' titogramlua.rockspec)
+          test -n "$ROCKSPEC_VERSION"
+          ROCKSPEC="titogramlua-${ROCKSPEC_VERSION}.rockspec"
+          test -f "$ROCKSPEC"
+          luarocks lint "$ROCKSPEC"
 
       - name: Build source package
-        run: luarocks make --deps-mode=none --pack-binary-rock titogramlua.rockspec
+        run: |
+          ROCKSPEC_VERSION=$(sed -n 's/^version = "\(.*\)"/\1/p' titogramlua.rockspec)
+          test -n "$ROCKSPEC_VERSION"
+          ROCKSPEC="titogramlua-${ROCKSPEC_VERSION}.rockspec"
+          test -f "$ROCKSPEC"
+          luarocks make --deps-mode=none --pack-binary-rock "$ROCKSPEC"
 
   lint:
     name: Lint
