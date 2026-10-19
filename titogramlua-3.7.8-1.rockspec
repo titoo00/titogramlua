@@ -531,6 +531,7 @@ build = {
         ["titogramlua.mtproto.srp"] = "src/mtproto/srp.lua",
         ["titogramlua.mtproto.tl"] = "src/mtproto/tl.lua",
         ["titogramlua.mtproto.transport"] = "src/mtproto/transport.lua",
+        ["titogramlua.mtproto.layer225"] = "src/mtproto/layer225.lua",
         ["titogramlua.mtproto.wallet_decode"] = "src/mtproto/wallet_decode.lua",
         ["titogramlua.mtproto.wallet_encode"] = "src/mtproto/wallet_encode.lua",
         ["titogramlua.mtproto.wallet_objects"] = "src/mtproto/wallet_objects.lua",
