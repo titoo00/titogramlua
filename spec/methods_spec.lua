@@ -106,6 +106,22 @@ describe('methods', function()
             assert.equals(42, rp.message_id)
         end)
 
+        it('send_reply forwards ephemeral_message_parameters', function()
+            local ephemeral = {
+                receiver_user_id = 789,
+                callback_query_id = 'query_1',
+                replace_callback_query_message = true
+            }
+            api.send_reply(
+                { chat = { id = 123 }, message_id = 42 },
+                'Hello',
+                { ephemeral_message_parameters = ephemeral }
+            )
+            local req = api._last_request()
+            local decoded = json.decode(req.parameters.ephemeral_message_parameters)
+            assert.same(ephemeral, decoded)
+        end)
+
         it('send_reply uses MarkdownV2 for boolean parse_mode', function()
             api.send_reply(
                 { chat = { id = 123 }, message_id = 42 },
