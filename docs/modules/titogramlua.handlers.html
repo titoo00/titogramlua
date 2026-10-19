@@ -596,6 +596,10 @@
 	<td class="summary">called when a chosen inline result is received.</td>
 	</tr>
 	<tr>
+	<td class="name" nowrap><a href="#api.on_community_chat_joined">api.on_community_chat_joined(community_chat_joined)</a></td>
+	<td class="summary">called when a user joins a chat through a community (Bot API 10.3).</td>
+	</tr>
+	<tr>
 	<td class="name" nowrap><a href="#api.on_deleted_business_messages">api.on_deleted_business_messages(deleted_business_messages)</a></td>
 	<td class="summary">called when business messages are deleted.</td>
 	</tr>
@@ -924,6 +928,26 @@
     <ul>
         <li><span class="parameter">chosen_inline_result</span>
          table the chosen inline result object
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "api.on_community_chat_joined"></a>
+    <strong>api.on_community_chat_joined(community_chat_joined)</strong>
+    </dt>
+    <dd>
+    called when a user joins a chat through a community (Bot API 10.3).
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">community_chat_joined</span>
+         table the community chat joined object
         </li>
     </ul>
 
