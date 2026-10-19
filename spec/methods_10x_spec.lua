@@ -69,6 +69,27 @@ describe('Bot API 10.x methods', function()
         end)
     end)
 
+        it('send_slideshow sends up to 20 photos', function()
+            local photos = {}
+            for i = 1, 20 do photos[i] = 'photo' .. i end
+            api.send_slideshow(123, photos, 'album')
+            local req = api._last_request()
+            local rich_message = json.decode(req.parameters.rich_message)
+            local slides = rich_message.blocks[1].blocks
+            assert.equals(20, #slides)
+            assert.equals('photo20', slides[20].photo.media)
+            assert.equals('album', rich_message.blocks[1].caption.text)
+        end)
+
+        it('send_slideshow rejects more than 20 photos', function()
+            local photos = {}
+            for i = 1, 21 do photos[i] = 'photo' .. i end
+            assert.has_error(function()
+                api.send_slideshow(123, photos)
+            end, 'send_slideshow accepts at most 20 photos')
+            assert.is_nil(api._last_request())
+        end)
+
     describe('live photos (10.0)', function()
         it('send_live_photo sends both files and hits the endpoint', function()
             api.send_live_photo(123, 'live_id', 'photo_id', { caption = 'cap', has_spoiler = true })

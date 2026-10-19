@@ -64,13 +64,15 @@ return function(api)
         return api.send_rich_message(chat_id, rich_message, opts)
     end
 
-    --- send every provided photo in a rich message slideshow.
+    --- send up to 20 photos in a rich message slideshow.
     -- @param chat_id number|string unique identifier for the target chat
-    -- @param photos table array of photo file IDs or URLs
+    -- @param photos table array of up to 20 photo file IDs or URLs
     -- @param caption string|nil optional slideshow caption
     -- @param opts table optional sendRichMessage parameters
     -- @return table,number the response object and HTTP status
     function api.send_slideshow(chat_id, photos, caption, opts)
+        assert(type(photos) == 'table', 'photos must be a table')
+        assert(#photos <= 20, 'send_slideshow accepts at most 20 photos')
         local slides = {}
         for i = 1, #photos do
             slides[i] = {

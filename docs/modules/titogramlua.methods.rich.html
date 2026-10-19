@@ -573,7 +573,7 @@
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#api.send_slideshow">api.send_slideshow(chat_id, photos, caption, opts)</a></td>
-	<td class="summary">send every provided photo in a rich message slideshow.</td>
+	<td class="summary">send up to 20 photos in a rich message slideshow.</td>
 	</tr>
 </table>
 
@@ -754,7 +754,7 @@
     <strong>api.send_slideshow(chat_id, photos, caption, opts)</strong>
     </dt>
     <dd>
-    send every provided photo in a rich message slideshow.
+    send up to 20 photos in a rich message slideshow.
 
 
     <h3>Parameters:</h3>
@@ -763,7 +763,7 @@
          number|string unique identifier for the target chat
         </li>
         <li><span class="parameter">photos</span>
-         table array of photo file IDs or URLs
+         table array of up to 20 photo file IDs or URLs
         </li>
         <li><span class="parameter">caption</span>
          string|nil optional slideshow caption
