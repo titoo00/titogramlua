@@ -347,4 +347,31 @@ return function(api)
     function api.rich_block_thinking(text)
         return { ['type'] = 'thinking', ['text'] = text }
     end
+
+    -- InputRichBlock aliases (Bot API 10.3). Input and received blocks use
+    -- the same JSON representation; these names clarify sendRichMessage use.
+    api.input_rich_block_paragraph = api.rich_block_paragraph
+    api.input_rich_block_section_heading = api.rich_block_heading
+    api.input_rich_block_preformatted = api.rich_block_preformatted
+    api.input_rich_block_footer = api.rich_block_footer
+    api.input_rich_block_divider = api.rich_block_divider
+    api.input_rich_block_mathematical_expression = api.rich_block_mathematical_expression
+    api.input_rich_block_anchor = api.rich_block_anchor
+    api.input_rich_block_list = api.rich_block_list
+    api.input_rich_block_block_quotation = api.rich_block_blockquote
+    api.input_rich_block_expandable_block_quotation = api.rich_block_expandable_blockquote
+    api.input_rich_block_pull_quotation = api.rich_block_pullquote
+    api.input_rich_block_collage = api.rich_block_collage
+    api.input_rich_block_slideshow = api.rich_block_slideshow
+    api.input_rich_block_table = api.rich_block_table
+    api.input_rich_block_details = api.rich_block_details
+    api.input_rich_block_map = api.rich_block_map
+    api.input_rich_block_buttons = api.rich_block_buttons
+    api.input_rich_block_animation = api.rich_block_animation
+    api.input_rich_block_audio = api.rich_block_audio
+    api.input_rich_block_document = api.rich_block_document
+    api.input_rich_block_photo = api.rich_block_photo
+    api.input_rich_block_video = api.rich_block_video
+    api.input_rich_block_voice_note = api.rich_block_voice_note
+    api.input_rich_block_thinking = api.rich_block_thinking
 end
