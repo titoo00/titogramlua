@@ -108,6 +108,7 @@ return function(api)
         link_preview_options = type(link_preview_options) == 'table' and json.encode(link_preview_options) or link_preview_options
         local success, res = api.request(config.endpoint .. api.token .. '/sendMessage', {
             ['chat_id'] = message.chat.id,
+            ['ephemeral_message_parameters'] = json_enc(opts.ephemeral_message_parameters),
             ['message_thread_id'] = opts.message_thread_id,
             ['text'] = text,
             ['parse_mode'] = parse_mode,
