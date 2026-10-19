@@ -71,6 +71,31 @@ describe('handlers', function()
             api.on_inline_query = function(_) end
         end)
 
+        it('routes community_chat_joined from a new message', function()
+            local received
+            local event = { chat = { id = 456 }, user = { id = 789 } }
+            api.on_community_chat_joined = function(value) received = value end
+            api.process_update({
+                message = {
+                    chat = { type = 'supergroup' },
+                    community_chat_joined = event
+                }
+            })
+            assert.same(event, received)
+            api.on_community_chat_joined = function(_) end
+        end)
+
+        it('routes community_chat_joined from a channel post', function()
+            local received
+            local event = { chat = { id = 456 }, user = { id = 789 } }
+            api.on_community_chat_joined = function(value) received = value end
+            api.process_update({
+                channel_post = { community_chat_joined = event }
+            })
+            assert.same(event, received)
+            api.on_community_chat_joined = function(_) end
+        end)
+
         it('routes channel_post', function()
             local called = false
             api.on_channel_post = function(_) called = true end
