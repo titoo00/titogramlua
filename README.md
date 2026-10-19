@@ -159,6 +159,7 @@ api.run({ timeout = 60 })
 ## Key Features
 
 - Full Bot API 10.3 coverage (messages, media, payments, stickers, forums, games, gifts, stories, business accounts, rich messages, live photos, and more)
+- Community join service-event callback: override `api.on_community_chat_joined(event)`; `api.send_reply()` can send ephemeral replies with `opts.ephemeral_message_parameters`
 - Optional Wallet Pay merchant client for crypto payment orders, reconciliation, and webhook signatures
 - Experimental native Lua MTProto wallet client with phone-code/2FA login and encrypted session storage. Some Telegram result objects are still returned as raw TL; validate against Telegram before use with funds.
 - Native MTProto Layer 225 method codec for guest bot mode, participant reaction moderation, personal channel history, managed bot access, poll stats, AI compose tones, and related methods. Typed decoding of generated result objects remains incomplete.

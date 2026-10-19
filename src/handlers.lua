@@ -108,6 +108,9 @@ return function(api)
     --- called when a user stops message generation (Bot API 10.3).
     -- @param stopped_message_generation table stop generation update
     function api.on_stopped_message_generation(stopped_message_generation) end
+    --- called when a user joins a chat through a community (Bot API 10.3).
+    -- @param community_chat_joined table the community chat joined object
+    function api.on_community_chat_joined(community_chat_joined) end
 
     --- raw dispatch: routes an update directly to the appropriate handler.
     -- called by the middleware chain as the final step, or directly when
@@ -129,6 +132,9 @@ return function(api)
             elseif update.message.chat.type == 'supergroup' then
                 api.on_supergroup_message(update.message)
             end
+            if update.message.community_chat_joined then
+                api.on_community_chat_joined(update.message.community_chat_joined)
+            end
             return api.on_message(update.message)
         elseif update.edited_message then
             if update.edited_message.chat.type == 'private' then
@@ -144,6 +150,9 @@ return function(api)
         elseif update.inline_query then
             return api.on_inline_query(update.inline_query)
         elseif update.channel_post then
+            if update.channel_post.community_chat_joined then
+                api.on_community_chat_joined(update.channel_post.community_chat_joined)
+            end
             return api.on_channel_post(update.channel_post)
         elseif update.edited_channel_post then
             return api.on_edited_channel_post(update.edited_channel_post)

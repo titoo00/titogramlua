@@ -740,6 +740,7 @@ api.<span class="function-name">run</span>({ timeout = <span class="number">60</
 
 <ul>
     <li>Full Bot API 10.3 coverage (messages, media, payments, stickers, forums, games, gifts, stories, business accounts, rich messages, live photos, and more)</li>
+    <li>Community join service-event callback: override <code>api.on_community_chat_joined(event)</code>; <code>api.send_reply()</code> can send ephemeral replies with <code>opts.ephemeral_message_parameters</code></li>
     <li>Optional Wallet Pay merchant client for crypto payment orders, reconciliation, and webhook signatures</li>
     <li>Experimental native Lua MTProto wallet client with phone-code/2FA login and encrypted session storage. Some Telegram result objects are still returned as raw TL; validate against Telegram before use with funds.</li>
     <li>Native MTProto Layer 225 method codec for guest bot mode, participant reaction moderation, personal channel history, managed bot access, poll stats, AI compose tones, and related methods. Typed decoding of generated result objects remains incomplete.</li>
