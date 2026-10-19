@@ -742,6 +742,7 @@ api.<span class="function-name">run</span>({ timeout = <span class="number">60</
     <li>Full Bot API 10.3 coverage (messages, media, payments, stickers, forums, games, gifts, stories, business accounts, rich messages, live photos, and more)</li>
     <li>Optional Wallet Pay merchant client for crypto payment orders, reconciliation, and webhook signatures</li>
     <li>Experimental native Lua MTProto wallet client with phone-code/2FA login and encrypted session storage. Some Telegram result objects are still returned as raw TL; validate against Telegram before use with funds.</li>
+    <li>Native MTProto Layer 225 method codec for guest bot mode, participant reaction moderation, personal channel history, managed bot access, poll stats, AI compose tones, and related methods. Typed decoding of generated result objects remains incomplete.</li>
     <li><strong>Async-first architecture</strong> via copas: concurrent updates, parallel API calls, background tasks</li>
     <li><strong>Framework layer</strong>: command router, conversations, and per-chat/user sessions</li>
     <li><strong>Built-in webhook receiver</strong> with x-telegram-bot-api secret-token verification</li>
@@ -773,6 +774,7 @@ api.<span class="function-name">run</span>({ timeout = <span class="number">60</
 | <a href="docs/adapters.md">Adapters</a> | Database, Redis, LLM, and email integrations |
 | <a href="docs/migration.md">Migration from v2</a> | Breaking changes and upgrade guide |
 | <a href="docs/userbot.md">User accounts / MTProto</a> | Optional LuaJIT + TDLib user-account client |
+| <a href="docs/mtproto-layer225.md">Native MTProto Layer 225</a> | Direct Lua methods and TL input constructors for Layer 225 |
 | <a href="docs/wallet-pay.md">Wallet Pay</a> | Optional merchant API client for Wallet Pay orders and signed payment webhooks |
 | <a href="examples/mtproto-wallet/readme.md">Native Lua MTProto wallet (experimental)</a> | Lua MTProto transport, login, encrypted session storage, and wallet methods; some response objects remain raw TL |</p>
 
