@@ -260,7 +260,8 @@ return function(api)
             ['switch_inline_query'] = opts.switch_inline_query,
             ['switch_inline_query_current_chat'] = opts.switch_inline_query_current_chat,
             ['switch_inline_query_chosen_chat'] = opts.switch_inline_query_chosen_chat,
-            ['copy_text'] = opts.copy_text
+            ['copy_text'] = opts.copy_text,
+            ['disabled'] = opts.disabled
         }
     end
 
