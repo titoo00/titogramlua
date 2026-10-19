@@ -79,10 +79,20 @@ jobs:
         uses: leafo/gh-actions-luarocks@v5
 
       - name: Validate rockspec
-        run: luarocks lint titogramlua-3.7.6-1.rockspec
+        run: |
+          ROCKSPEC_VERSION=$(sed -n 's/^version = "\(.*\)"/\1/p' titogramlua.rockspec)
+          test -n "$ROCKSPEC_VERSION"
+          ROCKSPEC="titogramlua-${ROCKSPEC_VERSION}.rockspec"
+          test -f "$ROCKSPEC"
+          luarocks lint "$ROCKSPEC"
 
       - name: Build source package
-        run: luarocks make --deps-mode=none --pack-binary-rock titogramlua-3.7.6-1.rockspec
+        run: |
+          ROCKSPEC_VERSION=$(sed -n 's/^version = "\(.*\)"/\1/p' titogramlua.rockspec)
+          test -n "$ROCKSPEC_VERSION"
+          ROCKSPEC="titogramlua-${ROCKSPEC_VERSION}.rockspec"
+          test -f "$ROCKSPEC"
+          luarocks make --deps-mode=none --pack-binary-rock "$ROCKSPEC"
 
   lint:
     name: Lint
@@ -104,7 +114,7 @@ jobs:
         run: luarocks install luacheck
 
       - name: Run luacheck
-        run: luacheck src/ --no-unused-args --no-max-line-length --globals _G _TEST || true
+        run: luacheck src/ --no-unused-args --no-max-line-length --globals _G _TEST
 
   docs:
     name: Docs in sync

@@ -85,10 +85,6 @@ function Client:_encrypted_rpc(query, timeout)
         local decoded
         decoded, err = message.unpack(self.auth_key, self.session_id, packet)
         if not decoded then return nil, err end
-        if decoded.salt ~= self.server_salt then
-            -- A future bad_server_salt response can safely refresh this value;
-            -- don't accept arbitrary salts from ordinary messages.
-        end
         local reader = tl.reader(decoded.body)
         local constructor = reader:uint()
         if constructor == RPC_RESULT then
@@ -101,9 +97,9 @@ function Client:_encrypted_rpc(query, timeout)
                     local code, text = result_reader:int(), result_reader:string()
                     return nil, {code = code, message = text, request_id = request_id}
                 end
-                local ok, value = pcall(wallet_decode.decode, result)
+                local decoded_ok, decoded_value = pcall(wallet_decode.decode, result)
                 return {raw = result, constructor = result_constructor,
-                    data = ok and value or nil, decoding_error = ok and nil or tostring(value),
+                    data = decoded_ok and decoded_value or nil, decoding_error = decoded_ok and nil or tostring(decoded_value),
                     request_id = raw_id, message_id = decoded.message_id}
             end
         elseif constructor == MSG_CONTAINER then
@@ -127,9 +123,9 @@ function Client:_encrypted_rpc(query, timeout)
                         if result_constructor == RPC_ERROR then
                             return nil, {code = result_reader:int(), message = result_reader:string(), request_id = raw_id}
                         end
-                        local ok, value = pcall(wallet_decode.decode, result)
+                        local decoded_ok, decoded_value = pcall(wallet_decode.decode, result)
                         return {raw = result, constructor = result_constructor,
-                            data = ok and value or nil, decoding_error = ok and nil or tostring(value),
+                            data = decoded_ok and decoded_value or nil, decoding_error = decoded_ok and nil or tostring(decoded_value),
                             request_id = raw_id, message_id = inner_id}
                     end
                 end
