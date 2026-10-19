@@ -79,10 +79,10 @@ jobs:
         uses: leafo/gh-actions-luarocks@v5
 
       - name: Validate rockspec
-        run: luarocks lint titogramlua-3.7.6-1.rockspec
+        run: luarocks lint titogramlua.rockspec
 
       - name: Build source package
-        run: luarocks make --deps-mode=none --pack-binary-rock titogramlua-3.7.6-1.rockspec
+        run: luarocks make --deps-mode=none --pack-binary-rock titogramlua.rockspec
 
   lint:
     name: Lint
@@ -104,7 +104,7 @@ jobs:
         run: luarocks install luacheck
 
       - name: Run luacheck
-        run: luacheck src/ --no-unused-args --no-max-line-length --globals _G _TEST || true
+        run: luacheck src/ --no-unused-args --no-max-line-length --globals _G _TEST
 
   docs:
     name: Docs in sync
